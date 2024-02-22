@@ -2,12 +2,16 @@ import ValidationTooltip from "./components/ValidationTooltip.vue";
 import Checkbox from "./components/Checkbox.vue";
 import CheckboxGroup from "./components/CheckboxGroup.vue";
 import ContentSectionTitle from "./components/ContentSectionTitle.vue";
+import Radio from "./components/Radio.vue";
+import RadioGroup from "./components/RadioGroup.vue";
 
 const components = {
   ValidationTooltip,
   Checkbox,
   CheckboxGroup,
-  ContentSectionTitle
+  ContentSectionTitle,
+  Radio,
+  RadioGroup
 };
 
 export default (app) => {
