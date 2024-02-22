@@ -1,7 +1,9 @@
 import ValidationTooltip from "./components/ValidationTooltip.vue";
+import Checkbox from "./components/Checkbox.vue";
 
 const components = {
-  ValidationTooltip
+  ValidationTooltip,
+  Checkbox
 };
 
 export default (app) => {
