@@ -1,7 +1,7 @@
-import MyButton from "./components/MyButton.vue";
+import ValidationTooltip from "./components/ValidationTooltip.vue";
 
 const components = {
-  MyButton
+  ValidationTooltip
 };
 
 export default (app) => {
