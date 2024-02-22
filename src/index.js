@@ -4,6 +4,7 @@ import CheckboxGroup from "./components/CheckboxGroup.vue";
 import ContentSectionTitle from "./components/ContentSectionTitle.vue";
 import Radio from "./components/Radio.vue";
 import RadioGroup from "./components/RadioGroup.vue";
+import Select from "./components/Select.vue";
 
 const components = {
   ValidationTooltip,
@@ -11,7 +12,8 @@ const components = {
   CheckboxGroup,
   ContentSectionTitle,
   Radio,
-  RadioGroup
+  RadioGroup,
+  Select
 };
 
 export default (app) => {
