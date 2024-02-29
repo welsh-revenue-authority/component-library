@@ -81,8 +81,9 @@ export default {
 }
 
 textarea {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-size: 16px;
+  padding: 10px 16px;
   background-color: #fff;
   border: 1px solid #1f1f1f;
   line-height: 20px;
@@ -99,16 +100,18 @@ textarea:focus {
 }
 
 label {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   color: #1f1f1f;
   font-size: 16px;
   display: block;
+  margin-bottom: 4px;
 }
 
 div.error > p {
   margin-top: 10px;
   padding: 10px;
   background: #ffe4e5;
-  color: #aa1111;
+  color: #1f1f1f;
   font-size: 16px;
   border-left: #aa1111 3px solid;
 }
