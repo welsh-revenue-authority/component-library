@@ -17,7 +17,7 @@ export default {
   border-radius: 0px;
   font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 18px;
-  padding: 16px 20px 16px 28px;
+  padding: 20px 16px 20px 24px;
 }
 
 .wra-error {
