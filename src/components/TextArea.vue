@@ -16,15 +16,26 @@
 export default {
   name: "wra-text-area",
   props: {
-    disabled: {},
+    disabled: {
+      type: Boolean,
+      required: false
+    },
     id: {
+      type: Number,
       required: true
     },
     modelValue: {
+      type: String,
       required: true
     },
-    label: {},
-    rules: {}
+    label: {
+      type: String,
+      required: false
+    },
+    rules: {
+      type: Array,
+      required: false
+    }
   },
   emits: ["update:modelValue", "valid"],
   data() {
