@@ -6,16 +6,8 @@ export default {
   tags: ["autodocs"]
 };
 
-export const Enabled = {
+export const Default = {
   args: {
-    disabled: false,
-    label: "An enabled text area"
-  }
-};
-
-export const Disabled = {
-  args: {
-    disabled: true,
-    label: "A disabled text area"
+    label: "Text area label"
   }
 };

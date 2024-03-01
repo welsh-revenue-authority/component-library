@@ -2,7 +2,6 @@
   <div :class="{ error: errorMessage != false }">
     <label :for="id">{{ label }}</label>
     <textarea
-      :disabled="disabled || false"
       rows="5"
       :id="id"
       :value="modelValue"
@@ -16,10 +15,6 @@
 export default {
   name: "wra-text-area",
   props: {
-    disabled: {
-      type: Boolean,
-      required: false
-    },
     id: {
       type: Number,
       required: true
