@@ -1,17 +1,35 @@
 <template>
-  <div class="subheader">
+  <div class="subheader" :style="style">
     <slot></slot>
   </div>
 </template>
 
 <script>
+import { reactive, computed } from "vue";
+
 export default {
-  name: "wra-subheader"
+  name: "wra-subheader",
+
+  props: {
+    color: {
+      type: String
+    }
+  },
+
+  setup(props) {
+    props = reactive(props);
+    return {
+      style: computed(() => ({
+        color: props.color
+      }))
+    };
+  }
 };
 </script>
 
 <style scoped>
 .subheader {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 14px;
   letter-spacing: 0.08em;
   line-height: 20px;
