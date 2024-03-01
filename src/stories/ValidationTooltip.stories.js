@@ -1,8 +1,8 @@
-import ValidationTooltip from "../components/ValidationTooltip.vue";
+import WraValidationTooltip from "../components/ValidationTooltip.vue";
 
 export default {
-  title: "Inputs/ValidationTooltip",
-  component: ValidationTooltip,
+  title: "Inputs/WraValidationTooltip",
+  component: WraValidationTooltip,
   tags: ["autodocs"],
   argTypes: {
     type: {
@@ -15,7 +15,7 @@ export default {
 };
 
 const Template = (args) => ({
-  components: { ValidationTooltip },
+  components: { WraValidationTooltip },
   setup() {
     return { args };
   },
@@ -32,13 +32,13 @@ Info.args = {
 export const Success = Template.bind({});
 Success.args = {
   type: "wra-success",
-  slotContent: "This is an success message"
+  slotContent: "This is a success message"
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
   type: "wra-warning",
-  slotContent: "This is an warning message"
+  slotContent: "This is a warning message"
 };
 
 export const Error = Template.bind({});
