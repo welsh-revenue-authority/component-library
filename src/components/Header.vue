@@ -1,0 +1,69 @@
+<template>
+  <div>
+    <h1 v-if="size == 'h1'">
+      <slot></slot>
+    </h1>
+    <h2 v-if="size == 'h2'">
+      <slot></slot>
+    </h2>
+    <h3 v-if="size == 'h3'">
+      <slot></slot>
+    </h3>
+    <h4 v-if="size == 'h4'">
+      <slot></slot>
+    </h4>
+    <h5 v-if="size == 'h5'">
+      <slot></slot>
+    </h5>
+    <h6 v-if="size == 'h6'">
+      <slot></slot>
+    </h6>
+  </div>
+</template>
+<script>
+export default {
+  name: "wra-header",
+  props: {
+    size: {
+      type: String,
+      required: true
+    }
+  }
+};
+</script>
+<style scoped>
+div {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-weight: bold;
+}
+h1 {
+  font-size: 48px;
+  letter-spacing: -0.05rem;
+  line-height: 52px;
+}
+h2 {
+  font-size: 36px;
+  letter-spacing: -0.04rem;
+  line-height: 40px;
+}
+h3 {
+  font-size: 28px;
+  letter-spacing: -0.03rem;
+  line-height: 32px;
+}
+h4 {
+  font-size: 24px;
+  letter-spacing: -0.03rem;
+  line-height: 28px;
+}
+h5 {
+  font-size: 22px;
+  letter-spacing: -0.02rem;
+  line-height: 26px;
+}
+h6 {
+  font-size: 18px;
+  letter-spacing: -0.01rem;
+  line-height: 24px;
+}
+</style>
