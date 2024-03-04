@@ -20,29 +20,29 @@ const Template = (args) => ({
     return { args };
   },
   template:
-    '<wra-validation-tooltip v-bind="args">{{ args.slotContent }}</wra-validation-tooltip>'
+    '<wra-validation-tooltip v-bind="args">{{ args.default }}</wra-validation-tooltip>'
 });
 
 export const Info = Template.bind({});
 Info.args = {
   type: "wra-info",
-  slotContent: "This is an info message"
+  default: "This is an info message"
 };
 
 export const Success = Template.bind({});
 Success.args = {
   type: "wra-success",
-  slotContent: "This is a success message"
+  default: "This is a success message"
 };
 
 export const Warning = Template.bind({});
 Warning.args = {
   type: "wra-warning",
-  slotContent: "This is a warning message"
+  default: "This is a warning message"
 };
 
 export const Error = Template.bind({});
 Error.args = {
   type: "wra-error",
-  slotContent: "This is an error message"
+  default: "This is an error message"
 };

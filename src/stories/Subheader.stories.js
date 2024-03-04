@@ -16,11 +16,10 @@ const Template = (args) => ({
   setup() {
     return { args };
   },
-  template:
-    '<wra-subheader v-bind="args">{{ args.slotContent }}</wra-subheader>'
+  template: '<wra-subheader v-bind="args">{{ args.default }}</wra-subheader>'
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  slotContent: "This is a subheader"
+  default: "This is a subheader"
 };
