@@ -11,15 +11,8 @@ export default {
   }
 };
 
-const Template = (args) => ({
-  components: { WraSubheader },
-  setup() {
-    return { args };
-  },
-  template: '<wra-subheader v-bind="args">{{ args.default }}</wra-subheader>'
-});
-
-export const Default = Template.bind({});
-Default.args = {
-  default: "This is a subheader"
+export const Default = {
+  args: {
+    default: `This is a subheader`
+  }
 };
