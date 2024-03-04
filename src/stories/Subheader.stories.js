@@ -13,6 +13,6 @@ export default {
 
 export const Default = {
   args: {
-    default: `This is a subheader`
+    default: "This is a subheader"
   }
 };
