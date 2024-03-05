@@ -37,31 +37,37 @@ div {
   font-weight: bold;
 }
 h1 {
+  margin: 0px;
   font-size: 48px;
   letter-spacing: -0.05rem;
   line-height: 52px;
 }
 h2 {
+  margin: 0px;
   font-size: 36px;
   letter-spacing: -0.04rem;
   line-height: 40px;
 }
 h3 {
+  margin: 0px;
   font-size: 28px;
   letter-spacing: -0.03rem;
   line-height: 32px;
 }
 h4 {
+  margin: 0px;
   font-size: 24px;
   letter-spacing: -0.03rem;
   line-height: 28px;
 }
 h5 {
+  margin: 0px;
   font-size: 22px;
   letter-spacing: -0.02rem;
   line-height: 26px;
 }
 h6 {
+  margin: 0px;
   font-size: 18px;
   letter-spacing: -0.01rem;
   line-height: 24px;
