@@ -8,6 +8,7 @@ import Select from "./components/Select.vue";
 import SelectObject from "./components/SelectObject.vue";
 import Subheader from "./components/Subheader.vue";
 import TextArea from "./components/TextArea.vue";
+import Header from "./components/Header.vue";
 
 const components = {
   ValidationTooltip,
@@ -19,7 +20,8 @@ const components = {
   Select,
   SelectObject,
   Subheader,
-  TextArea
+  TextArea,
+  Header
 };
 
 export default (app) => {
