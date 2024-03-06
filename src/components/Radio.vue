@@ -28,12 +28,15 @@ export default {
   name: "wra-radio",
   props: {
     groupName: {
+      type: String,
       required: true
     },
     option: {
+      type: Array,
       required: true
     },
     isChecked: {
+      type: Boolean,
       required: true
     }
   }
@@ -42,6 +45,7 @@ export default {
 
 <style scoped>
 .radio-label {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   background: #e5e5e5;
   padding: 20px 20px 20px 20px;
   min-height: 24px;
@@ -104,5 +108,9 @@ export default {
 
 .further-information-text {
   font-size: 14px;
+}
+
+p {
+  margin: 0px;
 }
 </style>

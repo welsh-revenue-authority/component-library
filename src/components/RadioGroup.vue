@@ -12,19 +12,28 @@
 </template>
 
 <script>
+import WraRadio from "./Radio.vue";
+
 export default {
   name: "wra-radio-group",
   props: {
     groupName: {
+      type: String,
       required: true
     },
-    modelValue: {},
-    options: {
-      required: true,
-      type: Array
+    modelValue: {
+      type: String
     },
-    label: {},
-    hint: {}
+    options: {
+      type: Array,
+      required: true
+    },
+    label: {
+      type: String
+    },
+    hint: {
+      type: String
+    }
   },
   methods: {
     checkInput: function (optionValue) {
