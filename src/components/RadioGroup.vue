@@ -43,6 +43,9 @@ export default {
         return "false";
       }
     }
+  },
+  components: {
+    WraRadio
   }
 };
 </script>
