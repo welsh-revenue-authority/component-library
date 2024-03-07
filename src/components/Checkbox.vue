@@ -21,9 +21,11 @@ export default {
   props: {
     modelValue: {},
     label: {
+      type: String,
       required: true
     },
     id: {
+      type: String,
       required: true
     }
   },
@@ -57,6 +59,7 @@ export default {
 
 <style scoped>
 .checkbox-label {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   background: #e5e5e5;
   padding: 20px 20px 20px 20px;
   min-height: 24px;
