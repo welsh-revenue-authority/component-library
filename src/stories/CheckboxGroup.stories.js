@@ -11,6 +11,12 @@ export const Default = {
     options: [
       { value: "OptionOne", label: "Option 1" },
       { value: "OptionTwo", label: "Option 2" }
+    ],
+    itemValue: "value",
+    itemLabel: "label",
+    modelValue: [
+      { value: "OptionOne", label: "Option 1" },
+      { value: "OptionTwo", label: "Option 2" }
     ]
   }
 };
