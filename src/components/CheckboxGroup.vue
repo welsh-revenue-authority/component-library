@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import WraCheckbox from "./Checkbox.vue";
+
 export default {
   name: "wra-checkbox-group",
   props: {
@@ -87,7 +89,6 @@ export default {
       }
     }
   },
-
   mounted() {
     //sets up which values should be checked initially e.g. if editing existing data
     for (let index = 0; index < this.modelValue.length; index++) {
@@ -98,6 +99,9 @@ export default {
         this.checked[element] = true;
       }
     }
+  },
+  components: {
+    WraCheckbox
   }
 };
 </script>
