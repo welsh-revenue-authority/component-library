@@ -1,6 +1,7 @@
 <template>
   <div
     role="checkbox"
+    class="checkbox"
     :aria-label="checkForObjectLabel(option)"
     v-for="option in options"
   >
@@ -113,6 +114,10 @@ export default {
 </script>
 
 <style scoped>
+.checkbox:not(:last-child):not(:only-child) {
+  margin-bottom: 8px;
+}
+
 .checkbox-label {
   background: #e5e5e5;
   padding: 20px 20px 20px 20px;
