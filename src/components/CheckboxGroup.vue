@@ -29,8 +29,14 @@ export default {
       required: true,
       type: Array
     },
-    itemValue: {},
-    itemLabel: {},
+    itemValue: {
+      required: true,
+      type: String
+    },
+    itemLabel: {
+      required: true,
+      type: String
+    },
     returnObject: {}
   },
   data() {

@@ -39,8 +39,14 @@ export default {
       required: true,
       type: Array
     },
-    itemValue: {},
-    itemLabel: {},
+    itemValue: {
+      required: true,
+      type: String
+    },
+    itemLabel: {
+      required: true,
+      type: String
+    },
     id: {},
     name: {},
     required: {},
