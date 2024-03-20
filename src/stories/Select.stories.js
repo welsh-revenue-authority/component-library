@@ -11,6 +11,8 @@ export const Default = {
     items: [
       { value: 1, label: "Item 1" },
       { value: 2, label: "Item 2" }
-    ]
+    ],
+    itemValue: "value",
+    itemLabel: "label"
   }
 };
