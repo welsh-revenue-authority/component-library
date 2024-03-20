@@ -87,7 +87,6 @@ export default {
 }
 
 textarea {
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 16px;
   padding: 10px 16px;
   background-color: #fff;
@@ -106,7 +105,6 @@ textarea:focus {
 }
 
 label {
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   color: #1f1f1f;
   font-size: 16px;
   display: block;

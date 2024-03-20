@@ -45,7 +45,6 @@ export default {
 
 <style scoped>
 .radio-label {
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   background: #e5e5e5;
   padding: 20px 20px 20px 20px;
   min-height: 24px;

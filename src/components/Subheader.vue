@@ -29,7 +29,6 @@ export default {
 
 <style scoped>
 .subheader {
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 14px;
   letter-spacing: 0.08em;
   line-height: 20px;

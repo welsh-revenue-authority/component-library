@@ -33,7 +33,6 @@ export default {
 </script>
 <style scoped>
 div {
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-weight: bold;
 }
 h1 {

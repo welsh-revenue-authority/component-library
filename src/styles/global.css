@@ -1,3 +1,49 @@
 body {
   font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
 }
+
+p {
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 0px;
+}
+
+body p {
+  margin-bottom: 0px;
+}
+
+ul {
+  padding-left: 24px;
+}
+
+li {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+blockquote {
+  border-left: 3px solid #e5e5e5;
+  font-size: 18px;
+  line-height: 24px;
+  padding: 5px 20px 5px 27px;
+}
+
+/*Links*/
+a {
+  color: #2a225b;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #2a225b;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  color: #1f1f1f;
+  background-color: #ffd530;
+  box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+  outline: 2px solid transparent;
+  text-decoration: none;
+  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+}

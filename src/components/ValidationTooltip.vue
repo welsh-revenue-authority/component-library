@@ -20,7 +20,6 @@ export default {
 .validation-tooltip {
   color: #1f1f1f;
   border-radius: 0px;
-  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 18px;
   padding: 20px 16px 20px 24px;
 }
