@@ -60,6 +60,10 @@ button:focus {
   border-color: #ffd530;
 }
 
+button:focus:hover {
+  opacity: 1;
+}
+
 .default-button {
   font-size: 20px;
   padding: 15px 20px;
