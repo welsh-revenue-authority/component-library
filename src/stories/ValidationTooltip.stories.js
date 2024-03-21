@@ -7,7 +7,7 @@ export default {
   argTypes: {
     type: {
       control: {
-        type: "select"
+        type: "radio"
       },
       options: ["wra-info", "wra-success", "wra-warning", "wra-error"]
     }
