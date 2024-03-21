@@ -19,6 +19,9 @@ export default {
         type: "radio"
       },
       options: ["black", "white"]
+    },
+    outlined: {
+      control: "boolean"
     }
   }
 };
@@ -34,5 +37,13 @@ export const Small = {
   args: {
     size: "small",
     label: "Small Button"
+  }
+};
+
+export const Outlined = {
+  args: {
+    outlined: "true",
+    size: "small",
+    label: "Outlined Button"
   }
 };

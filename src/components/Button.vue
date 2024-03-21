@@ -24,13 +24,20 @@ export default {
     },
     color: {
       type: String
+    },
+    outlined: {
+      type: Boolean,
+      default: false
     }
   },
 
   setup(props) {
     props = reactive(props);
     return {
-      class: computed(() => `${props.size}-button`),
+      class: computed(() => ({
+        "outlined-button": props.outlined,
+        [`${props.size || "default"}-button`]: true
+      })),
       style: computed(() => ({
         backgroundColor: props.backgroundColor,
         color: props.color
@@ -53,8 +60,8 @@ button:hover {
 }
 
 button:focus {
-  color: #1f1f1f;
-  background-color: #ffd530;
+  color: #1f1f1f !important;
+  background-color: #ffd530 !important;
   outline: 2px solid #1f1f1f;
   outline-offset: 0px;
   border-color: #ffd530;
@@ -72,5 +79,18 @@ button:focus:hover {
 .small-button {
   font-size: 14px;
   padding: 5px 10px;
+}
+
+.outlined-button {
+  background-color: transparent;
+  outline: 2px solid #1f1f1f;
+  color: #1f1f1f;
+}
+
+.outlined-button:hover {
+  opacity: 1;
+  background-color: #1f1f1f;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 </style>
