@@ -7,10 +7,14 @@ import ContentSectionTitle from "./components/ContentSectionTitle.vue";
 import Radio from "./components/Radio.vue";
 import RadioGroup from "./components/RadioGroup.vue";
 import Select from "./components/Select.vue";
-import SelectObject from "./components/SelectObject.vue";
 import Subheader from "./components/Subheader.vue";
 import TextArea from "./components/TextArea.vue";
 import Header from "./components/Header.vue";
+import Button from "./components/Button.vue";
+import DateInput from "./components/DateInput.vue";
+import NumberInput from "./components/NumberInput.vue";
+import PriceInput from "./components/PriceInput.vue";
+import TextInput from "./components/TextInput.vue";
 
 const components = {
   ValidationTooltip,
@@ -20,10 +24,14 @@ const components = {
   Radio,
   RadioGroup,
   Select,
-  SelectObject,
   Subheader,
   TextArea,
-  Header
+  Header,
+  Button,
+  DateInput,
+  NumberInput,
+  PriceInput,
+  TextInput
 };
 
 export default (app) => {
