@@ -10,7 +10,6 @@ export const Default = {
   args: {
     label: "Number input label",
     modelValue: 123,
-    id: "numberInput",
-    inputmode: "numeric"
+    id: "numberInput"
   }
 };

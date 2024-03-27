@@ -11,7 +11,6 @@ export const Default = {
     label: "Date input label",
     modelValue: new Date(),
     id: "dateInput",
-    inputmode: "numeric",
     placeholder: "DD/MM/YYYY"
   }
 };

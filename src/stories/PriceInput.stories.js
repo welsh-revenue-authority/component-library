@@ -11,6 +11,7 @@ export const Default = {
     label: "Price input label",
     modelValue: 1234.56,
     id: "priceInput",
+    placeholder: "0.00",
     prefix: "£"
   }
 };

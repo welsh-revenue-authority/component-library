@@ -32,10 +32,12 @@ export default {
     },
     id: {
       type: String,
-      required: true
+      required: true,
+      default: "textInput"
     },
     inputmode: {
-      type: String
+      type: String,
+      default: "text"
     },
     rules: {},
     dataMaska: {},

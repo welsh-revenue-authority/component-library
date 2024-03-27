@@ -10,7 +10,6 @@ export const Default = {
   args: {
     label: "Text input label",
     modelValue: "Enter text here...",
-    id: "textInput",
-    inputmode: "text"
+    id: "textInput"
   }
 };

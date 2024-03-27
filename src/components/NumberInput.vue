@@ -37,9 +37,11 @@ export default {
     },
     id: {
       type: String,
-      required: true
+      required: true,
+      default: "numberInput"
     },
     inputmode: {
+      default: "numeric",
       type: String
     },
     placeholder: {

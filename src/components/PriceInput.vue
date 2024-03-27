@@ -35,16 +35,20 @@ export default {
     },
     id: {
       type: String,
-      required: true
+      required: true,
+      default: "priceInput"
     },
     inputmode: {
+      default: "decimal",
       type: String
     },
     placeholder: {
+      default: "0.00",
       type: String
     },
     rules: {},
     prefix: {
+      default: "£",
       type: String
     },
     suffix: {

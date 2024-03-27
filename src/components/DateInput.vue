@@ -32,13 +32,16 @@ export default {
     },
     id: {
       required: true,
+      default: "dateInput",
       type: String
     },
     inputmode: {
+      default: "numeric",
       type: String
     },
     required: {},
     placeholder: {
+      default: "DD/MM/YYYY",
       type: String
     }
   },
