@@ -50,16 +50,6 @@ export default {
 <style scoped>
 .tabs {
   background-color: #0360a6;
-  padding-top: 20px;
-  padding-left: 12px;
   width: 100%;
-}
-
-.tabs > .tab-button:last-of-type {
-  margin-right: 0px;
-}
-
-.tabs > .tab-button {
-  margin-right: 12px;
 }
 </style>
