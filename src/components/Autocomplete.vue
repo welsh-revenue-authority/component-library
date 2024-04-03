@@ -189,6 +189,7 @@ export default {
 </script>
 
 <style scoped>
+/* Reset */
 *,
 *::before,
 *::after {
@@ -224,11 +225,11 @@ export default {
   color: #1f1f1f;
   font-size: 16px;
   display: block;
+  margin-bottom: 4px;
 }
 
 .autocomplete-list {
   position: absolute;
-  z-index: 1;
   display: block;
   list-style-type: none;
   padding: 0;
