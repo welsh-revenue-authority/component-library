@@ -127,3 +127,12 @@ export const Autoexpand = {
     options: councilArray,
   },
 };
+
+export const PreFilled = {
+  args: {
+    label: "This is an autocomplete that is prefilled",
+    id: "test-autocomplete-prefill",
+    options: councilArray,
+    modelValue: { value: "alice-council", label: "Alice's council" },
+  },
+};
