@@ -135,7 +135,7 @@ export default {
         return;
       }
       this.listHasFocus = true;
-      if (this.optionIndex < this.filterOptions.length) {
+      if (this.optionIndex < this.filterOptions.length - 1) {
         this.optionIndex++;
         let refName = `option${this.optionIndex}`;
         this.$refs[refName][0].focus();
