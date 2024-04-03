@@ -5,14 +5,18 @@
 </template>
 
 <script>
+/** Works with Tabs to form a tab component */
 export default {
   name: "wra-tab",
   props: {
     label: {
       type: String,
+      required: true,
     },
+    /** Whether on active tab or not */
     active: {
       type: Boolean,
+      default: false,
     },
   },
   data() {
