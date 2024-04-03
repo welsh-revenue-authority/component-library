@@ -3,6 +3,7 @@
     <tab
       v-for="(label, index) in options"
       :label="label"
+      :active="index === activeTab"
       @click="onTabClick(index)"
     ></tab>
   </div>
@@ -13,11 +14,17 @@ import Tab from "./Tab.vue";
 
 export default {
   name: "wra-tabs",
+  emits: "update:modelValue",
   props: {
+    /** The currently selected tab, starts from 0 */
+    modelValue: {
+      type: Number,
+      default: 0,
+    },
     /** Tabs to display */
     options: {
       type: Array,
-      // TODO: Add validation to options
+      required: true,
     },
   },
   components: {
@@ -31,8 +38,11 @@ export default {
   methods: {
     onTabClick(index) {
       this.activeTab = index;
-      console.log(this.activeTab);
+      this.$emit("update:modelValue", this.activeTab);
     },
+  },
+  created() {
+    this.activeTab = this.modelValue;
   },
 };
 </script>
