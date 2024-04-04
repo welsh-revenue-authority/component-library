@@ -267,6 +267,5 @@ ul.autocomplete-list > li.autocomplete-item--focus {
 
 .autocomplete-wrapper {
   position: relative;
-  max-width: 25rem;
 }
 </style>
