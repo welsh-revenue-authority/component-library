@@ -232,6 +232,7 @@ export default {
   position: absolute;
   display: block;
   list-style-type: none;
+  z-index: 1;
   padding: 0;
   border: 1px solid #1f1f1f;
   border-top: 0px;
