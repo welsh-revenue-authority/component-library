@@ -113,7 +113,7 @@ let councilArray = [
 
 export const Default = {
   args: {
-    label: "This is an autocomplete",
+    label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
     options: councilArray,
   },
@@ -121,7 +121,8 @@ export const Default = {
 
 export const Autoexpand = {
   args: {
-    label: "This is an autocomplete that expands when clicked",
+    label:
+      "This is an autocomplete showing Welsh local authorities that expands when clicked",
     id: "test-autocomplete-autoexpand",
     autoExpand: true,
     options: councilArray,
@@ -130,7 +131,7 @@ export const Autoexpand = {
 
 export const PreFilled = {
   args: {
-    label: "This is an autocomplete that is prefilled",
+    label: "This is an autocomplete that is prefilled with a value",
     id: "test-autocomplete-prefill",
     options: councilArray,
     modelValue: { value: "alice-council", label: "Alice's council" },
