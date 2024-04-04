@@ -43,9 +43,10 @@ export default {
   padding: 20px;
   margin-left: 15px;
   margin-top: 40px;
+  cursor: pointer;
 }
 
-.tab-button:hover {
+.tab-button:hover:not(.tab-button--active) {
   background: #3b7dc5;
   color: #ffffff;
 }
@@ -56,16 +57,12 @@ export default {
   border-top: 6px #cccccc solid;
 }
 
-.tab-button--active:hover {
-  background: #e5e5e5;
-  color: #1f1f1f;
-}
-
 .tab-button:focus {
   border-top: 6px #0360a6 solid;
   color: #1f1f1f;
   background: #ffd530;
   box-shadow: 2px 2px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+  outline-style: none;
 }
 
 @media (max-width: 768px) {
