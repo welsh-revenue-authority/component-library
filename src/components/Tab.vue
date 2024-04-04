@@ -1,5 +1,9 @@
 <template>
-  <button class="tab-button" :class="active === true && 'tab-button--active'">
+  <button
+    ref="tabButton"
+    class="tab-button"
+    :class="active === true && 'tab-button--active'"
+  >
     {{ label }}
   </button>
 </template>
@@ -18,11 +22,22 @@ export default {
       type: Boolean,
       default: false,
     },
+    focus: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       activeTab: 0,
     };
+  },
+  watch: {
+    focus(newValue) {
+      if (newValue === true) {
+        this.$refs.tabButton.focus();
+      }
+    },
   },
 };
 </script>
