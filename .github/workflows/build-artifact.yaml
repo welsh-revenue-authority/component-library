@@ -40,7 +40,12 @@ jobs:
           name: gh-pages
           # A file, directory or wildcard pattern that describes what to upload
           path: storybook-static
+      - uses: actions/configure-pages@v5.0.0
+        name: Configure GitHub Pages
+        with:
+          enablement: true
       - uses: actions/deploy-pages@v4.0.5
         name: Deploy storybook artifact to Github Pages
         with:
+          token: ${{ github.token }}
           artifact_name: gh-pages
