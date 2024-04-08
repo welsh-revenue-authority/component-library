@@ -5,13 +5,9 @@ name: Build storybook artifact
 
 on:
   push:
-    branches: ["actions"]
+    branches: ["actions", "main"]
   pull_request:
-    branches: ["actions"]
-#   push:
-#     branches: ["main"]
-#   pull_request:
-#     branches: ["main"]
+    branches: ["actions", "main"]
 
 jobs:
   build:
