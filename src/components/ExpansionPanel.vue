@@ -24,7 +24,9 @@
         :id="'content-' + ariaTitle"
         v-if="showPanel"
       >
+      <div class="inner-panel">
         <slot></slot>
+      </div>
       </div>
     </transition>
   </div>
@@ -126,22 +128,27 @@ button:focus:hover {
 }
 
 .panel-content {
+  display: grid;
   border-left: 2px solid #b9b9b9;
   background: transparent;
   padding: 15px 20px;
+  grid-template-rows: 1fr;
+}
+
+.inner-panel {
+  overflow: hidden;
 }
 
 .slide-fade-enter-active {
-  transition: all 0.3s ease-out;
+  transition: grid-template-rows 0.3s ease-out;
 }
 
 .slide-fade-leave-active {
-  transition: all 0.3s ease-out;
+  transition: grid-template-rows 0.3s ease-out;
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
+  grid-template-rows: 0fr;
 }
 </style>
