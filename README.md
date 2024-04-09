@@ -1,6 +1,8 @@
 
 # Welsh Revenue Authority Component Library
 
+![NPM Version](https://img.shields.io/npm/v/%40wra-gov%2Fvue-components)
+
 Vue component library created by Welsh Revenue Authority
 
 ## Installation
