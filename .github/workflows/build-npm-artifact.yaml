@@ -5,8 +5,9 @@ name: Build, upload to NPM
 
 on:
   push:
-    branches: ["actions", "main"]
-
+    branches: ["main", "actions"]
+    paths:
+      - "package.json"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +23,6 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
       - run: npm ci
-      - run: npm version minor --no-git-tag-version
       - run: npm run build
       # First time package is scoped to private, explicitly set to public
       - run: npm publish --access=public
