@@ -24,6 +24,7 @@ jobs:
       - run: npm ci
       - run: npm version minor --no-git-tag-version
       - run: npm run build
-      - run: npm publish
+      # First time package is scoped to private, explicitly set to public
+      - run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
