@@ -7,6 +7,7 @@
       :active="index === activeTab"
       :focus="index === focusTab"
       @click="onTabClick(index)"
+      @focus="focusTab = index"
       @keydown.enter="onTabClick(index)"
       @keydown.space="onTabClick(index)"
       @keydown.left="onKeyLeft(index)"
