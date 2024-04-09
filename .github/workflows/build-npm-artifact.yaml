@@ -5,7 +5,7 @@ name: Build, upload to NPM
 
 on:
   push:
-    branches: ["main", "actions"]
+    branches: ["main"]
     paths:
       - "package.json"
 jobs:
