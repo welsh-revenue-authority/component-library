@@ -66,6 +66,11 @@ export default {
   color: #ffffff;
 }
 
+.tab-button.tab-button--active:focus {
+  border-color: #1f1f1f;
+  box-shadow: 2px 0px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+}
+
 .tab-button--active {
   background: #ffffff;
   color: #1f1f1f;
