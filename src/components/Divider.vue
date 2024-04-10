@@ -1,6 +1,6 @@
 <template>
   <hr
-    role="presentation"
+    :role="role"
     :style="{ borderTopWidth: thickness + 'px', borderColor: color }"
   />
 </template>
@@ -9,6 +9,7 @@
 export default {
   name: "wra-divider",
   props: {
+    /** Thickness of the divider */
     thickness: {
       type: Number,
       default: 4,
@@ -16,8 +17,14 @@ export default {
         return value >= 0;
       },
     },
+    /** Divider colour */
     color: {
       type: String,
+    },
+    /** Aria role for the divider */
+    role: {
+      type: String,
+      default: "presentation",
     },
   },
   data() {
