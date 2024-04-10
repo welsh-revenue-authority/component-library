@@ -13,7 +13,7 @@
       <button
         v-if="showClose"
         class="snackbar-close"
-        @click="showSnackbar = false"
+        @click="showSnackbar = false && $emit('update:visible', showSnackbar)"
       >
         {{ closeLabel }}
       </button>
@@ -24,6 +24,7 @@
 <script>
 export default {
   name: "wra-snackbar",
+  emits: ["update:visible"],
   props: {
     /** If snackbar is visible */
     visible: {
