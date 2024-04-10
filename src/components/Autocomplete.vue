@@ -1,22 +1,23 @@
 <template>
-  <div class="autocomplete-wrapper">
+  <div class="autocomplete">
     <label :for="id" class="autocomplete-label"> {{ label }}</label>
     <input
       ref="autocompleteInput"
+      v-model="userInput[optionLabel]"
+      role="combobox"
+      inputmode="text"
+      :id="id"
       class="autocomplete-input"
       :class="{ 'autocomplete-input--focus': hasFocus }"
-      :id="id"
-      v-model="userInput[optionLabel]"
-      inputmode="text"
-      role="combobox"
       aria-owns="autocomplete-list"
-      @input="updateUserInput()"
+      autocomplete="off"
+      @input="onInputTyping()"
       @focus="hasFocus = true"
       @blur="onBlur"
       @keydown.prevent.up="onUpKey"
       @keydown.prevent.down="onDownKey"
     />
-    <ul role="listbox" v-show="showOptions" class="autocomplete-list">
+    <ul v-show="showOptions" role="listbox" class="autocomplete-list">
       <li
         v-for="(option, index) in filterOptions"
         :ref="`option${index}`"
@@ -25,10 +26,11 @@
           'autocomplete-item-not-clickable': option.clickable === false,
           'autocomplete-item--focus': index === optionIndex,
         }"
-        @mousedown="fillInput(option)"
+        @mousedown="onOptionSelect(option)"
         @keydown.prevent.up="onUpKey"
         @keydown.prevent.down="onDownKey"
-        @keydown.prevent.enter="fillInput(option)"
+        @keydown.prevent.enter="onOptionSelect(option)"
+        @keydown.prevent.space="onOptionSelect(option)"
         @blur="onOptionBlur(index)"
       >
         {{ option[optionLabel] }}
@@ -83,19 +85,20 @@ export default {
     userInput: {},
     hasFocus: false,
     listHasFocus: false,
-    optionIndex: -1,
+    optionIndex: null,
   }),
   methods: {
-    fillInput(option) {
+    onInputTyping() {
+      this.optionIndex = null;
+      this.userInput[this.optionValue] = this.getInputValue;
+      this.$emit("update:modelValue", this.userInput);
+    },
+    onOptionSelect(option) {
       if (option?.clickable === false) {
         return;
       }
       this.userInput = option;
       this.userInput = Object.assign({}, option);
-      this.$emit("update:modelValue", this.userInput);
-    },
-    updateUserInput() {
-      this.userInput[this.optionValue] = this.getInputValue;
       this.$emit("update:modelValue", this.userInput);
     },
     onBlur() {
@@ -110,68 +113,69 @@ export default {
         this.listHasFocus = false;
       }
     },
-    onEnter() {
-      if (this.optionIndex >= 0) {
-        this.fillInput(this.filterOptions[this.optionIndex]);
-      }
-    },
     onUpKey() {
-      // Activate the index
-      if (this.optionIndex == -1) {
-        this.optionIndex = 0;
+      if (this.optionsHasMatches === false || this.showOptions === false) {
         return;
       }
-      this.listHasFocus = true;
-      if (this.optionIndex > 0) {
+      if (this.optionIndex === 0) {
+        this.optionIndex = null;
+        this.listHasFocus = false;
+        this.$refs["autocompleteInput"].focus();
+      } else if (this.optionIndex > 0) {
         this.optionIndex--;
-        let refName = `option${this.optionIndex}`;
+        this.listHasFocus = true;
+        const refName = `option${this.optionIndex}`;
         this.$refs[refName][0].focus();
       }
     },
     onDownKey() {
-      // Activate the index
-      if (this.optionIndex == -1) {
-        this.optionIndex = 0;
+      if (this.optionsHasMatches === false || this.showOptions === false) {
         return;
       }
-      this.listHasFocus = true;
-      if (this.optionIndex < this.filterOptions.length - 1) {
+      if (this.optionIndex === null) {
+        this.optionIndex = 0;
+      } else if (this.optionIndex < this.filterOptions.length - 1) {
         this.optionIndex++;
-        let refName = `option${this.optionIndex}`;
-        this.$refs[refName][0].focus();
       }
+      this.listHasFocus = true;
+      const refName = `option${this.optionIndex}`;
+      this.$refs[refName][0].focus();
     },
   },
   computed: {
     showOptions() {
-      let alreadyMatched = this.options.some(
+      const inputMatchesOption = this.options.some(
         (element) =>
           element[this.optionLabel] === this.userInput[this.optionLabel]
       );
-      let inputLongEnough =
+      const inputLongEnough =
         this.userInput[this.optionLabel].length >= this.minLength;
-      let shouldExpand =
-        (this.autoExpand === true && this.hasFocus === true) || inputLongEnough;
-
-      // Do not show options if we have a match already
-      return !alreadyMatched && shouldExpand;
+      const showOptions =
+        inputMatchesOption !== true &&
+        this.hasFocus === true &&
+        (this.autoExpand === true || inputLongEnough === true);
+      return showOptions;
     },
     filterOptions() {
-      let filteredOptions = this.options.filter((item) =>
+      const searchForInput = this.options.filter((item) =>
         item.label.toLowerCase().includes(this.getInputValue)
       );
-      if (filteredOptions.length > 0) {
-        return filteredOptions;
-      }
-      if (this.autoExpand === true) {
+      if (searchForInput.length > 0) {
+        return searchForInput;
+      } else if (this.autoExpand === true) {
         return this.options;
       }
-      filteredOptions.push({
+      searchForInput.push({
         [this.optionLabel]: "No results found",
         [this.optionValue]: "",
         clickable: false,
       });
-      return filteredOptions;
+      return searchForInput;
+    },
+    optionsHasMatches() {
+      return this.filterOptions.every((item) =>
+        Object.hasOwn(item, "clickable") ? item.clickable === true : true
+      );
     },
     getInputValue() {
       return this.userInput[this.optionLabel].toLowerCase();
@@ -183,7 +187,8 @@ export default {
       this.userInput = this.modelValue;
       return;
     }
-    this.userInput = { label: "", value: "" };
+    this.userInput[this.optionLabel] = "";
+    this.userInput[this.optionValue] = "";
   },
 };
 </script>
@@ -266,7 +271,7 @@ ul.autocomplete-list > li.autocomplete-item--focus {
   cursor: not-allowed;
 }
 
-.autocomplete-wrapper {
+.autocomplete {
   position: relative;
 }
 </style>
