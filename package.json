@@ -1,8 +1,23 @@
 {
   "name": "@wra-gov/vue-components",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
+  "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/welsh-revenue-authority/component-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/welsh-revenue-authority/component-library/issues"
+  },
+  "license": "OGL-UK-3.0",
+  "author": "Welsh Revenue Authority",
+  "keywords": [
+    "vue",
+    "vue3",
+    "component library"
+  ],
   "main": "dist/vue-components.umd.cjs",
   "module": "dist/vue-components.js",
   "exports": {
