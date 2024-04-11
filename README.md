@@ -1,17 +1,23 @@
-
 # Welsh Revenue Authority Component Library
-
-![NPM Version](https://img.shields.io/npm/v/%40wra-gov%2Fvue-components)
 
 Vue component library created by Welsh Revenue Authority
 
+[![NPM Version](https://img.shields.io/npm/v/%40wra-gov%2Fvue-components)](https://www.npmjs.com/package/@wra-gov/vue-components)
+
 ## Installation
 
-**TODO**
+Dependencies:
+
+- Vue 3
+- maska
+
+Install,
+
+`npm install @wra/vue-components`
 
 ## Usage
 
-> Default import
+### Default import
 
 `main.js`,
 
@@ -28,31 +34,31 @@ app.use(Wra);
 app.mount("#app");
 ```
 
-> Named imports
+### Named imports
 
-Composition:
+Composition API:
 
 `*.vue`,
 
 ```html
 <script>
-import WraButton from "@wra-gov/vue-components";
+  import WraButton from "@wra-gov/vue-components";
 
-export default {
-  components: {
-    WraButton,
-  },
-};
+  export default {
+    components: {
+      WraButton,
+    },
+  };
 </script>
 ```
 
-Options:
+Options API:
 
 `*.vue`,
 
 ```html
 <script setup>
-import { Button } from "@wra-gov/vue-components";
+  import { Button } from "@wra-gov/vue-components";
 </script>
 
 ...
@@ -62,6 +68,6 @@ import { Button } from "@wra-gov/vue-components";
 
 [Storybook documentation](https://welsh-revenue-authority.github.io/component-library)
 
-## License and Copyright
+## Licence and Copyright
 
 WRA component library is available under [Open Government 3.0 licence](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
