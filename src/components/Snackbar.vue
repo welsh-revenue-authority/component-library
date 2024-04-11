@@ -2,10 +2,13 @@
   <transition name="snackbar">
     <div
       v-if="showSnackbar"
+      role="alert"
+      aria-live="polite"
       class="snackbar snackbar-flex"
       :style="{ borderColor: borderColor }"
     >
       <div class="snackbar-content">
+        <span class="sr-only">Error:</span>
         <slot>
           {{ label }}
         </slot>
@@ -149,6 +152,19 @@ export default {
   outline: 2px solid transparent;
   text-decoration: none;
   -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+}
+
+/* Accessibility */
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 /* Transitions */

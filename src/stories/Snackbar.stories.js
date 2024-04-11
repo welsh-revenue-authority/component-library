@@ -43,7 +43,8 @@ export const TimeOut4Seconds = {
 
 export const NoCloseButton = {
   args: {
-    label: "6 second timer",
+    label: "No close button with 10 second timer",
+    timeout: 10000,
     showClose: false,
     visible: true,
   },
