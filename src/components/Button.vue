@@ -1,6 +1,20 @@
 <template>
   <button type="button" :class="class" :style="style">
-    {{ label }}
+    <span
+      :class="{
+        'prepend-icon-wrapper': prependIcon
+      }"
+    >
+      <span v-if="prependIcon" class="icon back-icon"></span
+    ></span>
+    <slot></slot>
+    <span
+      :class="{
+        'append-icon-wrapper': appendIcon
+      }"
+    >
+      <span v-if="appendIcon" class="icon next-icon"></span
+    ></span>
   </button>
 </template>
 
@@ -11,10 +25,6 @@ export default {
   name: "wra-button",
 
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     size: {
       type: String,
       required: true
@@ -26,6 +36,14 @@ export default {
       type: String
     },
     outlined: {
+      type: Boolean,
+      default: false
+    },
+    prependIcon: {
+      type: Boolean,
+      default: false
+    },
+    appendIcon: {
       type: Boolean,
       default: false
     }
@@ -40,7 +58,7 @@ export default {
       })),
       style: computed(() => ({
         backgroundColor: props.backgroundColor,
-        color: props.color
+        "--color-prop": props.color
       }))
     };
   }
@@ -53,6 +71,7 @@ button {
   color: #fff;
   font-weight: bold;
   border: none;
+  cursor: pointer;
 }
 
 button:hover {
@@ -84,14 +103,41 @@ button:focus:hover {
 
 .outlined-button {
   background-color: transparent;
-  outline: 2px solid #1f1f1f;
-  color: #1f1f1f;
+  outline: 2px solid var(--color-prop, #1f1f1f);
+  color: var(--color-prop, #1f1f1f);
 }
 
 .outlined-button:hover {
   opacity: 1;
-  background-color: #1f1f1f;
+  background-color: var(--color-prop, #1f1f1f);
   color: #fff;
   transition: all 0.3s ease;
+}
+
+.icon {
+  content: " ";
+  display: inline-block;
+  border: solid currentColor;
+  padding: 4px;
+  vertical-align: middle;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-bottom: 3px;
+}
+
+.back-icon {
+  border-width: 3px 3px 0px 0px;
+}
+
+.next-icon {
+  border-width: 0px 0px 3px 3px;
+}
+
+.prepend-icon-wrapper {
+  margin-right: 15px;
+}
+
+.append-icon-wrapper {
+  margin-left: 15px;
 }
 </style>

@@ -15,12 +15,17 @@ export default {
       control: "color"
     },
     color: {
-      control: {
-        type: "radio"
-      },
-      options: ["black", "white"]
+      table: {
+        disable: true
+      }
     },
     outlined: {
+      control: "boolean"
+    },
+    prependIcon: {
+      control: "boolean"
+    },
+    appendIcon: {
       control: "boolean"
     }
   }
@@ -28,22 +33,65 @@ export default {
 
 export const Default = {
   args: {
-    size: "default",
-    label: "Default Button"
-  }
+    size: "default"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Default Button</WraButton>`
+  })
 };
 
 export const Small = {
   args: {
-    size: "small",
-    label: "Small Button"
-  }
+    size: "small"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Small Button</WraButton>`
+  })
 };
 
 export const Outlined = {
   args: {
-    outlined: "true",
-    size: "small",
-    label: "Outlined Button"
-  }
+    outlined: "true"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Outlined Button</WraButton>`
+  })
+};
+
+export const PrependIcon = {
+  args: {
+    prependIcon: "true"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Back Button</WraButton>`
+  })
+};
+
+export const AppendIcon = {
+  args: {
+    appendIcon: "true"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Next Button</WraButton>`
+  })
 };
