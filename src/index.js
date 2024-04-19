@@ -15,6 +15,7 @@ import DateInput from "./components/DateInput.vue";
 import NumberInput from "./components/NumberInput.vue";
 import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
+import ExpansionPanel from "./components/ExpansionPanel.vue";
 
 const components = {
   ValidationTooltip,
@@ -31,7 +32,8 @@ const components = {
   DateInput,
   NumberInput,
   PriceInput,
-  TextInput
+  TextInput,
+  ExpansionPanel
 };
 
 export default (app) => {
