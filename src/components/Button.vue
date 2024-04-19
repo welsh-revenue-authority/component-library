@@ -19,15 +19,12 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
-
 export default {
   name: "wra-button",
 
   props: {
     size: {
-      type: String,
-      required: true
+      type: String
     },
     backgroundColor: {
       type: String
@@ -49,18 +46,19 @@ export default {
     }
   },
 
-  setup(props) {
-    props = reactive(props);
-    return {
-      class: computed(() => ({
-        "outlined-button": props.outlined,
-        [`${props.size || "default"}-button`]: true
-      })),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
-        "--color-prop": props.color
-      }))
-    };
+  computed: {
+    class() {
+      return {
+        "outlined-button": this.outlined,
+        [`${this.size || "default"}-button`]: true
+      };
+    },
+    style() {
+      return {
+        backgroundColor: this.backgroundColor,
+        "--color-prop": this.color
+      };
+    }
   }
 };
 </script>

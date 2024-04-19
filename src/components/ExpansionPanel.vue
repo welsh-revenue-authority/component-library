@@ -24,17 +24,15 @@
         :id="'content-' + ariaTitle"
         v-if="showPanel"
       >
-      <div class="inner-panel">
-        <slot></slot>
-      </div>
+        <div class="inner-panel">
+          <slot></slot>
+        </div>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
-import { reactive, computed } from "vue";
-
 export default {
   name: "wra-expansion-panel",
   props: {
@@ -50,18 +48,17 @@ export default {
       type: String
     }
   },
-  setup(props) {
-    props = reactive(props);
-    return {
-      style: computed(() => ({
-        color: props.color
-      }))
-    };
-  },
   data() {
     return {
       showPanel: false
     };
+  },
+  computed: {
+    style() {
+      return {
+        color: this.color
+      };
+    }
   },
   methods: {
     togglePanel() {
