@@ -5,7 +5,7 @@ name: Build storybook artifact
 on:
   push:
     # TODO: Remove before PR
-     branches: ["main, actions"]
+    branches: ["main", "actions"]
 #    paths:
 #      - "package.json"
 jobs:
