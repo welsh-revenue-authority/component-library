@@ -24,10 +24,11 @@ jobs:
           fetch-depth: "2"
       - shell: bash
         run: |
-          echo "{OLD_VERSION_NUM = { git show HEAD~1:package.json | jq '.version' }" >> "$GITHUB_ENV"
-          echo "{NEW_VERSION_NUM = { cat package.json | jq '.version' }" >> "$GITHUB_ENV"
+          echo "{OLD_VERSION_NUM}={ git show HEAD~1:package.json | jq '.version' }" >> "$GITHUB_ENV"
+          echo "{NEW_VERSION_NUM}={ cat package.json | jq '.version' }" >> "$GITHUB_ENV"
+      - run: |
           echo "$OLD_VERSION_NUM"
-          echo "$NEW_VERSION_NUM"
+          echo "$OLD_VERSION_NUM"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
