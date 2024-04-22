@@ -4,22 +4,28 @@ export default {
   title: "All/Divider",
   component: Divider,
   tags: ["autodocs"],
-  args: {
-    thickness: 4,
-  },
   argTypes: {
-    color: {
-      control: "color",
-    },
     thickness: {
       control: {
-        type: "number",
-        min: 1,
+        type: "radio",
       },
+      options: ["large", "medium", "small"],
     },
   },
 };
 
 export const Default = {
   args: {},
+};
+
+export const LargeDivider = {
+  args: {
+    thickness: "large",
+  },
+};
+
+export const SmallDivider = {
+  args: {
+    thickness: "small",
+  },
 };

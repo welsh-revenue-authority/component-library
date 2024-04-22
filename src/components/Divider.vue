@@ -1,7 +1,11 @@
 <template>
   <hr
     :role="role"
-    :style="{ borderTopWidth: thickness + 'px', borderColor: color }"
+    :class="{
+      'wra-divider-large': thickness === 'large',
+      'wra-divider': thickness === 'medium',
+      'wra-divider-small': thickness === 'small',
+    }"
   />
 </template>
 
@@ -11,15 +15,11 @@ export default {
   props: {
     /** Thickness of the divider */
     thickness: {
-      type: Number,
-      default: 4,
-      validator(value) {
-        return value >= 0;
-      },
-    },
-    /** Divider colour */
-    color: {
       type: String,
+      default: "medium",
+      validator(value) {
+        return ["large", "small"].includes(value);
+      },
     },
     /** Aria role for the divider */
     role: {
@@ -32,3 +32,17 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.wra-divider {
+  border-top-width: 4px;
+}
+
+.wra-divider-large {
+  border-top-width: 8px;
+}
+
+.wra-divider-small {
+  border-top-width: 2px;
+}
+</style>
