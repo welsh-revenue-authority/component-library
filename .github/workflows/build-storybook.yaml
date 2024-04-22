@@ -9,8 +9,25 @@ on:
 #    paths:
 #      - "package.json"
 jobs:
+  check_versions:
+    name: "Check package.json version numbers"
+    runs-on: ubuntu-latest
+    outputs:
+      old_version_num: ${{ steps.get_versions.outputs.OLD_VERSION_NUM }}
+      new_version_num: ${{ steps.get_versions.outputs.NEW_VERSION_NUM }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: "2"
+      - shell: bash
+        id: get_versions
+        run: |
+          echo "{OLD_VERSION_NUM}=$( git show HEAD~1:package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
+          echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
+    if: ${{ needs.check_versions.outputs.old_version_num  == needs.check_versions.outputs.old_version_num }}
+    needs: check_versions
     permissions:
       contents: read
       pages: write
@@ -20,17 +37,6 @@ jobs:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: "2"
-      - shell: bash
-        run: |
-          echo $(git show HEAD~1:package.json | jq '.version')
-          echo $( cat package.json | jq '.version')
-          echo "{OLD_VERSION_NUM}=$( git show HEAD~1:package.json | jq '.version' )" >> "$GITHUB_ENV"
-          echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_ENV"
-      - run: |
-          echo "$OLD_VERSION_NUM"
-          echo "$OLD_VERSION_NUM"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
