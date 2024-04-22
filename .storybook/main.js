@@ -1,7 +1,8 @@
 /** @type { import('@storybook/vue3-vite').StorybookConfig } */
 const config = {
   core: {
-    disableTelemetry: true
+    disableTelemetry: true,
+    builder: '@storybook/builder-vite',
   },
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [

@@ -1,38 +1,60 @@
 {
-  "name": "@wra/component-library",
-  "version": "0.1.0",
+  "name": "@wra-gov/vue-components",
+  "version": "0.2.0",
   "private": false,
   "type": "module",
-  "main": "dist/component-library.min.cjs",
-  "module": "dist/component-library.min.mjs",
+  "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/welsh-revenue-authority/component-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/welsh-revenue-authority/component-library/issues"
+  },
+  "license": "OGL-UK-3.0",
+  "author": "Welsh Revenue Authority",
+  "keywords": [
+    "vue",
+    "vue3",
+    "component library"
+  ],
+  "main": "dist/vue-components.umd.cjs",
+  "module": "dist/vue-components.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-components.js",
+      "require": "./dist/vue-components.umd.cjs"
+    }
+  },
   "files": [
-    "dist/*"
+    "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "dev": "vite",
+    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "build": "vite build"
   },
   "peerDependencies": {
-    "vue": "^3.3.4",
-    "maska": "^2.1.11"
+    "maska": "^2.1.11",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@rollup/plugin-terser": "^0.4.3",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
     "@storybook/blocks": "^7.6.17",
+    "@storybook/builder-vite": "^8.0.6",
     "@storybook/test": "^7.6.17",
     "@storybook/vue3": "^7.6.17",
     "@storybook/vue3-vite": "^7.6.17",
+    "@vitejs/plugin-vue": "^5.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.25.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-vue": "^6.0.0",
     "storybook": "^7.6.17",
+    "vite": "^5.2.8",
+    "vite-plugin-css-injected-by-js": "^3.5.0",
     "vue": "^3.3.4"
   }
 }
