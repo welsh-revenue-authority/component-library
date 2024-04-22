@@ -2,13 +2,12 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Build storybook artifact
-
 on:
   push:
-    branches: ["main"]
-#  pull_request:
-#    branches: ["actions", "main"]
-
+    # TODO: Remove before PR
+     branches: ["main, actions"]
+#    paths:
+#      - "package.json"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +20,14 @@ jobs:
         node-version: [18.x]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: "2"
+      - shell: bash
+        run: |
+          echo "{OLD_VERSION_NUM = { git show HEAD~1:package.json | jq '.version' }" >> "$GITHUB_ENV"
+          echo "{NEW_VERSION_NUM = { cat package.json | jq '.version' }" >> "$GITHUB_ENV"
+          echo $OLD_VERSION_NUM"
+          echo $NEW_VERSION_NUM"
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
