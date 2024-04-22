@@ -16,6 +16,8 @@ import NumberInput from "./components/NumberInput.vue";
 import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
 import Divider from "./components/Divider.vue";
+import Breadcrumbs from "../src/components/Breadcrumbs.vue";
+import Autocomplete from "./components/Autocomplete.vue";
 
 const components = {
   ValidationTooltip,
@@ -34,6 +36,8 @@ const components = {
   PriceInput,
   TextInput,
   Divider,
+  Breadcrumbs,
+  Autocomplete
 };
 
 export default (app) => {
