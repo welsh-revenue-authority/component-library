@@ -1,13 +1,10 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Build storybook artifact
 on:
   push:
     # TODO: Remove before PR
-    branches: ["main", "actions"]
-#    paths:
-#      - "package.json"
+    branches: ["main"]
+    paths:
+      - "package.json"
 jobs:
   check_versions:
     name: "Check package.json version numbers"
@@ -20,14 +17,15 @@ jobs:
         with:
           fetch-depth: "2"
       - shell: bash
+        name: "Get version numbers"
         id: get_versions
         run: |
           echo "{OLD_VERSION_NUM}=$( git show HEAD~1:package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
           echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
-    if: ${{ needs.check_versions.outputs.old_version_num  != needs.check_versions.outputs.old_version_num }}
     needs: check_versions
+    if: ${{ needs.check_versions.outputs.old_version_num  != needs.check_versions.outputs.old_version_num }}
     permissions:
       contents: read
       pages: write
