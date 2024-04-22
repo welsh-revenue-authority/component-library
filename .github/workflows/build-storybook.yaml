@@ -26,7 +26,7 @@ jobs:
           echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
   build:
     runs-on: ubuntu-latest
-    if: ${{ needs.check_versions.outputs.old_version_num  == needs.check_versions.outputs.old_version_num }}
+    if: ${{ needs.check_versions.outputs.old_version_num  != needs.check_versions.outputs.old_version_num }}
     needs: check_versions
     permissions:
       contents: read
