@@ -17,6 +17,7 @@ import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
 import Breadcrumbs from "../src/components/Breadcrumbs.vue";
 import Autocomplete from "./components/Autocomplete.vue";
+import Table from "./components/Table.vue";
 
 const components = {
   ValidationTooltip,
@@ -35,7 +36,8 @@ const components = {
   PriceInput,
   TextInput,
   Breadcrumbs,
-  Autocomplete
+  Autocomplete,
+  Table
 };
 
 export default (app) => {
