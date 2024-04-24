@@ -51,15 +51,15 @@ export default {
   background-color: inherit;
 }
 
-th,
-td {
+.wra-table th,
+.wra-table td {
   border-bottom: thin solid #0000001f;
 }
 
-td,
-th,
-td,
-th {
+.wra-table td,
+.wra-table th,
+.wra-table td,
+.wra-table th {
   padding: 16px;
 }
 </style>
