@@ -5,7 +5,12 @@
       role="alert"
       aria-live="polite"
       class="snackbar snackbar-flex"
-      :style="{ borderColor: borderColor }"
+      :class="{
+        'border-blue': borderColor === 'blue',
+        'border-red': borderColor === 'red',
+        'border-yellow': borderColor === 'yellow',
+        'border-green': borderColor === 'green',
+      }"
     >
       <div class="snackbar-content">
         <span class="sr-only">Error:</span>
@@ -48,6 +53,9 @@ export default {
     /** Colour of left border */
     borderColor: {
       type: String,
+      validator(value) {
+        return ["blue", "green", "warning", "error"].includes(value);
+      },
     },
     /** Show the close dialogue */
     showClose: {
@@ -137,12 +145,13 @@ export default {
   background-color: transparent;
   border: none;
   font-weight: bold;
-  color: #0360a6;
+  color: #2a225b;
   cursor: pointer;
 }
 
 .snackbar-close:hover {
-  color: #3b7dc5;
+  opacity: 0.8;
+  transition: all 0.3s ease;
 }
 
 .snackbar-close:focus-visible {
@@ -152,6 +161,22 @@ export default {
   outline: 2px solid transparent;
   text-decoration: none;
   -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+}
+
+.border-blue {
+  border-color: #0360a6;
+}
+
+.border-yellow {
+  border-color: #ffd530;
+}
+
+.border-red {
+  border-color: #aa1111;
+}
+
+.border-green {
+  border-color: #019e1e;
 }
 
 /* Accessibility */

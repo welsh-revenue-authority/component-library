@@ -12,6 +12,12 @@ export default {
         step: 100,
       },
     },
+    borderColor: {
+      control: {
+        type: "radio",
+      },
+      options: ["default", "red", "green", "yellow", "blue"],
+    },
     default: {
       description: "Slot to override the default label HTML content",
       control: {
