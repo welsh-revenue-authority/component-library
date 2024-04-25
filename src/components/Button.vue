@@ -1,5 +1,5 @@
 <template>
-  <button type="button" :class="class" :style="style">
+  <button type="button" :class="class">
     <span
       :class="{
         'prepend-icon-wrapper': prependIcon
@@ -29,9 +29,6 @@ export default {
     backgroundColor: {
       type: String
     },
-    color: {
-      type: String
-    },
     outlined: {
       type: Boolean,
       default: false
@@ -50,13 +47,12 @@ export default {
     class() {
       return {
         "outlined-button": this.outlined,
-        [`${this.size || "default"}-button`]: true
-      };
-    },
-    style() {
-      return {
-        backgroundColor: this.backgroundColor,
-        "--color-prop": this.color
+        [`${this.size || "default"}-button`]: true,
+        "wra-blue": this.backgroundColor === "wra-blue",
+        "wra-red": this.backgroundColor === "wra-red",
+        "wra-green": this.backgroundColor === "wra-green",
+        "wra-revenue": this.backgroundColor === "wra-revenue",
+        "wra-plum": this.backgroundColor === "wra-plum"
       };
     }
   }
@@ -87,6 +83,26 @@ button:focus {
 
 button:focus:hover {
   opacity: 1;
+}
+
+.wra-blue {
+  background-color: #0360a6;
+}
+
+.wra-red {
+  background-color: #aa1111;
+}
+
+.wra-green {
+  background-color: #019e1e;
+}
+
+.wra-revenue {
+  background-color: #2a225b;
+}
+
+.wra-plum {
+  background-color: #632a5d;
 }
 
 .default-button {

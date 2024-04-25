@@ -12,12 +12,10 @@ export default {
       options: ["default", "small"]
     },
     backgroundColor: {
-      control: "color"
-    },
-    color: {
-      table: {
-        disable: true
-      }
+      control: {
+        type: "radio"
+      },
+      options: ["wra-revenue", "wra-blue", "wra-red", "wra-green", "wra-plum"]
     },
     outlined: {
       control: "boolean"
