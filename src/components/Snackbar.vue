@@ -151,18 +151,18 @@ export default {
 
 .snackbar-close:hover {
   opacity: 0.8;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
-.snackbar-close:focus-visible {
+.snackbar-close:focus {
+  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
   color: #1f1f1f;
   background-color: #ffd530;
   box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
   outline: 2px solid transparent;
-  text-decoration: none;
-  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
 }
 
+/* Border colours */
 .border-blue {
   border-color: #0360a6;
 }
