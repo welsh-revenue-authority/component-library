@@ -1,5 +1,5 @@
 <template>
-  <div class="wra-banner" :class="{ hiddenPrint: hiddenPrint === true }">
+  <div class="wra-banner" :class="{ 'hidden-print': hiddenPrint === true }">
     <div>
       <slot>
         <p>{{ text }}</p>
@@ -20,7 +20,7 @@ export default {
       type: Array,
       required: true,
     },
-    hidenPrint: {
+    hiddenPrint: {
       type: Boolean,
       default: false,
     },
@@ -55,7 +55,7 @@ export default {
 
 @media print {
   .hidden-print {
-    display: none !important;
+    display: none;
   }
 }
 </style>
