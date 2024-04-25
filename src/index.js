@@ -35,9 +35,9 @@ const components = {
   NumberInput,
   PriceInput,
   TextInput,
-  Banner
+  Banner,
   Breadcrumbs,
-  Autocomplete
+  Autocomplete,
 };
 
 export default (app) => {
