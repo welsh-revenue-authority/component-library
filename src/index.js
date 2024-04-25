@@ -33,7 +33,7 @@ const components = {
   NumberInput,
   PriceInput,
   TextInput,
-  ExpansionPanel
+  ExpansionPanel,
   Breadcrumbs,
   Autocomplete
 };
