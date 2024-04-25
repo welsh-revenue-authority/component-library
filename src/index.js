@@ -35,9 +35,10 @@ const components = {
   NumberInput,
   PriceInput,
   TextInput,
+  ExpansionPanel,
   Divider,
   Breadcrumbs,
-  Autocomplete
+  Autocomplete,
 };
 
 export default (app) => {
