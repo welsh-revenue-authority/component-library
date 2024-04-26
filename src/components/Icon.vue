@@ -47,8 +47,5 @@ export default {
       return this.viewBox || `0 0 ${this.width} ${this.height}`;
     },
   },
-  created() {
-    console.log(this.icon);
-  },
 };
 </script>
