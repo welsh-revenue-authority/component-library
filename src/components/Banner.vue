@@ -1,9 +1,7 @@
 <template>
   <div class="wra-banner" :class="{ 'hidden-print': hiddenPrint === true }">
     <div>
-      <slot>
-        <p>{{ text }}</p>
-      </slot>
+      <slot> </slot>
     </div>
     <div class="wra-banner-actions" v-if="$slots.actions">
       <slot name="actions"></slot>
@@ -15,11 +13,6 @@
 export default {
   name: "wra-banner",
   props: {
-    /** Fallback prop for when slot is not used */
-    text: {
-      type: Array,
-      required: true,
-    },
     hiddenPrint: {
       type: Boolean,
       default: false,

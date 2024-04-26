@@ -9,14 +9,15 @@ export default {
 
 export const Default = {
   args: {
-    text: "This is a banner",
+    default: "This is a banner",
     hiddenPrint: false,
   },
 };
 
 export const CookiesExample = {
   args: {
-    text: "We use cookies to collect information about how you use this website. We use this information to improve our services.",
+    default:
+      "We use cookies to collect information about how you use this website. We use this information to improve our services.",
     actions: `
       <wra-button label="Accept cookies" :outlined="true"  />
       <wra-button label="Change cookie settings" :outlined="true" />
@@ -30,7 +31,10 @@ export const CookiesExample = {
       return args;
     },
     template: `
-      <wra-banner text="${args.text}">
+      <wra-banner>
+        <template v-slot:default v-if="${"default" in args}">
+          ${args.default}
+        </template>
         <template v-slot:actions v-if="${"actions" in args}">
           ${args.actions}
         </template>
@@ -42,7 +46,8 @@ export const CookiesExample = {
     docs: {
       source: {
         code: `
-<wra-banner text="We use cookies to collect information about how you use this website. We use this information to improve our services.">
+<wra-banner>
+  <p>We use cookies to collect information about how you use this website. We use this information to improve our services.</p>
   <template #actions>
     <wra-button label="Accept cookies" :outlined="true" />
     <wra-button label="Change cookie settings" :outlined="true" />
