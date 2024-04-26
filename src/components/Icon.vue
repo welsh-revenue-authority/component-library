@@ -16,7 +16,7 @@ export default {
   props: {
     /** Name of icon from material design icons by  pictogrammers */
     icon: {
-      type: Object,
+      type: String,
       required: true,
     },
     /** Width of icon */
@@ -46,6 +46,9 @@ export default {
     getViewbox() {
       return this.viewBox || `0 0 ${this.width} ${this.height}`;
     },
+  },
+  created() {
+    console.log(this.icon);
   },
 };
 </script>
