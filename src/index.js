@@ -20,6 +20,7 @@ import Snackbar from "./components/Snackbar.vue";
 import Divider from "./components/Divider.vue";
 import Breadcrumbs from "../src/components/Breadcrumbs.vue";
 import Autocomplete from "./components/Autocomplete.vue";
+import Footer from "./components/Footer.vue";
 
 const components = {
   ValidationTooltip,
@@ -43,6 +44,7 @@ const components = {
   Divider,
   Breadcrumbs,
   Autocomplete,
+  Footer,
 };
 
 export default (app) => {
