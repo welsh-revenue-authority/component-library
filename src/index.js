@@ -17,8 +17,9 @@ import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
 import Banner from "./components/Banner.vue";
 import Snackbar from "./components/Snackbar.vue";
+import ExpansionPanel from "./components/ExpansionPanel.vue";
 import Divider from "./components/Divider.vue";
-import Breadcrumbs from "../src/components/Breadcrumbs.vue";
+import Breadcrumbs from "./components/Breadcrumbs.vue";
 import Autocomplete from "./components/Autocomplete.vue";
 import Footer from "./components/Footer.vue";
 
