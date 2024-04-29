@@ -15,6 +15,7 @@ import DateInput from "./components/DateInput.vue";
 import NumberInput from "./components/NumberInput.vue";
 import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
+import Banner from "./components/Banner.vue";
 import Snackbar from "./components/Snackbar.vue";
 import Divider from "./components/Divider.vue";
 import Breadcrumbs from "../src/components/Breadcrumbs.vue";
@@ -36,7 +37,8 @@ const components = {
   NumberInput,
   PriceInput,
   TextInput,
-  Snackbar
+  Banner,
+  Snackbar,
   ExpansionPanel,
   Divider,
   Breadcrumbs,
