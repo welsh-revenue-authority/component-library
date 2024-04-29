@@ -1,48 +1,60 @@
 <template>
-  <button type="button" :class="class" :style="style">
-    {{ label }}
+  <button type="button" :class="class">
+    <span
+      :class="{
+        'prepend-icon-wrapper': prependIcon
+      }"
+    >
+      <span v-if="prependIcon" class="icon back-icon"></span
+    ></span>
+    <slot></slot>
+    <span
+      :class="{
+        'append-icon-wrapper': appendIcon
+      }"
+    >
+      <span v-if="appendIcon" class="icon next-icon"></span
+    ></span>
   </button>
 </template>
 
 <script>
-import { reactive, computed } from "vue";
-
 export default {
   name: "wra-button",
 
   props: {
-    label: {
-      type: String,
-      required: true
-    },
     size: {
-      type: String,
-      required: true
-    },
-    backgroundColor: {
       type: String
     },
-    color: {
+    backgroundColor: {
       type: String
     },
     outlined: {
       type: Boolean,
       default: false
+    },
+    prependIcon: {
+      type: Boolean,
+      default: false
+    },
+    appendIcon: {
+      type: Boolean,
+      default: false
     }
   },
 
-  setup(props) {
-    props = reactive(props);
-    return {
-      class: computed(() => ({
-        "outlined-button": props.outlined,
-        [`${props.size || "default"}-button`]: true
-      })),
-      style: computed(() => ({
-        backgroundColor: props.backgroundColor,
-        color: props.color
-      }))
-    };
+  computed: {
+    class() {
+      return {
+        "outlined-button": this.outlined,
+        [`${this.size || "default"}-button`]: true,
+        "wra-blue": this.backgroundColor === "wra-blue",
+        "wra-red": this.backgroundColor === "wra-red",
+        "wra-green": this.backgroundColor === "wra-green",
+        "wra-revenue": this.backgroundColor === "wra-revenue",
+        "wra-plum": this.backgroundColor === "wra-plum"
+      };
+    }
   }
 };
 </script>
@@ -53,6 +65,7 @@ button {
   color: #fff;
   font-weight: bold;
   border: none;
+  cursor: pointer;
 }
 
 button:hover {
@@ -72,6 +85,26 @@ button:focus:hover {
   opacity: 1;
 }
 
+.wra-blue {
+  background-color: #0360a6;
+}
+
+.wra-red {
+  background-color: #aa1111;
+}
+
+.wra-green {
+  background-color: #019e1e;
+}
+
+.wra-revenue {
+  background-color: #2a225b;
+}
+
+.wra-plum {
+  background-color: #632a5d;
+}
+
 .default-button {
   font-size: 20px;
   padding: 15px 20px;
@@ -84,14 +117,41 @@ button:focus:hover {
 
 .outlined-button {
   background-color: transparent;
-  outline: 2px solid #1f1f1f;
-  color: #1f1f1f;
+  outline: 2px solid var(--color-prop, #1f1f1f);
+  color: var(--color-prop, #1f1f1f);
 }
 
 .outlined-button:hover {
   opacity: 1;
-  background-color: #1f1f1f;
+  background-color: var(--color-prop, #1f1f1f);
   color: #fff;
   transition: all 0.3s ease;
+}
+
+.icon {
+  content: " ";
+  display: inline-block;
+  border: solid currentColor;
+  padding: 4px;
+  vertical-align: middle;
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  margin-bottom: 3px;
+}
+
+.back-icon {
+  border-width: 3px 3px 0px 0px;
+}
+
+.next-icon {
+  border-width: 0px 0px 3px 3px;
+}
+
+.prepend-icon-wrapper {
+  margin-right: 15px;
+}
+
+.append-icon-wrapper {
+  margin-left: 15px;
 }
 </style>

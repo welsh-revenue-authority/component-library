@@ -138,19 +138,20 @@ export default {
 
 .input-wrapper {
   display: flex;
+  align-items: center;
   background-color: #fff;
   border: 1px solid black;
   width: 100%;
 }
 
 .prefix {
-  padding: 19px 0px 16px 16px;
+  padding: 16px 0px 16px 16px;
   font-size: 18px;
   width: 28px;
 }
 
 .suffix {
-  padding: 19px 16px 16px 0px;
+  padding: 16px 16px 16px 0px;
   font-size: 18px;
   z-index: 1;
 }

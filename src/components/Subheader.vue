@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import { reactive, computed } from "vue";
-
 export default {
   name: "wra-subheader",
 
@@ -16,13 +14,12 @@ export default {
     }
   },
 
-  setup(props) {
-    props = reactive(props);
-    return {
-      style: computed(() => ({
-        color: props.color
-      }))
-    };
+  computed: {
+    style() {
+      return {
+        color: this.color
+      };
+    }
   }
 };
 </script>
