@@ -6,14 +6,15 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     caption: {
-      control: "text",
-    },
-  },
+      control: "text"
+    }
+  }
 };
 
 export const Default = {
   args: {
-    caption: "This is a table",
+    caption: "Table caption",
+    leftAlignHeaders: true
   },
   render: (args) => ({
     components: { WraTable },
@@ -30,31 +31,26 @@ export const Default = {
       </thead>
       <tbody>
         <tr>
-          <th>First 6 weeks</th>
+          <td>First 6 weeks</td>
           <td>£109.80 per week</td>
         </tr>
         <tr>
-          <th>Next 33 weeks</th>
+          <td>Next 33 weeks</td>
           <td>£109.80 per week</td>
         </tr>
         <tr>
-          <th>Total estimated pay</th>
+          <td>Total estimated pay</td>
           <td>£4,282.20</td>
         </tr>
       </tbody>
-    </wra-table>`,
-  }),
+    </wra-table>`
+  })
 };
 
 export const InheritBackground = {
   args: {
-    caption: "This is a table",
-    inheritBackground: true,
-  },
-  parameters: {
-    backgrounds: {
-      default: "dark",
-    },
+    caption: "Table caption",
+    inheritBackground: true
   },
   render: (args) => ({
     components: { WraTable },
@@ -71,18 +67,18 @@ export const InheritBackground = {
       </thead>
       <tbody>
         <tr>
-          <th>First 6 weeks</th>
+          <td>First 6 weeks</td>
           <td>£109.80 per week</td>
         </tr>
         <tr>
-          <th>Next 33 weeks</th>
+          <td>Next 33 weeks</td>
           <td>£109.80 per week</td>
         </tr>
         <tr>
-          <th>Total estimated pay</th>
+          <td>Total estimated pay</td>
           <td>£4,282.20</td>
         </tr>
       </tbody>
-    </wra-table>`,
-  }),
+    </wra-table>`
+  })
 };
