@@ -20,6 +20,9 @@ jobs:
         name: "Get version numbers"
         id: get_versions
         run: |
+          echo "$( git show HEAD~1:package.json | jq '.version' )"
+          echo "$( cat package.json | jq '.version' )"
+          echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
           echo "{OLD_VERSION_NUM}=$( git show HEAD~1:package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
           echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
   test:
