@@ -109,7 +109,7 @@ export default {
   display: inline-block;
   border: solid #666666;
   border-width: 3px 3px 0px 0px;
-  padding: 4px;
+  padding: 3px;
   vertical-align: middle;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
