@@ -30,24 +30,24 @@ export default {
     /** Items to display in the breadcrumbs */
     items: {
       type: Array,
-      required: true,
+      required: true
     },
     /** Change the default object name in items for the breadcrumb title */
     itemTitle: {
       type: String,
-      default: "title",
+      default: "title"
     },
     /** Change the default object name in items for disabling the breadcrumb */
     itemDisabled: {
       type: String,
-      default: "disabled",
+      default: "disabled"
     },
     /** Change the default object name in items for the breadcrumb link */
     itemHref: {
       type: String,
-      default: "href",
-    },
-  },
+      default: "href"
+    }
+  }
 };
 </script>
 
@@ -68,14 +68,20 @@ export default {
   list-style: none;
 }
 
+.wra-breadcrumbs-item {
+  font-size: 16px;
+}
+
 .wra-breadcrumbs-item:not(:last-of-type) {
   margin-right: 10px;
 }
 
 .wra-breadcrumbs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 10px;
-  color: #999999;
-  /* Add chevron here */
+  color: #666666;
 }
 
 .wra-breadcrumbs-link--disabled {
@@ -85,22 +91,26 @@ export default {
 .wra-breadcrumbs-link {
   text-decoration: none;
   font-weight: bold;
-  color: #0360a6;
+  color: #2a225b;
 }
 
 .wra-breadcrumbs-link:hover {
-  color: #3b7dc5;
+  opacity: 0.8;
+}
+
+.wra-breadcrumbs-link:focus {
+  opacity: 1;
+  color: #1f1f1f;
 }
 
 .wra-breadcrumbs-chevron {
   /* CSS that creates a chevron */
   content: " ";
   display: inline-block;
-  border: solid #999999;
+  border: solid #666666;
   border-width: 3px 3px 0px 0px;
   padding: 4px;
   vertical-align: middle;
-  transition: transform 0.2s ease-out;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
 }
