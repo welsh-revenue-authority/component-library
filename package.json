@@ -38,7 +38,8 @@
   },
   "peerDependencies": {
     "maska": "^2.1.11",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "@mdi/js": "^7.4.47"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",

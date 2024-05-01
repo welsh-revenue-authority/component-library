@@ -15,6 +15,14 @@ import DateInput from "./components/DateInput.vue";
 import NumberInput from "./components/NumberInput.vue";
 import PriceInput from "./components/PriceInput.vue";
 import TextInput from "./components/TextInput.vue";
+import Banner from "./components/Banner.vue";
+import Snackbar from "./components/Snackbar.vue";
+import ExpansionPanel from "./components/ExpansionPanel.vue";
+import Divider from "./components/Divider.vue";
+import Breadcrumbs from "./components/Breadcrumbs.vue";
+import Autocomplete from "./components/Autocomplete.vue";
+import Table from "./components/Table.vue";
+import Footer from "./components/Footer.vue";
 
 const components = {
   ValidationTooltip,
@@ -31,7 +39,15 @@ const components = {
   DateInput,
   NumberInput,
   PriceInput,
-  TextInput
+  TextInput,
+  Banner,
+  Snackbar,
+  ExpansionPanel,
+  Divider,
+  Breadcrumbs,
+  Autocomplete,
+  Table,
+  Footer,
 };
 
 export default (app) => {
