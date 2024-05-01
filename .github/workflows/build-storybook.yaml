@@ -3,8 +3,8 @@ on:
   push:
     # TODO: Remove before PR
     branches: ["main", "actions"]
-    paths:
-      - "package.json"
+    # paths:
+      # - "package.json"
 jobs:
   check_versions:
     name: "Check package.json version numbers"
