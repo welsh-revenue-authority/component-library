@@ -22,10 +22,10 @@ jobs:
         run: |
           echo "$( git show HEAD~1:package.json | jq '.version' )"
           echo "$( cat package.json | jq '.version' )"
-          echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
           echo "{OLD_VERSION_NUM}=$( git show HEAD~1:package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
           echo "{NEW_VERSION_NUM}=$( cat package.json | jq '.version' )" >> "$GITHUB_OUTPUT"
   test:
+    needs: check_versions
     runs-on: ubuntu-latest
     name: test
     needs: check_versions
@@ -33,8 +33,8 @@ jobs:
       - shell: bash
         name: "Echo"
         run: |
-          echo "${{ steps.check_versions.outputs.old_version_num}}"
-          echo "${{ steps.check_versions.outputs.new_version_num}}"
+          echo "${{ needs.check_versions.outputs.old_version_num}}"
+          echo "${{ needs.check_versions.outputs.new_version_num}}"
   build:
     runs-on: ubuntu-latest
     needs: check_versions
