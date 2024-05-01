@@ -28,7 +28,6 @@ jobs:
     needs: check_versions
     runs-on: ubuntu-latest
     name: test
-    needs: check_versions
     steps:
       - shell: bash
         name: "Echo"
