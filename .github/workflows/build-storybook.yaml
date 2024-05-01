@@ -44,27 +44,28 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-      - uses: actions/checkout@v4
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build-storybook
-      #   - run: npm test
-      - uses: actions/upload-pages-artifact@v3.0.1
-        name: Upload a Build Artifact
-        with:
-          # Artifact name
-          name: github-pages
-          # A file, directory or wildcard pattern that describes what to upload
-          path: storybook-static
-      - uses: actions/configure-pages@v5.0.0
-        name: Configure GitHub Pages
-        with:
-          enablement: true
-      - uses: actions/deploy-pages@v4.0.5
-        name: Deploy storybook artifact to Github Pages
-        with:
-          artifact_name: github-pages
+      - run: echo "running"
+      # - uses: actions/checkout@v4
+      # - name: Use Node.js ${{ matrix.node-version }}
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: ${{ matrix.node-version }}
+      #     cache: "npm"
+      # - run: npm ci
+      # - run: npm run build-storybook
+      # #   - run: npm test
+      # - uses: actions/upload-pages-artifact@v3.0.1
+      #   name: Upload a Build Artifact
+      #   with:
+      #     # Artifact name
+      #     name: github-pages
+      #     # A file, directory or wildcard pattern that describes what to upload
+      #     path: storybook-static
+      # - uses: actions/configure-pages@v5.0.0
+      #   name: Configure GitHub Pages
+      #   with:
+      #     enablement: true
+      # - uses: actions/deploy-pages@v4.0.5
+      #   name: Deploy storybook artifact to Github Pages
+      #   with:
+      #     artifact_name: github-pages
