@@ -24,7 +24,7 @@
         tabindex="-1"
         :class="{
           'autocomplete-item-not-clickable': option.clickable === false,
-          'autocomplete-item--focus': index === optionIndex,
+          'autocomplete-item--focus': index === optionIndex
         }"
         @mousedown="onOptionSelect(option)"
         @keydown.prevent.up="onUpKey"
@@ -45,47 +45,47 @@ export default {
   emits: ["update:modelValue"],
   props: {
     modelValue: {
-      type: Object,
+      type: Object
     },
     /** Label for autocomplete */
     label: {
-      type: String,
+      type: String
     },
     /** Input's ID tag */
     id: {
-      type: String,
+      type: String
     },
     /** Options for autocomplete list */
     options: {
       type: Object,
-      required: true,
+      required: true
     },
     /** Change the default object name in options for the data */
     optionValue: {
       type: String,
-      default: "value",
+      default: "value"
     },
     /** Change the default object name in options for the displayed value */
     optionLabel: {
       type: String,
-      default: "label",
+      default: "label"
     },
     /** Mininum number of characters before the list appears */
     minLength: {
       type: Number,
-      default: 1,
+      default: 1
     },
     /** If list should automatically expand when input is focused */
     autoExpand: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data: () => ({
     userInput: {},
     hasFocus: false,
     listHasFocus: false,
-    optionIndex: null,
+    optionIndex: null
   }),
   methods: {
     onInputTyping() {
@@ -140,7 +140,7 @@ export default {
       this.listHasFocus = true;
       const refName = `option${this.optionIndex}`;
       this.$refs[refName][0].focus();
-    },
+    }
   },
   computed: {
     showOptions() {
@@ -168,7 +168,7 @@ export default {
       searchForInput.push({
         [this.optionLabel]: "No results found",
         [this.optionValue]: "",
-        clickable: false,
+        clickable: false
       });
       return searchForInput;
     },
@@ -179,7 +179,7 @@ export default {
     },
     getInputValue() {
       return this.userInput[this.optionLabel].toLowerCase();
-    },
+    }
   },
   created() {
     // Set initial value if it is formatted correctly
@@ -189,7 +189,7 @@ export default {
     }
     this.userInput[this.optionLabel] = "";
     this.userInput[this.optionValue] = "";
-  },
+  }
 };
 </script>
 
@@ -208,7 +208,6 @@ export default {
   padding: 16px 16px;
   background-color: #fff;
   border: 1px solid #1f1f1f;
-  border-bottom: 2px solid #1f1f1f;
   line-height: 20px;
   display: block;
   width: 100%;

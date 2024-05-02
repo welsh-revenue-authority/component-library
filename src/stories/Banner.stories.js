@@ -19,8 +19,8 @@ export const CookiesExample = {
     default:
       "We use cookies to collect information about how you use this website. We use this information to improve our services.",
     actions: `
-      <wra-button label="Accept cookies" :outlined="true"  />
-      <wra-button label="Change cookie settings" :outlined="true" />
+      <wra-button size="small" :outlined="true">Accept cookies</wra-button>
+      <wra-button size="small" :outlined="true">Change cookie settings</wra-button>
     `
   },
   // Process for putting other components in slots in storybook
