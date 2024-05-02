@@ -1,7 +1,7 @@
 import WraDateInput from "../components/DateInput.vue";
 
 export default {
-  title: "All/DateInput",
+  title: "Form Inputs & Controls/DateInput",
   component: WraDateInput,
   tags: ["autodocs"]
 };

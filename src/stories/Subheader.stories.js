@@ -1,7 +1,7 @@
 import WraSubheader from "../components/Subheader.vue";
 
 export default {
-  title: "All/Subheader",
+  title: "Miscellaneous/Subheader",
   component: WraSubheader,
   tags: ["autodocs"],
   argTypes: {

@@ -1,7 +1,7 @@
 import WraCheckboxGroup from "../components/CheckboxGroup.vue";
 
 export default {
-  title: "All/CheckboxGroup",
+  title: "Form Inputs & Controls/CheckboxGroup",
   component: WraCheckboxGroup,
   tags: ["autodocs"]
 };

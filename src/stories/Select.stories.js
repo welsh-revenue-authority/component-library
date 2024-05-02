@@ -1,7 +1,7 @@
 import WraSelect from "../components/Select.vue";
 
 export default {
-  title: "All/Select",
+  title: "Form Inputs & Controls/Select",
   component: WraSelect,
   tags: ["autodocs"]
 };

@@ -4,7 +4,7 @@ import WraHeader from "../components/Header.vue";
 import { Header1 } from "./Header.stories";
 
 export default {
-  title: "All/ContentSectionTitle",
+  title: "Miscellaneous/ContentSectionTitle",
   component: WraContentSectionTitle,
   tags: ["autodocs"],
   argTypes: {

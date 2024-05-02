@@ -1,7 +1,7 @@
 import WraHeader from "../components/Header.vue";
 
 export default {
-  title: "All/Header",
+  title: "Miscellaneous/Header",
   component: WraHeader,
   tags: ["autodocs"],
   argTypes: {

@@ -2,16 +2,16 @@ import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
 
 export default {
-  title: "All/Banner",
+  title: "Feedback/Banner",
   component: WraBanner,
-  tags: ["autodocs"],
+  tags: ["autodocs"]
 };
 
 export const Default = {
   args: {
     default: "This is a banner",
-    hiddenPrint: false,
-  },
+    hiddenPrint: false
+  }
 };
 
 export const CookiesExample = {
@@ -21,7 +21,7 @@ export const CookiesExample = {
     actions: `
       <wra-button label="Accept cookies" :outlined="true"  />
       <wra-button label="Change cookie settings" :outlined="true" />
-    `,
+    `
   },
   // Process for putting other components in slots in storybook
   // Would not recommend
@@ -39,7 +39,7 @@ export const CookiesExample = {
           ${args.actions}
         </template>
       </wra-banner>
-    `,
+    `
   }),
   // Make source code box accurate
   parameters: {
@@ -53,8 +53,8 @@ export const CookiesExample = {
     <wra-button label="Change cookie settings" :outlined="true" />
   </template>
 </wra-banner>
-        `,
-      },
-    },
-  },
+        `
+      }
+    }
+  }
 };

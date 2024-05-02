@@ -1,7 +1,7 @@
 import WraTable from "../components/Table.vue";
 
 export default {
-  title: "All/Table",
+  title: "Data & Display/Table",
   component: WraTable,
   tags: ["autodocs"],
   argTypes: {
