@@ -4,7 +4,7 @@
     :class="{
       'wra-divider-large': thickness === 'large',
       'wra-divider': thickness === 'medium',
-      'wra-divider-small': thickness === 'small',
+      'wra-divider-small': thickness === 'small'
     }"
   />
 </template>
@@ -19,30 +19,34 @@ export default {
       default: "medium",
       validator(value) {
         return ["large", "small"].includes(value);
-      },
+      }
     },
     /** Aria role for the divider */
     role: {
       type: String,
-      default: "presentation",
-    },
+      default: "presentation"
+    }
   },
   data() {
     return {};
-  },
+  }
 };
 </script>
 
 <style scoped>
+hr {
+  margin: 0px;
+}
+
 .wra-divider {
-  border-top-width: 4px;
+  border: 3px solid #e5e5e5;
 }
 
 .wra-divider-large {
-  border-top-width: 8px;
+  border: 4px solid #e5e5e5;
 }
 
 .wra-divider-small {
-  border-top-width: 2px;
+  border: 2px solid #e5e5e5;
 }
 </style>
