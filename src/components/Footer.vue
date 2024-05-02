@@ -11,16 +11,16 @@ export default {
     /** Display the footer when printed */
     hiddenPrint: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 </script>
 
 <style scoped>
 .wra-footer {
   flex-grow: 0;
-  background-color: #eeeeee;
+  background-color: #f1f1f1;
   padding: 70px 20px 50px 20px;
 }
 
