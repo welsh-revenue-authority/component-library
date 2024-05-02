@@ -1,7 +1,7 @@
 import WraCheckbox from "../components/Checkbox.vue";
 
 export default {
-  title: "All/Checkbox",
+  title: "Form Inputs & Controls/Checkbox",
   component: WraCheckbox,
   tags: ["autodocs"]
 };

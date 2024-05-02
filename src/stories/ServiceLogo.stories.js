@@ -3,7 +3,7 @@ import WraLogoFile from "./assets/wra-logo-english.svg";
 import WgLogoFile from "./assets/wg-logo.svg";
 
 export default {
-  title: "All/ServiceLogo",
+  title: "Images & Icons/ServiceLogo",
   component: WraServiceLogo,
   tags: ["autodocs"]
 };

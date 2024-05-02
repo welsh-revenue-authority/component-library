@@ -1,7 +1,7 @@
 import TextArea from "../components/TextArea.vue";
 
 export default {
-  title: "All/TextArea",
+  title: "Form Inputs & Controls/TextArea",
   component: TextArea,
   tags: ["autodocs"]
 };

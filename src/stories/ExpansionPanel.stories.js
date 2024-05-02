@@ -1,7 +1,7 @@
 import WraExpansionPanel from "../components/ExpansionPanel.vue";
 
 export default {
-  title: "All/ExpansionPanel",
+  title: "Containment/ExpansionPanel",
   component: WraExpansionPanel,
   tags: ["autodocs"],
   argTypes: {

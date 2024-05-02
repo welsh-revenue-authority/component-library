@@ -1,7 +1,7 @@
 import WraNumberInput from "../components/NumberInput.vue";
 
 export default {
-  title: "All/NumberInput",
+  title: "Form Inputs & Controls/NumberInput",
   component: WraNumberInput,
   tags: ["autodocs"]
 };

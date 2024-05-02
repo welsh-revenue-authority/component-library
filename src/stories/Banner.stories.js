@@ -2,7 +2,7 @@ import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
 
 export default {
-  title: "All/Banner",
+  title: "Feedback/Banner",
   component: WraBanner,
   tags: ["autodocs"]
 };

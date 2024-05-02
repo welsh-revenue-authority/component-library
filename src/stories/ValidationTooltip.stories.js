@@ -1,7 +1,7 @@
 import WraValidationTooltip from "../components/ValidationTooltip.vue";
 
 export default {
-  title: "All/ValidationTooltip",
+  title: "Containment/ValidationTooltip",
   component: WraValidationTooltip,
   tags: ["autodocs"],
   argTypes: {

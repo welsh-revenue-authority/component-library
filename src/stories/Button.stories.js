@@ -1,7 +1,7 @@
 import WraButton from "../components/Button.vue";
 
 export default {
-  title: "All/Button",
+  title: "Containment/Button",
   component: WraButton,
   tags: ["autodocs"],
   argTypes: {

@@ -1,31 +1,31 @@
 import Divider from "../components/Divider.vue";
 
 export default {
-  title: "All/Divider",
+  title: "Containment/Divider",
   component: Divider,
   tags: ["autodocs"],
   argTypes: {
     thickness: {
       control: {
-        type: "radio",
+        type: "radio"
       },
-      options: ["large", "medium", "small"],
-    },
-  },
+      options: ["large", "medium", "small"]
+    }
+  }
 };
 
 export const Default = {
-  args: {},
+  args: {}
 };
 
 export const LargeDivider = {
   args: {
-    thickness: "large",
-  },
+    thickness: "large"
+  }
 };
 
 export const SmallDivider = {
   args: {
-    thickness: "small",
-  },
+    thickness: "small"
+  }
 };

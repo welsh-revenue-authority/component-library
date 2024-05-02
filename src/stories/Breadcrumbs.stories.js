@@ -1,18 +1,18 @@
 import Breadcrumbs from "../components/Breadcrumbs.vue";
 
 export default {
-  title: "All/Breadcrumbs",
+  title: "Navigation/Breadcrumbs",
   component: Breadcrumbs,
   tags: ["autodocs"],
   argTypes: {
     divider: {
       description:
-        "Slot for the user to replace default divider behaviour with their components.",
+        "Slot for the user to replace default divider behaviour with their components."
     },
     default: {
       description: "Slot to replace the default links with something else"
     }
-  },
+  }
 };
 
 export const Default = {
@@ -21,20 +21,20 @@ export const Default = {
       {
         title: "Dashboard",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 1",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 2",
         disabled: true,
-        href: ".",
-      },
-    ],
-  },
+        href: "."
+      }
+    ]
+  }
 };
 
 export const replaceDivider = {
@@ -43,21 +43,21 @@ export const replaceDivider = {
       {
         title: "Dashboard",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 1",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 2",
         disabled: true,
-        href: ".",
-      },
+        href: "."
+      }
     ],
-    divider: "-",
-  },
+    divider: "-"
+  }
 };
 
 export const replaceContent = {
@@ -66,19 +66,19 @@ export const replaceContent = {
       {
         title: "Dashboard",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 1",
         disabled: false,
-        href: ".",
+        href: "."
       },
       {
         title: "Link 2",
         disabled: true,
-        href: ".",
-      },
+        href: "."
+      }
     ],
-    default: "Link",
-  },
+    default: "Link"
+  }
 };

@@ -1,122 +1,122 @@
 import Autocomplete from "../components/Autocomplete.vue";
 
 export default {
-  title: "All/Autocomplete",
+  title: "Form Inputs & Controls/Autocomplete",
   component: Autocomplete,
   argTypes: {
     minLength: {
       control: {
         type: "number",
-        min: 0,
-      },
-    },
+        min: 0
+      }
+    }
   },
   decorators: [
     () => ({
       template:
-        "<div style='margin: 20px; margin-bottom: 200px'><story /></div>",
-    }),
+        "<div style='margin: 20px; margin-bottom: 200px'><story /></div>"
+    })
   ],
-  tags: ["autodocs"],
+  tags: ["autodocs"]
 };
 
 let councilArray = [
   {
     value: "Blaenau Gwent",
-    label: "Blaenau Gwent",
+    label: "Blaenau Gwent"
   },
   {
     value: "Bridgend",
-    label: "Bridgend",
+    label: "Bridgend"
   },
   {
     value: "Caerphilly",
-    label: "Caerphilly",
+    label: "Caerphilly"
   },
   {
     value: "Cardiff",
-    label: "Cardiff",
+    label: "Cardiff"
   },
   {
     value: "Carmarthenshire",
-    label: "Carmarthenshire",
+    label: "Carmarthenshire"
   },
   {
     value: "Ceredigion",
-    label: "Ceredigion",
+    label: "Ceredigion"
   },
   {
     value: "Conwy",
-    label: "Conwy",
+    label: "Conwy"
   },
   {
     value: "Denbighshire",
-    label: "Denbighshire",
+    label: "Denbighshire"
   },
   {
     value: "Flintshire",
-    label: "Flintshire",
+    label: "Flintshire"
   },
   {
     value: "Gwynedd",
-    label: "Gwynedd",
+    label: "Gwynedd"
   },
   {
     value: "Isle of Anglesey",
-    label: "Isle of Anglesey",
+    label: "Isle of Anglesey"
   },
   {
     value: "Merthyr Tydfil",
-    label: "Merthyr Tydfil",
+    label: "Merthyr Tydfil"
   },
   {
     value: "Monmouthshire",
-    label: "Monmouthshire",
+    label: "Monmouthshire"
   },
   {
     value: "Neath Port Talbot",
-    label: "Neath Port Talbot",
+    label: "Neath Port Talbot"
   },
   {
     value: "Newport",
-    label: "Newport",
+    label: "Newport"
   },
   {
     value: "Pembrokeshire",
-    label: "Pembrokeshire",
+    label: "Pembrokeshire"
   },
   {
     value: "Powys",
-    label: "Powys",
+    label: "Powys"
   },
   {
     value: "Rhondda Cynon Taf",
-    label: "Rhondda Cynon Taf",
+    label: "Rhondda Cynon Taf"
   },
   {
     value: "Swansea",
-    label: "Swansea",
+    label: "Swansea"
   },
   {
     value: "Torfaen",
-    label: "Torfaen",
+    label: "Torfaen"
   },
   {
     value: "Vale of Glamorgan",
-    label: "Vale of Glamorgan",
+    label: "Vale of Glamorgan"
   },
   {
     value: "Wrexham",
-    label: "Wrexham",
-  },
+    label: "Wrexham"
+  }
 ];
 
 export const Default = {
   args: {
     label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
-    options: councilArray,
-  },
+    options: councilArray
+  }
 };
 
 export const Autoexpand = {
@@ -125,8 +125,8 @@ export const Autoexpand = {
       "This is an autocomplete showing Welsh local authorities that expands when clicked",
     id: "test-autocomplete-autoexpand",
     autoExpand: true,
-    options: councilArray,
-  },
+    options: councilArray
+  }
 };
 
 export const PreFilled = {
@@ -134,6 +134,6 @@ export const PreFilled = {
     label: "This is an autocomplete that is prefilled with a value",
     id: "test-autocomplete-prefill",
     options: councilArray,
-    modelValue: { value: "alice-council", label: "Alice's council" },
-  },
+    modelValue: { value: "alice-council", label: "Alice's council" }
+  }
 };

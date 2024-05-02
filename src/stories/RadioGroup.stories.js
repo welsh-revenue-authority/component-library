@@ -1,7 +1,7 @@
 import WraRadioGroup from "../components/RadioGroup.vue";
 
 export default {
-  title: "All/RadioGroup",
+  title: "Form Inputs & Controls/RadioGroup",
   component: WraRadioGroup,
   tags: ["autodocs"]
 };
