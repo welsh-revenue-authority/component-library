@@ -102,7 +102,7 @@ button {
   background-color: transparent;
   color: #2a225b;
   border: none;
-  border-left: 2px solid #b9b9b9;
+  border-left: 2px solid #b5b5b5;
   cursor: pointer;
   width: 100%;
   text-align: left;
@@ -126,7 +126,7 @@ button:focus:hover {
 
 .panel-content {
   display: grid;
-  border-left: 2px solid #b9b9b9;
+  border-left: 2px solid #b5b5b5;
   background: transparent;
   padding: 15px 20px;
   grid-template-rows: 1fr;
