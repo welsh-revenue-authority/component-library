@@ -15,21 +15,21 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
+      required: true
     },
     /** Whether on active tab or not */
     active: {
       type: Boolean,
-      default: false,
+      default: false
     },
     focus: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
-      activeTab: 0,
+      activeTab: 0
     };
   },
   watch: {
@@ -37,8 +37,8 @@ export default {
       if (newValue === true) {
         this.$refs.tabButton.focus();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -74,7 +74,7 @@ export default {
 .tab-button--active {
   background: #ffffff;
   color: #1f1f1f;
-  border-top: 6px #cccccc solid;
+  border-top: 6px #b5b5b5 solid;
 }
 
 .tab-button:focus {
