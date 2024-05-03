@@ -51,8 +51,7 @@ export default {
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
-        "wra-revenue": this.backgroundColor === "wra-revenue",
-        "wra-plum": this.backgroundColor === "wra-plum"
+        "wra-revenue": this.backgroundColor === "wra-revenue"
       };
     }
   }
@@ -99,10 +98,6 @@ button:focus:hover {
 
 .wra-revenue {
   background-color: #2a225b;
-}
-
-.wra-plum {
-  background-color: #632a5d;
 }
 
 .default-button {
