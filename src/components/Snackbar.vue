@@ -5,26 +5,25 @@
       role="alert"
       aria-live="polite"
       class="snackbar snackbar-flex"
-      :class="{
-        'border-blue': borderColor === 'blue',
-        'border-red': borderColor === 'red',
-        'border-yellow': borderColor === 'yellow',
-        'border-green': borderColor === 'green',
-      }"
+      :class="type"
     >
       <div class="snackbar-content">
-        <span class="sr-only">Error:</span>
         <slot>
           {{ label }}
         </slot>
       </div>
-      <button
+      <div
+        class="close-icon-wrapper"
+        tabindex="0"
         v-if="showClose"
-        class="snackbar-close"
-        @click="showSnackbar = false && $emit('update:visible', showSnackbar)"
+        @click="closeSnackbar"
+        @keyup.enter="closeSnackbar"
       >
-        {{ closeLabel }}
-      </button>
+        <span class="sr-only">Close</span>
+        <div class="close-icon-line-one">
+          <div class="close-icon-line-two"></div>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -37,39 +36,32 @@ export default {
     /** If snackbar is visible */
     visible: {
       type: Boolean,
-      default: false,
+      default: false
     },
     /** Snackbar text content */
     label: {
-      type: String,
+      type: String
     },
     /** Time in ms for the snackbar to disappear after appearing */
     timeout: {
       type: Number,
       validator(value) {
         return value >= 0;
-      },
+      }
     },
-    /** Colour of left border */
-    borderColor: {
+    /** Theme of snackbar */
+    type: {
       type: String,
-      validator(value) {
-        return ["blue", "green", "warning", "error"].includes(value);
-      },
+      default: "wra-info"
     },
     /** Show the close dialogue */
     showClose: {
       type: Boolean,
-      default: true,
-    },
-    /** Text in the close button */
-    closeLabel: {
-      type: String,
-      default: "Close",
-    },
+      default: true
+    }
   },
   data: () => ({
-    showSnackbar: false,
+    showSnackbar: false
   }),
   methods: {
     snackbarTimer(time) {
@@ -77,6 +69,10 @@ export default {
         this.showSnackbar = false;
       }, time);
     },
+    closeSnackbar() {
+      this.showSnackbar = false;
+      this.$emit("update:visible", this.showSnackbar);
+    }
   },
   watch: {
     visible(newValue) {
@@ -85,7 +81,7 @@ export default {
       if (newValue === true && this.timeout) {
         this.snackbarTimer(this.timeout);
       }
-    },
+    }
   },
   created() {
     if (this.visible === true) {
@@ -96,6 +92,16 @@ export default {
       }
     }
   },
+  computed: {
+    class() {
+      return {
+        "wra-error": this.type === "wra-error",
+        "wra-success": this.type === "wra-success",
+        "wra-info": this.type === "wra-info",
+        "wra-warning": this.type === "wra-warning"
+      };
+    }
+  }
 };
 </script>
 
@@ -110,9 +116,9 @@ export default {
 
 .snackbar {
   background: #e5e5e5;
-  font-size: 20px;
-  padding: 20px 20px;
-  border-left: 8px solid #a5a5a5;
+  font-size: 18px;
+  padding: 20px 16px 20px 24px;
+  border-left: 3px solid #a5a5a5;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -140,43 +146,66 @@ export default {
   text-wrap: wrap;
 }
 
-.snackbar-close {
-  font-size: 20px;
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  color: #2a225b;
+.close-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 }
 
-.snackbar-close:hover {
+.close-icon-wrapper:hover {
   opacity: 0.8;
   transition: opacity 0.3s ease;
 }
 
-.snackbar-close:focus {
-  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
-  color: #1f1f1f;
+.close-icon-wrapper:focus {
   background-color: #ffd530;
-  box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
-  outline: 2px solid transparent;
-}
-
-/* Border colours */
-.border-blue {
-  border-color: #0360a6;
-}
-
-.border-yellow {
+  outline: 2px solid #1f1f1f;
+  outline-offset: 0px;
   border-color: #ffd530;
 }
 
-.border-red {
+.close-icon-wrapper:focus:hover {
+  opacity: 1;
+}
+
+.close-icon-line-one {
+  height: 24px;
+  width: 4px;
+  margin-left: 10px;
+  background-color: black;
+  transform: rotate(45deg);
+}
+
+.close-icon-line-two {
+  height: 24px;
+  width: 4px;
+  background-color: black;
+  transform: rotate(90deg);
+}
+
+/* Snackbar colours */
+.wra-error {
+  background-color: #ffe4e5;
   border-color: #aa1111;
 }
 
-.border-green {
+.wra-success {
+  background-color: #cdf7d4;
   border-color: #019e1e;
+}
+
+.wra-info {
+  background-color: #c2e0fc;
+  border-color: #0360a6;
+}
+
+.wra-warning {
+  background-color: #fff5ce;
+  border-color: #ffd530;
 }
 
 /* Accessibility */

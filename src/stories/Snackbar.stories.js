@@ -12,11 +12,11 @@ export default {
         step: 100
       }
     },
-    borderColor: {
+    type: {
       control: {
         type: "radio"
       },
-      options: ["default", "red", "green", "yellow", "blue"]
+      options: ["wra-info", "wra-success", "wra-warning", "wra-error"]
     },
     default: {
       description: "Slot to override the default label HTML content",
@@ -32,25 +32,41 @@ export default {
   ]
 };
 
-export const Default = {
+export const Info = {
   args: {
-    label: "Snackbar",
-    visible: true
+    label: "This is an info snackbar",
+    visible: true,
+    type: "wra-info"
   }
 };
 
-export const TimeOut4Seconds = {
+export const Success = {
   args: {
-    label: "4 second timer",
-    timeout: 4000,
-    visible: true
+    label: "This is a success snackbar",
+    visible: true,
+    type: "wra-success"
+  }
+};
+
+export const Warning = {
+  args: {
+    label: "This is a warning snackbar",
+    visible: true,
+    type: "wra-warning"
+  }
+};
+
+export const Error = {
+  args: {
+    label: "This is an error snackbar",
+    visible: true,
+    type: "wra-error"
   }
 };
 
 export const NoCloseButton = {
   args: {
-    label: "No close button with 10 second timer",
-    timeout: 10000,
+    label: "Snackbar with no close button",
     showClose: false,
     visible: true
   }
