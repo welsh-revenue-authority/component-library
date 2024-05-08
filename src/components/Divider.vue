@@ -18,7 +18,11 @@ export default {
       type: String,
       default: "medium",
       validator(value) {
-        return ["large", "small"].includes(value);
+        if (value == "large" || value == "medium" || value == "small") {
+          return true;
+        } else {
+          return false;
+        }
       }
     },
     /** Aria role for the divider */
