@@ -37,6 +37,10 @@ export default {
 </script>
 
 <style scoped>
+.service-logo {
+  max-width: 100%;
+}
+
 .service-link {
   border: transparent solid 2px;
   outline: transparent solid 2px;
