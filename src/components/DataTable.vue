@@ -26,14 +26,19 @@
       <slot name="body" :items="paginatedArray"></slot>
     </tbody>
 
-    <tbody v-else>
+    <tbody
+      v-else
+      v-for="item in paginatedArray"
+      :class="{
+        clickable: $attrs['onClick:row'] != undefined
+      }"
+      @click="$emit('click:row', item)">
       <slot
         name="item"
         v-if="$slots.item"
-        v-for="item in paginatedArray"
         :item="item"
         :items="paginatedArray"></slot>
-      <tr v-else v-for="item in paginatedArray">
+      <tr v-else>
         <td
           :class="{
             'text-left': header.align == 'start' || header.align == undefined,
@@ -136,6 +141,15 @@ export default {
 <style scoped>
 table {
   width: 100%;
+}
+
+thead {
+  background-color: #f5f5f5;
+  border-bottom: 5px red solid;
+}
+
+tr {
+  border-bottom: 5px solid #f5f5f5;
 }
 
 .clickable {
