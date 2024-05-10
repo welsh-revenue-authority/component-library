@@ -74,15 +74,24 @@
         </tr>
       </tbody>
     </table>
-    {{ currentPage }}
-    <div>
-      <span
-        style="border: 1px black solid; padding: 5px"
-        v-for="x in totalNumberOfPages"
-        class="clickable"
-        @click="currentPage = x">
-        {{ x }}
-      </span>
+    <div class="pagination">
+      Page {{ currentPage }} of {{ totalNumberOfPages }}
+      <button
+        :disabled="currentPage == 1"
+        :class="{
+          'disable-button': currentPage == 1
+        }"
+        @click="currentPage = currentPage - 1">
+        <
+      </button>
+      <button
+        :disabled="currentPage == totalNumberOfPages"
+        :class="{
+          'disable-button': currentPage == totalNumberOfPages
+        }"
+        @click="currentPage = currentPage + 1">
+        >
+      </button>
     </div>
   </div>
 </template>
@@ -115,7 +124,7 @@ export default {
   },
   computed: {
     totalNumberOfPages() {
-      return Math.ceil(this.items.length / this.localItemsPerPage);
+      return Math.ceil(this.sortedArray.length / this.localItemsPerPage);
     },
     paginatedArray() {
       const start = (this.currentPage - 1) * this.localItemsPerPage;
@@ -209,5 +218,22 @@ th:hover .sort-icons {
 
 .text-center {
   text-align: center;
+}
+
+.pagination {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 5px;
+  background-color: white;
+}
+
+.disable-button {
+  opacity: 0.3;
 }
 </style>
