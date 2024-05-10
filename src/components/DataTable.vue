@@ -12,6 +12,7 @@
               (header.sortable || header.sortable == undefined) &&
                 sortByColumn(header.key)
             "
+            :style="{ width: header.width + 'px' }"
             :class="{
               clickable: header.sortable == undefined || header.sortable,
               'text-left': header.align == 'start' || header.align == undefined,
