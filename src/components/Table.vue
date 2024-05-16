@@ -71,6 +71,6 @@ export default {
 
 .wra-table td,
 .wra-table th {
-  padding: 16px 0px;
+  padding: 16px;
 }
 </style>
