@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: "wra-table",
+  name: "wra-simple-table",
   props: {
     inheritBackground: {
       type: Boolean,

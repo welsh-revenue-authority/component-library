@@ -1,8 +1,8 @@
-import WraTable from "../components/Table.vue";
+import WraSimpleTable from "../components/SimpleTable.vue";
 
 export default {
-  title: "Data & Display/Table",
-  component: WraTable,
+  title: "Data & Display/SimpleTable",
+  component: WraSimpleTable,
   tags: ["autodocs"],
   argTypes: {
     caption: {
@@ -17,12 +17,12 @@ export const Default = {
     leftAlignHeaders: true
   },
   render: (args) => ({
-    components: { WraTable },
+    components: { WraSimpleTable },
     setup() {
       return { args };
     },
     template: `
-    <wra-table v-bind="args" > 
+    <wra-simple-table v-bind="args" > 
       <thead>
         <tr>
           <th>Date</th>
@@ -43,7 +43,7 @@ export const Default = {
           <td>£4,282.20</td>
         </tr>
       </tbody>
-    </wra-table>`
+    </wra-simple-table>`
   })
 };
 
@@ -53,12 +53,12 @@ export const InheritBackground = {
     inheritBackground: true
   },
   render: (args) => ({
-    components: { WraTable },
+    components: { WraSimpleTable },
     setup() {
       return { args };
     },
     template: `
-    <wra-table v-bind="args" > 
+    <wra-simple-table v-bind="args" > 
       <thead>
         <tr>
           <th>Date</th>
@@ -79,6 +79,6 @@ export const InheritBackground = {
           <td>£4,282.20</td>
         </tr>
       </tbody>
-    </wra-table>`
+    </wra-simple-table>`
   })
 };
