@@ -120,6 +120,12 @@ export default {
   color: #1f1f1f;
   border-spacing: 0;
   padding: 0px 16px 0px 16px;
+  table-layout: fixed;
+}
+
+.wra-table td,
+.wra-table th {
+  word-break: break-word;
 }
 
 .wra-table-inherit {
