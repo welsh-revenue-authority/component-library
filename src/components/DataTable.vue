@@ -106,8 +106,7 @@ export default {
   data() {
     return {
       localSortBy: this.sortBy,
-      currentPage: 1,
-      localItemsPerPage: this.itemsPerPage != undefined || 10
+      currentPage: 1
     };
   },
   methods: {
@@ -126,6 +125,9 @@ export default {
     }
   },
   computed: {
+    localItemsPerPage() {
+      return this.itemsPerPage != undefined ? this.itemsPerPage : 10;
+    },
     totalNumberOfPages() {
       return Math.ceil(this.sortedArray.length / this.localItemsPerPage);
     },
