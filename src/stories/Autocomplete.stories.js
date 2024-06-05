@@ -125,8 +125,7 @@ export const Default = {
   label="This is an autocomplete for Welsh local authorities"
   id="test-autocomplete"
   :options="options"
->
-</wra-autocomplete>
+></wra-autocomplete>
         `
       }
     }
@@ -150,8 +149,7 @@ export const Autoexpand = {
   id="test-autocomplete"
   :options="options"
   auto-expand="true"
->
-</wra-autocomplete>
+></wra-autocomplete>
         `
       }
     }
@@ -174,8 +172,7 @@ export const PreFilled = {
   id="test-autocomplete"
   :options="options"
   :model-value="modelValue"
->
-</wra-autocomplete>
+></wra-autocomplete>
         `
       }
     }

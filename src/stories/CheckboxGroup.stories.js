@@ -27,8 +27,7 @@ export const Default = {
   :options="options"
   item-value="value"
   item-label="label"
->
-</wra-checkbox-group>
+></wra-checkbox-group>
         `
       }
     }
