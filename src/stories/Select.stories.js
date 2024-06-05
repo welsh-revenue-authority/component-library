@@ -14,5 +14,18 @@ export const Default = {
     ],
     itemValue: "value",
     itemLabel: "label"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-select
+  :items="items"
+  item-value="value"
+  item-label="label"
+></wra-select>
+        `
+      }
+    }
   }
 };
