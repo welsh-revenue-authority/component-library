@@ -116,7 +116,7 @@ export const Outlined = {
     docs: {
       source: {
         code: `
-<wra-button outlined="true">
+<wra-button outlined>
   Outlined Button
 </wra-button>
         `
@@ -140,7 +140,7 @@ export const PrependIcon = {
     docs: {
       source: {
         code: `
-<wra-button prependIcon="true">
+<wra-button prependIcon>
   Back Button
 </wra-button>
         `
@@ -164,7 +164,7 @@ export const AppendIcon = {
     docs: {
       source: {
         code: `
-<wra-button appendIcon="true">
+<wra-button appendIcon>
   Next Button
 </wra-button>
         `

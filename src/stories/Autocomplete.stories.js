@@ -148,7 +148,7 @@ export const Autoexpand = {
   label="This is an autocomplete for Welsh local authorities"
   id="test-autocomplete"
   :options="options"
-  auto-expand="true"
+  auto-expand
 ></wra-autocomplete>
         `
       }
