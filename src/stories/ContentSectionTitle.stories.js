@@ -28,5 +28,18 @@ export const Default = {
     },
     template:
       '<WraContentSectionTitle v-bind="args"><WraHeader v-bind="args">{{ args.default }}</WraHeader></WraContentSectionTitle>'
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-content-section-title>
+  <wra-header size="h1">
+    This is a H1 header
+  </wra-header>
+</wra-content-section-title>
+        `
+      }
+    }
+  }
 };
