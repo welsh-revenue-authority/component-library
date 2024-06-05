@@ -39,7 +39,18 @@ export const Default = {
       return { args };
     },
     template: `<WraButton v-bind="args">Default Button</WraButton>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button>
+  Default Button
+</wra-button>
+        `
+      }
+    }
+  }
 };
 
 export const Small = {
@@ -52,7 +63,42 @@ export const Small = {
       return { args };
     },
     template: `<WraButton v-bind="args">Small Button</WraButton>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button size="small">
+  Small Button
+</wra-button>
+        `
+      }
+    }
+  }
+};
+
+export const BackgroundColour = {
+  args: {
+    backgroundColor: "wra-blue"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Blue Button</WraButton>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button backgroundColor="wra-blue">
+  Blue Button
+</wra-button>
+        `
+      }
+    }
+  }
 };
 
 export const Outlined = {
@@ -65,7 +111,18 @@ export const Outlined = {
       return { args };
     },
     template: `<WraButton v-bind="args">Outlined Button</WraButton>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button outlined>
+  Outlined Button
+</wra-button>
+        `
+      }
+    }
+  }
 };
 
 export const PrependIcon = {
@@ -78,7 +135,18 @@ export const PrependIcon = {
       return { args };
     },
     template: `<WraButton v-bind="args">Back Button</WraButton>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button prependIcon>
+  Back Button
+</wra-button>
+        `
+      }
+    }
+  }
 };
 
 export const AppendIcon = {
@@ -91,5 +159,16 @@ export const AppendIcon = {
       return { args };
     },
     template: `<WraButton v-bind="args">Next Button</WraButton>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button appendIcon>
+  Next Button
+</wra-button>
+        `
+      }
+    }
+  }
 };

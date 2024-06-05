@@ -42,6 +42,19 @@ export const Default = {
       },
       { description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
     ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-table
+  caption="Table caption"
+  :headers="headers"
+  :items="items"
+></wra-table>
+        `
+      }
+    }
   }
 };
 
@@ -77,5 +90,19 @@ export const InheritBackground = {
       },
       { description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
     ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-table
+  caption="Table caption"
+  :headers="headers"
+  :items="items"
+  inherit-background
+></wra-table>
+        `
+      }
+    }
   }
 };

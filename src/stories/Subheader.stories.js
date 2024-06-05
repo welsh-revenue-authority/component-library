@@ -14,5 +14,16 @@ export default {
 export const Default = {
   args: {
     default: "This is a subheader"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-subheader>
+  This is a subheader
+</wra-subheader>
+        `
+      }
+    }
   }
 };

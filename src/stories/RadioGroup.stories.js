@@ -13,5 +13,17 @@ export const Default = {
       { value: "OptionOne", label: "Option 1" },
       { value: "OptionTwo", label: "Option 2" }
     ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-radio-group
+  group-name="groupName"
+  :options="options"
+></wra-radio-group>
+        `
+      }
+    }
   }
 };

@@ -49,5 +49,28 @@ export const Default = {
         Cymraeg
       </WraButton>
     </WraAppBar>`
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-app-bar>
+  <wra-service-logo
+    label="Go to the main Welsh Government site"
+    alt="Welsh Government Logo"
+    service-logo="${wgImage.src}"
+    href="https://gov.wales/"
+    height="34px"
+  ></wra-service-logo>
+  <wra-button
+    style="background-color: #fff;
+    color: #1f1f1f;"
+  >
+    Cymraeg
+  </wra-button>
+</wra-app-bar>
+        `
+      }
+    }
+  }
 };

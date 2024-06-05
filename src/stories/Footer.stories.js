@@ -17,5 +17,16 @@ export default {
 export const Default = {
   args: {
     default: "This is a footer"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-footer>
+  This is a footer
+</wra-footer>
+        `
+      }
+    }
   }
 };
