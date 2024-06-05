@@ -37,8 +37,30 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          "Icon that displays [Pictogrammers Material Design Icons](https://pictogrammers.com/library/mdi/)"
+        component: `
+Icon that displays [Pictogrammers Material Design Icons](https://pictogrammers.com/library/mdi/)
+
+1. First, import the icon at the top of your script section
+2. Then, add it to your component's data
+3. Finally, use it in your template by passing it as a prop to the wra-icon component
+        `
+      },
+      source: {
+        code: `
+<template>
+  <wra-icon :icon="mdiAbacus" />
+</template>
+
+<script>
+import { mdiAbacus } from "@mdi/js";
+
+export default {
+  data: () => ({
+    mdiAbacus: mdiAbacus
+  })
+}
+</script>
+        `
       }
     }
   }
