@@ -54,7 +54,7 @@ export const Default = {
     docs: {
       source: {
         code: `
-<wra-app-bar style="display: flex; align-items: center;">
+<wra-app-bar>
   <wra-service-logo
     label="Go to the main Welsh Government site"
     alt="Welsh Government Logo"
@@ -64,9 +64,7 @@ export const Default = {
   ></wra-service-logo>
   <wra-button
     style="background-color: #fff;
-    color: #1f1f1f;
-    margin-left: auto;
-    padding: 8px 20px"
+    color: #1f1f1f;"
   >
     Cymraeg
   </wra-button>
