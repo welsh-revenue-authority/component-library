@@ -34,6 +34,15 @@ export const Default = {
         href: "."
       }
     ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-breadcrumbs :items="items" />
+        `
+      }
+    }
   }
 };
 
@@ -57,6 +66,17 @@ export const replaceDivider = {
       }
     ],
     divider: "-"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-breadcrumbs :items="items">
+  <template #divider> - </template>
+</wra-breadcrumbs>
+        `
+      }
+    }
   }
 };
 
@@ -80,5 +100,16 @@ export const replaceContent = {
       }
     ],
     default: "Link"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-breadcrumbs :items="items">
+  <template #default> Link </template>
+</wra-breadcrumbs>
+        `
+      }
+    }
   }
 };
