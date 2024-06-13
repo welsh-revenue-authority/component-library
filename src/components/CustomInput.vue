@@ -9,10 +9,11 @@
         :value="maskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
-        data-maska="9,99#"
-        data-maska-tokens="9:[0-9]:repeated"
-        data-maska-reversed
+        v-maska
+        :data-maska="dataMaska"
+        :data-maska-eager="dataMaskaEager"
+        :data-maska-reversed="dataMaskaReversed"
+        :data-maska-tokens="dataMaskaTokens"
         :class="prefixPadding"
       />
       <span class="suffix" v-if="!!suffix">{{ suffix }}</span>
@@ -26,11 +27,25 @@ import { vMaska } from "maska";
 
 export default {
   directives: { maska: vMaska },
-  name: "wra-number-input",
+  name: "wra-custom-input",
   props: {
     modelValue: {
       type: Number,
       required: true
+    },
+    dataMaska: {
+      type: String
+    },
+    dataMaskaEager: {
+      type: Boolean,
+      default: false
+    },
+    dataMaskaReversed: {
+      type: Boolean,
+      default: false
+    },
+    dataMaskaTokens: {
+      type: String
     },
     label: {
       type: String
@@ -38,7 +53,7 @@ export default {
     id: {
       type: String,
       required: true,
-      default: "numberInput"
+      default: "customInput"
     },
     inputmode: {
       default: "numeric",
@@ -66,20 +81,6 @@ export default {
       completed: false
     }
   }),
-  watch: {
-    modelValue(newValue) {
-      //Add thousand seperators of , to the value
-      //Helps avoid rendered fields from flickering as the commas are deleted/added
-
-      this.maskedValue = newValue
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.unmasked);
-      this.validate(this.returnValue.unmasked);
-    }
-  },
   methods: {
     validate(value) {
       this.errorMessage = "";

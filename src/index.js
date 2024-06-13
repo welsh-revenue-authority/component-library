@@ -9,6 +9,7 @@ import Button from "./components/Button.vue";
 import Checkbox from "./components/Checkbox.vue";
 import CheckboxGroup from "./components/CheckboxGroup.vue";
 import ContentSectionTitle from "./components/ContentSectionTitle.vue";
+import CustomInput from "./components/CustomInput.vue";
 import DateInput from "./components/DateInput.vue";
 import Divider from "./components/Divider.vue";
 import ExpansionPanel from "./components/ExpansionPanel.vue";
@@ -38,6 +39,7 @@ const components = {
   Checkbox,
   CheckboxGroup,
   ContentSectionTitle,
+  CustomInput,
   DateInput,
   Divider,
   ExpansionPanel,

@@ -1,6 +1,6 @@
 <template>
   <div :class="{ error: errorMessage != false }">
-    <label :for="id">{{ label }}</label>
+    <label :for="id" v-if="label">{{ label }}</label>
     <textarea
       rows="5"
       :id="id"

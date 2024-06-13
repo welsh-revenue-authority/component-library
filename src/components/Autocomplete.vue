@@ -1,6 +1,8 @@
 <template>
   <div class="autocomplete">
-    <label :for="id" class="autocomplete-label"> {{ label }}</label>
+    <label :for="id" class="autocomplete-label" v-if="label">
+      {{ label }}
+    </label>
     <input
       ref="autocompleteInput"
       v-model="userInput[optionLabel]"
