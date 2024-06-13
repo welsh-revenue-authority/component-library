@@ -1,6 +1,6 @@
 <template>
   <div :class="{ error: errorMessage != false }">
-    <label :for="id">{{ label }}</label>
+    <label :for="id" v-if="label">{{ label }}</label>
     <div class="input-wrapper">
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
       <input
