@@ -203,7 +203,6 @@ label {
   color: #1f1f1f;
   font-size: 16px;
   display: block;
-  width: 190px;
   margin-bottom: 4px;
 }
 
