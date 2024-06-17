@@ -29,7 +29,13 @@
     </tbody>
   </table>
 
-  <table id="pivoted" class="wra-table">
+  <table
+    id="pivoted"
+    class="wra-table"
+    :class="{
+      'wra-table-inherit': inheritBackground
+    }"
+  >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
         <!-- Fallback prop -->
@@ -119,8 +125,8 @@ export default {
   background-color: #f1f1f1;
   color: #1f1f1f;
   border-spacing: 0;
-  padding: 0px 16px 0px 16px;
-  table-layout: fixed;
+  padding: 0px 16px 16px 16px;
+  table-layout: auto;
 }
 
 .wra-table td,
@@ -136,8 +142,8 @@ export default {
   border-bottom: 2px solid #666666;
 }
 
-.wra-table > tbody > tr:not(:last-child) > td,
-.wra-table > tbody > tr:not(:last-child) > th {
+.wra-table > tbody > tr > td,
+.wra-table > tbody > tr > th {
   border-bottom: 1px solid #666666;
 }
 
@@ -146,7 +152,17 @@ export default {
   padding: 16px;
 }
 
+.wra-table > thead > tr > th:first-child,
+.wra-table > tbody > tr > td:first-child {
+  padding-left: 0;
+}
+.wra-table > thead > tr > th:last-child,
+.wra-table > tbody > tr > td:last-child {
+  padding-right: 0;
+}
+
 #pivoted {
+  table-layout: fixed;
   text-align: left;
 }
 
@@ -162,10 +178,8 @@ export default {
   border-bottom: none;
 }
 
-/* Remove bottom border from last item */
-#pivoted > tbody:last-child > tr:last-child > td,
-#pivoted > tbody:last-child > tr:last-child > th {
-  border-bottom: none;
+#pivoted > tbody > tr > th {
+  padding-left: 0;
 }
 
 #pivoted table {
