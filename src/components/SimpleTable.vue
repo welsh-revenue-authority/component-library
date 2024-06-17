@@ -54,7 +54,8 @@ export default {
   background-color: #f1f1f1;
   color: #1f1f1f;
   border-spacing: 0;
-  padding: 0px 16px 0px 16px;
+  padding: 0px 16px 16px 16px;
+  table-layout: auto;
 }
 
 .wra-table-inherit {
@@ -64,13 +65,24 @@ export default {
 .wra-table > thead > tr > th {
   border-bottom: 2px solid #666666;
 }
-.wra-table > tbody > tr:not(:last-child) > td,
-.wra-table > tbody > tr:not(:last-child) > th {
+
+.wra-table > tbody > tr > td,
+.wra-table > tbody > tr > th {
   border-bottom: 1px solid #666666;
 }
 
 .wra-table td,
 .wra-table th {
   padding: 16px;
+}
+
+.wra-table > thead > tr > th:first-child,
+.wra-table > tbody > tr > td:first-child {
+  padding-left: 0;
+}
+
+.wra-table > thead > tr > th:last-child,
+.wra-table > tbody > tr > td:last-child {
+  padding-right: 0;
 }
 </style>
