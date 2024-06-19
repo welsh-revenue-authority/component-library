@@ -6,10 +6,10 @@
       <input
         :id="id"
         type="text"
-        :value="maskedValue"
+        :value="unmaskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska
+        v-maska="returnValue"
         :data-maska="dataMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
@@ -72,7 +72,7 @@ export default {
   },
   emits: ["update:modelValue", "valid"],
   data: () => ({
-    maskedValue: "",
+    unmaskedValue: "",
     errorMessage: "",
     firstValidation: true,
     returnValue: {
@@ -81,6 +81,15 @@ export default {
       completed: false
     }
   }),
+  watch: {
+    modelValue(newValue) {
+      this.unmaskedValue = newValue;
+    },
+    "returnValue.masked"() {
+      this.$emit("update:modelValue", this.returnValue.unmasked);
+      this.validate(this.returnValue.unmasked);
+    }
+  },
   methods: {
     validate(value) {
       this.errorMessage = "";
@@ -124,7 +133,7 @@ export default {
   },
   mounted() {
     //Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.maskedValue = this.modelValue;
+    this.unmaskedValue = this.modelValue;
     this.validate(this.modelValue);
   }
 };
