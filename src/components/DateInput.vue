@@ -24,8 +24,7 @@ export default {
   name: "wra-date-input",
   props: {
     modelValue: {
-      required: true,
-      type: Date
+      required: true
     },
     label: {
       type: String

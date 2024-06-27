@@ -28,7 +28,7 @@ export default {
   name: "wra-price-input",
   props: {
     modelValue: {
-      type: Number
+      required: true
     },
     label: {
       type: String

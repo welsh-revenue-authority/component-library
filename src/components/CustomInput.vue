@@ -30,7 +30,6 @@ export default {
   name: "wra-custom-input",
   props: {
     modelValue: {
-      type: Number,
       required: true
     },
     dataMaska: {

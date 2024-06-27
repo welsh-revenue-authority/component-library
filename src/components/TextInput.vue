@@ -24,7 +24,6 @@ export default {
   name: "wra-text-input",
   props: {
     modelValue: {
-      type: String,
       required: true
     },
     label: {
