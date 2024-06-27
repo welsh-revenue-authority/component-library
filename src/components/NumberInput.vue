@@ -29,7 +29,6 @@ export default {
   name: "wra-number-input",
   props: {
     modelValue: {
-      type: Number,
       required: true
     },
     label: {

@@ -7,6 +7,7 @@
       :value="maskedValue"
       :inputmode="inputmode || 'numeric'"
       :placeholder="placeholder"
+      :defaultValidation="defaultValidation"
       @input="convertToDate($event.target.value)"
       v-maska
       data-maska="##/##/####"
@@ -24,8 +25,7 @@ export default {
   name: "wra-date-input",
   props: {
     modelValue: {
-      required: true,
-      type: Date
+      required: true
     },
     label: {
       type: String
@@ -43,6 +43,9 @@ export default {
     placeholder: {
       default: "DD/MM/YYYY",
       type: String
+    },
+    defaultValidation: {
+      default: false
     }
   },
   emits: ["update:modelValue", "valid"],
@@ -95,6 +98,11 @@ export default {
       }
     },
     validate(dateInput) {
+      // Bypass built in validation if defaultValidation = false
+      if (this.defaultValidation == false) {
+        return true;
+      }
+
       let result = true;
 
       if (dateInput === null) {

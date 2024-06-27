@@ -38,9 +38,9 @@ export default {
   methods: {
     checkInput: function (optionValue) {
       if (optionValue == this.modelValue) {
-        return "true";
+        return true;
       } else {
-        return "false";
+        return false;
       }
     }
   },
