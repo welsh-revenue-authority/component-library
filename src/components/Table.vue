@@ -3,9 +3,9 @@
     id="regular"
     class="wra-table"
     :class="{
-      'wra-table-inherit': inheritBackground,
-      'left-align-headers': leftAlignHeaders
+      'wra-table-inherit': inheritBackground
     }"
+    v-bind="$attrs"
   >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
@@ -15,15 +15,23 @@
     </caption>
     <thead>
       <tr>
-        <th v-for="header in headers">
+        <th
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
           {{ header.title }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in items">
-        <td v-for="(value, key) in item" :key="key">
-          {{ value }}
+      <tr v-for="item in items" :key="item.id" :class="{ bold: item.bold }">
+        <td
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
+          {{ item[header.key] }}
         </td>
       </tr>
     </tbody>
@@ -35,6 +43,7 @@
     :class="{
       'wra-table-inherit': inheritBackground
     }"
+    v-bind="$attrs"
   >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
@@ -67,10 +76,6 @@ export default {
     },
     items: {
       type: Array
-    },
-    leftAlignHeaders: {
-      type: Boolean,
-      default: true
     }
   }
 };
@@ -107,8 +112,8 @@ export default {
   }
 }
 
-.left-align-headers {
-  text-align: left;
+.bold {
+  font-weight: bold;
 }
 
 .wra-table-caption {
