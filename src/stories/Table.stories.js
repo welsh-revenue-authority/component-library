@@ -16,9 +16,9 @@ export const Default = {
     caption: "Table caption",
     headers: [
       { key: "description", title: "Purchase price bands (£)" },
-      { key: "rate", title: "Percentage rate (%)" },
-      { key: "amount", title: "Amount (£)" },
-      { key: "tax", title: "Tax due (£)" }
+      { key: "rate", title: "Percentage rate (%)", align: "right" },
+      { key: "amount", title: "Amount (£)", align: "right" },
+      { key: "tax", title: "Tax due (£)", align: "right" }
     ],
     items: [
       { description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
@@ -64,9 +64,9 @@ export const InheritBackground = {
     inheritBackground: true,
     headers: [
       { key: "description", title: "Purchase price bands (£)" },
-      { key: "rate", title: "Percentage rate (%)" },
-      { key: "amount", title: "Amount (£)" },
-      { key: "tax", title: "Tax due (£)" }
+      { key: "rate", title: "Percentage rate (%)", align: "right" },
+      { key: "amount", title: "Amount (£)", align: "right" },
+      { key: "tax", title: "Tax due (£)", align: "right" }
     ],
     items: [
       { description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
