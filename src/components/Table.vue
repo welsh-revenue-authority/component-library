@@ -3,8 +3,7 @@
     id="regular"
     class="wra-table"
     :class="{
-      'wra-table-inherit': inheritBackground,
-      'left-align-headers': leftAlignHeaders
+      'wra-table-inherit': inheritBackground
     }"
   >
     <caption v-if="caption" class="wra-table-caption">
@@ -15,15 +14,23 @@
     </caption>
     <thead>
       <tr>
-        <th v-for="header in headers">
+        <th
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
           {{ header.title }}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in items">
-        <td v-for="(value, key) in item" :key="key">
-          {{ value }}
+      <tr v-for="item in items" :key="item.id">
+        <td
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
+          {{ item[header.key] }}
         </td>
       </tr>
     </tbody>
@@ -67,10 +74,6 @@ export default {
     },
     items: {
       type: Array
-    },
-    leftAlignHeaders: {
-      type: Boolean,
-      default: true
     }
   }
 };
@@ -105,10 +108,6 @@ export default {
   #pivoted {
     display: none;
   }
-}
-
-.left-align-headers {
-  text-align: left;
 }
 
 .wra-table-caption {
