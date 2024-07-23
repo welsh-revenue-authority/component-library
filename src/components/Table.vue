@@ -5,6 +5,7 @@
     :class="{
       'wra-table-inherit': inheritBackground
     }"
+    v-bind="$attrs"
   >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
@@ -42,6 +43,7 @@
     :class="{
       'wra-table-inherit': inheritBackground
     }"
+    v-bind="$attrs"
   >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
