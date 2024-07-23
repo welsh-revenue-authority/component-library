@@ -6,6 +6,7 @@ import Autocomplete from "./components/Autocomplete.vue";
 import Banner from "./components/Banner.vue";
 import Breadcrumbs from "./components/Breadcrumbs.vue";
 import Button from "./components/Button.vue";
+import Card from "./components/Card.vue";
 import Checkbox from "./components/Checkbox.vue";
 import CheckboxGroup from "./components/CheckboxGroup.vue";
 import ContentSectionTitle from "./components/ContentSectionTitle.vue";
@@ -36,6 +37,7 @@ const components = {
   Banner,
   Breadcrumbs,
   Button,
+  Card,
   Checkbox,
   CheckboxGroup,
   ContentSectionTitle,
