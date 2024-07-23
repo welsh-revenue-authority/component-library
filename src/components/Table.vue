@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in items" :key="item.id">
+      <tr v-for="item in items" :key="item.id" :class="{ bold: item.bold }">
         <td
           v-for="header in headers"
           :key="header.key"
@@ -108,6 +108,10 @@ export default {
   #pivoted {
     display: none;
   }
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .wra-table-caption {
