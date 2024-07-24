@@ -26,21 +26,21 @@ export default {
 
 .wra-error {
   background-color: #ffe4e5;
-  border-left: 3px solid #aa1111;
+  border-left: 10px solid #aa1111;
 }
 
 .wra-success {
   background-color: #cdf7d4;
-  border-left: 3px solid #019e1e;
+  border-left: 10px solid #019e1e;
 }
 
 .wra-info {
   background-color: #c2e0fc;
-  border-left: 3px solid #0360a6;
+  border-left: 10px solid #0360a6;
 }
 
 .wra-warning {
   background-color: #fff5ce;
-  border-left: 3px solid #ffd530;
+  border-left: 10px solid #ffd530;
 }
 </style>
