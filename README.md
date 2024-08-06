@@ -36,7 +36,7 @@ app.mount("#app");
 
 ### Named imports
 
-Composition API:
+Options API:
 
 `*.vue`,
 
@@ -52,7 +52,7 @@ Composition API:
 </script>
 ```
 
-Options API:
+Composition API:
 
 `*.vue`,
 
