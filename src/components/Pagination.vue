@@ -3,7 +3,6 @@
     <button
       class="pagination-button"
       @click="decPage()"
-      @keyup.enter="decPage()"
     >
       <slot name="previous">
         <!-- Standard content -->
@@ -48,7 +47,6 @@
     <button
       class="pagination-button"
       @click="incPage()"
-      @keyup.enter="incPage()"
     >
       <slot name="next">
         <span>{{ nextLabel }}</span>
