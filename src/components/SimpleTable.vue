@@ -1,19 +1,23 @@
 <template>
-  <table
-    class="wra-table"
-    :class="{
-      'wra-table-inherit': inheritBackground,
-      'left-align-headers': leftAlignHeaders
-    }"
+  <div
+    class="wra-table-wrapper"
+    :class="{ 'wra-table-inherit': inheritBackground }"
   >
-    <caption v-if="caption" class="wra-table-caption">
-      <slot name="caption">
-        <!-- Fallback prop -->
-        {{ caption }}
+    <table
+      class="wra-table"
+      :class="{ 'left-align-headers': leftAlignHeaders }"
+    >
+      <caption v-if="caption" class="wra-table-caption">
+        <slot name="caption">
+          <!-- Fallback prop -->
+          {{ caption }}
+        </slot>
+      </caption>
+      <slot>
+        <!-- For table rows headers etc. -->
       </slot>
-    </caption>
-    <slot> </slot>
-  </table>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -36,6 +40,11 @@ export default {
 </script>
 
 <style>
+.wra-table-wrapper {
+  padding: 0px 16px 16px 16px;
+  background-color: #f1f1f1;
+}
+
 .left-align-headers {
   text-align: left;
 }
@@ -44,6 +53,7 @@ export default {
   background-color: inherit;
   text-align: left;
   padding: 16px;
+  padding-left: 0px;
   font-weight: bold;
   font-size: 20px;
 }
@@ -51,10 +61,8 @@ export default {
 .wra-table {
   width: 100%;
   line-height: 20px;
-  background-color: #f1f1f1;
   color: #1f1f1f;
   border-spacing: 0;
-  padding: 0px 16px 16px 16px;
   table-layout: auto;
 }
 
