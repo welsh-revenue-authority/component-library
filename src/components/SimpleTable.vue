@@ -77,11 +77,13 @@ export default {
 }
 
 .wra-table > thead > tr > th:first-child,
+.wra-table > tbody > tr > th:first-child,
 .wra-table > tbody > tr > td:first-child {
   padding-left: 0;
 }
 
 .wra-table > thead > tr > th:last-child,
+.wra-table > tbody > tr > th:last-child,
 .wra-table > tbody > tr > td:last-child {
   padding-right: 0;
 }
