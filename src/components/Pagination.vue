@@ -170,7 +170,7 @@ export default {
 <style scoped>
 .pagination-button {
   background-color: transparent;
-  color: #0360a6;
+  color: #2a225b;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -205,6 +205,7 @@ export default {
 
 .pagination-number {
   color: #2a2a2a;
+  background-color: #f1f1f1;
   padding: 8px;
   font-weight: 700;
   border: none;
@@ -220,7 +221,11 @@ export default {
 }
 
 .pagination-number--selected {
-  background-color: #0360a6;
+  background-color: #2a225b;
+  color: white;
+}
+
+.pagination-number--selected:hover:not(:focus) {
   color: white;
 }
 
