@@ -29,6 +29,8 @@
     <button
       v-for="page in viewablePages"
       @click="changePage(page)"
+      @keydown.left="onKeyLeft()"
+      @keydown.right="onKeyRight()"
       :ref="page"
       class="pagination-number"
       :class="currentPage === page && 'pagination-number--selected'"
@@ -115,6 +117,16 @@ export default {
         }
         this.$refs[page][0].focus();
       });
+    },
+    onKeyLeft() {
+      if (this.currentPage > this.startIndex) {
+        this.changePage(this.currentPage - 1);
+      }
+    },
+    onKeyRight() {
+      if (this.currentPage < this.totalPages) {
+        this.changePage(this.currentPage + 1);
+      }
     }
   },
   emits: ["update:currentPage"],
