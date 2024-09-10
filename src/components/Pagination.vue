@@ -1,9 +1,6 @@
 <template>
   <div class="pagination">
-    <button
-      class="pagination-button"
-      @click="decPage()"
-    >
+    <button class="pagination-button" @click="decPage()">
       <slot name="previous">
         <!-- Standard content -->
         <span class="pagination-icon previous-icon"></span>
@@ -44,10 +41,7 @@
       </button>
     </template>
 
-    <button
-      class="pagination-button"
-      @click="incPage()"
-    >
+    <button class="pagination-button" @click="incPage()">
       <slot name="next">
         <span>{{ nextLabel }}</span>
         <span class="pagination-icon next-icon"></span>
@@ -173,7 +167,6 @@ export default {
   border: none;
   cursor: pointer;
   font-size: 18px;
-  text-decoration: underline;
 }
 
 .pagination-button > *:first-child {
