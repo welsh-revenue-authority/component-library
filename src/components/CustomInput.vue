@@ -56,7 +56,20 @@ export default {
     },
     inputmode: {
       default: "numeric",
-      type: String
+      type: String,
+      validator(value) {
+        // Types that take typical text input
+        return [
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ].includes(value);
+      }
     },
     placeholder: {
       type: String

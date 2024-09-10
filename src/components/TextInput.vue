@@ -36,7 +36,19 @@ export default {
     },
     inputmode: {
       type: String,
-      default: "text"
+      default: "text",
+      validator(value) {
+        return [
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ].includes(value);
+      }
     },
     rules: {},
     dataMaska: {},
