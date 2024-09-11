@@ -12,6 +12,29 @@ Refer to [maska v2 docs](https://beholdr.github.io/maska/v2/) for more informati
         `
       }
     }
+  },
+  argTypes: {
+    type: {
+      control: {
+        type: "select"
+      },
+      options: ["none", "text", "tel", "url", "email", "numeric", "decimal"]
+    },
+    inputmode: {
+      control: {
+        type: "select"
+      },
+      options: [
+        "none",
+        "text",
+        "tel",
+        "url",
+        "email",
+        "numeric",
+        "decimal",
+        "search"
+      ]
+    }
   }
 };
 
