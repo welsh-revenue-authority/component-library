@@ -5,7 +5,7 @@
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
       <input
         :id="id"
-        type="text"
+        :type="text"
         :value="maskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
@@ -39,9 +39,24 @@ export default {
       required: true,
       default: "numberInput"
     },
+    type: {
+      type: String,
+      default: "number",
+      validator(value) {
+        // Types that take typical text input
+        return ["number", "password", "search"].includes(value);
+      }
+    },
     inputmode: {
       default: "numeric",
-      type: String
+      type: String,
+      validator(value) {
+        return [
+          "numeric",
+          "decimal",
+          "text"
+        ].includes(value);
+      }
     },
     placeholder: {
       type: String

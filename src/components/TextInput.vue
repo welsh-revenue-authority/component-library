@@ -3,7 +3,7 @@
     <label :for="id" v-if="label">{{ label }}</label>
     <input
       :id="id"
-      type="text"
+      :type="type"
       v-maska
       :data-maska="dataMaska"
       :dataMaskaTokens="dataMaskaTokens"
@@ -36,7 +36,33 @@ export default {
     },
     inputmode: {
       type: String,
-      default: "text"
+      default: "text",
+      validator(value) {
+        return [
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ].includes(value);
+      }
+    },
+    type: {
+      type: String,
+      default: "text",
+      validator(value) {
+        return [
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal"
+        ].includes(value);
+      }
     },
     rules: {},
     dataMaska: {},
