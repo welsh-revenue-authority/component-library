@@ -9,7 +9,7 @@
         :value="maskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska:returnValue.unmasked
+        v-maska:returnValue
         data-maska="9,99#"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
