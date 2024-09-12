@@ -9,7 +9,7 @@
         :value="maskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
+        v-maska:returnValue.unmasked
         data-maska="9,99#"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
@@ -74,11 +74,7 @@ export default {
     maskedValue: "",
     errorMessage: "",
     firstValidation: true,
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    }
+    returnValue: ""
   }),
   watch: {
     modelValue(newValue) {

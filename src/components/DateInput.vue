@@ -37,7 +37,12 @@ export default {
     },
     inputmode: {
       default: "numeric",
-      type: String
+      type: String,
+      validator(value) {
+        return [
+          "numeric"
+        ].includes(value);
+      }
     },
     required: {},
     placeholder: {

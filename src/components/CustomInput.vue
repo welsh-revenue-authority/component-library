@@ -9,7 +9,7 @@
         :value="unmaskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska:returnValue.unmasked
+        v-maska:returnValue
         :data-maska="dataMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
