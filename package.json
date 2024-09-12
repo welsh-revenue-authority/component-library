@@ -36,9 +36,11 @@
     "build-storybook": "storybook build",
     "build": "vite build"
   },
+  "dependencies": {
+    "maska": "^3.0.2"
+  },
   "peerDependencies": {
     "@mdi/js": "^7.4.47",
-    "maska": "^3.0.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {
