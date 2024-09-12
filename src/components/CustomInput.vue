@@ -9,7 +9,7 @@
         :value="unmaskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
+        v-maska:returnValue.unmasked
         :data-maska="dataMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
@@ -102,11 +102,7 @@ export default {
     unmaskedValue: "",
     errorMessage: "",
     firstValidation: true,
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    }
+    returnValue: ""
   }),
   watch: {
     modelValue(newValue) {

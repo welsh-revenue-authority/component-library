@@ -37,9 +37,9 @@
     "build": "vite build"
   },
   "peerDependencies": {
-    "maska": "^2.1.11",
-    "vue": "^3.3.4",
-    "@mdi/js": "^7.4.47"
+    "@mdi/js": "^7.4.47",
+    "maska": "^3.0.2",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
