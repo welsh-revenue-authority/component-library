@@ -42,11 +42,7 @@ export default {
       default: "decimal",
       type: String,
       validator(value) {
-        return [
-          "numeric",
-          "decimal",
-          "text"
-        ].includes(value);
+        return ["numeric", "decimal", "text"].includes(value);
       }
     },
     placeholder: {
@@ -95,7 +91,7 @@ export default {
     },
     "returnValue.masked"() {
       this.$emit("update:modelValue", this.returnValue.masked);
-            this.validate(this.returnValue.masked);
+      this.validate(this.returnValue.masked);
     }
   },
   methods: {

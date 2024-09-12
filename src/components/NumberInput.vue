@@ -51,11 +51,7 @@ export default {
       default: "numeric",
       type: String,
       validator(value) {
-        return [
-          "numeric",
-          "decimal",
-          "text"
-        ].includes(value);
+        return ["numeric", "decimal", "text"].includes(value);
       }
     },
     placeholder: {

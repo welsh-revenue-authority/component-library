@@ -39,9 +39,7 @@ export default {
       default: "numeric",
       type: String,
       validator(value) {
-        return [
-          "numeric"
-        ].includes(value);
+        return ["numeric"].includes(value);
       }
     },
     required: {},

@@ -54,14 +54,9 @@ export default {
       type: String,
       default: "text",
       validator(value) {
-        return [
-          "text",
-          "tel",
-          "url",
-          "email",
-          "numeric",
-          "decimal"
-        ].includes(value);
+        return ["text", "tel", "url", "email", "numeric", "decimal"].includes(
+          value
+        );
       }
     },
     rules: {},
