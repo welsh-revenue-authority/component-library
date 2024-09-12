@@ -9,7 +9,7 @@
         :value="maskedValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
+        v-maska:returnValue
         data-maska="9,99#"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
@@ -51,11 +51,7 @@ export default {
       default: "numeric",
       type: String,
       validator(value) {
-        return [
-          "numeric",
-          "decimal",
-          "text"
-        ].includes(value);
+        return ["numeric", "decimal", "text"].includes(value);
       }
     },
     placeholder: {
@@ -74,11 +70,7 @@ export default {
     maskedValue: "",
     errorMessage: "",
     firstValidation: true,
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    }
+    returnValue: ""
   }),
   watch: {
     modelValue(newValue) {

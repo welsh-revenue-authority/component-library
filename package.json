@@ -1,6 +1,6 @@
 {
   "name": "@wra-gov/vue-components",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "private": false,
   "type": "module",
   "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
@@ -36,10 +36,12 @@
     "build-storybook": "storybook build",
     "build": "vite build"
   },
+  "dependencies": {
+    "maska": "^3.0.2"
+  },
   "peerDependencies": {
-    "maska": "^2.1.11",
-    "vue": "^3.3.4",
-    "@mdi/js": "^7.4.47"
+    "@mdi/js": "^7.4.47",
+"vue": "^3.3.4"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.17",
