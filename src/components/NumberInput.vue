@@ -5,14 +5,14 @@
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
       <input
         :id="id"
-        :type="text"
-        :value="maskedValue"
+        :type="type"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
-        data-maska="9,99#"
+        :value="modelValue"
+        v-maska:returnValue.unmasked="'9,99#'"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
+        @maska="onMaska($event.detail)"
         :class="prefixPadding"
       />
       <span class="suffix" v-if="!!suffix">{{ suffix }}</span>
@@ -28,28 +28,56 @@ export default {
   directives: { maska: vMaska },
   name: "wra-number-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "numberInput"
+     */
     id: {
       type: String,
       required: true,
       default: "numberInput"
     },
+    /**
+     * The type of the input field.
+     * @type {string}
+     * @default "text"
+     * @validator value {string} - The type must be one of ["text", "password", "search"].
+     */
     type: {
       type: String,
-      default: "number",
+      // Default of number causes issues with maska
+      default: "text",
       validator(value) {
         // Types that take typical text input
-        return ["number", "password", "search"].includes(value);
+        return ["text", "password", "search"].includes(value);
       }
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "numeric"
+     */
     inputmode: {
-      default: "numeric",
       type: String,
+      default: "numeric",
       validator(value) {
         return [
           "numeric",
@@ -58,20 +86,45 @@ export default {
         ].includes(value);
       }
     },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     */
     placeholder: {
       type: String
     },
+    /**
+     * Validation rules for the input field.
+     * @type {Array<Function>}
+     */
     rules: {},
+    /**
+     * The prefix text to display before the input field.
+     * @type {string}
+     */
     prefix: {
       type: String
     },
+    /**
+     * The suffix text to display after the input field.
+     * @type {string}
+     */
     suffix: {
       type: String
+    },
+    /**
+     * Whether to emit full maska details, including masked and unmasked values.
+     * @type {boolean}
+     * @default false
+     */
+    emitMaskaDetails: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue", "valid"],
   data: () => ({
-    maskedValue: "",
+    dataValue: "",
     errorMessage: "",
     firstValidation: true,
     returnValue: {
@@ -80,24 +133,9 @@ export default {
       completed: false
     }
   }),
-  watch: {
-    modelValue(newValue) {
-      //Add thousand seperators of , to the value
-      //Helps avoid rendered fields from flickering as the commas are deleted/added
-
-      this.maskedValue = newValue
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.unmasked);
-      this.validate(this.returnValue.unmasked);
-    }
-  },
   methods: {
     validate(value) {
       this.errorMessage = "";
-
       if (this.rules != undefined) {
         //Checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
@@ -110,11 +148,9 @@ export default {
           }
         }
       }
-
       if (this.errorMessage == "") {
         this.$emit("valid", { id: this.id, value: true });
       }
-
       //Gives user a chance to type something in instead of making whole form red immediately
       if (this.firstValidation == true) {
         this.firstValidation = false;
@@ -124,6 +160,13 @@ export default {
           return;
         }
       }
+    },
+    onMaska(value) {
+      this.$emit(
+        "update:modelValue",
+        this.emitMaskaDetails ? value : value.unmasked
+      );
+      this.validate(value.unmasked);
     }
   },
   computed: {
@@ -135,10 +178,11 @@ export default {
       }
     }
   },
-  mounted() {
+  created() {
     //Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.maskedValue = this.modelValue;
+    // this.dataValue = this.modelValue ?? "";
     this.validate(this.modelValue);
+    this.$emit("update:modelValue", this.modelValue);
   }
 };
 </script>
