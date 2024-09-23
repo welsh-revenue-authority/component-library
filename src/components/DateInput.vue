@@ -5,12 +5,11 @@
       :id="id"
       type="text"
       :value="maskedValue"
-      :inputmode="inputmode || 'numeric'"
+      :inputmode="inputmode ?? 'numeric'"
       :placeholder="placeholder"
       :defaultValidation="defaultValidation"
       @input="convertToDate($event.target.value)"
-      v-maska
-      data-maska="##/##/####"
+      v-maska="'##/##/####'"
       data-maska-eager
     />
     <p v-if="showError && required != undefined">Invalid date</p>
@@ -24,17 +23,39 @@ export default {
   directives: { maska: vMaska },
   name: "wra-date-input",
   props: {
+    /**
+     * The value of the input field.
+     * @required
+     * @default ""
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "dateInput"
+     */
     id: {
       required: true,
       default: "dateInput",
       type: String
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "numeric"
+     * @validator value {string} - The input mode must be "numeric".
+     */
     inputmode: {
       default: "numeric",
       type: String,
@@ -43,10 +64,21 @@ export default {
       }
     },
     required: {},
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     * @default "DD/MM/YYYY"
+     *
+     */
     placeholder: {
       default: "DD/MM/YYYY",
       type: String
     },
+    /**
+     * Whether to use default validation for the input field.
+     * @type {boolean}
+     * @default false
+     */
     defaultValidation: {
       default: false
     }
@@ -59,6 +91,10 @@ export default {
     dateObjectValue: null
   }),
   watch: {
+    /**
+     * Watcher for modelValue prop.
+     * @param {string} newValue - The new value of the modelValue prop.
+     */
     modelValue(newValue) {
       //Required if parent changes the model value after rendering
       if (newValue != this.dateObjectValue) {
@@ -67,12 +103,16 @@ export default {
     }
   },
   methods: {
+    /**
+     * Swaps the day and month in a date string.
+     * @param {string} input - The input date string in DD/MM/YYYY format.
+     * @returns {string} - The date string with day and month swapped.
+     */
     swapMonthDay(input) {
       var value = input.split("/");
       let d = value[1] + "/" + value[0] + "/" + value[2];
       return d;
     },
-
     convertToDate(value) {
       this.maskedValue = value;
       if (value.length == 10) {
@@ -102,7 +142,7 @@ export default {
     },
     validate(dateInput) {
       // Bypass built in validation if defaultValidation = false
-      if (this.defaultValidation == false) {
+      if (this.defaultValidation === false) {
         return true;
       }
 
@@ -151,8 +191,15 @@ export default {
 
       return result;
     },
+    /**
+     * Sets the initial state of the component based on the modelValue prop.
+     */
     setInitialState() {
-      if (this.modelValue == null || this.modelValue == "") {
+      if (
+        typeof this.modelValue == undefined ||
+        this.modelValue == null ||
+        this.modelValue == ""
+      ) {
         this.convertToDate("");
         return;
       }
