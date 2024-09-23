@@ -202,7 +202,7 @@ export default {
   border: none;
   font-size: 18px;
   cursor: pointer;
-  width: 3rem;
+  min-width: 3rem;
   text-align: center;
 }
 
