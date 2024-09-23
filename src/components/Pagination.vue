@@ -95,7 +95,7 @@ export default {
       }
     },
     decPage() {
-      if (this.currentPage >= this.startIndex) {
+      if (this.currentPage >= this.startIndex + 1) {
         this.currentPage--;
         this.$emit("update:currentPage", this.currentPage);
       }
@@ -111,7 +111,7 @@ export default {
       });
     },
     onKeyLeft() {
-      if (this.currentPage > this.startIndex) {
+      if (this.currentPage > this.startIndex + 1) {
         this.changePage(this.currentPage - 1);
       }
     },
