@@ -91,18 +91,18 @@ export default {
     incPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
-        this.$emit("update:currentPage", this.currentPage);
+        this.$emit("update:modelValue", this.currentPage);
       }
     },
     decPage() {
       if (this.currentPage >= this.startIndex + 1) {
         this.currentPage--;
-        this.$emit("update:currentPage", this.currentPage);
+        this.$emit("update:modelValue", this.currentPage);
       }
     },
     changePage(page) {
       this.currentPage = page;
-      this.$emit("update:currentPage", this.currentPage);
+      this.$emit("update:modelValue", this.currentPage);
       this.$nextTick(() => {
         if (!this.$refs?.[page]?.[0]) {
           console.log("No ref found for page", page);
@@ -121,7 +121,7 @@ export default {
       }
     }
   },
-  emits: ["update:currentPage"],
+  emits: ["update:modelValue"],
   computed: {
     pageArray() {
       return Array.from(
