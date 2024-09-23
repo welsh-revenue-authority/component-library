@@ -9,7 +9,7 @@
         :value="maskedValue"
         :inputmode="inputmode || 'decimal'"
         :placeholder="placeholder"
-        v-maska:[mask]="returnValue"
+        v-maska:returnValue.masked="mask"
         data-maska="0.99"
         data-maska-tokens="0:\d:multiple|9:\d:optional"
         :class="prefixPadding"
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
@@ -40,7 +40,10 @@ export default {
     },
     inputmode: {
       default: "decimal",
-      type: String
+      type: String,
+      validator(value) {
+        return ["numeric", "decimal", "text"].includes(value);
+      }
     },
     placeholder: {
       default: "0.00",
@@ -75,11 +78,7 @@ export default {
       }
     },
     errorMessage: "",
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    },
+    returnValue: "",
     firstValidation: true
   }),
   watch: {

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
@@ -79,11 +79,7 @@ export default {
       type: String,
       default: "numeric",
       validator(value) {
-        return [
-          "numeric",
-          "decimal",
-          "text"
-        ].includes(value);
+        return ["numeric", "decimal", "text"].includes(value);
       }
     },
     /**
@@ -127,11 +123,7 @@ export default {
     dataValue: "",
     errorMessage: "",
     firstValidation: true,
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    }
+    returnValue: ""
   }),
   methods: {
     validate(value) {

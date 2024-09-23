@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
@@ -37,7 +37,10 @@ export default {
     },
     inputmode: {
       default: "numeric",
-      type: String
+      type: String,
+      validator(value) {
+        return ["numeric"].includes(value);
+      }
     },
     required: {},
     placeholder: {

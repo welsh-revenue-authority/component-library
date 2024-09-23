@@ -18,6 +18,7 @@ import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import Icon from "./components/Icon.vue";
 import NumberInput from "./components/NumberInput.vue";
+import Pagination from "./components/Pagination.vue";
 import PriceInput from "./components/PriceInput.vue";
 import RadioGroup from "./components/RadioGroup.vue";
 import Select from "./components/Select.vue";
@@ -49,6 +50,7 @@ const components = {
   Header,
   Icon,
   NumberInput,
+  Pagination,
   PriceInput,
   RadioGroup,
   Select,
