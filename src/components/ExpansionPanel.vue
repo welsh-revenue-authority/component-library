@@ -1,6 +1,7 @@
 <template>
   <div>
     <button
+      class="expansion-button"
       :aria-controls="'expansion-content-' + ariaTitle"
       :id="'expansion-control-' + ariaTitle"
       @click="togglePanel"
@@ -93,6 +94,11 @@ export default {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   margin-top: -5px;
+}
+
+.expansion-button {
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
