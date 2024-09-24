@@ -17,6 +17,7 @@ import ExpansionPanel from "./components/ExpansionPanel.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import Icon from "./components/Icon.vue";
+import Inset from "./components/Inset.vue";
 import NumberInput from "./components/NumberInput.vue";
 import Pagination from "./components/Pagination.vue";
 import PriceInput from "./components/PriceInput.vue";
@@ -49,6 +50,7 @@ const components = {
   Footer,
   Header,
   Icon,
+  Inset,
   NumberInput,
   Pagination,
   PriceInput,
