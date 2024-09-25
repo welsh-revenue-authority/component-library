@@ -14,7 +14,6 @@ import CustomInput from "./components/CustomInput.vue";
 import DateInput from "./components/DateInput.vue";
 import Divider from "./components/Divider.vue";
 import ExpansionPanel from "./components/ExpansionPanel.vue";
-import FileUpload from "./components/FileUpload.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import Icon from "./components/Icon.vue";
@@ -47,7 +46,6 @@ const components = {
   DateInput,
   Divider,
   ExpansionPanel,
-  FileUpload,
   Footer,
   Header,
   Icon,
