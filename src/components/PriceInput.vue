@@ -23,21 +23,50 @@
 <script>
 import { vMaska } from "maska/vue";
 
+/**
+ * PriceInput component
+ *
+ * This component provides a masked price input field with optional prefix and suffix.
+ * It uses the `maska` directive to apply input masks.
+ */
 export default {
   directives: { maska: vMaska },
   name: "wra-price-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     * @default ""
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "priceInput"
+     */
     id: {
       type: String,
       required: true,
       default: "priceInput"
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "decimal"
+     * @validator value {string} - The input mode must be one of ["numeric", "decimal", "text"].
+     */
     inputmode: {
       default: "decimal",
       type: String,
@@ -45,15 +74,33 @@ export default {
         return ["numeric", "decimal", "text"].includes(value);
       }
     },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     * @default "0.00"
+     */
     placeholder: {
       default: "0.00",
       type: String
     },
+    /**
+     * Validation rules for the input field.
+     * @type {Array<Function>}
+     */
     rules: {},
+    /**
+     * The prefix text to display before the input field.
+     * @type {string}
+     * @default "£"
+     */
     prefix: {
       default: "£",
       type: String
     },
+    /**
+     * The suffix text to display after the input field.
+     * @type {string}
+     */
     suffix: {
       type: String
     }
@@ -89,9 +136,9 @@ export default {
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.masked);
-      this.validate(this.returnValue.masked);
+    returnValue() {
+      this.$emit("update:modelValue", this.returnValue);
+      this.validate(this.returnValue);
     }
   },
   methods: {
@@ -137,6 +184,7 @@ export default {
   mounted() {
     //Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.maskedValue = this.modelValue;
+    this.$emit("update:modelValue", this.maskedValue);
     this.validate(this.modelValue);
   }
 };
