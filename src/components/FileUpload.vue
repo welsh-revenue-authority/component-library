@@ -94,6 +94,14 @@ export default {
   font-size: 16px;
 }
 
+.file-upload:focus {
+  border-color: #1f1f1f;
+  outline: 2px solid #1f1f1f;
+  -webkit-box-shadow: 0 0 0 4px #ffd530;
+  -moz-box-shadow: 0 0 0 4px #ffd530;
+  box-shadow: 0 0 0 4px #ffd530;
+}
+
 input[type="file"]::file-selector-button {
   background-color: #e5e5e5;
   padding: 4px 8px;
