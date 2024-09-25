@@ -99,6 +99,7 @@ input[type="file"]::file-selector-button {
   padding: 4px 8px;
   border: 1px solid black;
   margin-right: 8px;
+  cursor: pointer;
 }
 
 input[type="file"]::file-selector-button:hover {
