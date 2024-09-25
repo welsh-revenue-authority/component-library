@@ -24,6 +24,7 @@ import RadioGroup from "./components/RadioGroup.vue";
 import Select from "./components/Select.vue";
 import ServiceLogo from "./components/ServiceLogo.vue";
 import SimpleTable from "./components/SimpleTable.vue";
+import SkipLink from "./components/SkipLink.vue";
 import Snackbar from "./components/Snackbar.vue";
 import Subheader from "./components/Subheader.vue";
 import Table from "./components/Table.vue";
@@ -56,6 +57,7 @@ const components = {
   Select,
   ServiceLogo,
   SimpleTable,
+  SkipLink,
   Snackbar,
   Subheader,
   Table,
