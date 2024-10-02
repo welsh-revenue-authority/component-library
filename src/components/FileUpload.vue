@@ -1,29 +1,33 @@
 <template>
-  <div class="file-upload-wrapper">
-    <Transition name="error">
-      <ValidationTooltip
-        v-if="error"
-        class="file-upload-error-box"
-        type="wra-error"
-      >
-        {{ errorMessage }}
-      </ValidationTooltip>
-    </Transition>
+  <Transition name="error">
+    <ValidationTooltip
+      v-if="error"
+      class="file-upload-error-box"
+      type="wra-error"
+    >
+      {{ errorMessage }}
+    </ValidationTooltip>
+  </Transition>
 
-    <label class="file-upload-label" :for="id">
-      {{ label }}
-    </label>
-    <input
-      type="file"
-      class="file-upload"
-      :id="id"
-      @change="$emit('change', $event.target.files)"
-    />
+  <div class="file-upload-label" :for="id">
+    {{ label }}
+  </div>
+
+  <div class="file-upload-wrapper">
+    <Button
+      size="small"
+      :backgroundColor="backgroundColor"
+      @click="triggerFileInput"
+      >{{ buttonText }}</Button
+    >
+    <input type="file" :id="id" ref="fileInput" @change="handleFileChange" />
+    <span class="file-name">{{ fileName }}</span>
   </div>
 </template>
 
 <script>
 import ValidationTooltip from "./ValidationTooltip.vue";
+import Button from "./Button.vue";
 
 /**
  * FileUpload component
@@ -35,7 +39,8 @@ export default {
   name: "file-upload",
   emits: ["change"],
   components: {
-    ValidationTooltip
+    ValidationTooltip,
+    Button
   },
   props: {
     /**
@@ -54,7 +59,25 @@ export default {
      */
     label: {
       type: String,
-      default: "Upload File"
+      default: "File upload label"
+    },
+    /**
+     * The background colour of the button.
+     * @type {string}
+     * @default "wra-revenue"
+     */
+    backgroundColor: {
+      type: String,
+      default: ""
+    },
+    /**
+     * The text for the button.
+     * @type {string}
+     * @default "Upload file"
+     */
+    buttonText: {
+      type: String,
+      default: "Upload file"
     },
     /**
      * Whether there is an error with the file input.
@@ -68,67 +91,58 @@ export default {
     /**
      * The error message to display.
      * @type {string}
-     * @default "An error occurred"
+     * @default "An error has occurred"
      */
     errorMessage: {
       type: String,
-      default: "An error occurred"
+      default: "An error has occurred"
     }
   },
-  computed: {
-    searchIcon() {
-      return mdiUpload;
+  data() {
+    return {
+      fileName: "No file chosen"
+    };
+  },
+  methods: {
+    handleFileChange(event) {
+      const files = event.target.files;
+      if (files.length > 0) {
+        this.fileName = files[0].name;
+      } else {
+        this.fileName = "No file chosen";
+      }
+      this.$emit("change", files);
+    },
+    triggerFileInput() {
+      this.$refs.fileInput.click();
     }
   }
 };
 </script>
 
 <style scoped>
+.file-upload-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.file-upload-wrapper input[type="file"] {
+  display: none;
+}
+
 .file-upload-label {
   display: block;
   margin-bottom: 10px;
   font-size: 16px;
 }
 
-.file-upload {
-  font-size: 16px;
+.file-name {
+  margin: 0px 10px;
+  font-size: 14px;
 }
 
-.file-upload:focus {
-  border-color: #1f1f1f;
-  outline: 2px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 4px #ffd530;
-  -moz-box-shadow: 0 0 0 4px #ffd530;
-  box-shadow: 0 0 0 4px #ffd530;
-}
-
-input[type="file"]::file-selector-button {
-  background-color: #e5e5e5;
-  padding: 4px 8px;
-  border: 1px solid black;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-input[type="file"]::file-selector-button:hover {
-  background-color: #b5b5b5;
-}
-
-.file-upload-icon {
-  display: none;
-}
-
-/* Error stuff */
 .file-upload-error-box {
   margin-bottom: 16px;
-}
-
-.file-upload-error-text {
-  margin: 0px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #aa1111;
-  font-weight: 700;
 }
 
 /* Transitions */
