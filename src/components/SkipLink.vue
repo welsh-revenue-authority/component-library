@@ -1,5 +1,9 @@
 <template>
-  <button class="skip-link" @click="onClick()">
+  <button
+    class="skip-link"
+    :class="{ 'skip-link-full-width': fullWidth }"
+    @click="onClick()"
+  >
     {{ text }}
   </button>
 </template>
@@ -27,7 +31,7 @@ export default {
       }
       const element = document.getElementById(this.skipId);
       if (element) {
-        var tempTabIndex = element.tabIndex;
+        const tempTabIndex = element.tabIndex;
         element.tabIndex = -1;
         element.focus();
         element.tabIndex = tempTabIndex;
@@ -50,6 +54,10 @@ export default {
     text: {
       type: String,
       default: "Skip to main content"
+    },
+    fullWidth: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -89,5 +97,10 @@ export default {
   outline: 2px solid #1f1f1f;
   outline-offset: 0px;
   border-color: #ffd530;
+}
+
+.skip-link-full-width {
+  width: 100%;
+  text-align: left;
 }
 </style>
