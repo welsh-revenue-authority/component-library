@@ -27,7 +27,7 @@ export default {
     options: {
       type: Array,
       required: true,
-      default: []
+      default: () => []
     },
     label: {
       type: String

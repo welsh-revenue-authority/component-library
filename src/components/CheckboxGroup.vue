@@ -26,12 +26,12 @@ export default {
   name: "wra-checkbox-group",
   props: {
     modelValue: {
-      default: {}
+      default: () => {}
     },
     options: {
       required: true,
       type: Array,
-      default: []
+      default: () => []
     },
     itemValue: {
       required: true,

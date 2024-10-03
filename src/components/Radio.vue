@@ -34,10 +34,7 @@ export default {
     option: {
       type: Object,
       required: true,
-      default: {
-        label: "",
-        value: ""
-      },
+      default: () => ({ label: "", value: "" }),
       validator: function (value) {
         return (
           value.hasOwnProperty("label") &&
