@@ -103,4 +103,9 @@ export default {
   width: 100%;
   text-align: left;
 }
+
+.skip-link-full-width:focus {
+  outline-width: 0px;
+  border-width: 0px;
+}
 </style>
