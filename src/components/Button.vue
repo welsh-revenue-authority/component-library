@@ -1,20 +1,22 @@
 <template>
-  <button type="button" :class="class">
+  <button class="wra-button" type="button" :class="buttonClass">
     <span
       :class="{
         'prepend-icon-wrapper': prependIcon
       }"
+      class="icon"
     >
-      <span v-if="prependIcon" class="icon back-icon"></span
-    ></span>
+      <slot name="prepend-icon"></slot>
+    </span>
     <slot></slot>
     <span
       :class="{
         'append-icon-wrapper': appendIcon
       }"
+      class="icon"
     >
-      <span v-if="appendIcon" class="icon next-icon"></span
-    ></span>
+      <slot name="append-icon"></slot>
+    </span>
   </button>
 </template>
 
@@ -44,10 +46,11 @@ export default {
   },
 
   computed: {
-    class() {
+    buttonClass() {
       return {
         "outlined-button": this.outlined,
         [`${this.size || "default"}-button`]: true,
+        "wra-black": this.backgroundColor === "wra-black",
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
@@ -66,6 +69,9 @@ button {
   font-weight: bold;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
@@ -83,6 +89,24 @@ button:focus {
 
 button:focus:hover {
   opacity: 1;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prepend-icon-wrapper {
+  margin-right: 10px;
+}
+
+.append-icon-wrapper {
+  margin-left: 10px;
+}
+
+.wra-black {
+  background-color: #1f1f1f;
 }
 
 .wra-blue {
@@ -129,31 +153,10 @@ button:focus:hover {
   color: #fff;
   transition: all 0.3s ease;
 }
+</style>
 
-.icon {
-  content: " ";
-  display: inline-block;
-  border: solid currentColor;
-  padding: 4px;
-  vertical-align: middle;
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  margin-bottom: 3px;
-}
-
-.back-icon {
-  border-width: 3px 3px 0px 0px;
-}
-
-.next-icon {
-  border-width: 0px 0px 3px 3px;
-}
-
-.prepend-icon-wrapper {
-  margin-right: 15px;
-}
-
-.append-icon-wrapper {
-  margin-left: 15px;
+<style>
+.wra-button:focus > .icon > svg {
+  fill: #1f1f1f;
 }
 </style>
