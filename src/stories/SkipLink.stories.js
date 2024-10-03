@@ -16,6 +16,13 @@ export const CustomText = {
   }
 };
 
+export const FullWidthSkiplink = {
+  args: {
+    text: "Skip cookies",
+    fullWidth: true
+  }
+};
+
 export const SkipId = {
   args: {
     text: "Skip to main content",
