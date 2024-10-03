@@ -50,6 +50,7 @@ export default {
       return {
         "outlined-button": this.outlined,
         [`${this.size || "default"}-button`]: true,
+        "wra-black": this.backgroundColor === "wra-black",
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
@@ -97,11 +98,15 @@ button:focus:hover {
 }
 
 .prepend-icon-wrapper {
-  margin-right: 15px;
+  margin-right: 10px;
 }
 
 .append-icon-wrapper {
-  margin-left: 15px;
+  margin-left: 10px;
+}
+
+.wra-black {
+  background-color: #1f1f1f;
 }
 
 .wra-blue {

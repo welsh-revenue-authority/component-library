@@ -17,7 +17,14 @@ export default {
       control: {
         type: "radio"
       },
-      options: ["wra-revenue", "wra-blue", "wra-red", "wra-green", "wra-white"]
+      options: [
+        "wra-revenue",
+        "wra-blue",
+        "wra-red",
+        "wra-green",
+        "wra-white",
+        "wra-black"
+      ]
     },
     outlined: {
       control: "boolean"
