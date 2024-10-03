@@ -38,7 +38,7 @@ export default {
     items: {
       required: true,
       type: Array,
-      default: []
+      default: () => []
     },
     itemValue: {
       required: true,
