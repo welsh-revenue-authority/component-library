@@ -2,7 +2,7 @@
   <div role="radiogroup" :aria-label="label" :aria-describedby="hint">
     <wra-radio
       :groupName="groupName"
-      v-for="option in options"
+      v-for="option in validOptions"
       :option="option"
       :key="option.value"
       class="radio"
@@ -26,7 +26,8 @@ export default {
     },
     options: {
       type: Array,
-      required: true
+      required: true,
+      default: () => []
     },
     label: {
       type: String
@@ -46,6 +47,11 @@ export default {
   },
   components: {
     WraRadio
+  },
+  computed: {
+    validOptions() {
+      return this.options ?? [];
+    }
   }
 };
 </script>

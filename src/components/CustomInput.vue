@@ -5,16 +5,16 @@
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
       <input
         :id="id"
-        type="text"
-        :value="unmaskedValue"
+        :type="type"
+        :value="modelValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska="returnValue"
-        :data-maska="dataMaska"
+        v-maska:returnValue="dataMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
         :data-maska-tokens="dataMaskaTokens"
         :class="prefixPadding"
+        @maska="onMaska($event.detail)"
       />
       <span class="suffix" v-if="!!suffix">{{ suffix }}</span>
     </div>
@@ -23,73 +23,167 @@
 </template>
 
 <script>
-import { vMaska } from "maska";
+import { vMaska } from "maska/vue";
 
 export default {
   directives: { maska: vMaska },
   name: "wra-custom-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The mask pattern for the input field.
+     * @type {string}
+     */
     dataMaska: {
       type: String
     },
+    /**
+     * Whether to apply the mask eagerly.
+     * @type {boolean}
+     * @default false
+     */
     dataMaskaEager: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether to apply the mask in reverse.
+     * @type {boolean}
+     * @default false
+     */
     dataMaskaReversed: {
       type: Boolean,
       default: false
     },
+    /**
+     * Custom tokens for the mask.
+     * @type {string}
+     */
     dataMaskaTokens: {
       type: String
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "customInput"
+     */
     id: {
       type: String,
       required: true,
       default: "customInput"
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "numeric"
+     * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
+     */
     inputmode: {
       default: "numeric",
-      type: String
+      type: String,
+      validator(value) {
+        // Types that take typical text input
+        return [
+          "none",
+          "text",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ].includes(value);
+      }
     },
+    /**
+     * The type of the input field.
+     * @type {string}
+     * @default "text"
+     * @validator value {string} - The type must be one of ["text", "none", "tel", "url", "email", "numeric", "decimal"].
+     */
+    type: {
+      type: String,
+      default: "text",
+      validator(value) {
+        return [
+          "text",
+          "none",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal"
+        ].includes(value);
+      }
+    },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     */
     placeholder: {
       type: String
     },
     rules: {},
+    /**
+     * The prefix text to display before the input field.
+     * @type {string}
+     */
     prefix: {
       type: String
     },
+    /**
+     * The suffix text to display after the input field.
+     * @type {string}
+     */
     suffix: {
       type: String
+    },
+    /**
+     * Whether to emit maska details.
+     * @type {boolean}
+     * @default false
+     */
+    emitMaskaDetails: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue", "valid"],
   data: () => ({
-    unmaskedValue: "",
     errorMessage: "",
     firstValidation: true,
-    returnValue: {
-      masked: "",
-      unmasked: "",
-      completed: false
-    }
+    returnValue: {}
   }),
   watch: {
-    modelValue(newValue) {
-      this.unmaskedValue = newValue;
-    },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.unmasked);
-      this.validate(this.returnValue.unmasked);
+    returnValue() {
+      this.$emit("update:modelValue", this.returnValue);
+      this.validate(this.returnValue);
     }
   },
   methods: {
+    onMaska(value) {
+      this.$emit(
+        "update:modelValue",
+        this.emitMaskaDetails ? value : value.unmasked
+      );
+      this.validate(value.unmasked);
+    },
     validate(value) {
       this.errorMessage = "";
 
@@ -104,19 +198,19 @@ export default {
             break;
           }
         }
-      }
 
-      if (this.errorMessage == "") {
-        this.$emit("valid", { id: this.id, value: true });
-      }
+        if (this.errorMessage == "") {
+          this.$emit("valid", { id: this.id, value: true });
+        }
 
-      //Gives user a chance to type something in instead of making whole form red immediately
-      if (this.firstValidation == true) {
-        this.firstValidation = false;
-        if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
-          this.errorMessage = "";
-          return;
+        //Gives user a chance to type something in instead of making whole form red immediately
+        if (this.firstValidation == true) {
+          this.firstValidation = false;
+          if (this.errorMessage != "") {
+            //Ensures edge case bug doesn't happen where there's an error but no visual output
+            this.errorMessage = "";
+            return;
+          }
         }
       }
     }
@@ -132,7 +226,7 @@ export default {
   },
   mounted() {
     //Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.unmaskedValue = this.modelValue;
+    this.$emit("update:modelValue", this.modelValue);
     this.validate(this.modelValue);
   }
 };
