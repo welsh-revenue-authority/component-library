@@ -9,12 +9,12 @@
         :value="modelValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska:returnValue="dataMaska"
+        v-maska="dataMaska"
+        @maska="onMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
         :data-maska-tokens="dataMaskaTokens"
         :class="prefixPadding"
-        @maska="onMaska($event.detail)"
       />
       <span class="suffix" v-if="!!suffix">{{ suffix }}</span>
     </div>
@@ -167,28 +167,19 @@ export default {
   emits: ["update:modelValue", "valid"],
   data: () => ({
     errorMessage: "",
-    firstValidation: true,
-    returnValue: {}
+    firstValidation: true
   }),
-  watch: {
-    returnValue() {
-      this.$emit("update:modelValue", this.returnValue);
-      this.validate(this.returnValue);
-    }
-  },
   methods: {
-    onMaska(value) {
-      this.$emit(
-        "update:modelValue",
-        this.emitMaskaDetails ? value : value.unmasked
-      );
-      this.validate(value.unmasked);
+    onMaska(event) {
+      const unmaskedValue = event.detail.unmasked;
+      this.$emit("update:modelValue", unmaskedValue);
+      this.validate(unmaskedValue);
     },
     validate(value) {
       this.errorMessage = "";
 
       if (this.rules != undefined) {
-        //Checks if rules exists
+        // Checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
           let result = element(value);
@@ -198,19 +189,19 @@ export default {
             break;
           }
         }
+      }
 
-        if (this.errorMessage == "") {
-          this.$emit("valid", { id: this.id, value: true });
-        }
+      if (this.errorMessage == "") {
+        this.$emit("valid", { id: this.id, value: true });
+      }
 
-        //Gives user a chance to type something in instead of making whole form red immediately
-        if (this.firstValidation == true) {
-          this.firstValidation = false;
-          if (this.errorMessage != "") {
-            //Ensures edge case bug doesn't happen where there's an error but no visual output
-            this.errorMessage = "";
-            return;
-          }
+      // Gives user a chance to type something in instead of making whole form red immediately
+      if (this.firstValidation == true) {
+        this.firstValidation = false;
+        if (this.errorMessage != "") {
+          // Ensures edge case bug doesn't happen where there's an error but no visual output
+          this.errorMessage = "";
+          return;
         }
       }
     }
@@ -225,7 +216,7 @@ export default {
     }
   },
   mounted() {
-    //Run validation rules when component first is rendered as v-model data might be valid/invalid
+    // Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.$emit("update:modelValue", this.modelValue);
     this.validate(this.modelValue);
   }
