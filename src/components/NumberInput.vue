@@ -9,7 +9,7 @@
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
         :value="modelValue"
-        v-maska:returnValue.unmasked="'9,99#'"
+        v-maska="'9,99#'"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
         @maska="onMaska($event.detail)"
@@ -154,10 +154,8 @@ export default {
       }
     },
     onMaska(value) {
-      this.$emit(
-        "update:modelValue",
-        this.emitMaskaDetails ? value : value.unmasked
-      );
+      const emittedValue = this.emitMaskaDetails ? value : value.unmasked;
+      this.$emit("update:modelValue", emittedValue);
       this.validate(value.unmasked);
     }
   },
