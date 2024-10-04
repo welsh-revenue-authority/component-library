@@ -9,12 +9,17 @@
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
 <<<<<<< HEAD
+<<<<<<< HEAD
         v-maska:returnValue
         data-maska="9,99#"
 =======
         :value="modelValue"
         v-maska:returnValue.unmasked="'9,99#'"
 >>>>>>> 4c5019c ( 🐛 fix bug: fix NumberInput behaviour under new maska)
+=======
+        :value="modelValue"
+        v-maska:returnValue.unmasked="'9,99#'"
+>>>>>>> 057ec48d1f77466fadc6295e23a28e1c992f46e7
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
         @maska="onMaska($event.detail)"
