@@ -32,20 +32,32 @@ import TextInput from '../TextInput.vue'
 import ValidationTooltip from '../ValidationTooltip.vue'
 
 describe('AppBar', () => {
-    it('Renders', () => {
-        cy.mount(AppBar)
+    it('Renders, assign text to bar & assert text shows', () => {
+        cy.mount(AppBar, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('#__cy_vue_root > div > div').should('have.text', 'Hello there!')
     })
 })
 
 describe('Autocomplete', () => {
-    it('Renders', () => {
+    it('Renders, enter text in input & assert autocomplete finds no results', () => {
         cy.mount(Autocomplete)
+        cy.get('#__cy_vue_root > div > div > input').type('Hello there!')
+        cy.get('#__cy_vue_root > div > div > ul > li').contains('No results found')
     })
 })
 
 describe('Banner', () => {
-    it('Renders', () => {
-        cy.mount(Banner)
+    it('Renders, assign text to bar & assert text shows', () => {
+        cy.mount(Banner, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('#__cy_vue_root > div > div > div').should('have.text', 'Hello there!')
     })
 })
 
@@ -56,20 +68,37 @@ describe('Breadcrumbs', () => {
 })
 
 describe('Button', () => {
-    it('Renders', () => {
-        cy.mount(Button)
+    it('Renders, assign text to button & assert text shows', () => {
+        cy.mount(Button, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('div button').should('have.text', 'Hello there!')
     })
 })
 
 describe('Card', () => {
-    it('Renders', () => {
-        cy.mount(Card)
+    it('Renders, assign text to card & assert text shows', () => {
+        cy.mount(Card, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('#__cy_vue_root > div > div').should('have.text', 'Hello there!')
     })
 })
 
 describe('Checkbox', () => {
-    it('Renders', () => {
-        cy.mount(Checkbox)
+    it('Renders, click checkbox & assert change has been called', () => {
+        const onChangeSpy = cy.spy().as('onChangeSpy')
+        cy.mount(Checkbox, {
+            props: {
+                onchange: onChangeSpy
+            }
+        })
+        cy.get('#__cy_vue_root > div > div > label > input').click()
+        cy.get('@onChangeSpy').should('have.been.called')
     })
 })
 
@@ -80,20 +109,29 @@ describe('CheckboxGroup', () => {
 })
 
 describe('ContentSectionTitle', () => {
-    it('Renders', () => {
-        cy.mount(ContentSectionTitle)
+    it('Renders, assign text to content title & assert text shows', () => {
+        cy.mount(ContentSectionTitle, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('#__cy_vue_root > div > div').should('have.text', 'Hello there!')
     })
 })
 
 describe('CustomInput', () => {
-    it('Renders', () => {
+    it('Renders, enters text into field & asserts text assigns to component', () => {
         cy.mount(CustomInput)
+        cy.get('#customInput').type('Hello there!')
+        cy.get('#customInput').should('have.value', 'Hello there!')
     })
 })
 
 describe('DateInput', () => {
-    it('Renders', () => {
+    it('Renders, enters date into field & asserts values assign and format to component', () => {
         cy.mount(DateInput)
+        cy.get('#dateInput').type('01012000')
+        cy.get('#dateInput').should('have.value', '01/01/2000')
     })
 })
 
@@ -104,14 +142,25 @@ describe('Divider', () => {
 })
 
 describe('ExpansionPanel', () => {
-    it('Renders', () => {
-        cy.mount(ExpansionPanel)
+    it('Renders, assign text to panel, click to expand panel & assert text shows', () => {
+        cy.mount(ExpansionPanel, {
+            slots: {
+                default: 'Hello there!',
+            }
+        })
+        cy.get('#expansion-control-undefined').click()
+        cy.get('#content-undefined > div').should('have.text', 'Hello there!')
     })
 })
 
 describe('Footer', () => {
-    it('Renders', () => {
-        cy.mount(Footer)
+    it('Renders, assign text to footer & assert text shows', () => {
+        cy.mount(Footer, {
+            slots: {
+                default: 'Hello there!'
+            }
+        })
+        cy.get('#__cy_vue_root > div > footer').should('have.text', 'Hello there!')
     })
 })
 
@@ -128,8 +177,10 @@ describe('Icon', () => {
 })
 
 describe('NumberInput', () => {
-    it('Renders', () => {
+    it('Renders, enters number into field & asserts values assign and format to component', () => {
         cy.mount(NumberInput)
+        cy.get('#numberInput').type('1000000')
+        cy.get('#numberInput').should('have.value', '1,000,000')
     })
 })
 
@@ -140,14 +191,23 @@ describe('Pagination', () => {
 })
 
 describe('PriceInput', () => {
-    it('Renders', () => {
+    it('Renders, enters number into field & asserts values assign and format to component', () => {
         cy.mount(PriceInput)
+        cy.get('#priceInput').type('1000000')
+        cy.get('#priceInput').should('have.value', '1,000,000')
     })
 })
 
 describe('Radio', () => {
-    it('Renders', () => {
-        cy.mount(Radio)
+    it('Renders, click radio button & assert change has been called', () => {
+        const onChangeSpy = cy.spy().as('onChangeSpy')
+        cy.mount(Radio, {
+            props: {
+                onChange: onChangeSpy
+            }
+        })
+        cy.get('#undefined-').click()
+        cy.get('@onChangeSpy').should('have.been.called')
     })
 })
 
@@ -170,8 +230,13 @@ describe('ServiceLogo', () => {
 })
 
 describe('SimpleTable', () => {
-    it('Renders', () => {
-        cy.mount(SimpleTable)
+    it('Renders, assign text to table & assert text shows', () => {
+        cy.mount(SimpleTable, {
+            slots: {
+                default: 'Hello there!'
+            }
+        })
+        cy.get('#__cy_vue_root > div > div > table').should('have.text', 'Hello there!')
     })
 })
 
@@ -206,14 +271,18 @@ describe('Tabs', () => {
 })
 
 describe('TextArea', () => {
-    it('Renders', () => {
+    it('Renders, enters text into field & asserts text assigns to component', () => {
         cy.mount(TextArea)
+        cy.get('#__cy_vue_root > div > div > textarea').type('Hello there!')
+        cy.get('#__cy_vue_root > div > div > textarea').should('have.value', 'Hello there!')
     })
 })
 
 describe('TextInput', () => {
-    it('Renders', () => {
+    it('Renders, enters text into field & asserts text assigns to component', () => {
         cy.mount(TextInput)
+        cy.get('#textInput').type('Hello there!')
+        cy.get('#textInput').should('have.value', 'Hello there!')
     })
 })
 
