@@ -154,10 +154,8 @@ export default {
       }
     },
     onMaska(value) {
-      this.$emit(
-        "update:modelValue",
-        this.emitMaskaDetails ? value : value.unmasked
-      );
+      const emittedValue = this.emitMaskaDetails ? value : value.unmasked;
+      this.$emit("update:modelValue", emittedValue);
       this.validate(value.unmasked);
     }
   },

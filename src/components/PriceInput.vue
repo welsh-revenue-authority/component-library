@@ -9,7 +9,8 @@
         :value="maskedValue"
         :inputmode="inputmode || 'decimal'"
         :placeholder="placeholder"
-        v-maska:returnValue.masked="mask"
+        v-maska="mask"
+        @maska="onMaska"
         data-maska="0.99"
         data-maska-tokens="0:\d:multiple|9:\d:optional"
         :class="prefixPadding"
@@ -125,27 +126,28 @@ export default {
       }
     },
     errorMessage: "",
-    returnValue: "",
     firstValidation: true
   }),
   watch: {
     modelValue(newValue) {
-      //Add thousand seperators with , to the value which is a decimal number
-      //Helps avoid rendered fields from flickering as the commas are deleted/added
+      // Add thousand separators with , to the value which is a decimal number
+      // Helps avoid rendered fields from flickering as the commas are deleted/added
       this.maskedValue = newValue
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    returnValue() {
-      this.$emit("update:modelValue", this.returnValue);
-      this.validate(this.returnValue);
     }
   },
   methods: {
+    onMaska(event) {
+      // Remove all non-numeric characters except the decimal point
+      const unmaskedValue = event.detail.masked.replace(/[^0-9.]/g, "");
+      this.$emit("update:modelValue", unmaskedValue);
+      this.validate(unmaskedValue);
+    },
     validate(value) {
       this.errorMessage = "";
       if (this.rules != undefined) {
-        //Checks if rules exists
+        // Checks if rules exist
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
           let result = element(value);
@@ -161,11 +163,11 @@ export default {
         this.$emit("valid", { id: this.id, value: true });
       }
 
-      //Gives user a chance to type something in instead of making whole form red immediately
+      // Gives user a chance to type something in instead of making whole form red immediately
       if (this.firstValidation == true) {
         this.firstValidation = false;
         if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
+          // Ensures edge case bug doesn't happen where there's an error but no visual output
           this.errorMessage = "";
           return;
         }
@@ -182,7 +184,7 @@ export default {
     }
   },
   mounted() {
-    //Run validation rules when component first is rendered as v-model data might be valid/invalid
+    // Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.maskedValue = this.modelValue;
     this.$emit("update:modelValue", this.maskedValue);
     this.validate(this.modelValue);
