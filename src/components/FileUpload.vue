@@ -20,7 +20,15 @@
       @click="triggerFileInput"
       >{{ buttonText }}</Button
     >
-    <input type="file" :id="id" ref="fileInput" @change="handleFileChange" />
+    <input
+      type="file"
+      ref="fileInput"
+      :id="id"
+      :accept="accept"
+      :capture="capture"
+      :multiple="multiple"
+      @change="handleFileChange"
+    />
     <span class="file-name">{{ fileName }}</span>
   </div>
 </template>
@@ -51,6 +59,33 @@ export default {
     id: {
       type: String,
       default: "file-upload"
+    },
+    /**
+     * The accepted file types for the file input.
+     * @type {string}
+     */
+    accept: {
+      type: String
+    },
+    /**
+     * The capture attribute for the file input, specifying the type of media to capture.
+     * @type {string}
+     * @validator value {string} - The capture value must be one of ["user", "environment"].
+     */
+    capture: {
+      type: String,
+      validator(value) {
+        return ["user", "environment"].includes(value);
+      }
+    },
+    /**
+     * Whether multiple files can be selected.
+     * @type {boolean}
+     * @default false
+     */
+    multiple: {
+      type: Boolean,
+      default: false
     },
     /**
      * The label for the file input.
@@ -107,7 +142,10 @@ export default {
     handleFileChange(event) {
       const files = event.target.files;
       if (files.length > 0) {
-        this.fileName = files[0].name;
+        // FileList does not behave like a normal array so must convert
+        this.fileName = Array.from(files)
+          .map((x) => x.name)
+          .join(", ");
       } else {
         this.fileName = "No file chosen";
       }
