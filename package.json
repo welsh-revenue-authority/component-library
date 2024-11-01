@@ -36,7 +36,7 @@
     "build-storybook": "storybook build",
     "build": "vite build",
     "test": "cypress open",
-    "test:Component": "npx cypress run --component --browser edge"
+    "test:Component": "npx cypress run --component --config-file cypress.config.js --browser edge"
   },
   "dependencies": {
     "maska": "^3.0.2"
