@@ -5,7 +5,7 @@ name: Cypress Tests
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "cypress-tests" ]
 
 jobs:
   cypress-run:
