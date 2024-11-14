@@ -42,7 +42,7 @@ describe('AppBar', () => {
                     default: f.text,
                 }
             })
-            cy.get('#__cy_vue_root > div > div').should('have.text', f.text)
+            cy.get('.wra-app-bar').should('have.text', f.text)
         })
     })
 })
@@ -51,8 +51,8 @@ describe('Autocomplete', () => {
     it('Renders, enter text in input & assert autocomplete finds no results', () => {
         cy.fixture("ComponentFixtures").then((f) => {
             cy.mount(Autocomplete)
-            cy.get('#__cy_vue_root > div > div > input').type(f.text)
-            cy.get('#__cy_vue_root > div > div > ul > li').contains(f.noResults)
+            cy.get('.autocomplete-input').type(f.text)
+            cy.get('.autocomplete-item-not-clickable').contains(f.noResults)
         })
     })
 })
@@ -65,7 +65,7 @@ describe('Banner', () => {
                     default: f.text,
                 }
             })
-            cy.get('#__cy_vue_root > div > div > div').should('have.text', f.text)
+            cy.get('.wra-banner').should('have.text', f.text)
         })
     })
 })
@@ -86,7 +86,7 @@ describe('Button', () => {
                     default: f.text,
                 }
             })
-            cy.get('div button').should('have.text', f.text)
+            cy.get('.wra-button').should('have.text', f.text)
         })
     })
 })
@@ -99,7 +99,7 @@ describe('Card', () => {
                     default: f.text,
                 }
             })
-            cy.get('#__cy_vue_root > div > div').should('have.text', f.text)
+            cy.get('.card').should('have.text', f.text)
         })
     })
 })
@@ -113,7 +113,7 @@ describe('Checkbox', () => {
                     onchange: onChangeSpy
                 }
             })
-            cy.get('#__cy_vue_root > div > div > label > input').click()
+            cy.get('.checkbox-input').click()
             cy.get('@onChangeSpy').should('have.been.called')
         })
     })
@@ -135,7 +135,7 @@ describe('ContentSectionTitle', () => {
                     default: f.text,
                 }
             })
-            cy.get('#__cy_vue_root > div > div').should('have.text', f.text)
+            cy.get('.content-section-title').should('have.text', f.text)
         })
     })
 })
@@ -177,7 +177,7 @@ describe('ExpansionPanel', () => {
                 }
             })
             cy.get('#expansion-control-undefined').click()
-            cy.get('#content-undefined > div').should('have.text', f.text)
+            cy.get('#content-undefined').should('have.text', f.text)
         })
     })
 })
@@ -190,7 +190,7 @@ describe('Footer', () => {
                     default: f.text
                 }
             })
-            cy.get('#__cy_vue_root > div > footer').should('have.text', f.text)
+            cy.get('.wra-footer').should('have.text', f.text)
         })
     })
 })
@@ -286,7 +286,7 @@ describe('SimpleTable', () => {
                     default: f.text
                 }
             })
-            cy.get('#__cy_vue_root > div > div > table').should('have.text', f.text)
+            cy.get('.wra-simple-table-wrapper').should('have.text', f.text)
         })
     })
 })
@@ -308,10 +308,12 @@ describe('Subheader', () => {
 })
 
 describe('Tab', () => {
-    it('Renders', () => {
+    it('Renders, asserts colour is correct, clicks tab, asserts colour changes', () => {
         cy.fixture("ComponentFixtures").then((f) => {
             cy.mount(Tab)
         })
+        cy.get('.tab-button').should('have.css', 'background-color', 'rgb(31, 68, 109)')
+        cy.get('.tab-button').trigger('mouseover').click().should('have.css', 'background-color', 'rgb(255, 213, 48)')
     })
 })
 
@@ -335,8 +337,8 @@ describe('TextArea', () => {
     it('Renders, enters text into field & asserts text assigns to component', () => {
         cy.fixture("ComponentFixtures").then((f) => {
             cy.mount(TextArea)
-            cy.get('#__cy_vue_root > div > div > textarea').type(f.text)
-            cy.get('#__cy_vue_root > div > div > textarea').should('have.value', f.text)
+            cy.get('textarea').type(f.text)
+            cy.get('textarea').should('have.value', f.text)
         })
     })
 })
