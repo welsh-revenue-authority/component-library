@@ -142,8 +142,7 @@ export default {
       default: "An error has occurred"
     },
     /**
-     * The error message to display when the file size is too large. The max
-     * file size is displayed in place of {maxsize}.
+     * The error message to display when the file size is too large. The max file size is displayed in place of {maxsize}.
      * @type {string}
      * @default "File size must be less than"
      */
