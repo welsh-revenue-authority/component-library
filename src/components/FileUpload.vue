@@ -1,18 +1,24 @@
 <template>
   <Transition name="error">
     <ValidationTooltip
-      v-if="error"
+      v-if="isError"
       class="file-upload-error-box"
       type="wra-error"
     >
-      {{ errorMessage }}
+      <p class="file-upload-error-text" v-if="error">
+        {{ errorMessage }}
+      </p>
+      <p class="file-upload-error-text" v-if="fileSizeError">
+        {{
+          `${fileSizeErrorMessage.replace("{maxsize}", humanReadableMaxSize)}`
+        }}
+      </p>
     </ValidationTooltip>
   </Transition>
 
   <div class="file-upload-label" :for="id">
     {{ label }}
   </div>
-
   <div class="file-upload-wrapper">
     <Button
       size="small"
@@ -87,6 +93,9 @@ export default {
       type: Boolean,
       default: false
     },
+    maxSize: {
+      type: Number
+    },
     /**
      * The label for the file input.
      * @type {string}
@@ -131,11 +140,22 @@ export default {
     errorMessage: {
       type: String,
       default: "An error has occurred"
+    },
+    /**
+     * The error message to display when the file size is too large. The max file size is displayed in place of {maxsize}.
+     * @type {string}
+     * @default "File size must be less than"
+     */
+    fileSizeErrorMessage: {
+      type: String,
+      default: "File size must be less than {maxsize}"
     }
   },
   data() {
     return {
-      fileName: "No file chosen"
+      fileName: "No file chosen",
+      fileSizeError: false,
+      fileSize: 0
     };
   },
   methods: {
@@ -143,9 +163,16 @@ export default {
       const files = event.target.files;
       if (files.length > 0) {
         // FileList does not behave like a normal array so must convert
-        this.fileName = Array.from(files)
-          .map((x) => x.name)
-          .join(", ");
+        const fileArray = Array.from(files);
+        console.log(typeof this.maxSize);
+        if (typeof this.maxSize !== "undefined" && this.maxSize !== null) {
+          console.log("running");
+          this.fileSize = fileArray.reduce((acc, file) => acc + file.size, 0);
+          this.fileSizeError = this.fileSize > this.maxSize;
+          console.log(this.fileSizeError);
+          return;
+        }
+        this.fileName = fileArray.map((x) => x.name).join(", ");
       } else {
         this.fileName = "No file chosen";
       }
@@ -153,6 +180,24 @@ export default {
     },
     triggerFileInput() {
       this.$refs.fileInput.click();
+    }
+  },
+  computed: {
+    isError() {
+      return this.error || this.fileSizeError;
+    },
+    humanReadableMaxSize() {
+      if (typeof this.maxSize == "undefined" || this.maxSize === null) {
+        return 0;
+      }
+
+      if (this.maxSize < 1024) {
+        return `${this.maxSize} bytes`;
+      } else if (this.maxSize < 1024 * 1024) {
+        return `${(this.maxSize / 1024).toFixed(2)} kilobytes`;
+      } else {
+        return `${(this.maxSize / (1024 * 1024)).toFixed(2)} megabytes`;
+      }
     }
   }
 };
@@ -181,6 +226,19 @@ export default {
 
 .file-upload-error-box {
   margin-bottom: 16px;
+}
+
+.file-upload-error-text {
+  margin-block: 0px;
+  font-size: 16px;
+}
+
+.file-upload-error-box > .file-upload-error-text {
+  margin-bottom: 1rem;
+}
+
+.file-upload-error-box > .file-upload-error-text:last-child {
+  margin-bottom: 0rem;
 }
 
 /* Transitions */
