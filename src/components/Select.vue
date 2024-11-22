@@ -9,7 +9,7 @@
       <!-- default placeholder to avoid having a null ID in parent but the select box displaying a value -->
       <option value="" selected disabled hidden>-</option>
       <option
-        v-for="item in items"
+        v-for="item in validItems"
         :value="checkForObjectValue(item)"
         :selected="modelValue == checkForObjectValue(item)"
       >
@@ -37,7 +37,8 @@ export default {
     },
     items: {
       required: true,
-      type: Array
+      type: Array,
+      default: () => []
     },
     itemValue: {
       required: true,
@@ -57,7 +58,7 @@ export default {
       this.$emit("update:modelValue", value);
 
       //check if value exists in the item array
-      let exists = this.items.some((item) => {
+      let exists = this.validItems.some((item) => {
         return this.checkForObjectValue(item) == value;
       });
 
@@ -82,6 +83,11 @@ export default {
       } else {
         return input;
       }
+    }
+  },
+  computed: {
+    validItems() {
+      return this.items ?? [];
     }
   },
   mounted() {

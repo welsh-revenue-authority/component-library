@@ -1,6 +1,6 @@
 {
   "name": "@wra-gov/vue-components",
-  "version": "0.15.0",
+  "version": "0.19.2",
   "private": false,
   "type": "module",
   "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
@@ -35,12 +35,16 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vite build",
-    "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "format:check": "prettier --check .",
+    "format": "prettier --write .",
+    "test": "cypress open",
+    "test:Component": "npx cypress run --component --config-file cypress.config.js --browser edge"
+  },
+  "dependencies": {
+    "maska": "^3.0.2"
   },
   "peerDependencies": {
     "@mdi/js": "^7.4.47",
-    "maska": "^2.1.11",
     "vue": "^3.3.4"
   },
   "devDependencies": {
@@ -54,6 +58,7 @@
     "@storybook/vue3-vite": "^7.6.17",
     "@vitejs/plugin-vue": "^5.0.4",
     "prettier": "3.3.3",
+    "cypress": "^13.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.6.17",

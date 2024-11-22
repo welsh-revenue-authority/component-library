@@ -1,19 +1,23 @@
 <template>
-  <table
-    class="wra-table"
-    :class="{
-      'wra-table-inherit': inheritBackground,
-      'left-align-headers': leftAlignHeaders
-    }"
+  <div
+    class="wra-simple-table-wrapper"
+    :class="{ 'wra-simple-table-inherit': inheritBackground }"
   >
-    <caption v-if="caption" class="wra-table-caption">
-      <slot name="caption">
-        <!-- Fallback prop -->
-        {{ caption }}
+    <table
+      class="wra-simple-table"
+      :class="{ 'left-align-headers': leftAlignHeaders }"
+    >
+      <caption v-if="caption" class="wra-simple-table-caption">
+        <slot name="caption">
+          <!-- Fallback prop -->
+          {{ caption }}
+        </slot>
+      </caption>
+      <slot>
+        <!-- For table rows headers etc. -->
       </slot>
-    </caption>
-    <slot> </slot>
-  </table>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -36,53 +40,59 @@ export default {
 </script>
 
 <style>
+.wra-simple-table-wrapper {
+  padding: 0px 16px 16px 16px;
+  background-color: #f1f1f1;
+}
+
 .left-align-headers {
   text-align: left;
 }
 
-.wra-table-caption {
+.wra-simple-table-caption {
   background-color: inherit;
   text-align: left;
   padding: 16px;
+  padding-left: 0px;
   font-weight: bold;
   font-size: 20px;
 }
 
-.wra-table {
+.wra-simple-table {
   width: 100%;
   line-height: 20px;
-  background-color: #f1f1f1;
   color: #1f1f1f;
   border-spacing: 0;
-  padding: 0px 16px 16px 16px;
   table-layout: auto;
 }
 
-.wra-table-inherit {
+.wra-simple-table-inherit {
   background-color: inherit;
 }
 
-.wra-table > thead > tr > th {
+.wra-simple-table > thead > tr > th {
   border-bottom: 2px solid #666666;
 }
 
-.wra-table > tbody > tr > td,
-.wra-table > tbody > tr > th {
+.wra-simple-table > tbody > tr > td,
+.wra-simple-table > tbody > tr > th {
   border-bottom: 1px solid #666666;
 }
 
-.wra-table td,
-.wra-table th {
+.wra-simple-table td,
+.wra-simple-table th {
   padding: 16px;
 }
 
-.wra-table > thead > tr > th:first-child,
-.wra-table > tbody > tr > td:first-child {
+.wra-simple-table > thead > tr > th:first-child,
+.wra-simple-table > tbody > tr > th:first-child,
+.wra-simple-table > tbody > tr > td:first-child {
   padding-left: 0;
 }
 
-.wra-table > thead > tr > th:last-child,
-.wra-table > tbody > tr > td:last-child {
+.wra-simple-table > thead > tr > th:last-child,
+.wra-simple-table > tbody > tr > th:last-child,
+.wra-simple-table > tbody > tr > td:last-child {
   padding-right: 0;
 }
 </style>

@@ -14,15 +14,19 @@ import CustomInput from "./components/CustomInput.vue";
 import DateInput from "./components/DateInput.vue";
 import Divider from "./components/Divider.vue";
 import ExpansionPanel from "./components/ExpansionPanel.vue";
+import FileUpload from "./components/FileUpload.vue";
 import Footer from "./components/Footer.vue";
 import Header from "./components/Header.vue";
 import Icon from "./components/Icon.vue";
+import Inset from "./components/Inset.vue";
 import NumberInput from "./components/NumberInput.vue";
+import Pagination from "./components/Pagination.vue";
 import PriceInput from "./components/PriceInput.vue";
 import RadioGroup from "./components/RadioGroup.vue";
 import Select from "./components/Select.vue";
 import ServiceLogo from "./components/ServiceLogo.vue";
 import SimpleTable from "./components/SimpleTable.vue";
+import SkipLink from "./components/SkipLink.vue";
 import Snackbar from "./components/Snackbar.vue";
 import Subheader from "./components/Subheader.vue";
 import Table from "./components/Table.vue";
@@ -45,15 +49,19 @@ const components = {
   DateInput,
   Divider,
   ExpansionPanel,
+  FileUpload,
   Footer,
   Header,
   Icon,
+  Inset,
   NumberInput,
+  Pagination,
   PriceInput,
   RadioGroup,
   Select,
   ServiceLogo,
   SimpleTable,
+  SkipLink,
   Snackbar,
   Subheader,
   Table,

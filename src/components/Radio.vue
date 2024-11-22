@@ -33,7 +33,15 @@ export default {
     },
     option: {
       type: Object,
-      required: true
+      required: true,
+      default: () => ({ label: "", value: "" }),
+      validator: function (value) {
+        return (
+          value.hasOwnProperty("label") &&
+          value.hasOwnProperty("value") &&
+          value.hasOwnProperty("info")
+        );
+      }
     },
     isChecked: {
       type: Boolean,
