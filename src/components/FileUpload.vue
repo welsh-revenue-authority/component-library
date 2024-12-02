@@ -164,12 +164,9 @@ export default {
       if (files.length > 0) {
         // FileList does not behave like a normal array so must convert
         const fileArray = Array.from(files);
-        console.log(typeof this.maxSize);
         if (typeof this.maxSize !== "undefined" && this.maxSize !== null) {
-          console.log("running");
           this.fileSize = fileArray.reduce((acc, file) => acc + file.size, 0);
           this.fileSizeError = this.fileSize > this.maxSize;
-          console.log(this.fileSizeError);
           return;
         }
         this.fileName = fileArray.map((x) => x.name).join(", ");
