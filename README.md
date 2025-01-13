@@ -59,7 +59,7 @@ Composition API:
 
 ```html
 <script setup>
-  import { Button } from "@wra-gov/vue-components";
+  import { WraButton } from "@wra-gov/vue-components";
 </script>
 
 ...
