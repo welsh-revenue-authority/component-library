@@ -59,10 +59,22 @@ Composition API:
 
 ```html
 <script setup>
-  import { Button } from "@wra-gov/vue-components";
+  import { WraButton } from "@wra-gov/vue-components";
 </script>
 
 ...
+```
+
+### Nuxt usage
+
+Create a plugin in `/plugins/component-library.js`,
+
+```js
+import WraComponents from "@wra-gov/vue-components";
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(WraComponents);
+});
 ```
 
 ## Documentation
