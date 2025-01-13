@@ -65,6 +65,18 @@ Composition API:
 ...
 ```
 
+### Nuxt usage
+
+Create a plugin in `/plugins/component-library.js`,
+
+```js
+import WraComponents from "@wra-gov/vue-components";
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(WraComponents);
+});
+```
+
 ## Documentation
 
 [Storybook documentation](https://welsh-revenue-authority.github.io/component-library)
