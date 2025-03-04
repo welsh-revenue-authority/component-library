@@ -8,9 +8,56 @@ export default {
 };
 
 export const Default = {
+  render: (args) => ({
+    components: { WraBanner },
+    setup() {
+      return { args };
+    },
+    template: `
+    <WraBanner v-bind="args">
+      Tell us what you think of this service by <a href=".">giving feedback</a>.
+    </WraBanner>`
+  }),
+  // Make source code box accurate
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-banner>
+  Tell us what you think of this service by <a href=".">giving feedback</a>.
+</wra-banner>
+        `
+      }
+    }
+  }
+};
+
+export const NewService = {
   args: {
-    default: "This is a banner",
-    hiddenPrint: false
+    newService: true
+  },
+  render: (args) => ({
+    components: { WraBanner },
+    setup() {
+      return { args };
+    },
+    template: `
+    <WraBanner v-bind="args">
+      This is a new service. <a href=".">Give feedback</a> to help improve it.
+    </WraBanner>
+    `
+  }),
+  // Make source code box accurate
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-banner new-service>
+  Tell us what you think of this service by <a href=".">giving feedback</a>.
+</wra-banner>
+        `
+      }
+    }
   }
 };
 
@@ -19,12 +66,11 @@ export const CookiesExample = {
     default:
       "We use cookies to collect information about how you use this website. We use this information to improve our services.",
     actions: `
-      <wra-button size="small" :outlined="true">Accept cookies</wra-button>
-      <wra-button size="small" :outlined="true">Change cookie settings</wra-button>
+      <wra-button size="small" outlined>Accept cookies</wra-button>
+      <wra-button size="small" outlined>Change cookie settings</wra-button>
     `
   },
   // Process for putting other components in slots in storybook
-  // Would not recommend
   render: (args) => ({
     components: { WraBanner, WraButton },
     setup() {
@@ -49,8 +95,8 @@ export const CookiesExample = {
 <wra-banner>
   <p>We use cookies to collect information about how you use this website. We use this information to improve our services.</p>
   <template #actions>
-    <wra-button label="Accept cookies" :outlined="true" />
-    <wra-button label="Change cookie settings" :outlined="true" />
+    <wra-button size="small" outlined>Accept cookies</wra-button>
+    <wra-button size="small" outlined>Change cookie settings</wra-button>
   </template>
 </wra-banner>
         `

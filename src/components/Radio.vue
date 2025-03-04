@@ -8,7 +8,7 @@
         :id="groupName + '-' + option.value"
         @change="$parent.$emit('update:modelValue', option.value)"
         class="radio-input"
-        :checked="isChecked == 'true'"
+        :checked="isChecked == true"
         :aria-checked="isChecked"
       />
       <span class="radio-text">
@@ -32,8 +32,16 @@ export default {
       required: true
     },
     option: {
-      type: Array,
-      required: true
+      type: Object,
+      required: true,
+      default: () => ({ label: "", value: "" }),
+      validator: function (value) {
+        return (
+          value.hasOwnProperty("label") &&
+          value.hasOwnProperty("value") &&
+          value.hasOwnProperty("info")
+        );
+      }
     },
     isChecked: {
       type: Boolean,

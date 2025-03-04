@@ -21,7 +21,8 @@ export const WRA = {
     label: "Go to the main Welsh Revenue Authority site",
     alt: "Welsh Revenue Authority Logo",
     serviceLogo: wraImage.src,
-    href: "https://gov.wales/welsh-revenue-authority"
+    href: "https://gov.wales/welsh-revenue-authority",
+    height: "60px"
   }
 };
 
@@ -30,6 +31,7 @@ export const WG = {
     label: "Go to the main Welsh Government site",
     alt: "Welsh Government Logo",
     serviceLogo: wgImage.src,
-    href: "https://gov.wales/"
+    href: "https://gov.wales/",
+    height: "80px"
   }
 };

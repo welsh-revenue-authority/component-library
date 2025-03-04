@@ -3,7 +3,16 @@ import WraPriceInput from "../components/PriceInput.vue";
 export default {
   title: "Form Inputs & Controls/PriceInput",
   component: WraPriceInput,
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  argTypes: {
+    inputmode: 
+    {
+      control: {
+        type: "select"
+      },
+      options: ["numeric", "decimal", "text"]
+    }
+  }
 };
 
 export const Default = {
@@ -12,6 +21,6 @@ export const Default = {
     modelValue: 1234.56,
     id: "priceInput",
     placeholder: "0.00",
-    prefix: "£"
+    prefix: "£",
   }
 };

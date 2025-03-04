@@ -1,10 +1,11 @@
 <template>
   <table
+    id="regular"
     class="wra-table"
     :class="{
-      'wra-table-inherit': inheritBackground,
-      'left-align-headers': leftAlignHeaders
+      'wra-table-inherit': inheritBackground
     }"
+    v-bind="$attrs"
   >
     <caption v-if="caption" class="wra-table-caption">
       <slot name="caption">
@@ -12,7 +13,50 @@
         {{ caption }}
       </slot>
     </caption>
-    <slot> </slot>
+    <thead>
+      <tr>
+        <th
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
+          {{ header.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in items" :key="item.id" :class="{ bold: item.bold }">
+        <td
+          v-for="header in headers"
+          :key="header.key"
+          :style="{ textAlign: header.align || 'left' }"
+        >
+          {{ item[header.key] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table
+    id="pivoted"
+    class="wra-table"
+    :class="{
+      'wra-table-inherit': inheritBackground
+    }"
+    v-bind="$attrs"
+  >
+    <caption v-if="caption" class="wra-table-caption">
+      <slot name="caption">
+        <!-- Fallback prop -->
+        {{ caption }}
+      </slot>
+    </caption>
+    <tbody v-for="item in items" :key="item.id">
+      <tr v-for="(header, index) in headers" :key="index">
+        <th>{{ header.title }}</th>
+        <td>{{ item[header.key] }}</td>
+      </tr>
+    </tbody>
   </table>
 </template>
 
@@ -27,17 +71,49 @@ export default {
     caption: {
       type: String
     },
-    leftAlignHeaders: {
-      type: Boolean,
-      default: true
+    headers: {
+      type: Array
+    },
+    items: {
+      type: Array
     }
   }
 };
 </script>
 
 <style>
-.left-align-headers {
-  text-align: left;
+@media screen and (min-width: 600px) {
+  #regular {
+    display: table;
+  }
+
+  #pivoted {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  #regular {
+    display: none;
+  }
+
+  #pivoted {
+    display: table;
+  }
+}
+
+@media print {
+  #regular {
+    display: table;
+  }
+
+  #pivoted {
+    display: none;
+  }
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .wra-table-caption {
@@ -54,7 +130,13 @@ export default {
   background-color: #f1f1f1;
   color: #1f1f1f;
   border-spacing: 0;
-  padding: 0px 16px 0px 16px;
+  padding: 0px 16px 16px 16px;
+  table-layout: auto;
+}
+
+.wra-table td,
+.wra-table th {
+  word-break: break-word;
 }
 
 .wra-table-inherit {
@@ -64,13 +146,53 @@ export default {
 .wra-table > thead > tr > th {
   border-bottom: 2px solid #666666;
 }
-.wra-table > tbody > tr:not(:last-child) > td,
-.wra-table > tbody > tr:not(:last-child) > th {
+
+.wra-table > tbody > tr > td,
+.wra-table > tbody > tr > th {
   border-bottom: 1px solid #666666;
 }
 
 .wra-table td,
 .wra-table th {
-  padding: 16px 0px;
+  padding: 16px;
+}
+
+.wra-table > thead > tr > th:first-child,
+.wra-table > tbody > tr > td:first-child {
+  padding-left: 0;
+}
+.wra-table > thead > tr > th:last-child,
+.wra-table > tbody > tr > td:last-child {
+  padding-right: 0;
+}
+
+#pivoted {
+  table-layout: fixed;
+  text-align: left;
+}
+
+/* Add bottom border beneath each item */
+#pivoted > tbody > tr:last-child > td,
+#pivoted > tbody > tr:last-child > th {
+  border-bottom: 1px solid #666666;
+}
+
+/* Overwrite styling from #regular table */
+#pivoted > tbody > tr:not(:last-child) > td,
+#pivoted > tbody > tr:not(:last-child) > th {
+  border-bottom: none;
+}
+
+#pivoted > tbody > tr > th {
+  padding-left: 0;
+}
+
+#pivoted table {
+  width: 100%;
+}
+
+#pivoted > table > tr > th,
+#pivoted > table > tr > td {
+  width: 50%;
 }
 </style>

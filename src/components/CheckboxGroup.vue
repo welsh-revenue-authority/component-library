@@ -3,7 +3,7 @@
     role="checkbox"
     class="checkbox"
     :aria-label="checkForObjectLabel(option)"
-    v-for="option in options"
+    v-for="option in validOptions"
   >
     <label :for="checkForObjectValue(option)" class="checkbox-label">
       <input
@@ -25,24 +25,30 @@ import WraCheckbox from "./Checkbox.vue";
 export default {
   name: "wra-checkbox-group",
   props: {
-    modelValue: {},
+    modelValue: {
+      default: () => {}
+    },
     options: {
       required: true,
-      type: Array
+      type: Array,
+      default: () => []
     },
     itemValue: {
       required: true,
-      type: String
+      type: String,
+      default: "value"
     },
     itemLabel: {
       required: true,
-      type: String
+      type: String,
+      default: "label"
     },
     returnObject: {}
   },
   data() {
     return {
-      checked: {}
+      checked: {},
+      value: {}
     };
   },
   methods: {
@@ -56,8 +62,8 @@ export default {
         Object.keys(this.checked).forEach((key) => {
           const element = this.checked[key];
           if (element == true) {
-            for (let index = 0; index < this.options.length; index++) {
-              const option = this.options[index];
+            for (let index = 0; index < this.validOptions.length; index++) {
+              const option = this.validOptions[index];
               //check if item is an object
               if (typeof option === "object") {
                 if (option[this.itemValue] == key) {
@@ -96,10 +102,16 @@ export default {
       }
     }
   },
+  computed: {
+    validOptions() {
+      return this.options ?? [];
+    }
+  },
   mounted() {
     //sets up which values should be checked initially e.g. if editing existing data
-    for (let index = 0; index < this.modelValue.length; index++) {
-      const element = this.modelValue[index];
+    this.value = this.modelValue ?? {};
+    for (let index = 0; index < this.value.length; index++) {
+      const element = this.value[index];
       if (typeof element === "object") {
         this.checked[element[this.itemValue]] = true;
       } else {

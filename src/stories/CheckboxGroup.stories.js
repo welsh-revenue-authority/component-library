@@ -18,5 +18,18 @@ export const Default = {
       { value: "OptionOne", label: "Option 1" },
       { value: "OptionTwo", label: "Option 2" }
     ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-checkbox-group
+  :options="options"
+  item-value="value"
+  item-label="label"
+></wra-checkbox-group>
+        `
+      }
+    }
   }
 };
