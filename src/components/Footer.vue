@@ -21,7 +21,7 @@ export default {
 .wra-footer {
   flex-grow: 0;
   background-color: #f1f1f1;
-  padding: 70px 20px 50px 20px;
+  padding: 70px 20px 40px 20px;
 }
 
 @media print {
