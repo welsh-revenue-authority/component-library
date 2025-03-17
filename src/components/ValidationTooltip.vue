@@ -21,7 +21,7 @@ export default {
   color: #1f1f1f;
   border-radius: 0px;
   font-size: 18px;
-  padding: 20px 16px 20px 24px;
+  padding: 25px;
 }
 
 .wra-error {
