@@ -98,11 +98,11 @@ button:focus:hover {
 }
 
 .prepend-icon-wrapper {
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .append-icon-wrapper {
-  margin-left: 10px;
+  margin-left: 8px;
 }
 
 .wra-black {
@@ -132,13 +132,15 @@ button:focus:hover {
 }
 
 .default-button {
-  font-size: 20px;
-  padding: 15px 20px;
+  font-size: 16px;
+  padding: 10px 20px;
+  line-height: 24px;
 }
 
 .small-button {
   font-size: 14px;
-  padding: 5px 10px;
+  padding: 5px 15px;
+  line-height: 24px;
 }
 
 .outlined-button {
