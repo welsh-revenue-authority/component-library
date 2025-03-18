@@ -87,11 +87,12 @@ export default {
 }
 
 textarea {
+  font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif;
   font-size: 16px;
-  padding: 10px 16px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #1f1f1f;
-  line-height: 20px;
+  line-height: 1.15;
   display: block;
   width: 100%;
 }
