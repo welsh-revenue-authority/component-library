@@ -208,11 +208,11 @@ export default {
 }
 
 .autocomplete-input {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-size: 16px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #1f1f1f;
-  line-height: 20px;
+  line-height: 1.15;
   display: block;
   width: 100%;
 }
@@ -251,7 +251,8 @@ export default {
 }
 
 .autocomplete-list > li {
-  padding: 2px 16px;
+  font-size: 16px;
+  padding: 2px 10px;
   border-bottom: 1px solid #1f1f1f;
   cursor: pointer;
 }
@@ -266,7 +267,7 @@ export default {
 
 ul.autocomplete-list > li:hover,
 ul.autocomplete-list > li.autocomplete-item--focus {
-  background: #3b7dc5;
+  background: #0360a6;
   color: #ffffff;
 }
 
