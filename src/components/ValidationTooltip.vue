@@ -31,7 +31,7 @@ export default {
 
 .wra-success {
   background-color: #cdf7d4;
-  border-left: 10px solid #019e1e;
+  border-left: 10px solid #018a1e;
 }
 
 .wra-info {

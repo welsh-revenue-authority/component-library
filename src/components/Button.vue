@@ -118,7 +118,7 @@ button:focus:hover {
 }
 
 .wra-green {
-  background-color: #019e1e;
+  background-color: #018a1e;
 }
 
 .wra-revenue {
