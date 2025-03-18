@@ -117,16 +117,16 @@ select {
   cursor: inherit;
   line-height: inherit;
   outline: none;
-  padding: 16px;
+  padding: 10px;
 }
 
 .select {
   border: 1px solid #1f1f1f;
   border-radius: 0;
-  padding-right: 16px;
+  padding-right: 10px;
   font-size: 16px;
   cursor: pointer;
-  line-height: 20px;
+  line-height: 1.15;
   background-color: #fff;
   display: grid;
   grid-template-areas: "select";
