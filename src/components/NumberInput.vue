@@ -193,32 +193,30 @@ export default {
 }
 
 .prefix {
-  padding: 16px 0px 16px 16px;
-  font-size: 18px;
-  width: 28px;
+  padding: 10px 0px 10px 10px;
+  font-size: 16px;
 }
 
 .suffix {
-  padding: 16px 16px 16px 0px;
-  font-size: 18px;
+  padding: 10px 10px 10px 0px;
+  font-size: 16px;
   z-index: 1;
 }
 
 .input-wrapper input {
-  font-size: 18px;
+  font-size: 16px;
   background-color: transparent;
-  line-height: 20px;
+  line-height: 1.15;
   width: 100%;
-  height: 59px;
   outline: none;
 }
 
 .padding-for-prefix {
-  padding: 16px 6px 16px 6px;
+  padding: 10px 6px 10px 6px;
 }
 
 .padding-for-no-prefix {
-  padding: 16px 16px 16px 16px;
+  padding: 10px;
 }
 
 .input-wrapper:focus-within {
