@@ -174,13 +174,12 @@ export default {
 }
 
 input {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-size: 16px;
+  padding: 10px;
   background-color: #fff;
   border: 1px solid #1f1f1f;
-  line-height: 20px;
+  line-height: 1.15;
   display: block;
-  height: 59px;
   width: 100%;
 }
 
