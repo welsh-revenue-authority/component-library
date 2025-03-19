@@ -1,0 +1,20 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --color-wra-revenue: #2a225b;
+  --color-wra-black: #1f1f1f;
+  --color-wra-charcoal: #323232;
+  --color-wra-light-grey: #f1f1f1;
+  --color-wra-grey: #e5e5e5;
+  --color-wra-mid-grey: #b5b5b5;
+  --color-wra-dark-grey: #666666;
+  --color-wra-light-red: #ffe4e5;
+  --color-wra-red: #aa1111;
+  --color-wra-light-blue: #c2e0fc;
+  --color-wra-blue: #0360a6;
+  --color-wra-light-green: #cdf7d4;
+  --color-wra-green: #018a1e;
+  --color-wra-light-yellow: #fff5ce;
+  --color-wra-yellow: #ffd530;
+}
