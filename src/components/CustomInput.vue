@@ -290,6 +290,6 @@ div.error > p {
   background: var(--color-wra-light-red);
   color: var(--color-wra-black);
   font-size: 16px;
-  border-left: 10px solid #aa1111;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

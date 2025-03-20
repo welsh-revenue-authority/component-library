@@ -26,7 +26,7 @@ export default {
 
 .wra-error {
   background-color: var(--color-wra-light-red);
-  border-left: 10px solid #aa1111;
+  border-left: 10px solid var(--color-wra-red);
 }
 
 .wra-success {

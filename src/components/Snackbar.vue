@@ -190,7 +190,7 @@ export default {
 /* Snackbar colours */
 .wra-error {
   background-color: var(--color-wra-light-red);
-  border-color: #aa1111;
+  border-color: var(--color-wra-red);
 }
 
 .wra-success {

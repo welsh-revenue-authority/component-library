@@ -114,7 +114,7 @@ button:focus:hover {
 }
 
 .wra-red {
-  background-color: #aa1111;
+  background-color: var(--color-wra-red);
 }
 
 .wra-green {
