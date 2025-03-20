@@ -86,6 +86,6 @@ export default {
 }
 
 .wra-inset.revenue-blue {
-  border-left-color: #2a225b;
+  border-left-color: var(--color-wra-revenue);
 }
 </style>

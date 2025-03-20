@@ -91,7 +91,7 @@ export default {
 .wra-breadcrumbs-link {
   text-decoration: none;
   font-weight: bold;
-  color: #2a225b;
+  color: var(--color-wra-revenue);
 }
 
 .wra-breadcrumbs-link:hover {

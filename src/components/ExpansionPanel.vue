@@ -106,7 +106,7 @@ button {
   font-weight: bold;
   padding: 15px 20px;
   background-color: transparent;
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   border: none;
   border-left: 2px solid #b5b5b5;
   cursor: pointer;

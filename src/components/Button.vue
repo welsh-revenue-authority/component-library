@@ -122,7 +122,7 @@ button:focus:hover {
 }
 
 .wra-revenue {
-  background-color: #2a225b;
+  background-color: var(--color-wra-revenue);
 }
 
 .wra-white {

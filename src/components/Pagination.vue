@@ -162,7 +162,7 @@ export default {
 <style scoped>
 .pagination-button {
   background-color: transparent;
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -212,7 +212,7 @@ export default {
 }
 
 .pagination-number--selected {
-  background-color: #2a225b;
+  background-color: var(--color-wra-revenue);
   color: white;
 }
 

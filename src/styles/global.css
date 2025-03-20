@@ -30,12 +30,12 @@ blockquote {
 
 /*Links*/
 a {
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   font-weight: bold;
 }
 
 a:hover {
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   text-decoration: none;
 }
 
