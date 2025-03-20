@@ -267,7 +267,7 @@ export default {
 
 ul.autocomplete-list > li:hover,
 ul.autocomplete-list > li.autocomplete-item--focus {
-  background: #0360a6;
+  background: var(--color-wra-blue);
   color: #ffffff;
 }
 

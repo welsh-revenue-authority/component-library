@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 .tabs {
-  background-color: #0360a6;
+  background-color: var(--color-wra-blue);
   width: 100%;
 }
 </style>

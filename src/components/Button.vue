@@ -110,7 +110,7 @@ button:focus:hover {
 }
 
 .wra-blue {
-  background-color: #0360a6;
+  background-color: var(--color-wra-blue);
 }
 
 .wra-red {

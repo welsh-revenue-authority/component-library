@@ -200,7 +200,7 @@ export default {
 
 .wra-info {
   background-color: var(--color-wra-light-blue);
-  border-color: #0360a6;
+  border-color: var(--color-wra-blue);
 }
 
 .wra-warning {

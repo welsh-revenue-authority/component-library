@@ -50,7 +50,7 @@ export default {
 }
 
 .tab-button {
-  border-top: 6px #0360a6 solid;
+  border-top: 6px solid var(--color-wra-blue);
   font-size: 24px;
   font-weight: bold;
   color: var(--color-wra-light-blue);
@@ -78,7 +78,7 @@ export default {
 }
 
 .tab-button:focus {
-  border-top: 6px #0360a6 solid;
+  border-top: 6px solid var(--color-wra-blue);
   color: var(--color-wra-black);
   background: #ffd530;
   box-shadow: 2px 2px 0px 0px var(--color-wra-black) inset, -2px -2px 0px 0px var(--color-wra-black) inset;

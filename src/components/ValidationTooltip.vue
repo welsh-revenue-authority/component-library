@@ -36,7 +36,7 @@ export default {
 
 .wra-info {
   background-color: var(--color-wra-light-blue);
-  border-left: 10px solid #0360a6;
+  border-left: 10px solid var(--color-wra-blue);
 }
 
 .wra-warning {
