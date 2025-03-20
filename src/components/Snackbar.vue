@@ -194,7 +194,7 @@ export default {
 }
 
 .wra-success {
-  background-color: #cdf7d4;
+  background-color: var(--color-wra-light-green);
   border-color: #018a1e;
 }
 
