@@ -71,12 +71,12 @@ export default {
 }
 
 .wra-simple-table > thead > tr > th {
-  border-bottom: 2px solid #666666;
+  border-bottom: 2px solid var(--color-wra-dark-grey);
 }
 
 .wra-simple-table > tbody > tr > td,
 .wra-simple-table > tbody > tr > th {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid var(--color-wra-dark-grey);
 }
 
 .wra-simple-table td,

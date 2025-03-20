@@ -81,11 +81,11 @@ export default {
   align-items: center;
   justify-content: center;
   margin-right: 10px;
-  color: #666666;
+  color: var(--color-wra-dark-grey);
 }
 
 .wra-breadcrumbs-link--disabled {
-  color: #666666;
+  color: var(--color-wra-dark-grey);
 }
 
 .wra-breadcrumbs-link {
@@ -107,7 +107,7 @@ export default {
   /* CSS that creates a chevron */
   content: " ";
   display: inline-block;
-  border: solid #666666;
+  border: solid var(--color-wra-dark-grey);
   border-width: 3px 3px 0px 0px;
   padding: 3px;
   vertical-align: middle;

@@ -144,12 +144,12 @@ export default {
 }
 
 .wra-table > thead > tr > th {
-  border-bottom: 2px solid #666666;
+  border-bottom: 2px solid var(--color-wra-dark-grey);
 }
 
 .wra-table > tbody > tr > td,
 .wra-table > tbody > tr > th {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid var(--color-wra-dark-grey);
 }
 
 .wra-table td,
@@ -174,7 +174,7 @@ export default {
 /* Add bottom border beneath each item */
 #pivoted > tbody > tr:last-child > td,
 #pivoted > tbody > tr:last-child > th {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid var(--color-wra-dark-grey);
 }
 
 /* Overwrite styling from #regular table */
