@@ -195,7 +195,7 @@ export default {
 }
 
 .pagination-number {
-  color: #2a2a2a;
+  color: var(--color-wra-black);
   background-color: var(--color-wra-light-grey);
   padding: 8px;
   font-weight: 700;
@@ -207,7 +207,7 @@ export default {
 }
 
 .pagination-number:hover {
-  color: #2a2a2a;
+  color: var(--color-wra-black);
   opacity: 0.8;
 }
 
