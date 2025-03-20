@@ -115,7 +115,7 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
+  background: var(--color-wra-light-red);
   color: var(--color-wra-black);
   font-size: 16px;
   border-left: 10px solid #aa1111;

@@ -272,9 +272,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid #aa1111;
 }
 </style>
