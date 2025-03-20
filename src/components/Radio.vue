@@ -101,7 +101,7 @@ export default {
 
 .radio-input:focus {
   outline: 2px solid var(--color-wra-black);
-  background-color: #ffd530;
+  background-color: var(--color-wra-yellow);
 }
 
 .radio-input:focus-visible {

@@ -49,7 +49,7 @@ export default {
 }
 
 .new-service {
-  background-color: #ffd530;
+  background-color: var(--color-wra-yellow);
 }
 
 .new-service :deep(a) {

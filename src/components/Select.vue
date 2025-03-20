@@ -155,7 +155,7 @@ select:focus + .focus {
   right: -1px;
   bottom: -1px;
   border: 2px solid var(--color-wra-black);
-  outline: 3px solid #ffd530;
+  outline: 3px solid var(--color-wra-yellow);
   border-radius: inherit;
 }
 

@@ -183,10 +183,10 @@ export default {
 .pagination-button:focus,
 .pagination-number:focus {
   color: var(--color-wra-black);
-  background-color: #ffd530;
+  background-color: var(--color-wra-yellow);
   outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 .pagination-button:focus:hover,

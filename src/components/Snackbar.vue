@@ -162,10 +162,10 @@ export default {
 }
 
 .close-icon-wrapper:focus {
-  background-color: #ffd530;
+  background-color: var(--color-wra-yellow);
   outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 .close-icon-wrapper:focus:hover {
@@ -205,7 +205,7 @@ export default {
 
 .wra-warning {
   background-color: var(--color-wra-light-yellow);
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 /* Accessibility */

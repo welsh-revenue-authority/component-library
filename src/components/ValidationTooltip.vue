@@ -41,6 +41,6 @@ export default {
 
 .wra-warning {
   background-color: var(--color-wra-light-yellow);
-  border-left: 10px solid #ffd530;
+  border-left: 10px solid var(--color-wra-yellow);
 }
 </style>

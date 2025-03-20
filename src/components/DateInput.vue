@@ -256,9 +256,9 @@ input {
 input:focus {
   border-color: var(--color-wra-black);
   outline: 1px solid var(--color-wra-black);
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 label {

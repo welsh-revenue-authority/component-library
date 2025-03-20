@@ -74,7 +74,7 @@ export default {
 }
 
 .wra-inset.yellow {
-  border-left-color: #ffd530;
+  border-left-color: var(--color-wra-yellow);
 }
 
 .wra-inset.light-yellow {
