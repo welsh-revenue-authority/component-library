@@ -54,7 +54,7 @@ export default {
   font-size: 24px;
   font-weight: bold;
   color: var(--color-wra-light-blue);
-  background: #1f446d;
+  background: var(--color-wra-dark-blue);
   padding: 20px;
   margin-left: 15px;
   margin-top: 40px;
@@ -62,7 +62,7 @@ export default {
 }
 
 .tab-button:hover:not(.tab-button--active) {
-  background: #3b7dc5;
+  background: var(--color-wra-mid-blue);
   color: #ffffff;
 }
 
