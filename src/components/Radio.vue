@@ -64,7 +64,7 @@ export default {
 }
 
 .radio-label:hover {
-  background: #b5b5b5;
+  background: var(--color-wra-mid-grey);
 }
 
 .radio-input {

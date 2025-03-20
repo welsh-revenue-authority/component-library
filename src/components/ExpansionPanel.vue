@@ -108,7 +108,7 @@ button {
   background-color: transparent;
   color: var(--color-wra-revenue);
   border: none;
-  border-left: 2px solid #b5b5b5;
+  border-left: 2px solid var(--color-wra-mid-grey);
   cursor: pointer;
   width: 100%;
   text-align: left;
@@ -132,7 +132,7 @@ button:focus:hover {
 
 .panel-content {
   display: grid;
-  border-left: 2px solid #b5b5b5;
+  border-left: 2px solid var(--color-wra-mid-grey);
   background: transparent;
   padding: 15px 20px;
   grid-template-rows: 1fr;

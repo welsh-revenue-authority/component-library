@@ -74,7 +74,7 @@ export default {
 .tab-button--active {
   background: #ffffff;
   color: var(--color-wra-black);
-  border-top: 6px #b5b5b5 solid;
+  border-top: 6px solid var(--color-wra-mid-grey);
 }
 
 .tab-button:focus {
