@@ -54,7 +54,7 @@ export default {
 }
 
 .wra-inset.light-blue {
-  border-left-color: #c2e0fc;
+  border-left-color: var(--color-wra-light-blue);
 }
 
 .wra-inset.red {

@@ -199,7 +199,7 @@ export default {
 }
 
 .wra-info {
-  background-color: #c2e0fc;
+  background-color: var(--color-wra-light-blue);
   border-color: #0360a6;
 }
 

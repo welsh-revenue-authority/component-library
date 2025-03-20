@@ -53,7 +53,7 @@ export default {
   border-top: 6px #0360a6 solid;
   font-size: 24px;
   font-weight: bold;
-  color: #c2e0fc;
+  color: var(--color-wra-light-blue);
   background: #1f446d;
   padding: 20px;
   margin-left: 15px;
