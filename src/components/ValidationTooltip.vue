@@ -31,7 +31,7 @@ export default {
 
 .wra-success {
   background-color: var(--color-wra-light-green);
-  border-left: 10px solid #018a1e;
+  border-left: 10px solid var(--color-wra-green);
 }
 
 .wra-info {

@@ -66,7 +66,7 @@ export default {
 }
 
 .wra-inset.green {
-  border-left-color: #018a1e;
+  border-left-color: var(--color-wra-green);
 }
 
 .wra-inset.light-green {
