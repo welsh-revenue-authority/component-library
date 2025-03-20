@@ -43,7 +43,7 @@ export default {
 .wra-banner {
   background-color: #f1f1f1;
   font-size: 18px;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   padding: 20px;
   border: none;
 }
@@ -53,14 +53,14 @@ export default {
 }
 
 .new-service :deep(a) {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
 }
 
 .new-service :deep(a):focus {
   color: #ffffff;
-  background-color: #1f1f1f;
-  box-shadow: 0 -4px #1f1f1f, 0 2px #ffffff;
-  -webkit-box-shadow: 0 -4px #1f1f1f, 0 2px #ffffff;
+  background-color: var(--color-wra-black);
+  box-shadow: 0 -4px var(--color-wra-black), 0 2px #ffffff;
+  -webkit-box-shadow: 0 -4px var(--color-wra-black), 0 2px #ffffff;
 }
 
 .wra-banner-actions {

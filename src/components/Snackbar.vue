@@ -163,7 +163,7 @@ export default {
 
 .close-icon-wrapper:focus {
   background-color: #ffd530;
-  outline: 2px solid #1f1f1f;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
   border-color: #ffd530;
 }

@@ -73,7 +73,7 @@ export default {
 .panel-icon {
   content: " ";
   display: inline-block;
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 3px 3px 0px 0px;
   padding: 4px;
   vertical-align: middle;
@@ -119,9 +119,9 @@ button:hover {
 }
 
 button:focus {
-  color: #1f1f1f !important;
+  color: var(--color-wra-black) !important;
   background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: -2px;
   border-color: #ffd530;
 }

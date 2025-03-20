@@ -100,7 +100,7 @@ export default {
 
 .wra-breadcrumbs-link:focus {
   opacity: 1;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
 }
 
 .wra-breadcrumbs-chevron {

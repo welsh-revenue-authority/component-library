@@ -211,7 +211,7 @@ export default {
   font-size: 16px;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   line-height: 1.15;
   display: block;
   width: 100%;
@@ -222,15 +222,15 @@ export default {
 }
 
 .autocomplete-input--focus {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
   -webkit-box-shadow: 0 0 0 3px #ffd530;
   -moz-box-shadow: 0 0 0 3px #ffd530;
   box-shadow: 0 0 0 3px #ffd530;
 }
 
 .autocomplete-label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -242,7 +242,7 @@ export default {
   list-style-type: none;
   z-index: 1;
   padding: 0;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   border-top: 0px;
   width: 100%;
   max-height: 200px;
@@ -253,7 +253,7 @@ export default {
 .autocomplete-list > li {
   font-size: 16px;
   padding: 2px 10px;
-  border-bottom: 1px solid #1f1f1f;
+  border-bottom: 1px solid var(--color-wra-black);
   cursor: pointer;
 }
 

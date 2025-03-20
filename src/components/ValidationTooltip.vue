@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .validation-tooltip {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-radius: 0px;
   font-size: 18px;
   padding: 25px;

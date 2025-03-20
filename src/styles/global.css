@@ -40,10 +40,10 @@ a:hover {
 }
 
 a:focus-visible {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   background-color: #ffd530;
-  box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+  box-shadow: 0 -4px #ffd530, 0 2px var(--color-wra-black);
   outline: 2px solid transparent;
   text-decoration: none;
-  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+  -webkit-box-shadow: 0 -4px #ffd530, 0 2px var(--color-wra-black);
 }

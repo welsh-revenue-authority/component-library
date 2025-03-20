@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
 button {
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
   color: #fff;
   font-weight: bold;
   border: none;
@@ -80,9 +80,9 @@ button:hover {
 }
 
 button:focus {
-  color: #1f1f1f !important;
+  color: var(--color-wra-black) !important;
   background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
   border-color: #ffd530;
 }
@@ -106,7 +106,7 @@ button:focus:hover {
 }
 
 .wra-black {
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
 }
 
 .wra-blue {
@@ -127,8 +127,8 @@ button:focus:hover {
 
 .wra-white {
   background-color: #fff;
-  color: #1f1f1f;
-  outline: 2px solid #1f1f1f;
+  color: var(--color-wra-black);
+  outline: 2px solid var(--color-wra-black);
 }
 
 .default-button {
@@ -145,13 +145,13 @@ button:focus:hover {
 
 .outlined-button {
   background-color: transparent;
-  outline: 2px solid var(--color-prop, #1f1f1f);
-  color: var(--color-prop, #1f1f1f);
+  outline: 2px solid var(--color-prop, var(--color-wra-black));
+  color: var(--color-prop, var(--color-wra-black));
 }
 
 .outlined-button:hover {
   opacity: 1;
-  background-color: var(--color-prop, #1f1f1f);
+  background-color: var(--color-prop, var(--color-wra-black));
   color: #fff;
   transition: all 0.3s ease;
 }
@@ -159,6 +159,6 @@ button:focus:hover {
 
 <style>
 .wra-button:focus > .icon > svg {
-  fill: #1f1f1f;
+  fill: var(--color-wra-black);
 }
 </style>

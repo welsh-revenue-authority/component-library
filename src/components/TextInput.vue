@@ -177,22 +177,22 @@ input {
   font-size: 16px;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   line-height: 1.15;
   display: block;
   width: 100%;
 }
 
 input:focus {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
   -webkit-box-shadow: 0 0 0 3px #ffd530;
   -moz-box-shadow: 0 0 0 3px #ffd530;
   box-shadow: 0 0 0 3px #ffd530;
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;

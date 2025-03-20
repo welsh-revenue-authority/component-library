@@ -182,9 +182,9 @@ export default {
 
 .pagination-button:focus,
 .pagination-number:focus {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   background-color: #ffd530;
-  outline: 2px solid #1f1f1f;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
   border-color: #ffd530;
 }

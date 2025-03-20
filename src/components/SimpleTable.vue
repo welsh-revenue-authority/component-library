@@ -61,7 +61,7 @@ export default {
 .wra-simple-table {
   width: 100%;
   line-height: 20px;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-spacing: 0;
   table-layout: auto;
 }

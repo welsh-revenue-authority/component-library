@@ -52,7 +52,7 @@ export default {
 
 .service-link:focus {
   border: #ffd530 solid 2px;
-  outline: #1f1f1f solid 2px;
+  outline: var(--color-wra-black) solid 2px;
   background: transparent;
   box-shadow: none;
   -webkit-box-shadow: none;

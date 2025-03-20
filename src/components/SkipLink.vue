@@ -83,7 +83,7 @@ export default {
 
 .skip-link {
   background-color: #e5e5e5;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -92,9 +92,9 @@ export default {
 }
 
 .skip-link:focus {
-  color: #1f1f1f !important;
+  color: var(--color-wra-black) !important;
   background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
   border-color: #ffd530;
 }

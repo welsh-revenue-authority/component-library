@@ -128,7 +128,7 @@ export default {
   width: 100%;
   line-height: 20px;
   background-color: #f1f1f1;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-spacing: 0;
   padding: 0px 16px 16px 16px;
   table-layout: auto;

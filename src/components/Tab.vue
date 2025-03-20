@@ -67,21 +67,21 @@ export default {
 }
 
 .tab-button.tab-button--active:focus {
-  border-color: #1f1f1f;
-  box-shadow: 2px 0px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+  border-color: var(--color-wra-black);
+  box-shadow: 2px 0px 0px 0px var(--color-wra-black) inset, -2px -2px 0px 0px var(--color-wra-black) inset;
 }
 
 .tab-button--active {
   background: #ffffff;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-top: 6px #b5b5b5 solid;
 }
 
 .tab-button:focus {
   border-top: 6px #0360a6 solid;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   background: #ffd530;
-  box-shadow: 2px 2px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+  box-shadow: 2px 2px 0px 0px var(--color-wra-black) inset, -2px -2px 0px 0px var(--color-wra-black) inset;
   outline-style: none;
 }
 

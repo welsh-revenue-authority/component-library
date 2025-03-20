@@ -121,7 +121,7 @@ select {
 }
 
 .select {
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   border-radius: 0;
   padding-right: 10px;
   font-size: 16px;
@@ -138,7 +138,7 @@ select {
   content: "";
   width: 0.8em;
   height: 0.5em;
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   justify-self: end;
 }
@@ -154,13 +154,13 @@ select:focus + .focus {
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 2px solid #1f1f1f;
+  border: 2px solid var(--color-wra-black);
   outline: 3px solid #ffd530;
   border-radius: inherit;
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
 }
 </style>
