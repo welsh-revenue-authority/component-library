@@ -204,7 +204,7 @@ export default {
 }
 
 .wra-warning {
-  background-color: #fff5ce;
+  background-color: var(--color-wra-light-yellow);
   border-color: #ffd530;
 }
 
