@@ -246,7 +246,7 @@ export default {
   border-top: 0px;
   width: 100%;
   max-height: 200px;
-  background: #f1f1f1;
+  background: var(--color-wra-light-grey);
   overflow-y: auto;
 }
 

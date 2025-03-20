@@ -42,7 +42,7 @@ export default {
 <style>
 .wra-simple-table-wrapper {
   padding: 0px 16px 16px 16px;
-  background-color: #f1f1f1;
+  background-color: var(--color-wra-light-grey);
 }
 
 .left-align-headers {

@@ -41,7 +41,7 @@ export default {
 }
 
 .wra-banner {
-  background-color: #f1f1f1;
+  background-color: var(--color-wra-light-grey);
   font-size: 18px;
   color: var(--color-wra-black);
   padding: 20px;

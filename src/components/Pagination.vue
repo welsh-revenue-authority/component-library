@@ -196,7 +196,7 @@ export default {
 
 .pagination-number {
   color: #2a2a2a;
-  background-color: #f1f1f1;
+  background-color: var(--color-wra-light-grey);
   padding: 8px;
   font-weight: 700;
   border: none;
