@@ -82,7 +82,7 @@ export default {
 }
 
 .skip-link {
-  background-color: #e5e5e5;
+  background-color: var(--color-wra-grey);
   color: var(--color-wra-black);
   font-weight: bold;
   border: none;

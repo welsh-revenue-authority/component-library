@@ -22,7 +22,7 @@ li {
 }
 
 blockquote {
-  border-left: 3px solid #e5e5e5;
+  border-left: 3px solid var(--color-wra-grey);
   font-size: 18px;
   line-height: 24px;
   padding: 5px 20px 5px 27px;

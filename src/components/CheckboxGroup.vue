@@ -131,7 +131,7 @@ export default {
 }
 
 .checkbox-label {
-  background: #e5e5e5;
+  background: var(--color-wra-grey);
   padding: 20px 20px 20px 20px;
   min-height: 24px;
   display: flex;

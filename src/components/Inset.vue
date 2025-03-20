@@ -82,7 +82,7 @@ export default {
 }
 
 .wra-inset.grey {
-  border-left-color: #e5e5e5;
+  border-left-color: var(--color-wra-grey);
 }
 
 .wra-inset.revenue-blue {

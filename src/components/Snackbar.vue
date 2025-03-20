@@ -115,7 +115,7 @@ export default {
 }
 
 .snackbar {
-  background: #e5e5e5;
+  background: var(--color-wra-grey);
   font-size: 18px;
   padding: 20px 16px 20px 24px;
   border-left: 3px solid #a5a5a5;
