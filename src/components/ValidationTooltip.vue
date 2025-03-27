@@ -1,5 +1,13 @@
 <template>
   <div class="validation-tooltip" :class="type">
+    <span
+      :class="{
+        'custom-icon-wrapper': customIcon
+      }"
+      class="icon"
+    >
+      <slot name="custom-icon"></slot>
+    </span>
     <slot></slot>
   </div>
 </template>
@@ -11,6 +19,10 @@ export default {
     type: {
       type: String,
       required: true
+    },
+    customIcon: {
+      type: Boolean,
+      default: false
     }
   }
 };
@@ -42,5 +54,16 @@ export default {
 .wra-warning {
   background-color: var(--color-wra-light-yellow);
   border-left: 10px solid var(--color-wra-yellow);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.custom-icon-wrapper {
+  margin-right: 8px;
 }
 </style>
