@@ -80,7 +80,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 12px;
   color: var(--color-wra-dark-grey);
 }
 
@@ -108,8 +108,8 @@ export default {
   content: " ";
   display: inline-block;
   border: solid var(--color-wra-dark-grey);
-  border-width: 3px 3px 0px 0px;
-  padding: 3px;
+  border-width: 3.5px 3.5px 0px 0px;
+  padding: 2.5px;
   vertical-align: middle;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
