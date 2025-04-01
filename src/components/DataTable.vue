@@ -1,8 +1,8 @@
 <template>
   <div>
-    <table>
+    <table class="wra-data-table">
       <thead>
-        <slot name="headers" v-if="$slots.headers" :headers="headers"></slot>
+        <slot name="headers" v-if="$slots.headerSlot" :headers="headers"></slot>
 
         <tr v-else>
           <th
@@ -18,7 +18,8 @@
               'text-left': header.align == 'start' || header.align == undefined,
               'text-right': header.align == 'end',
               'text-center': header.align == 'center'
-            }">
+            }"
+          >
             {{ header.title }}
             <span v-if="localSortBy && localSortBy[0].key === header.key">
               {{ localSortBy[0].order === "asc" ? "▲" : "▼" }}
@@ -26,7 +27,8 @@
             <span
               v-else
               v-if="header.sortable == true || header.sortable == undefined"
-              class="sort-icons">
+              class="sort-icons"
+            >
               ▲
             </span>
           </th>
@@ -51,12 +53,14 @@
         :class="{
           clickable: $attrs['onClick:row'] != undefined
         }"
-        @click="$emit('click:row', item)">
+        @click="$emit('click:row', item)"
+      >
         <slot
           name="item"
           v-if="$slots.item"
           :item="item"
-          :items="paginatedArray"></slot>
+          :items="paginatedArray"
+        ></slot>
         <tr v-else>
           <td
             :class="{
@@ -64,13 +68,15 @@
               'text-right': header.align == 'end',
               'text-center': header.align == 'center'
             }"
-            v-for="header in headers">
+            v-for="header in headers"
+          >
             <slot
               :name="`item.${header.key}`"
               :value="item[header.key]"
               :item="item"
               :items="sortedArray"
-              v-if="$slots['item.' + header.key]"></slot>
+              v-if="$slots['item.' + header.key]"
+            ></slot>
 
             <span v-else>{{ item[header.key] }}</span>
           </td>
@@ -84,16 +90,18 @@
         :class="{
           'disable-button': currentPage == 1
         }"
-        @click="currentPage = currentPage - 1">
-        <
+        @click="currentPage = currentPage - 1"
+      >
+        <span class="wra-chevron wra-chevron-left"></span>
       </button>
       <button
         :disabled="currentPage == totalNumberOfPages"
         :class="{
           'disable-button': currentPage == totalNumberOfPages
         }"
-        @click="currentPage = currentPage + 1">
-        >
+        @click="currentPage = currentPage + 1"
+      >
+        <span class="wra-chevron wra-chevron-right"></span>
       </button>
     </div>
   </div>
@@ -101,8 +109,27 @@
 
 <script>
 export default {
-  props: ["items", "headers", "sortBy", "itemsPerPage", "loading", "search"],
   name: "wra-data-table",
+  props: {
+    items: {
+      type: Array
+    },
+    headers: {
+      type: Array
+    },
+    sortBy: {
+      type: Array
+    },
+    itemsPerPage: {
+      type: Number
+    },
+    loading: {
+      type: Boolean
+    },
+    search: {
+      type: String
+    }
+  },
   data() {
     return {
       localSortBy: this.sortBy,
@@ -185,19 +212,90 @@ export default {
 </script>
 
 <style scoped>
-table {
+.wra-data-table {
   width: 100%;
-  border-collapse: collapse; /* Collapse borders, get rid of border gaps */
+  border-spacing: 0;
+  line-height: 20px;
 }
 
-th {
-  border-bottom: 1px solid rgb(226, 226, 226);
-  padding: 15px;
+.wra-data-table > thead > tr > th {
+  border-bottom: 2px solid #666666;
 }
 
-td {
-  border-bottom: 1px solid rgb(226, 226, 226);
-  padding: 15px;
+.wra-data-table > tbody > tr > td,
+.wra-data-table > tbody > tr > th {
+  border-bottom: 1px solid #666666;
+}
+
+.wra-data-table td,
+.wra-data-table th {
+  padding: 16px;
+}
+
+.wra-data-table > thead > tr > th:first-child,
+.wra-data-table > tbody > tr > td:first-child {
+  padding-left: 0;
+}
+.wra-data-table > thead > tr > th:last-child,
+.wra-data-table > tbody > tr > td:last-child {
+  padding-right: 0;
+}
+
+button {
+  background-color: #1f1f1f;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 12px;
+  height: 32px;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  background-color: #ffd530 !important;
+  outline: 2px solid #1f1f1f;
+  outline-offset: 0px;
+  border-color: #ffd530;
+}
+
+button:focus:hover {
+  opacity: 1;
+}
+
+.wra-chevron {
+  content: " ";
+  display: inline-block;
+  border: solid #ffffff;
+  padding: 3px;
+  vertical-align: middle;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.wra-chevron-right {
+  border-width: 3px 3px 0px 0px;
+}
+
+.wra-chevron-left {
+  border-width: 0px 0px 3px 3px;
+}
+
+button:focus > .wra-chevron-right {
+  border: solid #1f1f1f;
+  border-width: 3px 3px 0px 0px;
+}
+
+button:focus > .wra-chevron-left {
+  border: solid #1f1f1f;
+  border-width: 0px 0px 3px 3px;
 }
 
 .clickable {
@@ -206,7 +304,7 @@ td {
 
 .sort-icons {
   visibility: hidden;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 th:hover .sort-icons {
@@ -226,20 +324,23 @@ th:hover .sort-icons {
 }
 
 .pagination {
-  text-align: right;
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px 0px;
 }
 
 .pagination button {
-  margin: 0 5px;
-  padding: 5px 10px;
-  border: 1px solid rgb(226, 226, 226);
-  border-radius: 5px;
-  background-color: white;
+  margin-left: 10px;
 }
 
 .disable-button {
-  opacity: 0.3;
+  opacity: 0.4;
+}
+
+.disable-button:hover {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .loader {
