@@ -4,14 +4,40 @@ import { Meta } from "@storybook/blocks";
 
 # Colour Library
 
-Library of colours for use with the component library
+Library of colours for use with the component library. Refer to [tailwind docs](https://tailwindcss.com/docs/colors) for a full list of utilities that use the colour palette.
+
+## Usage
+
+`app.css`
+
+```css
+/* style sheet classes ~ background colour */
+
+.wra-red {
+  background-color: var(--color-wra-red);
+}
+
+.wra-light-blue {
+  background-color: var(--color-wra-light-blue);
+}
+```
+
+`HTML`
+
+```html
+<!-- html ~ background colours -->
+
+<div class="bg-wra-red"></div>
+
+<div class="bg-wra-light-blue"></div>
+```
 
 ## Default
 
 <div class="circle-row">
   <div class="circle-wrapper">
     <div class="circle bg-wra-revenue"></div>
-    <div class="colour-name">Revenue</div>
+    <div class="colour-name">--color-wra-revenue</div>
     <div class="colour-hex">#2a225b</div>
   </div>
 </div>
@@ -21,13 +47,13 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-black"></div>
-  <div class="colour-name">Black</div>
+  <div class="colour-name">--color-wra-black</div>
   <div class="colour-hex">#1f1f1f</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-charcoal"></div>
-  <div class="colour-name">Charcoal</div>
+  <div class="colour-name">--color-wra-charcoal</div>
   <div class="colour-hex">#323232</div>
 </div>
 </div>
@@ -37,25 +63,25 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-light-grey"></div>
-  <div class="colour-name">Light Grey</div>
+  <div class="colour-name">--color-wra-light-grey</div>
   <div class="colour-hex">#f1f1f1</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-grey"></div>
-  <div class="colour-name">Grey</div>
+  <div class="colour-name">--color-wra-grey</div>
   <div class="colour-hex">#e5e5e5</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-mid-grey"></div>
-  <div class="colour-name">Mid Grey</div>
+  <div class="colour-name">--color-wra-mid-grey</div>
   <div class="colour-hex">#b5b5b5</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-dark-grey"></div>
-  <div class="colour-name">Dark Grey</div>
+  <div class="colour-name">--color-wra-dark-grey</div>
   <div class="colour-hex">#666666</div>
 </div>
 </div>
@@ -65,13 +91,13 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-light-red"></div>
-  <div class="colour-name">Light Red</div>
+  <div class="colour-name">--color-wra-light-red</div>
   <div class="colour-hex">#ffe4e5</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-red"></div>
-  <div class="colour-name">Red</div>
+  <div class="colour-name">--color-wra-red</div>
   <div class="colour-hex">#aa1111</div>
 </div>
 </div>
@@ -81,25 +107,25 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-light-blue"></div>
-  <div class="colour-name">Light Blue</div>
+  <div class="colour-name">--color-wra-light-blue</div>
   <div class="colour-hex">#c2e0fc</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-blue"></div>
-  <div class="colour-name">Blue</div>
+  <div class="colour-name">--color-wra-blue</div>
   <div class="colour-hex">#0360a6</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-mid-blue"></div>
-  <div class="colour-name">Mid Blue</div>
+  <div class="colour-name">--color-wra-mid-blue</div>
   <div class="colour-hex">#3b7dc5</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-dark-blue"></div>
-  <div class="colour-name">Dark Blue</div>
+  <div class="colour-name">--color-wra-dark-blue</div>
   <div class="colour-hex">#1f446d</div>
 </div>
 
@@ -110,13 +136,13 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-light-green"></div>
-  <div class="colour-name">Light Green</div>
+  <div class="colour-name">--color-wra-light-green</div>
   <div class="colour-hex">#cdf7d4</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-green"></div>
-  <div class="colour-name">Green</div>
+  <div class="colour-name">--color-wra-green</div>
   <div class="colour-hex">#018a1e</div>
 </div>
 </div>
@@ -126,13 +152,13 @@ Library of colours for use with the component library
 <div class="circle-row">
 <div class="circle-wrapper">
   <div class="circle bg-wra-light-yellow"></div>
-  <div class="colour-name">Light Yellow</div>
+  <div class="colour-name">--color-wra-light-yellow</div>
   <div class="colour-hex">#fff5ce</div>
 </div>
 
 <div class="circle-wrapper">
   <div class="circle bg-wra-yellow"></div>
-  <div class="colour-name">Yellow</div>
+  <div class="colour-name">--color-wra-yellow</div>
   <div class="colour-hex">#ffd530</div>
 </div>
 </div>
@@ -147,6 +173,10 @@ Library of colours for use with the component library
 }
 
 .circle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 16px 32px 16px 0px;
 }
 
