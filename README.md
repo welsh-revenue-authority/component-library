@@ -3,6 +3,7 @@
 Vue component library created by Welsh Revenue Authority
 
 [![NPM Version](https://img.shields.io/npm/v/%40wra-gov%2Fvue-components)](https://www.npmjs.com/package/@wra-gov/vue-components)
+[![Cypress Tests](https://github.com/welsh-revenue-authority/component-library/actions/workflows/cypress-tests.yml/badge.svg?branch=main)](https://github.com/welsh-revenue-authority/component-library/actions/workflows/cypress-tests.yml)
 
 ## Installation
 
@@ -36,7 +37,7 @@ app.mount("#app");
 
 ### Named imports
 
-Composition API:
+Options API:
 
 `*.vue`,
 
@@ -52,16 +53,28 @@ Composition API:
 </script>
 ```
 
-Options API:
+Composition API:
 
 `*.vue`,
 
 ```html
 <script setup>
-  import { Button } from "@wra-gov/vue-components";
+  import { WraButton } from "@wra-gov/vue-components";
 </script>
 
 ...
+```
+
+### Nuxt usage
+
+Create a plugin in `/plugins/component-library.js`,
+
+```js
+import WraComponents from "@wra-gov/vue-components";
+
+export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.use(WraComponents);
+});
 ```
 
 ## Documentation

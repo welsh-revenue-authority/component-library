@@ -1,6 +1,8 @@
 <template>
   <div class="autocomplete">
-    <label :for="id" class="autocomplete-label"> {{ label }}</label>
+    <label :for="id" class="autocomplete-label" v-if="label">
+      {{ label }}
+    </label>
     <input
       ref="autocompleteInput"
       v-model="userInput[optionLabel]"
@@ -85,7 +87,8 @@ export default {
     userInput: {},
     hasFocus: false,
     listHasFocus: false,
-    optionIndex: null
+    optionIndex: null,
+    validatedOptions: []
   }),
   methods: {
     onInputTyping() {
@@ -144,7 +147,7 @@ export default {
   },
   computed: {
     showOptions() {
-      const inputMatchesOption = this.options.some(
+      const inputMatchesOption = this.validatedOptions.some(
         (element) =>
           element[this.optionLabel] === this.userInput[this.optionLabel]
       );
@@ -157,13 +160,13 @@ export default {
       return showOptions;
     },
     filterOptions() {
-      const searchForInput = this.options.filter((item) =>
+      const searchForInput = this.validatedOptions.filter((item) =>
         item.label.toLowerCase().includes(this.getInputValue)
       );
       if (searchForInput.length > 0) {
         return searchForInput;
       } else if (this.autoExpand === true) {
-        return this.options;
+        return this.validatedOptions;
       }
       searchForInput.push({
         [this.optionLabel]: "No results found",
@@ -182,6 +185,7 @@ export default {
     }
   },
   created() {
+    this.validatedOptions = this.options ?? [];
     // Set initial value if it is formatted correctly
     if (this.modelValue && Object.keys(this.modelValue).length >= 2) {
       this.userInput = this.modelValue;

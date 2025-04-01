@@ -6,7 +6,7 @@
     :aria-label="label"
     class="service-link"
   >
-    <img :src="serviceLogo" class="service-logo" :alt="alt" />
+    <img :src="serviceLogo" :height="height" class="service-logo" :alt="alt" />
   </a>
 </template>
 
@@ -28,6 +28,9 @@ export default {
     },
     href: {
       type: String
+    },
+    height: {
+      type: [String, Number]
     }
   }
 };
@@ -35,12 +38,12 @@ export default {
 
 <style scoped>
 .service-logo {
-  width: 100%;
+  max-width: 100%;
 }
 
 .service-link {
-  border: #fff solid 2px;
-  outline: #fff solid 2px;
+  border: transparent solid 2px;
+  outline: transparent solid 2px;
   display: block;
   padding: 2px;
   line-height: 0.8;
@@ -50,7 +53,7 @@ export default {
 .service-link:focus {
   border: #ffd530 solid 2px;
   outline: #1f1f1f solid 2px;
-  background: #fff;
+  background: transparent;
   box-shadow: none;
   -webkit-box-shadow: none;
 }

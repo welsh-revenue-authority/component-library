@@ -116,6 +116,19 @@ export const Default = {
     label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
     options: councilArray
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-autocomplete
+  label="This is an autocomplete for Welsh local authorities"
+  id="test-autocomplete"
+  :options="options"
+></wra-autocomplete>
+        `
+      }
+    }
   }
 };
 
@@ -126,6 +139,20 @@ export const Autoexpand = {
     id: "test-autocomplete-autoexpand",
     autoExpand: true,
     options: councilArray
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-autocomplete
+  label="This is an autocomplete for Welsh local authorities"
+  id="test-autocomplete"
+  :options="options"
+  auto-expand
+></wra-autocomplete>
+        `
+      }
+    }
   }
 };
 
@@ -135,5 +162,19 @@ export const PreFilled = {
     id: "test-autocomplete-prefill",
     options: councilArray,
     modelValue: { value: "alice-council", label: "Alice's council" }
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-autocomplete
+  label="This is an autocomplete for Welsh local authorities"
+  id="test-autocomplete"
+  :options="options"
+  :model-value="modelValue"
+></wra-autocomplete>
+        `
+      }
+    }
   }
 };
