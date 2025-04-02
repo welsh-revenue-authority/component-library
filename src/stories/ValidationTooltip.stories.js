@@ -12,11 +12,6 @@ export default {
         type: "radio"
       },
       options: ["wra-info", "wra-success", "wra-warning", "wra-error"]
-    },
-    customIcon: {
-      table: {
-        disable: true
-      }
     }
   }
 };
@@ -97,7 +92,6 @@ export const CustomIconInfo = {
   args: {
     type: "wra-info",
     default: "This is an info message",
-    customIcon: "true",
     icon: "mdiInformation",
     fill: "var(--color-wra-blue)"
   },
@@ -120,7 +114,7 @@ export const CustomIconInfo = {
     docs: {
       source: {
         code: `
-<wra-validation-tooltip type="wra-info" customIcon>
+<wra-validation-tooltip type="wra-info">
   <template #custom-icon>
     <wra-icon :icon="mdiInformation" fill="var(--color-wra-blue)" />
   </template>
@@ -136,7 +130,6 @@ export const CustomIconError = {
   args: {
     type: "wra-error",
     default: "This is an error message",
-    customIcon: "true",
     icon: "mdiAlert",
     fill: "var(--color-wra-red)"
   },
@@ -159,7 +152,7 @@ export const CustomIconError = {
     docs: {
       source: {
         code: `
-<wra-validation-tooltip type="wra-error" customIcon>
+<wra-validation-tooltip type="wra-error">
   <template #custom-icon>
     <wra-icon :icon="mdiAlert" fill="var(--color-wra-red)" />
   </template>
