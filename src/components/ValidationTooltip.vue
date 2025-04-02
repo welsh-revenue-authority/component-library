@@ -1,6 +1,7 @@
 <template>
   <div class="validation-tooltip" :class="type">
     <span
+      v-if="$slots.custom-icon"
       :class="{
         'custom-icon-wrapper': customIcon
       }"
