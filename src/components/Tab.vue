@@ -68,7 +68,8 @@ export default {
 
 .tab-button.tab-button--active:focus {
   border-color: var(--color-wra-black);
-  box-shadow: 2px 0px 0px 0px var(--color-wra-black) inset, -2px -2px 0px 0px var(--color-wra-black) inset;
+  box-shadow: 2px 0px 0px 0px var(--color-wra-black) inset,
+    -2px -2px 0px 0px var(--color-wra-black) inset;
 }
 
 .tab-button--active {
