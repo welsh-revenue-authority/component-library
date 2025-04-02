@@ -20,10 +20,6 @@ export default {
     type: {
       type: String,
       required: true
-    },
-    customIcon: {
-      type: Boolean,
-      default: false
     }
   }
 };
