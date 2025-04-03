@@ -241,12 +241,12 @@ export default {
 }
 
 .wra-data-table > thead > tr > th {
-  border-bottom: 2px solid #666666;
+  border-bottom: 2px solid var(--color-wra-dark-grey);
 }
 
 .wra-data-table > tbody > tr > td,
 .wra-data-table > tbody > tr > th {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid var(--color-wra-dark-grey);
 }
 
 .wra-data-table td,
@@ -264,7 +264,7 @@ export default {
 }
 
 button {
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
   border: none;
   cursor: pointer;
 
@@ -282,10 +282,10 @@ button:hover {
 }
 
 button:focus {
-  background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  background-color: var(--color-wra-yellow) !important;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 button:focus:hover {
@@ -312,26 +312,26 @@ button:focus:hover {
 }
 
 .wra-chevron-up {
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 3px 0px 0px 3px;
   margin-left: 4px;
   margin-top: 3px;
 }
 
 .wra-chevron-down {
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 0px 3px 3px 0px;
   margin-left: 4px;
   margin-bottom: 6px;
 }
 
 button:focus > .wra-chevron-right {
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 3px 3px 0px 0px;
 }
 
 button:focus > .wra-chevron-left {
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 0px 0px 3px 3px;
 }
 
