@@ -4,7 +4,23 @@ export default {
   title: "Data & Display/DataTable",
   component: WraDataTable,
   tags: ["autodocs"],
-  argTypes: {}
+  argTypes: {
+    body: {
+      table: {
+        disable: true
+      }
+    },
+    item: {
+      table: {
+        disable: true
+      }
+    },
+    "`item.${header.key}`": {
+      table: {
+        disable: true
+      }
+    }
+  }
 };
 
 export const Default = {
@@ -19,6 +35,7 @@ export const Default = {
       { key: "iron", title: "Iron (%)" }
     ],
     itemsPerPage: 10,
+    sortBy: [{ key: "name", order: "asc" }],
     items: [
       {
         name: "Artichoke",
