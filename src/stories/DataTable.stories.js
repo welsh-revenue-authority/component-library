@@ -9,6 +9,7 @@ export default {
 
 export const Default = {
   args: {
+    caption: "Table caption",
     headers: [
       { key: "description", title: "Purchase price bands (£)" },
       { key: "rate", title: "Percentage rate (%)" },

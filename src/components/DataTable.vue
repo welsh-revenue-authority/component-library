@@ -1,6 +1,12 @@
 <template>
   <div>
     <table class="wra-data-table">
+      <caption v-if="caption" class="wra-data-table-caption">
+        <slot name="caption">
+          <!-- Fallback prop -->
+          {{ caption }}
+        </slot>
+      </caption>
       <thead>
         <slot name="headers" v-if="$slots.headerSlot" :headers="headers"></slot>
 
@@ -128,6 +134,9 @@ export default {
     },
     search: {
       type: String
+    },
+    caption: {
+      type: String
     }
   },
   data() {
@@ -212,6 +221,14 @@ export default {
 </script>
 
 <style scoped>
+.wra-data-table-caption {
+  background-color: inherit;
+  text-align: left;
+  padding: 16px 0px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 .wra-data-table {
   width: 100%;
   border-spacing: 0;
