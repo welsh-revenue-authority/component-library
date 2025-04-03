@@ -32,6 +32,17 @@ export default {
   <b>e.g.</b> { key: "calories", title: "Calories", <b>align: "right"</b> }
 </p>
         `
+      },
+      source: {
+        code: `
+<wra-data-table
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
+  itemsPerPage="10"
+  sortBy="[{ key: "name", order: "asc" }]"
+></wra-data-table>
+        `
       }
     }
   }

@@ -47,7 +47,6 @@
               v-if="header.searchable"
               type="text"
               v-model="filters[header.key]"
-              @input="filterByColumn"
               @click.stop
               placeholder="Search..."
               class="column-search-input"
