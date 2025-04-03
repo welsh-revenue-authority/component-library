@@ -20,6 +20,20 @@ export default {
         disable: true
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: `
+<p style="margin-bottom: 0px">
+  <b>Column Alignment</b>: Aligns table column based on each header's <b>align property</b>, defaulting to left alignment if unspecified.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> { key: "calories", title: "Calories", <b>align: "right"</b> }
+</p>
+        `
+      }
+    }
   }
 };
 
