@@ -21,8 +21,8 @@
             :style="{ width: header.width + 'px' }"
             :class="{
               clickable: header.sortable == undefined || header.sortable,
-              'text-left': header.align == 'start' || header.align == undefined,
-              'text-right': header.align == 'end',
+              'text-left': header.align == 'left' || header.align == undefined,
+              'text-right': header.align == 'right',
               'text-center': header.align == 'center'
             }"
           >
@@ -74,8 +74,8 @@
         <tr v-else>
           <td
             :class="{
-              'text-left': header.align == 'start' || header.align == undefined,
-              'text-right': header.align == 'end',
+              'text-left': header.align == 'left' || header.align == undefined,
+              'text-right': header.align == 'right',
               'text-center': header.align == 'center'
             }"
             v-for="header in headers"
