@@ -41,6 +41,17 @@
               v-if="header.sortable == true || header.sortable == undefined"
               class="wra-chevron wra-chevron-up sort-icons"
             ></span>
+
+            <!-- Text input for column-specific search -->
+            <input
+              v-if="header.searchable"
+              type="text"
+              v-model="filters[header.key]"
+              @input="filterByColumn"
+              @click.stop
+              placeholder="Search..."
+              class="column-search-input"
+            />
           </th>
         </tr>
       </thead>
@@ -146,7 +157,8 @@ export default {
   data() {
     return {
       localSortBy: this.sortBy,
-      currentPage: 1
+      currentPage: 1,
+      filters: {} // Stores search values for each column
     };
   },
   methods: {
@@ -177,19 +189,31 @@ export default {
       return this.sortedArray.slice(start, end);
     },
     filteredItems() {
-      if (this.search == undefined || this.search == "") {
-        return this.items;
+      let filtered = this.items;
+
+      // Apply global search if applicable
+      if (this.search) {
+        const searchLowercased = this.search.toLowerCase();
+        const relevantHeaders = this.headers.map((header) => header.key);
+
+        filtered = filtered.filter((item) =>
+          relevantHeaders.some((header) =>
+            String(item[header]).toLowerCase().includes(searchLowercased)
+          )
+        );
       }
 
-      const searchLowercased = this.search.toLowerCase();
+      // Apply column-specific filters
+      Object.keys(this.filters).forEach((key) => {
+        const filterValue = this.filters[key]?.toLowerCase();
+        if (filterValue) {
+          filtered = filtered.filter((item) =>
+            String(item[key]).toLowerCase().includes(filterValue)
+          );
+        }
+      });
 
-      const relevantHeaders = this.headers.map((header) => header.key);
-
-      return this.items.filter((item) =>
-        relevantHeaders.some((header) =>
-          String(item[header]).toLowerCase().includes(searchLowercased)
-        )
-      );
+      return filtered;
     },
     sortedArray() {
       if (this.localSortBy != undefined) {
@@ -238,6 +262,7 @@ export default {
   border-spacing: 0;
   line-height: 20px;
   padding: 0px 16px 16px 16px;
+  table-layout: auto;
 }
 
 .wra-data-table > thead > tr > th {
@@ -261,6 +286,25 @@ export default {
 .wra-data-table > thead > tr > th:last-child,
 .wra-data-table > tbody > tr > td:last-child {
   padding-right: 0;
+}
+
+.column-search-input {
+  margin-top: 12px;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid var(--color-wra-black);
+  line-height: 1.15;
+  display: block;
+  width: 100%;
+}
+
+.column-search-input:focus {
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 button {

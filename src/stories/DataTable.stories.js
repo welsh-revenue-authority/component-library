@@ -41,12 +41,12 @@ export const Default = {
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
-      { key: "name", title: "Vegetable" },
-      { key: "calories", title: "Calories" },
-      { key: "fat", title: "Fat (g)" },
-      { key: "carbs", title: "Carbs (g)" },
-      { key: "protein", title: "Protein (g)" },
-      { key: "iron", title: "Iron (%)" }
+      { key: "name", title: "Vegetable", searchable: true },
+      { key: "calories", title: "Calories", searchable: true },
+      { key: "fat", title: "Fat (g)", searchable: true },
+      { key: "carbs", title: "Carbs (g)", searchable: true },
+      { key: "protein", title: "Protein (g)", searchable: true },
+      { key: "iron", title: "Iron (%)", searchable: true }
     ],
     itemsPerPage: 10,
     sortBy: [{ key: "name", order: "asc" }],
