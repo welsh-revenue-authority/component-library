@@ -22,7 +22,7 @@ li {
 }
 
 blockquote {
-  border-left: 3px solid #e5e5e5;
+  border-left: 3px solid var(--color-wra-grey);
   font-size: 18px;
   line-height: 24px;
   padding: 5px 20px 5px 27px;
@@ -30,20 +30,20 @@ blockquote {
 
 /*Links*/
 a {
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   font-weight: bold;
 }
 
 a:hover {
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   text-decoration: none;
 }
 
 a:focus-visible {
-  color: #1f1f1f;
-  background-color: #ffd530;
-  box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+  color: var(--color-wra-black);
+  background-color: var(--color-wra-yellow);
+  box-shadow: 0 -4px var(--color-wra-yellow), 0 2px var(--color-wra-black);
   outline: 2px solid transparent;
   text-decoration: none;
-  -webkit-box-shadow: 0 -4px #ffd530, 0 2px #1f1f1f;
+  -webkit-box-shadow: 0 -4px var(--color-wra-yellow), 0 2px var(--color-wra-black);
 }

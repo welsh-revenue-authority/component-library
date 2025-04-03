@@ -1,4 +1,5 @@
 import "../src/styles/global.css";
+import "../src/styles/tailwind.css";
 
 //Alphabetical order
 import AppBar from "./components/AppBar.vue";

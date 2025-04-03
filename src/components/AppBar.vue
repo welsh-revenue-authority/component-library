@@ -31,7 +31,7 @@ export default {
 }
 
 .wra-app-bar {
-  background-color: #323232;
+  background-color: var(--color-wra-charcoal);
   font-size: 18px;
   color: #fff;
   padding: 20px;
