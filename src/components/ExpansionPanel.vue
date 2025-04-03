@@ -73,7 +73,7 @@ export default {
 .panel-icon {
   content: " ";
   display: inline-block;
-  border: solid #1f1f1f;
+  border: solid var(--color-wra-black);
   border-width: 3px 3px 0px 0px;
   padding: 4px;
   vertical-align: middle;
@@ -106,9 +106,9 @@ button {
   font-weight: bold;
   padding: 15px 20px;
   background-color: transparent;
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   border: none;
-  border-left: 2px solid #b5b5b5;
+  border-left: 2px solid var(--color-wra-mid-grey);
   cursor: pointer;
   width: 100%;
   text-align: left;
@@ -119,11 +119,11 @@ button:hover {
 }
 
 button:focus {
-  color: #1f1f1f !important;
-  background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  color: var(--color-wra-black) !important;
+  background-color: var(--color-wra-yellow) !important;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: -2px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 button:focus:hover {
@@ -132,7 +132,7 @@ button:focus:hover {
 
 .panel-content {
   display: grid;
-  border-left: 2px solid #b5b5b5;
+  border-left: 2px solid var(--color-wra-mid-grey);
   background: transparent;
   padding: 15px 20px;
   grid-template-rows: 1fr;

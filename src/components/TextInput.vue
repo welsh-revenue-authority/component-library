@@ -174,26 +174,25 @@ export default {
 }
 
 input {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-size: 16px;
+  padding: 10px;
   background-color: #fff;
-  border: 1px solid #1f1f1f;
-  line-height: 20px;
+  border: 1px solid var(--color-wra-black);
+  line-height: 1.15;
   display: block;
-  height: 59px;
   width: 100%;
 }
 
 input:focus {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -202,9 +201,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

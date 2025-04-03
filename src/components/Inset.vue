@@ -50,42 +50,42 @@ export default {
 }
 
 .wra-inset.blue {
-  border-left-color: #0360a6;
+  border-left-color: var(--color-wra-blue);
 }
 
 .wra-inset.light-blue {
-  border-left-color: #c2e0fc;
+  border-left-color: var(--color-wra-light-blue);
 }
 
 .wra-inset.red {
-  border-left-color: #aa1111;
+  border-left-color: var(--color-wra-red);
 }
 
 .wra-inset.light-red {
-  border-left-color: #ffe4e5;
+  border-left-color: var(--color-wra-light-red);
 }
 
 .wra-inset.green {
-  border-left-color: #019e1e;
+  border-left-color: var(--color-wra-green);
 }
 
 .wra-inset.light-green {
-  border-left-color: #cdf7d4;
+  border-left-color: var(--color-wra-light-green);
 }
 
 .wra-inset.yellow {
-  border-left-color: #ffd530;
+  border-left-color: var(--color-wra-yellow);
 }
 
 .wra-inset.light-yellow {
-  border-left-color: #fff5ce;
+  border-left-color: var(--color-wra-light-yellow);
 }
 
 .wra-inset.grey {
-  border-left-color: #e5e5e5;
+  border-left-color: var(--color-wra-grey);
 }
 
 .wra-inset.revenue-blue {
-  border-left-color: #2a225b;
+  border-left-color: var(--color-wra-revenue);
 }
 </style>

@@ -115,10 +115,10 @@ export default {
 }
 
 .snackbar {
-  background: #e5e5e5;
+  background: var(--color-wra-light-grey);
   font-size: 18px;
   padding: 20px 16px 20px 24px;
-  border-left: 3px solid #a5a5a5;
+  border-left: 3px solid var(--color-wra-dark-grey);
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -162,10 +162,10 @@ export default {
 }
 
 .close-icon-wrapper:focus {
-  background-color: #ffd530;
-  outline: 2px solid #1f1f1f;
+  background-color: var(--color-wra-yellow);
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 .close-icon-wrapper:focus:hover {
@@ -189,23 +189,23 @@ export default {
 
 /* Snackbar colours */
 .wra-error {
-  background-color: #ffe4e5;
-  border-color: #aa1111;
+  background-color: var(--color-wra-light-red);
+  border-color: var(--color-wra-red);
 }
 
 .wra-success {
-  background-color: #cdf7d4;
-  border-color: #019e1e;
+  background-color: var(--color-wra-light-green);
+  border-color: var(--color-wra-green);
 }
 
 .wra-info {
-  background-color: #c2e0fc;
-  border-color: #0360a6;
+  background-color: var(--color-wra-light-blue);
+  border-color: var(--color-wra-blue);
 }
 
 .wra-warning {
-  background-color: #fff5ce;
-  border-color: #ffd530;
+  background-color: var(--color-wra-light-yellow);
+  border-color: var(--color-wra-yellow);
 }
 
 /* Accessibility */

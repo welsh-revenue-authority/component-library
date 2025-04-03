@@ -43,14 +43,14 @@ hr {
 }
 
 .wra-divider {
-  border: 3px solid #e5e5e5;
+  border: 3px solid var(--color-wra-grey);
 }
 
 .wra-divider-large {
-  border: 4px solid #e5e5e5;
+  border: 4px solid var(--color-wra-grey);
 }
 
 .wra-divider-small {
-  border: 2px solid #e5e5e5;
+  border: 2px solid var(--color-wra-grey);
 }
 </style>

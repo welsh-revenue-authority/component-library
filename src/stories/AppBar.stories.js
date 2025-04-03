@@ -14,6 +14,11 @@ export default {
       table: {
         disable: true
       }
+    },
+    backgroundColor: {
+      table: {
+        disable: true
+      }
     }
   }
 };
@@ -24,7 +29,8 @@ const wgImage = {
 
 export const Default = {
   args: {
-    ...Small.args
+    ...Small.args,
+    backgroundColor: "wra-white"
   },
   render: (args) => ({
     components: { WraAppBar, WraServiceLogo, WraButton },
@@ -41,10 +47,7 @@ export const Default = {
       />
       <WraButton
         v-bind="args"
-        style="background-color: #fff;
-        color: #1f1f1f;
-        margin-left: auto;
-        padding: 8px 20px"
+        style="margin-left: auto;"
       >
         Cymraeg
       </WraButton>
@@ -63,8 +66,8 @@ export const Default = {
     height="34px"
   ></wra-service-logo>
   <wra-button
-    style="background-color: #fff;
-    color: #1f1f1f;"
+    backgroundColor="wra-white"
+    size="small"
   >
     Cymraeg
   </wra-button>

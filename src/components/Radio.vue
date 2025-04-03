@@ -53,7 +53,7 @@ export default {
 
 <style scoped>
 .radio-label {
-  background: #e5e5e5;
+  background: var(--color-wra-grey);
   padding: 20px 20px 20px 20px;
   min-height: 24px;
   display: flex;
@@ -64,7 +64,7 @@ export default {
 }
 
 .radio-label:hover {
-  background: #b5b5b5;
+  background: var(--color-wra-mid-grey);
 }
 
 .radio-input {
@@ -74,10 +74,10 @@ export default {
   background-color: #fff;
   margin: 0;
 
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   width: 20px;
   height: 20px;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   border-radius: 50%;
   transform: translateY(1px);
 
@@ -92,7 +92,7 @@ export default {
   border-radius: 50%;
   transform: scale(0);
   transition: 120ms transform ease-in-out;
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
 }
 
 .radio-input:checked::before {
@@ -100,8 +100,8 @@ export default {
 }
 
 .radio-input:focus {
-  outline: 2px solid #1f1f1f;
-  background-color: #ffd530;
+  outline: 2px solid var(--color-wra-black);
+  background-color: var(--color-wra-yellow);
 }
 
 .radio-input:focus-visible {

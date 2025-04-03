@@ -1,5 +1,14 @@
 <template>
   <div class="validation-tooltip" :class="type">
+    <span
+      v-if="$slots['custom-icon']"
+      :class="{
+        'custom-icon-wrapper': ['custom-icon']
+      }"
+      class="icon"
+    >
+      <slot name="custom-icon"></slot>
+    </span>
     <slot></slot>
   </div>
 </template>
@@ -18,29 +27,40 @@ export default {
 
 <style scoped>
 .validation-tooltip {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-radius: 0px;
   font-size: 18px;
-  padding: 20px 16px 20px 24px;
+  padding: 25px;
 }
 
 .wra-error {
-  background-color: #ffe4e5;
-  border-left: 10px solid #aa1111;
+  background-color: var(--color-wra-light-red);
+  border-left: 10px solid var(--color-wra-red);
 }
 
 .wra-success {
-  background-color: #cdf7d4;
-  border-left: 10px solid #019e1e;
+  background-color: var(--color-wra-light-green);
+  border-left: 10px solid var(--color-wra-green);
 }
 
 .wra-info {
-  background-color: #c2e0fc;
-  border-left: 10px solid #0360a6;
+  background-color: var(--color-wra-light-blue);
+  border-left: 10px solid var(--color-wra-blue);
 }
 
 .wra-warning {
-  background-color: #fff5ce;
-  border-left: 10px solid #ffd530;
+  background-color: var(--color-wra-light-yellow);
+  border-left: 10px solid var(--color-wra-yellow);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.custom-icon-wrapper {
+  margin-right: 8px;
 }
 </style>

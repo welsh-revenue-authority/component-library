@@ -208,40 +208,38 @@ export default {
 }
 
 .prefix {
-  padding: 16px 0px 16px 16px;
-  font-size: 18px;
-  width: 28px;
+  padding: 10px 0px 10px 10px;
+  font-size: 16px;
 }
 
 .suffix {
-  padding: 16px 16px 16px 0px;
-  font-size: 18px;
+  padding: 10px 10px 10px 0px;
+  font-size: 16px;
   z-index: 1;
 }
 
 .input-wrapper input {
-  font-size: 18px;
+  font-size: 16px;
   background-color: transparent;
-  line-height: 20px;
+  line-height: 1.15;
   width: 100%;
-  height: 59px;
   outline: none;
 }
 
 .padding-for-prefix {
-  padding: 16px 6px 16px 6px;
+  padding: 10px 6px 10px 6px;
 }
 
 .padding-for-no-prefix {
-  padding: 16px 16px 16px 16px;
+  padding: 10px;
 }
 
 .input-wrapper:focus-within {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 input {
@@ -249,7 +247,7 @@ input {
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -258,9 +256,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

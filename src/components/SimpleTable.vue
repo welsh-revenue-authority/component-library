@@ -42,7 +42,7 @@ export default {
 <style>
 .wra-simple-table-wrapper {
   padding: 0px 16px 16px 16px;
-  background-color: #f1f1f1;
+  background-color: var(--color-wra-light-grey);
 }
 
 .left-align-headers {
@@ -61,7 +61,7 @@ export default {
 .wra-simple-table {
   width: 100%;
   line-height: 20px;
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   border-spacing: 0;
   table-layout: auto;
 }
@@ -71,12 +71,12 @@ export default {
 }
 
 .wra-simple-table > thead > tr > th {
-  border-bottom: 2px solid #666666;
+  border-bottom: 2px solid var(--color-wra-dark-grey);
 }
 
 .wra-simple-table > tbody > tr > td,
 .wra-simple-table > tbody > tr > th {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid var(--color-wra-dark-grey);
 }
 
 .wra-simple-table td,

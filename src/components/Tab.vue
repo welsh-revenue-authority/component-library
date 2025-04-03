@@ -50,11 +50,11 @@ export default {
 }
 
 .tab-button {
-  border-top: 6px #0360a6 solid;
+  border-top: 6px solid var(--color-wra-blue);
   font-size: 24px;
   font-weight: bold;
-  color: #c2e0fc;
-  background: #1f446d;
+  color: var(--color-wra-light-blue);
+  background: var(--color-wra-dark-blue);
   padding: 20px;
   margin-left: 15px;
   margin-top: 40px;
@@ -62,26 +62,28 @@ export default {
 }
 
 .tab-button:hover:not(.tab-button--active) {
-  background: #3b7dc5;
+  background: var(--color-wra-mid-blue);
   color: #ffffff;
 }
 
 .tab-button.tab-button--active:focus {
-  border-color: #1f1f1f;
-  box-shadow: 2px 0px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+  border-color: var(--color-wra-black);
+  box-shadow: 2px 0px 0px 0px var(--color-wra-black) inset,
+    -2px -2px 0px 0px var(--color-wra-black) inset;
 }
 
 .tab-button--active {
   background: #ffffff;
-  color: #1f1f1f;
-  border-top: 6px #b5b5b5 solid;
+  color: var(--color-wra-black);
+  border-top: 6px solid var(--color-wra-mid-grey);
 }
 
 .tab-button:focus {
-  border-top: 6px #0360a6 solid;
-  color: #1f1f1f;
-  background: #ffd530;
-  box-shadow: 2px 2px 0px 0px #1f1f1f inset, -2px -2px 0px 0px #1f1f1f inset;
+  border-top: 6px solid var(--color-wra-blue);
+  color: var(--color-wra-black);
+  background: var(--color-wra-yellow);
+  box-shadow: 2px 2px 0px 0px var(--color-wra-black) inset,
+    -2px -2px 0px 0px var(--color-wra-black) inset;
   outline-style: none;
 }
 
