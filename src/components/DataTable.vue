@@ -28,15 +28,19 @@
           >
             {{ header.title }}
             <span v-if="localSortBy && localSortBy[0].key === header.key">
-              {{ localSortBy[0].order === "asc" ? "▲" : "▼" }}
+              <span
+                :class="{
+                  'wra-chevron wra-chevron-up': localSortBy[0].order === 'asc',
+                  'wra-chevron wra-chevron-down':
+                    localSortBy[0].order === 'desc'
+                }"
+              ></span>
             </span>
             <span
               v-else
               v-if="header.sortable == true || header.sortable == undefined"
-              class="sort-icons"
-            >
-              ▲
-            </span>
+              class="wra-chevron wra-chevron-up sort-icons"
+            ></span>
           </th>
         </tr>
       </thead>
@@ -290,7 +294,6 @@ button:focus:hover {
 .wra-chevron {
   content: " ";
   display: inline-block;
-  border: solid #ffffff;
   padding: 3px;
   vertical-align: middle;
   transform: rotate(45deg);
@@ -298,11 +301,27 @@ button:focus:hover {
 }
 
 .wra-chevron-right {
+  border: solid #ffffff;
   border-width: 3px 3px 0px 0px;
 }
 
 .wra-chevron-left {
+  border: solid #ffffff;
   border-width: 0px 0px 3px 3px;
+}
+
+.wra-chevron-up {
+  border: solid #1f1f1f;
+  border-width: 3px 0px 0px 3px;
+  margin-left: 4px;
+  margin-top: 3px;
+}
+
+.wra-chevron-down {
+  border: solid #1f1f1f;
+  border-width: 0px 3px 3px 0px;
+  margin-left: 4px;
+  margin-bottom: 6px;
 }
 
 button:focus > .wra-chevron-right {
