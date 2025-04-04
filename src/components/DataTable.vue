@@ -46,7 +46,7 @@
             <input
               v-if="header.searchable"
               type="text"
-              v-model="filters[header.key]"
+              v-model="columnFilters[header.key]"
               @click.stop
               placeholder="Search..."
               class="column-search-input"
@@ -157,7 +157,7 @@ export default {
     return {
       localSortBy: this.sortBy,
       currentPage: 1,
-      filters: {} // Stores search values for each column
+      columnFilters: {} // Stores search values for each column
     };
   },
   methods: {
@@ -193,9 +193,12 @@ export default {
       // Apply global search if applicable
       if (this.search) {
         const searchLowercased = this.search.toLowerCase();
+        // Extract key of each column from headers array
         const relevantHeaders = this.headers.map((header) => header.key);
 
+        // Iterate over each row in the filtered array
         filtered = filtered.filter((item) =>
+          // Use .some() to check all relevant columns
           relevantHeaders.some((header) =>
             String(item[header]).toLowerCase().includes(searchLowercased)
           )
@@ -203,9 +206,11 @@ export default {
       }
 
       // Apply column-specific filters
-      Object.keys(this.filters).forEach((key) => {
-        const filterValue = this.filters[key]?.toLowerCase();
+      // Iterate over columnFilters object where each key corresponds to a column
+      Object.keys(this.columnFilters).forEach((key) => {
+        const filterValue = this.columnFilters[key]?.toLowerCase();
         if (filterValue) {
+          // Use .filter() to keep only rows where column value matches filter value
           filtered = filtered.filter((item) =>
             String(item[key]).toLowerCase().includes(filterValue)
           );
