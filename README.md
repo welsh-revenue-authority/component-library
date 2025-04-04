@@ -47,8 +47,8 @@ Options API:
 
   export default {
     components: {
-      WraButton,
-    },
+      WraButton
+    }
   };
 </script>
 ```
@@ -75,6 +75,27 @@ import WraComponents from "@wra-gov/vue-components";
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(WraComponents);
 });
+```
+
+### Tailwind Usage
+
+By default registering the component library imports the CSS variables.
+
+However, to use the colours the component library provides in Tailwind helper
+classes like this,
+
+```html
+<div class="bg-wra-blue"></div>
+```
+
+The component library's Tailwind stylesheet must be imported. The instructions
+are created for Tailwind 4+. The CSS file must be the file imported by `index.html`
+
+`tailwind.css` / `index.css`/ `style.css`
+
+```css
+@import "tailwindcss";
+@import "@wra-gov/vue-components/tailwind.css";
 ```
 
 ## Documentation
