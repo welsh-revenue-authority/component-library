@@ -1,12 +1,25 @@
+import tailwindcss from "@tailwindcss/vite";
+import vue from "@vitejs/plugin-vue";
 import { resolve } from "path";
 import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import tailwindcss from "@tailwindcss/vite";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), cssInjectedByJsPlugin(), tailwindcss()],
+  plugins: [
+    vue(),
+    cssInjectedByJsPlugin(),
+    tailwindcss(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: "src/styles/tailwind.css", // Source file
+          dest: "." // Destination folder in dist
+        }
+      ]
+    })
+  ],
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
