@@ -8,7 +8,6 @@ import Checkbox from "../Checkbox.vue";
 import CheckboxGroup from "../CheckboxGroup.vue";
 import ContentSectionTitle from "../ContentSectionTitle.vue";
 import CustomInput from "../CustomInput.vue";
-import DataTable from "../DataTable.vue";
 import DateInput from "../DateInput.vue";
 import Divider from "../Divider.vue";
 import ExpansionPanel from "../ExpansionPanel.vue";
@@ -150,14 +149,6 @@ describe("CustomInput", () => {
       cy.mount(CustomInput);
       cy.get("#customInput").type(f.text);
       cy.get("#customInput").should("have.value", f.text);
-    });
-  });
-});
-
-describe("DataTable", () => {
-  it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
-      cy.mount(DataTable);
     });
   });
 });
