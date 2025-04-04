@@ -26,6 +26,13 @@ export default {
       description: {
         component: `
 <p style="margin-bottom: 0px">
+  <b>Sorting</b>: An array of objects, where each object defines the column key and the sorting order.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> [{ key: "calories", order: "asc" }]
+</p>
+
+<p style="margin-bottom: 0px">
   <b>Column Alignment</b>: Aligns table column based on each header's <b>align property</b>, defaulting to left alignment if unspecified.
 </p>
 <p style="margin-top: 0px">
