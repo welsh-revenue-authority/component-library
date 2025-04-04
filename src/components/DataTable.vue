@@ -81,7 +81,7 @@
           :item="item"
           :items="paginatedArray"
         ></slot>
-        <tr v-else>
+        <tr v-else :class="{ bold: item.bold }">
           <td
             :class="{
               'text-left': header.align == 'left' || header.align == undefined,
@@ -253,6 +253,10 @@ export default {
 </script>
 
 <style scoped>
+.bold {
+  font-weight: bold;
+}
+
 .wra-data-table-caption {
   background-color: inherit;
   text-align: left;

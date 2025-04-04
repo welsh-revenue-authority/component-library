@@ -38,6 +38,13 @@ export default {
 <p style="margin-top: 0px">
   <b>e.g.</b> { key: "calories", title: "Calories", <b>align: "right"</b> }
 </p>
+
+<p style="margin-bottom: 0px">
+  <b>Row Styling</b>: Applies bold styling to rows where the item's <b>bold property</b> is true.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> { name: "Artichoke", calories: 47, fat: 0.2, carbs: 10.5, protein: 3.3, iron: 1.3, <b>bold: true</b> }
+</p>
         `
       },
       source: {
