@@ -53,7 +53,6 @@ export default {
   caption="Nutrition Facts for 30 Common Vegetables"
   :headers="headers"
   :items="items"
-  itemsPerPage="10"
   sortBy="[{ key: "name", order: "asc" }]"
 ></wra-data-table>
         `
@@ -73,7 +72,6 @@ export const Default = {
       { key: "protein", title: "Protein (g)", searchable: true },
       { key: "iron", title: "Iron (%)", searchable: true }
     ],
-    itemsPerPage: 10,
     sortBy: [{ key: "name", order: "asc" }],
     items: [
       {
@@ -317,5 +315,78 @@ export const Default = {
         iron: 0.2
       }
     ]
+  }
+};
+
+export const BoldRows = {
+  args: {
+    caption: "Nutrition Facts for 30 Common Vegetables",
+    headers: [
+      { key: "name", title: "Vegetable", searchable: true },
+      { key: "calories", title: "Calories", searchable: true },
+      { key: "fat", title: "Fat (g)", searchable: true },
+      { key: "carbs", title: "Carbs (g)", searchable: true },
+      { key: "protein", title: "Protein (g)", searchable: true },
+      { key: "iron", title: "Iron (%)", searchable: true }
+    ],
+    sortBy: [{ key: "name", order: "asc" }],
+    items: [
+      {
+        name: "Artichoke",
+        calories: 47,
+        fat: 0.2,
+        carbs: 10.5,
+        protein: 3.3,
+        iron: 1.3
+      },
+      {
+        name: "Asparagus",
+        calories: 20,
+        fat: 0.1,
+        carbs: 3.7,
+        protein: 2.2,
+        iron: 2.1,
+        bold: true
+      },
+      {
+        name: "Beet",
+        calories: 43,
+        fat: 0.2,
+        carbs: 9.6,
+        protein: 1.6,
+        iron: 0.8
+      },
+      {
+        name: "Bell pepper",
+        calories: 31,
+        fat: 0.3,
+        carbs: 6.0,
+        protein: 1.0,
+        iron: 0.4,
+        bold: true
+      },
+      {
+        name: "Broccoli",
+        calories: 55,
+        fat: 0.6,
+        carbs: 11.2,
+        protein: 3.7,
+        iron: 0.7
+      }
+    ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-data-table
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
+  sortBy="[{ key: "name", order: "asc" }]"
+></wra-data-table>
+        `
+      }
+    }
   }
 };
