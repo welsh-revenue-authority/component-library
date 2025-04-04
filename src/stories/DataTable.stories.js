@@ -33,6 +33,13 @@ export default {
 </p>
 
 <p style="margin-bottom: 0px">
+  <b>Column Search</b>: Enables column specific searching, where the header's <b>searchable property</b> is true.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> { key: "calories", title: "Calories", <b>searchable: true</b> }
+</p>
+
+<p style="margin-bottom: 0px">
   <b>Column Alignment</b>: Aligns table column based on each header's <b>align property</b>, defaulting to left alignment if unspecified.
 </p>
 <p style="margin-top: 0px">
