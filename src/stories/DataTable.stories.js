@@ -53,7 +53,6 @@ export default {
   caption="Nutrition Facts for 30 Common Vegetables"
   :headers="headers"
   :items="items"
-  sortBy="[{ key: "name", order: "asc" }]"
 ></wra-data-table>
         `
       }
@@ -72,7 +71,6 @@ export const Default = {
       { key: "protein", title: "Protein (g)", searchable: true },
       { key: "iron", title: "Iron (%)", searchable: true }
     ],
-    sortBy: [{ key: "name", order: "asc" }],
     items: [
       {
         name: "Artichoke",
@@ -329,7 +327,6 @@ export const BoldRows = {
       { key: "protein", title: "Protein (g)", searchable: true },
       { key: "iron", title: "Iron (%)", searchable: true }
     ],
-    sortBy: [{ key: "name", order: "asc" }],
     items: [
       {
         name: "Artichoke",
@@ -383,7 +380,6 @@ export const BoldRows = {
   caption="Nutrition Facts for 30 Common Vegetables"
   :headers="headers"
   :items="items"
-  sortBy="[{ key: "name", order: "asc" }]"
 ></wra-data-table>
         `
       }

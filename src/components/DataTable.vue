@@ -220,9 +220,12 @@ export default {
       return filtered;
     },
     sortedArray() {
-      if (this.localSortBy != undefined) {
-        //sort-by is [{ key: 'submittedDate', order: 'desc' }]
-        let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
+      // Always start with the filtered items
+      //sort-by is [{ key: 'submittedDate', order: 'desc' }]
+      let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
+
+      // If sorting is defined, apply sorting logic
+      if (this.localSortBy && this.localSortBy.length > 0) {
         return localCopy.sort((a, b) => {
           const localSortBy = this.localSortBy[0];
           const aValue = a[localSortBy.key];
@@ -244,9 +247,10 @@ export default {
             return aValue > bValue ? 1 : -1;
           }
         });
-      } else {
-        return this.items;
       }
+
+      // If no sorting is applied, return the filtered items as-is
+      return localCopy;
     }
   }
 };
