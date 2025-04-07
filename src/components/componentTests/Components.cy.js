@@ -39,7 +39,7 @@ import ValidationTooltip from "../ValidationTooltip.vue";
 
 describe("AppBar", () => {
   it("Renders, assign text to bar & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(AppBar, {
         slots: {
           default: f.text
@@ -52,7 +52,7 @@ describe("AppBar", () => {
 
 describe("Autocomplete", () => {
   it("Renders, enter text in input & assert autocomplete finds no results", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Autocomplete);
       cy.get(".autocomplete-input").type(f.text);
       cy.get(".autocomplete-item-not-clickable").contains(f.noResults);
@@ -62,7 +62,7 @@ describe("Autocomplete", () => {
 
 describe("Banner", () => {
   it("Renders, assign text to bar & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Banner, {
         slots: {
           default: f.text
@@ -75,7 +75,7 @@ describe("Banner", () => {
 
 describe("Breadcrumbs", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Breadcrumbs);
     });
   });
@@ -83,7 +83,7 @@ describe("Breadcrumbs", () => {
 
 describe("Button", () => {
   it("Renders, assign text to button & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Button, {
         slots: {
           default: f.text
@@ -96,7 +96,7 @@ describe("Button", () => {
 
 describe("Card", () => {
   it("Renders, assign text to card & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Card, {
         slots: {
           default: f.text
@@ -109,7 +109,7 @@ describe("Card", () => {
 
 describe("Checkbox", () => {
   it("Renders, click checkbox & assert change has been called", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       const onChangeSpy = cy.spy().as("onChangeSpy");
       cy.mount(Checkbox, {
         props: {
@@ -124,7 +124,7 @@ describe("Checkbox", () => {
 
 describe("CheckboxGroup", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(CheckboxGroup);
     });
   });
@@ -132,7 +132,7 @@ describe("CheckboxGroup", () => {
 
 describe("ContentSectionTitle", () => {
   it("Renders, assign text to content title & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(ContentSectionTitle, {
         slots: {
           default: f.text
@@ -145,7 +145,7 @@ describe("ContentSectionTitle", () => {
 
 describe("CustomInput", () => {
   it("Renders, enters text into field & asserts text assigns to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(CustomInput);
       cy.get("#customInput").type(f.text);
       cy.get("#customInput").should("have.value", f.text);
@@ -155,7 +155,7 @@ describe("CustomInput", () => {
 
 describe("DateInput", () => {
   it("Renders, enters date into field & asserts values assign and format to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(DateInput);
       cy.get("#dateInput").type(f.dateInput);
       cy.get("#dateInput").should("have.value", f.date);
@@ -165,7 +165,7 @@ describe("DateInput", () => {
 
 describe("Divider", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Divider);
     });
   });
@@ -173,7 +173,7 @@ describe("Divider", () => {
 
 describe("ExpansionPanel", () => {
   it("Renders, assign text to panel, click to expand panel & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(ExpansionPanel, {
         slots: {
           default: f.text
@@ -187,7 +187,7 @@ describe("ExpansionPanel", () => {
 
 describe("FileUpload", () => {
   it("Renders, assert text, add file to upload & assert text changes", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(FileUpload);
       cy.get(".file-upload-label").should("have.text", "File upload label");
       cy.get(".file-name").should("have.text", "No file chosen");
@@ -201,7 +201,7 @@ describe("FileUpload", () => {
 
 describe("Footer", () => {
   it("Renders, assign text to footer & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Footer, {
         slots: {
           default: f.text
@@ -214,7 +214,7 @@ describe("Footer", () => {
 
 describe("Header", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Header);
     });
   });
@@ -222,7 +222,7 @@ describe("Header", () => {
 
 describe("Icon", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Icon);
     });
   });
@@ -230,7 +230,7 @@ describe("Icon", () => {
 
 describe("Inset", () => {
   it("Renders, assigns text, asserts text shows & asserts the colour", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Inset, {
         slots: {
           default: f.text
@@ -244,7 +244,7 @@ describe("Inset", () => {
 
 describe("NumberInput", () => {
   it("Renders, enters number into field & asserts values assign and format to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(NumberInput);
       cy.get("#numberInput").type(f.valueInput);
       cy.get("#numberInput").should("have.value", f.value);
@@ -254,7 +254,7 @@ describe("NumberInput", () => {
 
 describe("Pagination", () => {
   it("Renders, asserts colour of buttons, clicks buttons, asserts colour changes", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Pagination);
       cy.get(".pagination > :nth-child(1)").should("have.text", "Previous");
       cy.get(".pagination > :nth-child(2)").should("have.text", "Next");
@@ -264,7 +264,7 @@ describe("Pagination", () => {
 
 describe("PriceInput", () => {
   it("Renders, enters number into field & asserts values assign and format to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(PriceInput);
       cy.get("#priceInput").type(f.valueInput);
       cy.get("#priceInput").should("have.value", f.value);
@@ -274,7 +274,7 @@ describe("PriceInput", () => {
 
 describe("Radio", () => {
   it("Renders, click radio button & assert change has been called", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       const onChangeSpy = cy.spy().as("onChangeSpy");
       cy.mount(Radio, {
         props: {
@@ -289,7 +289,7 @@ describe("Radio", () => {
 
 describe("RadioGroup", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(RadioGroup);
     });
   });
@@ -297,7 +297,7 @@ describe("RadioGroup", () => {
 
 describe("Select", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Select);
     });
   });
@@ -305,7 +305,7 @@ describe("Select", () => {
 
 describe("ServiceLogo", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(ServiceLogo);
     });
   });
@@ -313,7 +313,7 @@ describe("ServiceLogo", () => {
 
 describe("SimpleTable", () => {
   it("Renders, assign text to table & assert text shows", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(SimpleTable, {
         slots: {
           default: f.text
@@ -326,7 +326,7 @@ describe("SimpleTable", () => {
 
 describe("SkipLink", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(SkipLink);
       cy.get(".skip-link").should("have.text", "Skip to main content");
     });
@@ -335,7 +335,7 @@ describe("SkipLink", () => {
 
 describe("Snackbar", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Snackbar);
     });
   });
@@ -343,7 +343,7 @@ describe("Snackbar", () => {
 
 describe("Subheader", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Subheader);
     });
   });
@@ -351,7 +351,7 @@ describe("Subheader", () => {
 
 describe("Tab", () => {
   it("Renders, asserts colour is correct, clicks tab, asserts colour changes", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Tab);
       cy.get(".tab-button").should("have.css", "box-sizing", "border-box");
     });
@@ -360,7 +360,7 @@ describe("Tab", () => {
 
 describe("Table", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Table);
       cy.get("#pivoted");
     });
@@ -369,7 +369,7 @@ describe("Table", () => {
 
 describe("Tabs", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(Tabs);
     });
   });
@@ -377,7 +377,7 @@ describe("Tabs", () => {
 
 describe("TextArea", () => {
   it("Renders, enters text into field & asserts text assigns to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(TextArea);
       cy.get("textarea").type(f.text);
       cy.get("textarea").should("have.value", f.text);
@@ -387,7 +387,7 @@ describe("TextArea", () => {
 
 describe("TextInput", () => {
   it("Renders, enters text into field & asserts text assigns to component", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(TextInput);
       cy.get("#textInput").type(f.text);
       cy.get("#textInput").should("have.value", f.text);
@@ -397,7 +397,7 @@ describe("TextInput", () => {
 
 describe("ValidationTooltip", () => {
   it("Renders", () => {
-    cy.fixture("ComponentFixtures").then((f) => {
+    cy.fixture("component-fixtures").then((f) => {
       cy.mount(ValidationTooltip);
     });
   });
