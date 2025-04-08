@@ -59,8 +59,12 @@ export default {
 .new-service :deep(a):focus {
   color: #ffffff;
   background-color: var(--color-wra-black);
-  box-shadow: 0 -4px var(--color-wra-black), 0 2px #ffffff;
-  -webkit-box-shadow: 0 -4px var(--color-wra-black), 0 2px #ffffff;
+  box-shadow:
+    0 -4px var(--color-wra-black),
+    0 2px #ffffff;
+  -webkit-box-shadow:
+    0 -4px var(--color-wra-black),
+    0 2px #ffffff;
 }
 
 .wra-banner-actions {
