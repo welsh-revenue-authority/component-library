@@ -17,31 +17,31 @@ export default {
     /** Name of icon from material design icons by  pictogrammers */
     icon: {
       type: String,
-      required: true,
+      required: true
     },
     /** Width of icon */
     width: {
       type: Number,
-      default: 24,
+      default: 24
     },
     /** Height of icon */
     height: {
       type: Number,
-      default: 24,
+      default: 24
     },
     /** Override default viewbox, the size and postion of the SVG, that is calculated from height and width. */
     viewBox: {
       type: String,
-      default: "0 0 24 24",
+      default: "0 0 24 24"
     },
     /** Defines the colour of the outline of the icon; */
     stroke: {
-      type: String,
+      type: String
     },
     /**  Defines the colour of the icon */
     fill: {
-      type: String,
-    },
-  },
+      type: String
+    }
+  }
 };
 </script>

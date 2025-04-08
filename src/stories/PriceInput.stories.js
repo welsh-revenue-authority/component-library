@@ -5,8 +5,7 @@ export default {
   component: WraPriceInput,
   tags: ["autodocs"],
   argTypes: {
-    inputmode: 
-    {
+    inputmode: {
       control: {
         type: "select"
       },
@@ -21,6 +20,6 @@ export const Default = {
     modelValue: 1234.56,
     id: "priceInput",
     placeholder: "0.00",
-    prefix: "£",
+    prefix: "£"
   }
 };

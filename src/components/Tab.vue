@@ -68,7 +68,8 @@ export default {
 
 .tab-button.tab-button--active:focus {
   border-color: var(--color-wra-black);
-  box-shadow: 2px 0px 0px 0px var(--color-wra-black) inset,
+  box-shadow:
+    2px 0px 0px 0px var(--color-wra-black) inset,
     -2px -2px 0px 0px var(--color-wra-black) inset;
 }
 
@@ -82,7 +83,8 @@ export default {
   border-top: 6px solid var(--color-wra-blue);
   color: var(--color-wra-black);
   background: var(--color-wra-yellow);
-  box-shadow: 2px 2px 0px 0px var(--color-wra-black) inset,
+  box-shadow:
+    2px 2px 0px 0px var(--color-wra-black) inset,
     -2px -2px 0px 0px var(--color-wra-black) inset;
   outline-style: none;
 }
