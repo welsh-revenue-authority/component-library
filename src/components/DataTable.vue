@@ -192,6 +192,8 @@ export default {
 
       // Apply global search if applicable
       if (this.search) {
+        // Reset to first page when filtering
+        this.currentPage = 1;
         const searchLowercased = this.search.toLowerCase();
         // Extract key of each column from headers array
         const relevantHeaders = this.headers.map((header) => header.key);
