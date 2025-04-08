@@ -210,6 +210,8 @@ export default {
       Object.keys(this.columnFilters).forEach((key) => {
         const filterValue = this.columnFilters[key]?.toLowerCase();
         if (filterValue) {
+          // Reset to first page when filtering
+          this.currentPage = 1;
           // Use .filter() to keep only rows where column value matches filter value
           filtered = filtered.filter((item) =>
             String(item[key]).toLowerCase().includes(filterValue)
