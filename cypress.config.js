@@ -5,14 +5,14 @@ export default defineConfig({
     devServer: {
       framework: "vue",
       bundler: "vite",
-      styles: ["src/styles/tailwind.css"],
-    },
+      styles: ["src/styles/tailwind.css"]
+    }
   },
 
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: "http://localhost:6006",
-  },
+    baseUrl: "http://localhost:6006"
+  }
 });
