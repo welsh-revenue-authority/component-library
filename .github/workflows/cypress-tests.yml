@@ -28,4 +28,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: npm run storybook
-          start: npm run test:Storybook
+          run: npm run test:Storybook
