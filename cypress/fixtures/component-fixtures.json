@@ -1,8 +1,12 @@
 {
+  "autocompleteInputText": "Vale",
+  "autocompleteResultText": "Vale of Glamorgan",
+  "autoexpandResultText": "Blaenau Gwent",
   "caloriesAmount": "55",
   "date": "01/01/2000",
   "dateInput": "01012000",
   "noResults": "No results found",
+  "preFilledInput": "Alice's council",
   "text": "Hello there!",
   "value": "1,000,000",
   "valueInput": "1000000",
