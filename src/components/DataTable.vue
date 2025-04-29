@@ -399,7 +399,7 @@ button:focus > .wra-chevron-left {
   cursor: pointer;
 }
 
-.clickable:hover {
+tbody.clickable:hover {
   background-color: var(--color-wra-light-grey);
 }
 
