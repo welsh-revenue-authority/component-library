@@ -71,4 +71,43 @@ h6 {
   letter-spacing: -0.01rem;
   line-height: 24px;
 }
+
+@media (max-width: 599px) {
+  h1 {
+    margin: 0px;
+    font-size: 34px;
+    letter-spacing: -0.05rem;
+    line-height: 38px;
+  }
+  h2 {
+    margin: 0px;
+    font-size: 28px;
+    letter-spacing: -0.04rem;
+    line-height: 32px;
+  }
+  h3 {
+    margin: 0px;
+    font-size: 24px;
+    letter-spacing: -0.03rem;
+    line-height: 28px;
+  }
+  h4 {
+    margin: 0px;
+    font-size: 20px;
+    letter-spacing: -0.03rem;
+    line-height: 24px;
+  }
+  h5 {
+    margin: 0px;
+    font-size: 18px;
+    letter-spacing: -0.02rem;
+    line-height: 22px;
+  }
+  h6 {
+    margin: 0px;
+    font-size: 14px;
+    letter-spacing: -0.01rem;
+    line-height: 18px;
+  }
+}
 </style>
