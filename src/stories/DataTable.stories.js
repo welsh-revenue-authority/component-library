@@ -47,6 +47,13 @@ export default {
 </p>
 
 <p style="margin-bottom: 0px">
+  <b>Column Width</b>: Sets the width of the table column based on each header's <b>width property</b>, defaulting to auto if unspecified.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> { key: "calories", title: "Calories", <b>width: 200</b> }
+</p>
+
+<p style="margin-bottom: 0px">
   <b>Row Styling</b>: Applies bold styling to rows where the item's <b>bold property</b> is true.
 </p>
 <p style="margin-top: 0px">
