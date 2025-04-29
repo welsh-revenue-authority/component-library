@@ -1,5 +1,10 @@
 <template>
-  <button class="wra-button" type="button" :class="buttonClass">
+  <button
+    class="wra-button"
+    type="button"
+    :class="buttonClass"
+    :disabled="disabled"
+  >
     <span
       :class="{
         'prepend-icon-wrapper': prependIcon
@@ -40,6 +45,10 @@ export default {
       default: false
     },
     appendIcon: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
       type: Boolean,
       default: false
     }
@@ -89,6 +98,15 @@ button:focus {
 
 button:focus:hover {
   opacity: 1;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:disabled:hover {
+  opacity: 0.6;
 }
 
 .icon {

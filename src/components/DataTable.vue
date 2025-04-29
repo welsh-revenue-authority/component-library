@@ -399,6 +399,10 @@ button:focus > .wra-chevron-left {
   cursor: pointer;
 }
 
+tbody.clickable:hover {
+  background-color: var(--color-wra-light-grey);
+}
+
 .sort-icons {
   visibility: hidden;
   opacity: 0.4;

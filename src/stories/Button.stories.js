@@ -248,3 +248,27 @@ export const AppendCustomIcon = {
     }
   }
 };
+
+export const Disabled = {
+  args: {
+    disabled: "true"
+  },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Disabled Button</WraButton>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button disabled>
+  Disabled Button
+</wra-button>
+        `
+      }
+    }
+  }
+};
