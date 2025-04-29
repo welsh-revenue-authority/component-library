@@ -59,6 +59,27 @@ export default {
 <p style="margin-top: 0px">
   <b>e.g.</b> { name: "Artichoke", calories: 47, fat: 0.2, carbs: 10.5, protein: 3.3, iron: 1.3, <b>bold: true</b> }
 </p>
+
+<p style="margin-bottom: 0px">
+  <b>Clickable Rows</b>: Enables row click functionality by listening to the <b>click:row</b> event.
+</p>
+<p style="margin-top: 0px">
+  <b>e.g.</b> 
+</p>
+<pre style="margin-bottom: 16px">
+<wra-data-table
+  :headers="headers"
+  :items="items"
+  @click:row="handleRowClick"
+/>
+</pre>
+<pre>
+methods: {
+  handleRowClick(row) {
+    console.log("Row clicked:", row);
+  }
+}
+</pre>
         `
       },
       source: {
@@ -398,5 +419,92 @@ export const BoldRows = {
         `
       }
     }
+  }
+};
+
+export const ClickableRows = {
+  args: {
+    caption: "Nutrition Facts for 30 Common Vegetables",
+    headers: [
+      { key: "name", title: "Vegetable", searchable: true },
+      { key: "calories", title: "Calories", searchable: true },
+      { key: "fat", title: "Fat (g)", searchable: true },
+      { key: "carbs", title: "Carbs (g)", searchable: true },
+      { key: "protein", title: "Protein (g)", searchable: true },
+      { key: "iron", title: "Iron (%)", searchable: true }
+    ],
+    items: [
+      {
+        name: "Artichoke",
+        calories: 47,
+        fat: 0.2,
+        carbs: 10.5,
+        protein: 3.3,
+        iron: 1.3
+      },
+      {
+        name: "Asparagus",
+        calories: 20,
+        fat: 0.1,
+        carbs: 3.7,
+        protein: 2.2,
+        iron: 2.1
+      },
+      {
+        name: "Beet",
+        calories: 43,
+        fat: 0.2,
+        carbs: 9.6,
+        protein: 1.6,
+        iron: 0.8
+      },
+      {
+        name: "Bell pepper",
+        calories: 31,
+        fat: 0.3,
+        carbs: 6.0,
+        protein: 1.0,
+        iron: 0.4
+      },
+      {
+        name: "Broccoli",
+        calories: 55,
+        fat: 0.6,
+        carbs: 11.2,
+        protein: 3.7,
+        iron: 0.7
+      }
+    ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-data-table
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
+  @click:row="handleRowClick"
+></wra-data-table>
+        `
+      }
+    }
+  },
+  render(args) {
+    return {
+      components: { WraDataTable },
+      setup() {
+        const onClickRow = (row) => {
+          alert(`Row clicked: ${row.name}`);
+        };
+        return { args, onClickRow };
+      },
+      template: `
+        <wra-data-table
+          v-bind="args"
+          @click:row="onClickRow"
+        />
+      `
+    };
   }
 };
