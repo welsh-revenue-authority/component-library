@@ -18,7 +18,10 @@
         <th
           v-for="header in headers"
           :key="header.key"
-          :style="{ textAlign: header.align || 'left' }"
+          :style="{
+            textAlign: header.align || 'left',
+            width: header.width + 'px'
+          }"
         >
           {{ header.title }}
         </th>
