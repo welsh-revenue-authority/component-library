@@ -104,3 +104,31 @@ export const CookiesExample = {
     }
   }
 };
+
+export const Closable = {
+  args: {
+    closable: true
+  },
+  render: (args) => ({
+    components: { WraBanner },
+    setup() {
+      return { args };
+    },
+    template: `
+    <WraBanner v-bind="args">
+      You've accepted all cookies. You can <a href=".">change your cookie settings</a> at any time.
+    </WraBanner>`
+  }),
+  // Make source code box accurate
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-banner closable>
+  You've accepted all cookies. You can <a href=".">change your cookie settings</a> at any time.
+</wra-banner>
+        `
+      }
+    }
+  }
+};
