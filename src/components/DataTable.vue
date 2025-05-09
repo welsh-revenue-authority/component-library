@@ -225,15 +225,15 @@ export default {
     },
     sortedArray() {
       // Always start with the filtered items
-      //sort-by is [{ key: 'submittedDate', order: 'desc' }]
+      // sort-by is [{ key: 'submittedDate', order: 'desc' }]
       let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
 
       // If sorting is defined, apply sorting logic
       if (this.localSortBy && this.localSortBy.length > 0) {
         return localCopy.sort((a, b) => {
           const localSortBy = this.localSortBy[0];
-          const aValue = a[localSortBy.key];
-          const bValue = b[localSortBy.key];
+          var aValue = a[localSortBy.key];
+          var bValue = b[localSortBy.key];
 
           // Check for null or undefined values
           if (aValue == null && bValue == null) {
@@ -244,7 +244,33 @@ export default {
             return localSortBy.order === "desc" ? -1 : 1;
           }
 
-          // Compare values
+          // Convert numerical strings to numbers
+          const parseNumber = (value) => {
+            // Use regex to check string only contains:
+            // - Optional negative sign
+            // - Digits
+            // - Commas
+            // - Optional decimal point
+            if (typeof value === "string" && /^-?[\d,]+(\.\d+)?$/.test(value)) {
+              // Remove commas and parse as float
+              const cleanedValue = value.replace(/,/g, "");
+              return parseFloat(cleanedValue);
+            }
+            // Return the original value if not a numerical string
+            return value;
+          };
+
+          const aNumeric = parseNumber(aValue);
+          const bNumeric = parseNumber(bValue);
+
+          // If both values are numbers, sort numerically
+          if (!isNaN(aNumeric) && !isNaN(bNumeric)) {
+            return localSortBy.order === "desc"
+              ? bNumeric - aNumeric
+              : aNumeric - bNumeric;
+          }
+
+          // Compare as strings for non-numerical values
           if (localSortBy.order === "desc") {
             return aValue < bValue ? 1 : -1;
           } else {
