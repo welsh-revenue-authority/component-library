@@ -1,9 +1,11 @@
 <template>
   <div
+    v-if="visible"
     class="wra-banner"
     :class="{
       'hidden-print': hiddenPrint === true,
-      'new-service': newService === true
+      'new-service': newService === true,
+      'closable-padding': closable === true
     }"
   >
     <div>
@@ -12,6 +14,14 @@
     <div class="wra-banner-actions" v-if="$slots.actions">
       <slot name="actions"></slot>
     </div>
+    <button
+      v-if="closable"
+      class="wra-banner-close"
+      @click="closeBanner"
+      aria-label="Close banner"
+    >
+      &times;
+    </button>
   </div>
 </template>
 
@@ -26,6 +36,20 @@ export default {
     newService: {
       type: Boolean,
       default: false
+    },
+    closable: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      visible: true
+    };
+  },
+  methods: {
+    closeBanner() {
+      this.visible = false;
     }
   }
 };
@@ -46,6 +70,7 @@ export default {
   color: var(--color-wra-black);
   padding: 20px;
   border: none;
+  position: relative;
 }
 
 .new-service {
@@ -73,6 +98,37 @@ export default {
   row-gap: 10px;
   column-gap: 14px;
   flex-wrap: wrap;
+}
+
+.wra-banner-close {
+  background: none;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  color: var(--color-wra-black);
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  height: 30px;
+}
+
+.wra-banner-close:hover {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.wra-banner-close:focus {
+  background-color: var(--color-wra-yellow);
+  outline: 2px solid var(--color-wra-black);
+}
+
+.wra-banner-close:focus:hover {
+  opacity: 1;
+}
+
+.closable-padding {
+  padding-right: 44px;
 }
 
 @media print {
