@@ -4,6 +4,8 @@
   "autoexpandResultText": "Blaenau Gwent",
   "caloriesAmount": "55",
   "checkboxLabelText": "This is a checkbox label",
+  "customInputValue": "111111111111",
+  "customInputValueDisplay": "1111 1111 1111",
   "date": "01/01/2000",
   "dateInput": "01012000",
   "noResults": "No results found",

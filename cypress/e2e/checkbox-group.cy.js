@@ -1,6 +1,6 @@
 import CheckboxGroup from "../page-objects/checkbox-group.js";
 
-describe("Checkbox", () => {
+describe("Checkbox Group", () => {
   const cg = new CheckboxGroup();
 
   it("Checkbox Group - Default", () => {
