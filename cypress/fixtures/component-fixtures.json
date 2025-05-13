@@ -13,6 +13,8 @@
   "optionOneCheckboxText": "Option 1",
   "optionTwoCheckboxText": "Option 2",
   "preFilledInput": "Alice's council",
+  "priceInputDisplay": "9,999.99",
+  "priceInputValue": "9999.99",
   "text": "Hello there!",
   "value": "1,000,000",
   "valueInput": "1000000",
@@ -20,5 +22,6 @@
   "vegBroccoli": "Broccoli",
   "vegChard": "Chard",
   "welshLangText": "Cymraeg",
-  "wgLogoLink": "https://gov.wales/"
+  "wgLogoLink": "https://gov.wales/",
+  "wraLogoLink": "https://gov.wales/welsh-revenue-authority"
 }
