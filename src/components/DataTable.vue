@@ -260,14 +260,38 @@ export default {
             return value;
           };
 
+          const parseDate = (value) => {
+            // Use regex to check string matches DD/MM/YYYY format
+            if (
+              typeof value === "string" &&
+              /^\d{2}\/\d{2}\/\d{4}$/.test(value)
+            ) {
+              // Split the string into day, month, and year
+              // Convert to numbers
+              const [day, month, year] = value.split("/").map(Number);
+              // Create a new Date object
+              return new Date(year, month - 1, day).getTime();
+            }
+            // Return the original value if it's not a valid date string
+            return value;
+          };
+
           const aNumeric = parseNumber(aValue);
           const bNumeric = parseNumber(bValue);
+
+          const aDate = parseDate(aValue);
+          const bDate = parseDate(bValue);
 
           // If both values are numbers, sort numerically
           if (!isNaN(aNumeric) && !isNaN(bNumeric)) {
             return localSortBy.order === "desc"
               ? bNumeric - aNumeric
               : aNumeric - bNumeric;
+          }
+
+          // If both values are dates, sort by date
+          if (!isNaN(aDate) && !isNaN(bDate)) {
+            return localSortBy.order === "desc" ? bDate - aDate : aDate - bDate;
           }
 
           // Compare as strings for non-numerical values
