@@ -26,7 +26,12 @@ describe("Tabs", () => {
       cy.log("Clicked on the unselected tab");
 
       cy.get(t.selectedTab)
-        .should("have.css", "border-top", "6px solid rgb(181, 181, 181)")
+        .should("have.css", "border-top", "6px solid rgb(31, 31, 31)")
+        .should(
+          "have.css",
+          "background",
+          "rgb(255, 213, 48) none repeat scroll 0% 0% / auto padding-box border-box"
+        )
         .should("have.class", "tab-button tab-button--active");
       cy.log(
         "Asserted that the selected tab has the expected styles and attributes"
