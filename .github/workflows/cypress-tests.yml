@@ -18,8 +18,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cypress run
+      - name: Cypress component tests
         uses: cypress-io/github-action@v6
         with:
           start: npm run test:Component
           component: true
+
+      - name: Cypress Storybook tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: npm run storybook
+          run: npm run test:Storybook
