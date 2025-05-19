@@ -1,8 +1,11 @@
 class Banner {
-  acceptCookiesButton = "div > div.wra-banner-actions > button:nth-child(1)";
-  bannerHyperlink = "div > div > a";
+  acceptCookiesButton =
+    "#storybook-root > div > div.wra-banner-actions > button:nth-child(1)";
+  banner = "#storybook-root > div";
+  bannerCloseButton = "#storybook-root > div > button";
+  bannerHyperlink = "#storybook-root > div > div > a";
   changeCookiesSettingsButton =
-    "div > div.wra-banner-actions > button:nth-child(2)";
+    "#storybook-root > div > div.wra-banner-actions > button:nth-child(2)";
 }
 
 export default Banner;
