@@ -14,6 +14,7 @@ import ContentSectionTitle from "./components/ContentSectionTitle.vue";
 import CustomInput from "./components/CustomInput.vue";
 import DataTable from "./components/DataTable.vue";
 import DateInput from "./components/DateInput.vue";
+import Dialog from "./components/Dialog.vue";
 import Divider from "./components/Divider.vue";
 import ExpansionPanel from "./components/ExpansionPanel.vue";
 import FileUpload from "./components/FileUpload.vue";
@@ -50,6 +51,7 @@ const components = {
   CustomInput,
   DataTable,
   DateInput,
+  Dialog,
   Divider,
   ExpansionPanel,
   FileUpload,
