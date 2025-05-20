@@ -11,11 +11,7 @@ describe("Date Input", () => {
       cy.get(di.dateInput).clear();
       cy.log("Cleared the date input");
 
-      cy.get(di.dateInput).should(
-        "have.attr",
-        "placeholder",
-        "DD/MM/YYYY"
-      );
+      cy.get(di.dateInput).should("have.attr", "placeholder", "DD/MM/YYYY");
       cy.log("Asserted that the input has the correct placeholder");
 
       cy.get(di.dateInput).type(f.dateInput);

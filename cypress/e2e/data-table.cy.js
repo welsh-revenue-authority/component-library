@@ -34,6 +34,6 @@ describe("DataTable", () => {
 
       cy.get(dt.topRowName).should("have.text", f.vegBroccoli);
       cy.log("Assert top row name vegetable name is Broccoli");
-    })
-  })
+    });
+  });
 });
