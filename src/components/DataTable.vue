@@ -318,7 +318,7 @@ export default {
 .wra-data-table-caption {
   background-color: inherit;
   text-align: left;
-  padding: 16px;
+  padding: 0px 0px 16px 0px;
   font-weight: bold;
   font-size: 20px;
 }
@@ -327,7 +327,7 @@ export default {
   width: 100%;
   border-spacing: 0;
   line-height: 20px;
-  padding: 0px 16px 16px 16px;
+  padding: 0px;
   table-layout: auto;
 }
 
@@ -478,7 +478,7 @@ th:hover .sort-icons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0px 16px 16px 16px;
+  padding: 16px 0px 0px 0px;
 }
 
 .pagination button {
