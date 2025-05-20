@@ -1,14 +1,12 @@
 <template>
   <teleport to="body">
-    <div
-      v-if="visible"
+    <dialog
       class="overlay"
-      role="dialog"
-      aria-modal="true"
-      :aria-labelledby="'dialog-title'"
-      :aria-describedby="'dialog-message'"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-message"
       tabindex="-1"
       ref="dialog"
+      @close="closeDialog"
       @keydown.tab.prevent="handleTab"
       @keydown.esc="cancel"
     >
@@ -30,7 +28,7 @@
           </wra-button>
         </div>
       </div>
-    </div>
+    </dialog>
   </teleport>
 </template>
 
@@ -45,10 +43,6 @@ export default {
     WraButton
   },
   props: {
-    visible: {
-      type: Boolean,
-      required: true
-    },
     title: {
       type: String,
       required: true
@@ -70,12 +64,22 @@ export default {
       default: false
     }
   },
-  emits: ["confirm", "cancel"],
+  emits: ["confirm", "cancel", "close"],
   methods: {
+    openDialog() {
+      this.$refs.dialog.showModal();
+      this.focusConfirm();
+    },
+    closeDialog() {
+      this.$emit("close");
+      this.restoreFocus();
+    },
     confirm() {
+      this.$refs.dialog.close();
       this.$emit("confirm");
     },
     cancel() {
+      this.$refs.dialog.close();
       this.$emit("cancel");
     },
     handleTab(e) {
@@ -95,52 +99,36 @@ export default {
         const next = (index + 1) % focusable.length;
         focusable[next].focus();
       }
+    },
+    focusConfirm() {
+      this.$nextTick(() => {
+        // Focus the confirm button when dialog opens
+        const btn = this.$refs.confirmBtn?.$el || this.$refs.confirmBtn;
+        if (btn && typeof btn.focus === "function") btn.focus();
+      });
+    },
+    restoreFocus() {
+      if (
+        this.lastFocused &&
+        typeof this.lastFocused.focus === "function" &&
+        document.contains(this.lastFocused)
+      ) {
+        // Restore focus only if the element is still in the document
+        this.lastFocused.focus();
+      }
     }
   },
   mounted() {
     this.lastFocused = document.activeElement;
-    this.$nextTick(() => {
-      // Focus the confirm button when dialog opens
-      const btn = this.$refs.confirmBtn?.$el || this.$refs.confirmBtn;
-      if (btn && typeof btn.focus === "function") btn.focus();
-    });
-  },
-  watch: {
-    visible(val) {
-      if (val) {
-        // Store the currently focused element when the dialog opens
-        this.lastFocused = document.activeElement;
-        this.$nextTick(() => {
-          const btn = this.$refs.confirmBtn?.$el || this.$refs.confirmBtn;
-          if (btn && typeof btn.focus === "function") btn.focus();
-        });
-      } else if (
-        this.lastFocused &&
-        typeof this.lastFocused.focus === "function"
-      ) {
-        // Restore focus only if the element is still in the document
-        if (document.contains(this.lastFocused)) {
-          this.lastFocused.focus();
-        }
-      }
-    }
   }
 };
 </script>
 
 <style scoped>
 .overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  backdrop-filter: blur(5px);
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 9999;
+  padding: 0;
+  border: none;
 }
 
 .dialog {
@@ -156,5 +144,12 @@ export default {
   margin-top: 18px;
   display: flex;
   justify-content: space-evenly;
+}
+</style>
+
+<style>
+dialog.overlay::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
 }
 </style>
