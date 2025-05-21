@@ -1,13 +1,20 @@
 <template>
   <div
     class="wra-simple-table-wrapper"
-    :class="{ 'wra-simple-table-inherit': inheritBackground }"
+    :class="{
+      'wra-simple-table-inherit': inheritBackground,
+      'wra-simple-table-no-padding': inheritBackground
+    }"
   >
     <table
       class="wra-simple-table"
       :class="{ 'left-align-headers': leftAlignHeaders }"
     >
-      <caption v-if="caption" class="wra-simple-table-caption">
+      <caption
+        v-if="caption"
+        class="wra-simple-table-caption"
+        :class="{ 'caption-no-padding': inheritBackground }"
+      >
         <slot name="caption">
           <!-- Fallback prop -->
           {{ caption }}
@@ -45,6 +52,11 @@ export default {
   background-color: var(--color-wra-light-grey);
 }
 
+/* Remove external padding when inherit background is used */
+.wra-simple-table-no-padding {
+  padding: 0 !important;
+}
+
 .left-align-headers {
   text-align: left;
 }
@@ -56,6 +68,11 @@ export default {
   padding-left: 0px;
   font-weight: bold;
   font-size: 20px;
+}
+
+/* Remove external padding when inherit background is used */
+.caption-no-padding {
+  padding: 0 0 16px 0 !important;
 }
 
 .wra-simple-table {

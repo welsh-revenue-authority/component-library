@@ -3,11 +3,16 @@
     id="regular"
     class="wra-table"
     :class="{
-      'wra-table-inherit': inheritBackground
+      'wra-table-inherit': inheritBackground,
+      'wra-table-no-padding': inheritBackground
     }"
     v-bind="$attrs"
   >
-    <caption v-if="caption" class="wra-table-caption">
+    <caption
+      v-if="caption"
+      class="wra-table-caption"
+      :class="{ 'caption-no-padding': inheritBackground }"
+    >
       <slot name="caption">
         <!-- Fallback prop -->
         {{ caption }}
@@ -44,11 +49,16 @@
     id="pivoted"
     class="wra-table"
     :class="{
-      'wra-table-inherit': inheritBackground
+      'wra-table-inherit': inheritBackground,
+      'wra-table-no-padding': inheritBackground
     }"
     v-bind="$attrs"
   >
-    <caption v-if="caption" class="wra-table-caption">
+    <caption
+      v-if="caption"
+      class="wra-table-caption"
+      :class="{ 'caption-no-padding': inheritBackground }"
+    >
       <slot name="caption">
         <!-- Fallback prop -->
         {{ caption }}
@@ -127,6 +137,11 @@ export default {
   font-size: 20px;
 }
 
+/* Remove external padding when inherit background is used */
+.caption-no-padding {
+  padding: 0 0 16px 0 !important;
+}
+
 .wra-table {
   width: 100%;
   line-height: 20px;
@@ -135,6 +150,11 @@ export default {
   border-spacing: 0;
   padding: 0px 16px 16px 16px;
   table-layout: auto;
+}
+
+/* Remove external padding when inherit background is used */
+.wra-table-no-padding {
+  padding: 0 !important;
 }
 
 .wra-table td,
