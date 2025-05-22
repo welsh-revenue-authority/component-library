@@ -1,20 +1,20 @@
 <template>
   <teleport to="body">
     <dialog
-      class="overlay"
+      ref="dialog"
+      class="dialog-class"
       aria-labelledby="dialog-title"
       aria-describedby="dialog-message"
       tabindex="-1"
-      ref="dialog"
       @close="closeDialog"
       @keydown.tab.prevent="handleTab"
       @keydown.esc="cancel"
     >
-      <div class="dialog">
+      <div class="dialog-content">
         <wra-header size="h3" id="dialog-title">
           {{ title }}
         </wra-header>
-        <p id="dialog-message">{{ message }}</p>
+        <p id="dialog-message" class="mt-4">{{ message }}</p>
         <div class="dialog-buttons">
           <wra-button
             ref="confirmBtn"
@@ -125,30 +125,25 @@ export default {
 </script>
 
 <style scoped>
-.overlay {
+.dialog-class {
   z-index: 9999;
-  padding: 0;
-  border: none;
 }
 
-.dialog {
-  background: var(--color-wra-light-grey);
-  padding: 20px 24px;
+.dialog-content {
   min-width: 300px;
-  max-width: 90%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 90vw;
   text-align: center;
 }
 
 .dialog-buttons {
-  margin-top: 18px;
+  margin-top: 16px;
   display: flex;
   justify-content: space-evenly;
 }
 </style>
 
 <style>
-dialog.overlay::backdrop {
+dialog.dialog-class::backdrop {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
 }
