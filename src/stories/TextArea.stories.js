@@ -11,3 +11,10 @@ export const Default = {
     label: "Text area label"
   }
 };
+
+export const MaxLength = {
+  args: {
+    label: "Text area label",
+    maxLength: 10
+  }
+};
