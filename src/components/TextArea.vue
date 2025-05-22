@@ -6,6 +6,7 @@
       :id="id"
       :value="modelValue"
       @input="validate($event.target.value)"
+      :maxlength="maxLength"
     />
     <p>{{ errorMessage }}</p>
   </div>
@@ -29,6 +30,10 @@ export default {
     },
     rules: {
       type: Array,
+      required: false
+    },
+    maxLength: {
+      type: Number,
       required: false
     }
   },
