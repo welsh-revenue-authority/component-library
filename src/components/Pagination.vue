@@ -91,18 +91,18 @@ export default {
     incPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
-        this.$emit("update:currentPage", this.currentPage);
+        this.$emit("update:modelValue", this.currentPage);
       }
     },
     decPage() {
-      if (this.currentPage >= this.startIndex) {
+      if (this.currentPage >= this.startIndex + 1) {
         this.currentPage--;
-        this.$emit("update:currentPage", this.currentPage);
+        this.$emit("update:modelValue", this.currentPage);
       }
     },
     changePage(page) {
       this.currentPage = page;
-      this.$emit("update:currentPage", this.currentPage);
+      this.$emit("update:modelValue", this.currentPage);
       this.$nextTick(() => {
         if (!this.$refs?.[page]?.[0]) {
           console.log("No ref found for page", page);
@@ -111,7 +111,7 @@ export default {
       });
     },
     onKeyLeft() {
-      if (this.currentPage > this.startIndex) {
+      if (this.currentPage > this.startIndex + 1) {
         this.changePage(this.currentPage - 1);
       }
     },
@@ -121,7 +121,7 @@ export default {
       }
     }
   },
-  emits: ["update:currentPage"],
+  emits: ["update:modelValue"],
   computed: {
     pageArray() {
       return Array.from(
@@ -162,7 +162,7 @@ export default {
 <style scoped>
 .pagination-button {
   background-color: transparent;
-  color: #2a225b;
+  color: var(--color-wra-revenue);
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -182,11 +182,11 @@ export default {
 
 .pagination-button:focus,
 .pagination-number:focus {
-  color: #1f1f1f;
-  background-color: #ffd530;
-  outline: 2px solid #1f1f1f;
+  color: var(--color-wra-black);
+  background-color: var(--color-wra-yellow);
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 .pagination-button:focus:hover,
@@ -195,24 +195,24 @@ export default {
 }
 
 .pagination-number {
-  color: #2a2a2a;
-  background-color: #f1f1f1;
+  color: var(--color-wra-black);
+  background-color: var(--color-wra-light-grey);
   padding: 8px;
   font-weight: 700;
   border: none;
   font-size: 18px;
   cursor: pointer;
-  width: 3rem;
+  min-width: 3rem;
   text-align: center;
 }
 
 .pagination-number:hover {
-  color: #2a2a2a;
+  color: var(--color-wra-black);
   opacity: 0.8;
 }
 
 .pagination-number--selected {
-  background-color: #2a225b;
+  background-color: var(--color-wra-revenue);
   color: white;
 }
 

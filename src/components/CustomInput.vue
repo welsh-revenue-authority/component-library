@@ -6,11 +6,11 @@
       <input
         :id="id"
         :type="type"
-        :value="unmaskedValue"
+        :value="modelValue"
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
-        v-maska:returnValue
-        :data-maska="dataMaska"
+        v-maska="dataMaska"
+        @maska="onMaska"
         :data-maska-eager="dataMaskaEager"
         :data-maska-reversed="dataMaskaReversed"
         :data-maska-tokens="dataMaskaTokens"
@@ -29,31 +29,71 @@ export default {
   directives: { maska: vMaska },
   name: "wra-custom-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The mask pattern for the input field.
+     * @type {string}
+     */
     dataMaska: {
       type: String
     },
+    /**
+     * Whether to apply the mask eagerly.
+     * @type {boolean}
+     * @default false
+     */
     dataMaskaEager: {
       type: Boolean,
       default: false
     },
+    /**
+     * Whether to apply the mask in reverse.
+     * @type {boolean}
+     * @default false
+     */
     dataMaskaReversed: {
       type: Boolean,
       default: false
     },
+    /**
+     * Custom tokens for the mask.
+     * @type {string}
+     */
     dataMaskaTokens: {
       type: String
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "customInput"
+     */
     id: {
       type: String,
       required: true,
       default: "customInput"
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "numeric"
+     * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
+     */
     inputmode: {
       default: "numeric",
       type: String,
@@ -71,6 +111,12 @@ export default {
         ].includes(value);
       }
     },
+    /**
+     * The type of the input field.
+     * @type {string}
+     * @default "text"
+     * @validator value {string} - The type must be one of ["text", "none", "tel", "url", "email", "numeric", "decimal"].
+     */
     type: {
       type: String,
       default: "text",
@@ -86,39 +132,54 @@ export default {
         ].includes(value);
       }
     },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     */
     placeholder: {
       type: String
     },
     rules: {},
+    /**
+     * The prefix text to display before the input field.
+     * @type {string}
+     */
     prefix: {
       type: String
     },
+    /**
+     * The suffix text to display after the input field.
+     * @type {string}
+     */
     suffix: {
       type: String
+    },
+    /**
+     * Whether to emit maska details.
+     * @type {boolean}
+     * @default false
+     */
+    emitMaskaDetails: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue", "valid"],
   data: () => ({
-    unmaskedValue: "",
     errorMessage: "",
-    firstValidation: true,
-    returnValue: ""
+    firstValidation: true
   }),
-  watch: {
-    modelValue(newValue) {
-      this.unmaskedValue = newValue;
-    },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.unmasked);
-      this.validate(this.returnValue.unmasked);
-    }
-  },
   methods: {
+    onMaska(event) {
+      const unmaskedValue = event.detail.unmasked;
+      this.$emit("update:modelValue", unmaskedValue);
+      this.validate(unmaskedValue);
+    },
     validate(value) {
       this.errorMessage = "";
 
       if (this.rules != undefined) {
-        //Checks if rules exists
+        // Checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
           let result = element(value);
@@ -134,11 +195,11 @@ export default {
         this.$emit("valid", { id: this.id, value: true });
       }
 
-      //Gives user a chance to type something in instead of making whole form red immediately
+      // Gives user a chance to type something in instead of making whole form red immediately
       if (this.firstValidation == true) {
         this.firstValidation = false;
         if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
+          // Ensures edge case bug doesn't happen where there's an error but no visual output
           this.errorMessage = "";
           return;
         }
@@ -155,8 +216,8 @@ export default {
     }
   },
   mounted() {
-    //Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.unmaskedValue = this.modelValue;
+    // Run validation rules when component first is rendered as v-model data might be valid/invalid
+    this.$emit("update:modelValue", this.modelValue);
     this.validate(this.modelValue);
   }
 };
@@ -178,40 +239,38 @@ export default {
 }
 
 .prefix {
-  padding: 16px 0px 16px 16px;
-  font-size: 18px;
-  width: 28px;
+  padding: 10px 0px 10px 10px;
+  font-size: 16px;
 }
 
 .suffix {
-  padding: 16px 16px 16px 0px;
-  font-size: 18px;
+  padding: 10px 10px 10px 0px;
+  font-size: 16px;
   z-index: 1;
 }
 
 .input-wrapper input {
-  font-size: 18px;
+  font-size: 16px;
   background-color: transparent;
-  line-height: 20px;
+  line-height: 1.15;
   width: 100%;
-  height: 59px;
   outline: none;
 }
 
 .padding-for-prefix {
-  padding: 16px 6px 16px 6px;
+  padding: 10px 6px 10px 6px;
 }
 
 .padding-for-no-prefix {
-  padding: 16px 16px 16px 16px;
+  padding: 10px;
 }
 
 .input-wrapper:focus-within {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 input {
@@ -219,7 +278,7 @@ input {
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -228,9 +287,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

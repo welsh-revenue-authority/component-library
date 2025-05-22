@@ -9,7 +9,8 @@
         :value="maskedValue"
         :inputmode="inputmode || 'decimal'"
         :placeholder="placeholder"
-        v-maska:returnValue.masked="mask"
+        v-maska="mask"
+        @maska="onMaska"
         data-maska="0.99"
         data-maska-tokens="0:\d:multiple|9:\d:optional"
         :class="prefixPadding"
@@ -23,21 +24,50 @@
 <script>
 import { vMaska } from "maska/vue";
 
+/**
+ * PriceInput component
+ *
+ * This component provides a masked price input field with optional prefix and suffix.
+ * It uses the `maska` directive to apply input masks.
+ */
 export default {
   directives: { maska: vMaska },
   name: "wra-price-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     * @default ""
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "priceInput"
+     */
     id: {
       type: String,
       required: true,
       default: "priceInput"
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "decimal"
+     * @validator value {string} - The input mode must be one of ["numeric", "decimal", "text"].
+     */
     inputmode: {
       default: "decimal",
       type: String,
@@ -45,15 +75,33 @@ export default {
         return ["numeric", "decimal", "text"].includes(value);
       }
     },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     * @default "0.00"
+     */
     placeholder: {
       default: "0.00",
       type: String
     },
+    /**
+     * Validation rules for the input field.
+     * @type {Array<Function>}
+     */
     rules: {},
+    /**
+     * The prefix text to display before the input field.
+     * @type {string}
+     * @default "£"
+     */
     prefix: {
       default: "£",
       type: String
     },
+    /**
+     * The suffix text to display after the input field.
+     * @type {string}
+     */
     suffix: {
       type: String
     }
@@ -78,27 +126,28 @@ export default {
       }
     },
     errorMessage: "",
-    returnValue: "",
     firstValidation: true
   }),
   watch: {
     modelValue(newValue) {
-      //Add thousand seperators with , to the value which is a decimal number
-      //Helps avoid rendered fields from flickering as the commas are deleted/added
+      // Add thousand separators with , to the value which is a decimal number
+      // Helps avoid rendered fields from flickering as the commas are deleted/added
       this.maskedValue = newValue
         .toString()
         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    },
-    "returnValue.masked"() {
-      this.$emit("update:modelValue", this.returnValue.masked);
-      this.validate(this.returnValue.masked);
     }
   },
   methods: {
+    onMaska(event) {
+      // Remove all non-numeric characters except the decimal point
+      const unmaskedValue = event.detail.masked.replace(/[^0-9.]/g, "");
+      this.$emit("update:modelValue", unmaskedValue);
+      this.validate(unmaskedValue);
+    },
     validate(value) {
       this.errorMessage = "";
       if (this.rules != undefined) {
-        //Checks if rules exists
+        // Checks if rules exist
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
           let result = element(value);
@@ -114,11 +163,11 @@ export default {
         this.$emit("valid", { id: this.id, value: true });
       }
 
-      //Gives user a chance to type something in instead of making whole form red immediately
+      // Gives user a chance to type something in instead of making whole form red immediately
       if (this.firstValidation == true) {
         this.firstValidation = false;
         if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
+          // Ensures edge case bug doesn't happen where there's an error but no visual output
           this.errorMessage = "";
           return;
         }
@@ -135,8 +184,9 @@ export default {
     }
   },
   mounted() {
-    //Run validation rules when component first is rendered as v-model data might be valid/invalid
+    // Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.maskedValue = this.modelValue;
+    this.$emit("update:modelValue", this.maskedValue);
     this.validate(this.modelValue);
   }
 };
@@ -158,40 +208,38 @@ export default {
 }
 
 .prefix {
-  padding: 16px 0px 16px 16px;
-  font-size: 18px;
-  width: 28px;
+  padding: 10px 0px 10px 10px;
+  font-size: 16px;
 }
 
 .suffix {
-  padding: 16px 16px 16px 0px;
-  font-size: 18px;
+  padding: 10px 10px 10px 0px;
+  font-size: 16px;
   z-index: 1;
 }
 
 .input-wrapper input {
-  font-size: 18px;
+  font-size: 16px;
   background-color: transparent;
-  line-height: 20px;
+  line-height: 1.15;
   width: 100%;
-  height: 59px;
   outline: none;
 }
 
 .padding-for-prefix {
-  padding: 16px 6px 16px 6px;
+  padding: 10px 6px 10px 6px;
 }
 
 .padding-for-no-prefix {
-  padding: 16px 16px 16px 16px;
+  padding: 10px;
 }
 
 .input-wrapper:focus-within {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 input {
@@ -199,7 +247,7 @@ input {
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -208,9 +256,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

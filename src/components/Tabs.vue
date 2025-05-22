@@ -26,21 +26,21 @@ export default {
     /** The currently selected tab, starts from 0 */
     modelValue: {
       type: Number,
-      default: 0,
+      default: 0
     },
     /** Tabs to display */
     options: {
       type: Array,
-      required: true,
-    },
+      required: true
+    }
   },
   components: {
-    Tab,
+    Tab
   },
   data() {
     return {
       activeTab: 0,
-      focusTab: 0,
+      focusTab: 0
     };
   },
   methods: {
@@ -58,17 +58,17 @@ export default {
       if (this.focusTab < this.options.length - 1) {
         this.focusTab++;
       }
-    },
+    }
   },
   created() {
     this.activeTab = this.modelValue;
-  },
+  }
 };
 </script>
 
 <style scoped>
 .tabs {
-  background-color: #0360a6;
+  background-color: var(--color-wra-blue);
   width: 100%;
 }
 </style>

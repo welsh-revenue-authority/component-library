@@ -87,7 +87,8 @@ export default {
     userInput: {},
     hasFocus: false,
     listHasFocus: false,
-    optionIndex: null
+    optionIndex: null,
+    validatedOptions: []
   }),
   methods: {
     onInputTyping() {
@@ -146,7 +147,7 @@ export default {
   },
   computed: {
     showOptions() {
-      const inputMatchesOption = this.options.some(
+      const inputMatchesOption = this.validatedOptions.some(
         (element) =>
           element[this.optionLabel] === this.userInput[this.optionLabel]
       );
@@ -159,13 +160,13 @@ export default {
       return showOptions;
     },
     filterOptions() {
-      const searchForInput = this.options.filter((item) =>
+      const searchForInput = this.validatedOptions.filter((item) =>
         item.label.toLowerCase().includes(this.getInputValue)
       );
       if (searchForInput.length > 0) {
         return searchForInput;
       } else if (this.autoExpand === true) {
-        return this.options;
+        return this.validatedOptions;
       }
       searchForInput.push({
         [this.optionLabel]: "No results found",
@@ -184,6 +185,7 @@ export default {
     }
   },
   created() {
+    this.validatedOptions = this.options ?? [];
     // Set initial value if it is formatted correctly
     if (this.modelValue && Object.keys(this.modelValue).length >= 2) {
       this.userInput = this.modelValue;
@@ -206,11 +208,11 @@ export default {
 }
 
 .autocomplete-input {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-size: 16px;
+  padding: 10px;
   background-color: #fff;
-  border: 1px solid #1f1f1f;
-  line-height: 20px;
+  border: 1px solid var(--color-wra-black);
+  line-height: 1.15;
   display: block;
   width: 100%;
 }
@@ -220,15 +222,15 @@ export default {
 }
 
 .autocomplete-input--focus {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 .autocomplete-label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -240,17 +242,18 @@ export default {
   list-style-type: none;
   z-index: 1;
   padding: 0;
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   border-top: 0px;
   width: 100%;
   max-height: 200px;
-  background: #f1f1f1;
+  background: var(--color-wra-light-grey);
   overflow-y: auto;
 }
 
 .autocomplete-list > li {
-  padding: 2px 16px;
-  border-bottom: 1px solid #1f1f1f;
+  font-size: 16px;
+  padding: 2px 10px;
+  border-bottom: 1px solid var(--color-wra-black);
   cursor: pointer;
 }
 
@@ -264,7 +267,7 @@ export default {
 
 ul.autocomplete-list > li:hover,
 ul.autocomplete-list > li.autocomplete-item--focus {
-  background: #3b7dc5;
+  background: var(--color-wra-blue);
   color: #ffffff;
 }
 

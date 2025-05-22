@@ -9,7 +9,7 @@
       <!-- default placeholder to avoid having a null ID in parent but the select box displaying a value -->
       <option value="" selected disabled hidden>-</option>
       <option
-        v-for="item in items"
+        v-for="item in validItems"
         :value="checkForObjectValue(item)"
         :selected="modelValue == checkForObjectValue(item)"
       >
@@ -37,7 +37,8 @@ export default {
     },
     items: {
       required: true,
-      type: Array
+      type: Array,
+      default: () => []
     },
     itemValue: {
       required: true,
@@ -57,7 +58,7 @@ export default {
       this.$emit("update:modelValue", value);
 
       //check if value exists in the item array
-      let exists = this.items.some((item) => {
+      let exists = this.validItems.some((item) => {
         return this.checkForObjectValue(item) == value;
       });
 
@@ -82,6 +83,11 @@ export default {
       } else {
         return input;
       }
+    }
+  },
+  computed: {
+    validItems() {
+      return this.items ?? [];
     }
   },
   mounted() {
@@ -111,16 +117,16 @@ select {
   cursor: inherit;
   line-height: inherit;
   outline: none;
-  padding: 16px;
+  padding: 10px;
 }
 
 .select {
-  border: 1px solid #1f1f1f;
+  border: 1px solid var(--color-wra-black);
   border-radius: 0;
-  padding-right: 16px;
+  padding-right: 10px;
   font-size: 16px;
   cursor: pointer;
-  line-height: 20px;
+  line-height: 1.15;
   background-color: #fff;
   display: grid;
   grid-template-areas: "select";
@@ -132,7 +138,7 @@ select {
   content: "";
   width: 0.8em;
   height: 0.5em;
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
   clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   justify-self: end;
 }
@@ -148,13 +154,13 @@ select:focus + .focus {
   left: -1px;
   right: -1px;
   bottom: -1px;
-  border: 2px solid #1f1f1f;
-  outline: 3px solid #ffd530;
+  border: 2px solid var(--color-wra-black);
+  outline: 3px solid var(--color-wra-yellow);
   border-radius: inherit;
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
 }
 </style>

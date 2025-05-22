@@ -4,12 +4,11 @@
     <input
       :id="id"
       :type="type"
-      v-maska
-      :data-maska="dataMaska"
+      v-maska="dataMaska"
       :dataMaskaTokens="dataMaskaTokens"
       :value="modelValue"
       @input="validate($event.target.value)"
-      :inputmode="inputmode || 'text'"
+      :inputmode="inputmode ?? 'text'"
       :placeholder="placeholder"
     />
     <p>{{ errorMessage }}</p>
@@ -23,17 +22,40 @@ export default {
   directives: { maska: vMaska },
   name: "wra-text-input",
   props: {
+    /**
+     * The value of the input field.
+     * @type {string|number}
+     * @required
+     * @default ""
+     */
     modelValue: {
-      required: true
+      required: true,
+      default: ""
     },
+    /**
+     * The label for the input field.
+     * @type {string}
+     */
     label: {
       type: String
     },
+    /**
+     * The ID for the input field.
+     * @type {string}
+     * @required
+     * @default "customInput"
+     */
     id: {
       type: String,
       required: true,
       default: "textInput"
     },
+    /**
+     * The input mode for the input field.
+     * @type {string}
+     * @default "numeric"
+     * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
+     */
     inputmode: {
       type: String,
       default: "text",
@@ -50,6 +72,12 @@ export default {
         ].includes(value);
       }
     },
+    /**
+     * The type of the input field.
+     * @type {string}
+     * @default "text"
+     * @validator value {string} - The type must be one of ["text", "none", "tel", "url", "email", "numeric", "decimal"].
+     */
     type: {
       type: String,
       default: "text",
@@ -59,9 +87,29 @@ export default {
         );
       }
     },
+    /**
+     * Validation rules for the input field.
+     * @type {Array<Function>}
+     */
     rules: {},
-    dataMaska: {},
-    dataMaskaTokens: {},
+    /**
+     * The mask pattern for the input field.
+     * @type {string}
+     */
+    dataMaska: {
+      type: String
+    },
+    /**
+     * Custom tokens for the mask.
+     * @type {string}
+     */
+    dataMaskaTokens: {
+      type: String
+    },
+    /**
+     * The placeholder text for the input field.
+     * @type {string}
+     */
     placeholder: {
       type: String
     }
@@ -73,6 +121,10 @@ export default {
     };
   },
   methods: {
+    /**
+     * Validates the input value based on the provided rules.
+     * @param {string|number} value - The input value to validate.
+     */
     validate(value) {
       this.$emit("update:modelValue", value);
       this.errorMessage = "";
@@ -108,6 +160,7 @@ export default {
   mounted() {
     //Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.validate(this.modelValue);
+    this.$emit("update:modelValue", this.modelValue);
   },
   emits: ["update:modelValue", "valid"]
 };
@@ -121,26 +174,25 @@ export default {
 }
 
 input {
-  font-size: 18px;
-  padding: 16px 16px;
+  font-size: 16px;
+  padding: 10px;
   background-color: #fff;
-  border: 1px solid #1f1f1f;
-  line-height: 20px;
+  border: 1px solid var(--color-wra-black);
+  line-height: 1.15;
   display: block;
-  height: 59px;
   width: 100%;
 }
 
 input:focus {
-  border-color: #1f1f1f;
-  outline: 1px solid #1f1f1f;
-  -webkit-box-shadow: 0 0 0 3px #ffd530;
-  -moz-box-shadow: 0 0 0 3px #ffd530;
-  box-shadow: 0 0 0 3px #ffd530;
+  border-color: var(--color-wra-black);
+  outline: 1px solid var(--color-wra-black);
+  -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
+  box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
 label {
-  color: #1f1f1f;
+  color: var(--color-wra-black);
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
@@ -149,9 +201,9 @@ label {
 div.error > p {
   margin-top: 10px;
   padding: 10px;
-  background: #ffe4e5;
-  color: #aa1111;
+  background: var(--color-wra-light-red);
+  color: var(--color-wra-black);
   font-size: 16px;
-  border-left: #aa1111 3px solid;
+  border-left: 10px solid var(--color-wra-red);
 }
 </style>

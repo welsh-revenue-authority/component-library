@@ -1,20 +1,27 @@
 <template>
-  <button type="button" :class="class">
+  <button
+    class="wra-button"
+    type="button"
+    :class="buttonClass"
+    :disabled="disabled"
+  >
     <span
       :class="{
         'prepend-icon-wrapper': prependIcon
       }"
+      class="icon"
     >
-      <span v-if="prependIcon" class="icon back-icon"></span
-    ></span>
+      <slot name="prepend-icon"></slot>
+    </span>
     <slot></slot>
     <span
       :class="{
         'append-icon-wrapper': appendIcon
       }"
+      class="icon"
     >
-      <span v-if="appendIcon" class="icon next-icon"></span
-    ></span>
+      <slot name="append-icon"></slot>
+    </span>
   </button>
 </template>
 
@@ -40,14 +47,19 @@ export default {
     appendIcon: {
       type: Boolean,
       default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
 
   computed: {
-    class() {
+    buttonClass() {
       return {
         "outlined-button": this.outlined,
         [`${this.size || "default"}-button`]: true,
+        "wra-black": this.backgroundColor === "wra-black",
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
@@ -61,11 +73,14 @@ export default {
 
 <style scoped>
 button {
-  background-color: #1f1f1f;
+  background-color: var(--color-wra-black);
   color: #fff;
   font-weight: bold;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button:hover {
@@ -74,86 +89,94 @@ button:hover {
 }
 
 button:focus {
-  color: #1f1f1f !important;
-  background-color: #ffd530 !important;
-  outline: 2px solid #1f1f1f;
+  color: var(--color-wra-black) !important;
+  background-color: var(--color-wra-yellow) !important;
+  outline: 2px solid var(--color-wra-black);
   outline-offset: 0px;
-  border-color: #ffd530;
+  border-color: var(--color-wra-yellow);
 }
 
 button:focus:hover {
   opacity: 1;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+button:disabled:hover {
+  opacity: 0.6;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prepend-icon-wrapper {
+  margin-right: 8px;
+}
+
+.append-icon-wrapper {
+  margin-left: 8px;
+}
+
+.wra-black {
+  background-color: var(--color-wra-black);
+}
+
 .wra-blue {
-  background-color: #0360a6;
+  background-color: var(--color-wra-blue);
 }
 
 .wra-red {
-  background-color: #aa1111;
+  background-color: var(--color-wra-red);
 }
 
 .wra-green {
-  background-color: #019e1e;
+  background-color: var(--color-wra-green);
 }
 
 .wra-revenue {
-  background-color: #2a225b;
+  background-color: var(--color-wra-revenue);
 }
 
 .wra-white {
   background-color: #fff;
-  color: #1f1f1f;
-  outline: 2px solid #1f1f1f;
+  color: var(--color-wra-black);
+  outline: 2px solid var(--color-wra-black);
 }
 
 .default-button {
-  font-size: 20px;
-  padding: 15px 20px;
+  font-size: 16px;
+  padding: 10px 20px;
+  line-height: 24px;
 }
 
 .small-button {
   font-size: 14px;
-  padding: 5px 10px;
+  padding: 5px 15px;
+  line-height: 24px;
 }
 
 .outlined-button {
   background-color: transparent;
-  outline: 2px solid var(--color-prop, #1f1f1f);
-  color: var(--color-prop, #1f1f1f);
+  outline: 2px solid var(--color-prop, var(--color-wra-black));
+  color: var(--color-prop, var(--color-wra-black));
 }
 
 .outlined-button:hover {
   opacity: 1;
-  background-color: var(--color-prop, #1f1f1f);
+  background-color: var(--color-prop, var(--color-wra-black));
   color: #fff;
   transition: all 0.3s ease;
 }
+</style>
 
-.icon {
-  content: " ";
-  display: inline-block;
-  border: solid currentColor;
-  padding: 4px;
-  vertical-align: middle;
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  margin-bottom: 3px;
-}
-
-.back-icon {
-  border-width: 3px 3px 0px 0px;
-}
-
-.next-icon {
-  border-width: 0px 0px 3px 3px;
-}
-
-.prepend-icon-wrapper {
-  margin-right: 15px;
-}
-
-.append-icon-wrapper {
-  margin-left: 15px;
+<style>
+.wra-button:focus > .icon > svg {
+  fill: var(--color-wra-black);
 }
 </style>
