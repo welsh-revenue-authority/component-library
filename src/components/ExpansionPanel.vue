@@ -7,7 +7,9 @@
       @click="togglePanel"
       :style="style"
     >
-      {{ title }}
+      <slot name="title">
+        {{ title }}
+      </slot>
       <span class="icon-wrapper">
         <span
           class="panel-icon"
