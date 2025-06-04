@@ -107,6 +107,10 @@ button:disabled:hover {
   background-color: var(--color-wra-charcoal);
 }
 
+button.outlined-button:disabled {
+  color: #fff;
+}
+
 .icon {
   display: flex;
   align-items: center;
