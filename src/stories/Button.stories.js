@@ -48,8 +48,8 @@ export default {
   <b>Slots</b>
 </p>
 <p>
-  1. <b>prepend-icon</b>: If true, displays a prepend icon slot <u>before</u> the button content.
-  2. <b>append-icon</b>: If true, displays an append icon slot <u>after</u> the button content.
+- <b>prepend-icon</b>: If true, displays a prepend icon slot <u>before</u> the button content.
+- <b>append-icon</b>: If true, displays an append icon slot <u>after</u> the button content.
 </p>
         `
       }
