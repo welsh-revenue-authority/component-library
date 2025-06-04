@@ -172,7 +172,11 @@ button.outlined-button:disabled {
 }
 
 .wra-white:hover {
-  background-color: #fff;
+  background-color: var(--color-wra-grey);
+}
+
+.wra-white:disabled {
+  color: #fff;
 }
 
 .default-button {
