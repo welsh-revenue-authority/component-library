@@ -30,12 +30,23 @@ export default {
   name: "wra-button",
 
   props: {
+    /**
+     * The size of the button.
+     */
     size: {
-      type: String
+      type: String,
+      default: "default"
     },
+    /**
+     * The background colour of the button.
+     */
     backgroundColor: {
-      type: String
+      type: String,
+      default: "wra-black"
     },
+    /**
+     * If true, renders the button with an outlined style instead of a solid background.
+     */
     outlined: {
       type: Boolean,
       default: false
@@ -48,6 +59,9 @@ export default {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, disables the button and prevents user interaction.
+     */
     disabled: {
       type: Boolean,
       default: false
@@ -73,7 +87,6 @@ export default {
 
 <style scoped>
 button {
-  background-color: var(--color-wra-black);
   color: #fff;
   font-weight: bold;
   border: none;
