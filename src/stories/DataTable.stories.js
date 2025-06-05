@@ -3,7 +3,6 @@ import WraDataTable from "../components/DataTable.vue";
 export default {
   title: "Data & Display/DataTable",
   component: WraDataTable,
-  tags: ["autodocs"],
   argTypes: {
     body: {
       table: {
@@ -23,65 +22,6 @@ export default {
   },
   parameters: {
     docs: {
-      description: {
-        component: `
-<p style="margin-bottom: 0px">
-  <b>Sorting</b>: An array of objects, where each object defines the column key and the sorting order.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> [{ key: "calories", order: "asc" }]
-</p>
-
-<p style="margin-bottom: 0px">
-  <b>Column Search</b>: Enables column specific searching, where the header's <b>searchable property</b> is true.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> { key: "calories", title: "Calories", <b>searchable: true</b> }
-</p>
-
-<p style="margin-bottom: 0px">
-  <b>Column Alignment</b>: Aligns table column based on each header's <b>align property</b>, defaulting to left alignment if unspecified.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> { key: "calories", title: "Calories", <b>align: "right"</b> }
-</p>
-
-<p style="margin-bottom: 0px">
-  <b>Column Width</b>: Sets the width of the table column based on each header's <b>width property</b>, defaulting to auto if unspecified.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> { key: "calories", title: "Calories", <b>width: 200</b> }
-</p>
-
-<p style="margin-bottom: 0px">
-  <b>Row Styling</b>: Applies bold styling to rows where the item's <b>bold property</b> is true.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> { name: "Artichoke", calories: 47, fat: 0.2, carbs: 10.5, protein: 3.3, iron: 1.3, <b>bold: true</b> }
-</p>
-
-<p style="margin-bottom: 0px">
-  <b>Clickable Rows</b>: Enables row click functionality by listening to the <b>click:row</b> event.
-</p>
-<p style="margin-top: 0px">
-  <b>e.g.</b> 
-</p>
-<pre style="margin-bottom: 16px">
-<wra-data-table
-  :headers="headers"
-  :items="items"
-  @click:row="handleRowClick"
-/>
-</pre>
-<pre>
-methods: {
-  handleRowClick(row) {
-    console.log("Row clicked:", row);
-  }
-}
-</pre>
-        `
-      },
       source: {
         code: `
 <wra-data-table

@@ -131,21 +131,37 @@
 export default {
   name: "wra-data-table",
   props: {
+    /**
+     * The array of data objects to display in the table. Each object represents a row.
+     */
     items: {
       type: Array
     },
     headers: {
       type: Array
     },
+    /**
+     * The initial sort order for the table. Should be an array of objects.
+     */
     sortBy: {
       type: Array
     },
+    /**
+     * The number of items to display per page.
+     */
     itemsPerPage: {
-      type: Number
+      type: Number,
+      default: 10
     },
+    /**
+     * If true, shows a loading spinner instead of table rows.
+     */
     loading: {
       type: Boolean
     },
+    /**
+     * A global search string to filter table rows.
+     */
     search: {
       type: String
     },
