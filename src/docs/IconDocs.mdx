@@ -1,0 +1,43 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories
+} from "@storybook/addon-docs/blocks";
+
+import * as IconStories from "../stories/Icon.stories";
+
+<Meta of={IconStories} />
+
+<Title />
+
+Icon that displays [Pictogrammers Material Design Icons](https://pictogrammers.com/library/mdi/)
+
+<Primary />
+
+## Usage
+
+First, import the icon at the top of your script section
+
+```js
+import { mdiAbacus } from "@mdi/js";
+```
+
+Then, add it to your component's data
+
+```js
+data: () => ({
+  mdiAbacus: mdiAbacus
+});
+```
+
+Finally, use it in your template by passing it as a prop to the wra-icon component
+
+```html
+<wra-icon :icon="mdiAbacus" />
+```
+
+<Controls />
+
+<Stories />
