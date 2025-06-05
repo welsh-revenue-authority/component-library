@@ -43,22 +43,39 @@ export default {
     WraButton
   },
   props: {
+    /**
+     * The title text displayed at the top of the dialog.
+     */
     title: {
       type: String,
       required: true
     },
+    /**
+     * The main message or content displayed in the dialog body.
+     */
     message: {
       type: String,
       required: true
     },
+    /**
+     * The text label for the confirm button.
+     */
     confirmText: {
       type: String,
-      required: true
+      required: true,
+      default: "Confirm"
     },
+    /**
+     * The text label for the cancel button.
+     */
     cancelText: {
       type: String,
-      required: true
+      required: true,
+      default: "Cancel"
     },
+    /**
+     * If true, styles the confirm button as a destructive action (red for delete).
+     */
     isDelete: {
       type: Boolean,
       default: false
