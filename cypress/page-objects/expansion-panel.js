@@ -8,6 +8,7 @@ class ExpansionPanel {
     "#expansion-control-expansion-panel-title-slot > div > span:nth-child(2)";
   expansionSlot3 =
     "#expansion-control-expansion-panel-title-slot > div > span:nth-child(3)";
+  expansionSlotText = "#content-expansion-panel-title-slot";
 }
 
 export default ExpansionPanel;

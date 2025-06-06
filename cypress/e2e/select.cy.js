@@ -18,7 +18,7 @@ describe("Select", () => {
       cy.log("Selected 'Item 1' from the select dropdown");
 
       cy.get(s.select).should("have.value", "1");
-      cy.log("Asserted that the selected value is 'Item 1'");
+      cy.log("Asserted that the selected value is correct");
     });
   });
 });

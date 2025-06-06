@@ -13,8 +13,11 @@ describe("Card", () => {
         .should("have.class", "card")
         .should("have.css", "background-color", "rgb(241, 241, 241)");
 
-      cy.get(c.header).should("be.visible");
-      cy.log("Asserted the header is visible");
+      cy.get(c.header).should("be.visible").contains("H1 Header");
+      cy.log("Asserted the header is visible and has correct text");
+
+      cy.get(c.paragraph).should("be.visible").contains(f.placeholderText);
+      cy.log("Asserted the paragraph is visible and has correct text");
 
       cy.get(c.button)
         .should("be.visible")

@@ -8,6 +8,13 @@ describe("Custom Input", () => {
       cy.visit("/iframe.html?id=form-inputs-controls-custominput--default");
       cy.log("Visiting the Custom Input component story");
 
+      cy.get(ci.customInputLabel)
+        .should("be.visible")
+        .contains("Custom input label");
+      cy.log(
+        "Asserted that the label is visible and contains the correct text"
+      );
+
       cy.get(ci.customInput).should(
         "have.attr",
         "placeholder",

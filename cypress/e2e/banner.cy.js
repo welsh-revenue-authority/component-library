@@ -14,7 +14,7 @@ describe("Banner", () => {
           "contain",
           "Tell us what you think of this service by giving feedback."
         );
-      cy.log("Assert banner background color and text content");
+      cy.log("Assert banner background colour and text content");
 
       cy.get(b.bannerHyperlink)
         .should("be.visible")
@@ -34,7 +34,7 @@ describe("Banner", () => {
           "contain",
           "This is a new service. Give feedback to help improve it."
         );
-      cy.log("Assert banner background color and text content");
+      cy.log("Assert banner background colour and text content");
 
       cy.get(b.bannerHyperlink)
         .should("be.visible")
@@ -54,7 +54,7 @@ describe("Banner", () => {
           "contain",
           "We use cookies to collect information about how you use this website. We use this information to improve our services."
         );
-      cy.log("Assert banner background color and text content");
+      cy.log("Assert banner background colour and text content");
 
       cy.get(b.acceptCookiesButton)
         .should("be.visible")
@@ -63,11 +63,33 @@ describe("Banner", () => {
         "Assert banner 'Accept cookies' button is visible and has correct text"
       );
 
+      cy.get(b.acceptCookiesButton).click();
+      cy.log("Clicked the 'Accept cookies' button");
+
+      cy.get(b.acceptCookiesButton).should(
+        "have.css",
+        "background-color",
+        "rgb(255, 213, 48)"
+      );
+      cy.log("Assert 'Accept cookies' button background colour after click");
+
       cy.get(b.changeCookiesSettingsButton)
         .should("be.visible")
         .should("have.text", "Change cookie settings");
       cy.log(
         "Assert banner 'Change cookie settings' button is visible and has correct text"
+      );
+
+      cy.get(b.changeCookiesSettingsButton).click();
+      cy.log("Clicked the 'Change cookie settings' button");
+
+      cy.get(b.changeCookiesSettingsButton).should(
+        "have.css",
+        "background-color",
+        "rgb(255, 213, 48)"
+      );
+      cy.log(
+        "Assert 'Change cookie settings' button background colour after click"
       );
     });
   });
@@ -83,7 +105,7 @@ describe("Banner", () => {
           "contain",
           "You've accepted all cookies. You can change your cookie settings at any time."
         );
-      cy.log("Assert banner background color and text content");
+      cy.log("Assert banner background colour and text content");
 
       cy.get(b.bannerHyperlink)
         .should("be.visible")

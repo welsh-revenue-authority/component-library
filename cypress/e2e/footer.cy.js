@@ -8,12 +8,12 @@ describe("Footer", () => {
       cy.visit("/iframe.html?id=navigation-footer--default");
       cy.log("Visiting the Footer component story");
 
-      cy.get(foo.footer).should(
-        "have.css",
-        "background-color",
-        "rgb(241, 241, 241)"
+      cy.get(foo.footer)
+        .should("have.css", "background-color", "rgb(241, 241, 241)")
+        .contains("This is a footer");
+      cy.log(
+        "Asserted that the footer background color is correct and contains the correct text"
       );
-      cy.log("Asserted that the footer background color is correct");
     });
   });
 });

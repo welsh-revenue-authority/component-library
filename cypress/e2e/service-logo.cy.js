@@ -8,8 +8,10 @@ describe("Service Logo", () => {
       cy.visit("/iframe.html?id=images-icons-servicelogo--wra");
       cy.log("Visiting the Service Logo component story");
 
-      cy.get(sl.serviceLogo).should("be.visible");
-      cy.get(sl.serviceLogo).should("have.attr", "href", f.wraLogoLink);
+      cy.get(sl.serviceLogo)
+        .should("be.visible")
+        .should("have.attr", "href", f.wraLogoLink);
+      cy.log("Service Logo for WRA is visible and has the correct link");
     });
   });
 
@@ -18,8 +20,10 @@ describe("Service Logo", () => {
       cy.visit("/iframe.html?id=images-icons-servicelogo--wg");
       cy.log("Visiting the Service Logo component story");
 
-      cy.get(sl.serviceLogo).should("be.visible");
-      cy.get(sl.serviceLogo).should("have.attr", "href", f.wgLogoLink);
+      cy.get(sl.serviceLogo)
+        .should("be.visible")
+        .should("have.attr", "href", f.wgLogoLink);
+      cy.log("Service Logo for WG is visible and has the correct link");
     });
   });
 });

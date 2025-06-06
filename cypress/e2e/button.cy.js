@@ -15,7 +15,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -37,7 +37,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -59,7 +59,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -81,7 +81,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -103,7 +103,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -125,7 +125,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",
@@ -147,7 +147,7 @@ describe("Button", () => {
         "Asserted the button is visible and has correct default background colour"
       );
 
-      cy.get(b.button).invoke("focus");
+      cy.get(b.button).click();
       cy.get(b.button).should(
         "have.css",
         "background-color",

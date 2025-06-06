@@ -8,6 +8,13 @@ describe("DataTable", () => {
       cy.visit("/iframe.html?id=data-display-datatable--default");
       cy.log("Visiting the Data Table component story");
 
+      cy.get(dt.dataTableCaption)
+        .should("be.visible")
+        .contains(f.dataTableCaption);
+      cy.log(
+        "Assert the data table caption is visible and contains the expected text"
+      );
+
       cy.get(dt.topRowName).should("have.text", f.vegArtichoke);
       cy.log("Assert top row name vegetable name is Artichoke");
 
@@ -23,6 +30,13 @@ describe("DataTable", () => {
     cy.fixture("component-fixtures").then((f) => {
       cy.visit("/iframe.html?id=data-display-datatable--default");
       cy.log("Visiting the Data Table component story");
+
+      cy.get(dt.dataTableCaption)
+        .should("be.visible")
+        .contains(f.dataTableCaption);
+      cy.log(
+        "Assert the data table caption is visible and contains the expected text"
+      );
 
       cy.get(dt.nextNavButton).click();
       cy.log("Click the next page navigation button");
@@ -42,6 +56,13 @@ describe("DataTable", () => {
     cy.fixture("component-fixtures").then((f) => {
       cy.visit("/iframe.html?id=data-display-datatable--bold-rows");
       cy.log("Visiting the Data Table component story");
+
+      cy.get(dt.dataTableCaption)
+        .should("be.visible")
+        .contains(f.dataTableCaption);
+      cy.log(
+        "Assert the data table caption is visible and contains the expected text"
+      );
 
       cy.get(dt.topRowName)
         .should("have.text", f.vegArtichoke)
@@ -63,6 +84,13 @@ describe("DataTable", () => {
     cy.fixture("component-fixtures").then((f) => {
       cy.visit("/iframe.html?id=data-display-datatable--clickable-rows");
       cy.log("Visiting the Data Table component story");
+
+      cy.get(dt.dataTableCaption)
+        .should("be.visible")
+        .contains(f.dataTableCaption);
+      cy.log(
+        "Assert the data table caption is visible and contains the expected text"
+      );
 
       cy.get(dt.topRowName).should("have.text", f.vegArtichoke);
       cy.log("Assert top row name vegetable name is Artichoke");
