@@ -10,7 +10,7 @@ describe("Divider", () => {
 
       cy.get(d.divider)
         .should("be.visible")
-        .should("have.css", "border", "2.4px solid rgb(229, 229, 229)");
+        .should("have.css", "border", "3px solid rgb(229, 229, 229)");
       cy.log(
         "Asserted that the divider is visible and has the correct border style"
       );
@@ -38,7 +38,7 @@ describe("Divider", () => {
 
       cy.get(d.divider)
         .should("be.visible")
-        .should("have.css", "border", "1.6px solid rgb(229, 229, 229)");
+        .should("have.css", "border", "2px solid rgb(229, 229, 229)");
       cy.log(
         "Asserted that the divider is visible and has the correct border style"
       );

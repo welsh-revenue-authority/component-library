@@ -10,7 +10,7 @@ describe("Content Section Title", () => {
 
       cy.get(cst.contentSectionTitle)
         .should("be.visible")
-        .should("have.css", "border-top", "9.6px solid rgb(229, 229, 229)");
+        .should("have.css", "border-top", "10px solid rgb(229, 229, 229)");
       cy.log("Asserted that the content section title has a top border");
 
       cy.get("h1").should("be.visible").contains("This is a H1 header");
@@ -18,7 +18,7 @@ describe("Content Section Title", () => {
 
       cy.get(cst.contentSectionTitle)
         .should("be.visible")
-        .should("have.css", "border-bottom", "1.6px solid rgb(229, 229, 229)");
+        .should("have.css", "border-bottom", "2px solid rgb(229, 229, 229)");
       cy.log("Asserted that the content section title has a bottom border");
     });
   });

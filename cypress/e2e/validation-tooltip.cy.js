@@ -28,7 +28,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is a success message")
         .should("have.css", "background-color", "rgb(205, 247, 212)")
-        .should("have.css", "border-left", "10px solid rgb(1, 138, 30)");
+        .should("have.css", "border-left", "10px solid rgb(0, 112, 21)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );

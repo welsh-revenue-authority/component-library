@@ -32,7 +32,7 @@ describe("Snackbar", () => {
       cy.get(s.snackbar)
         .should("contain", "This is a success snackbar")
         .should("have.css", "background-color", "rgb(205, 247, 212)")
-        .should("have.css", "border-color", "rgb(1, 138, 30)");
+        .should("have.css", "border-color", "rgb(0, 112, 21)");
       cy.log(
         "Asserted that the snackbar contains 'This is a success snackbar' and has the correct background and border colors"
       );
