@@ -10,14 +10,16 @@ describe("Subheader", () => {
 
       cy.get(s.subheader)
         .should("be.visible")
-        .should("contain", "This is a subheader");
+        .should("contain", "This is a subheader")
+        .should("have.css", "font-size", "14px");
       cy.log(
         "Asserted that the subheader is visible and contains 'This is a subheader'"
       );
 
       cy.get(s.header)
         .should("be.visible")
-        .should("contain", "This is a H1 header");
+        .should("contain", "This is a H1 header")
+        .should("have.css", "font-size", "48px");
       cy.log(
         "Asserted that the header is visible and contains 'This is a H1 header'"
       );

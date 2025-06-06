@@ -8,8 +8,14 @@ describe("Radio Group", () => {
       cy.visit("/iframe.html?id=form-inputs-controls-radiogroup--default");
       cy.log("Visiting the Radio Group component story");
 
+      cy.get(rg.radio1Text).contains("Option 1");
+      cy.log("Asserted that the first radio button text is correct");
+
       cy.get(rg.radio1).should("not.be.checked");
       cy.log("Asserted that the first radio button is not checked");
+
+      cy.get(rg.radio2Text).contains("Option 2");
+      cy.log("Asserted that the second radio button text is correct");
 
       cy.get(rg.radio2).should("not.be.checked");
       cy.log("Asserted that the second radio button is not checked");

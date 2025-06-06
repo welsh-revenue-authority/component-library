@@ -164,7 +164,7 @@ describe("Button", () => {
 
       cy.get(b.button)
         .should("be.visible")
-        .should("have.css", "background-color", "rgb(31, 31, 31)")
+        .should("have.css", "background-color", "rgb(50, 50, 50)")
         .should("have.attr", "disabled");
       cy.log(
         "Asserted the button is visible, has correct default background colour, and is disabled"
