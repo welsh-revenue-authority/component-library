@@ -39,8 +39,7 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "cypress open",
-    "test:Component": "npx cypress run --component --config-file cypress.config.js --browser edge",
-    "test:Storybook": "npx cypress run --browser edge"
+    "test:Storybook": "npx cypress run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
