@@ -84,7 +84,7 @@ button {
 }
 
 button:hover {
-  opacity: 0.8;
+  background-color: var(--color-wra-dark-grey);
   transition: all 0.3s ease;
 }
 
@@ -96,17 +96,19 @@ button:focus {
   border-color: var(--color-wra-yellow);
 }
 
-button:focus:hover {
-  opacity: 1;
-}
-
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.6;
+  opacity: 0.7;
+  background-color: var(--color-wra-charcoal);
 }
 
 button:disabled:hover {
-  opacity: 0.6;
+  opacity: 0.7;
+  background-color: var(--color-wra-charcoal);
+}
+
+button.outlined-button:disabled {
+  color: #fff;
 }
 
 .icon {
@@ -127,26 +129,54 @@ button:disabled:hover {
   background-color: var(--color-wra-black);
 }
 
+.wra-black:hover {
+  background-color: var(--color-wra-dark-grey);
+}
+
 .wra-blue {
   background-color: var(--color-wra-blue);
+}
+
+.wra-blue:hover {
+  background-color: #3571b1;
 }
 
 .wra-red {
   background-color: var(--color-wra-red);
 }
 
+.wra-red:hover {
+  background-color: #d81f1f;
+}
+
 .wra-green {
   background-color: var(--color-wra-green);
+}
+
+.wra-green:hover {
+  background-color: #008a19;
 }
 
 .wra-revenue {
   background-color: var(--color-wra-revenue);
 }
 
+.wra-revenue:hover {
+  background-color: #55507b;
+}
+
 .wra-white {
   background-color: #fff;
   color: var(--color-wra-black);
   outline: 2px solid var(--color-wra-black);
+}
+
+.wra-white:hover {
+  background-color: var(--color-wra-grey);
+}
+
+.wra-white:disabled {
+  color: #fff;
 }
 
 .default-button {
@@ -168,7 +198,6 @@ button:disabled:hover {
 }
 
 .outlined-button:hover {
-  opacity: 1;
   background-color: var(--color-prop, var(--color-wra-black));
   color: #fff;
   transition: all 0.3s ease;
