@@ -24,12 +24,6 @@
 <script>
 import { vMaska } from "maska/vue";
 
-/**
- * PriceInput component
- *
- * This component provides a masked price input field with optional prefix and suffix.
- * It uses the `maska` directive to apply input masks.
- */
 export default {
   directives: { maska: vMaska },
   name: "wra-price-input",
