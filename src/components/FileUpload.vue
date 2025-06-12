@@ -43,12 +43,6 @@
 import ValidationTooltip from "./ValidationTooltip.vue";
 import Button from "./Button.vue";
 
-/**
- * FileUpload component
- *
- * This component provides a file upload input with optional label and validation tooltip.
- * It emits a "change" event when a file is selected.
- */
 export default {
   name: "file-upload",
   emits: ["change"],
@@ -112,7 +106,7 @@ export default {
      */
     backgroundColor: {
       type: String,
-      default: ""
+      default: "wra-revenue"
     },
     /**
      * The text for the button.
