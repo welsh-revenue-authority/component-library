@@ -35,7 +35,9 @@
     </button>
 
     <template v-if="skipEnd">
-      <span class="pagination-divider">...</span>
+      <slot name="divider">
+        <span class="pagination-divider">...</span>
+      </slot>
       <button @click="changePage(totalPages)" class="pagination-number">
         {{ totalPages }}
       </button>
@@ -57,31 +59,52 @@ export default {
     currentPage: 0
   }),
   props: {
+    /**
+     * The current page number (v-model).
+     */
     modelValue: {
       type: Number,
       required: true,
       default: 1
     },
+    /**
+     * The total number of pages available.
+     */
     totalPages: {
       type: Number,
       required: true
     },
+    /**
+     * The maximum number of page buttons to display at once.
+     */
     length: {
       type: Number,
       default: 5
     },
+    /**
+     * If true, shows 'skip' controls (divider & jump to start/end).
+     */
     skip: {
       type: Boolean,
       default: true
     },
+    /**
+     * The starting page number (usually 1).
+     */
     startIndex: {
       type: Number,
       default: 1
     },
+    /**
+     * The label text for the 'previous' button.
+     */
     previousLabel: {
       type: String,
       default: "Previous"
     },
+    /**
+     * The label text for the 'next' button.
+     */
     nextLabel: {
       type: String,
       default: "Next"
