@@ -25,25 +25,43 @@ import WraCheckbox from "./Checkbox.vue";
 export default {
   name: "wra-checkbox-group",
   props: {
+    /**
+     * The v-model binding for the checkbox group. Should be an array of selected values or objects.
+     */
     modelValue: {
-      default: () => {}
-    },
-    options: {
-      required: true,
-      type: Array,
       default: () => []
     },
-    itemValue: {
+    /**
+     * The array of options to display as checkboxes.
+     */
+    options: {
+      type: Array,
       required: true,
+      default: () => []
+    },
+    /**
+     * The property name to use as the value from each option object.
+     */
+    itemValue: {
       type: String,
+      required: true,
       default: "value"
     },
+    /**
+     * The property name to use as the label from each option object.
+     */
     itemLabel: {
-      required: true,
       type: String,
+      required: true,
       default: "label"
     },
-    returnObject: {}
+    /**
+     * If true, the emitted value will be an array of option objects instead of values.
+     */
+    returnObject: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
