@@ -16,22 +16,37 @@
 export default {
   name: "wra-text-area",
   props: {
+    /**
+     * The unique id for the textarea input and label association.
+     */
     id: {
       type: Number,
       required: true
     },
+    /**
+     * The v-model binding for the textarea value.
+     */
     modelValue: {
       type: String,
       required: true
     },
+    /**
+     * The label text displayed above the textarea.
+     */
     label: {
       type: String,
       required: false
     },
+    /**
+     * An array of validation rule functions. Each function should return true or an error message string.
+     */
     rules: {
       type: Array,
       required: false
     },
+    /**
+     * The maximum number of characters allowed in the textarea.
+     */
     maxLength: {
       type: Number,
       required: false
