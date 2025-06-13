@@ -45,7 +45,7 @@ export const SkipId = {
       in. Dapibus ultrices in iaculis nunc sed augue lacus viverra. Ut consequat semper
       viverra nam libero justo laoreet.
     </p>
-    <WraCard id="container">
+    <WraCard id="container" style="margin-top: 20px;">
       <WraButton>Next</WraButton>
     </WraCard>
     `
@@ -72,7 +72,7 @@ export const SkipId = {
       },
       description: {
         story: `
-Skip Id uses the HTML id attribute to skip to a specific element on the page.
+Skip ID uses the HTML ID attribute to skip to a specific element on the page.
         `
       }
     }

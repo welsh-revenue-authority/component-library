@@ -9,12 +9,6 @@
 </template>
 
 <script>
-/**
- * SkipLink component
- *
- * This component provides a skip link button that allows users to skip to a specific part of the page.
- * The target element can be specified using the `skip-id` prop.
- */
 export default {
   name: "wra-skiplink",
   emits: ["click"],
@@ -55,6 +49,11 @@ export default {
       type: String,
       default: "Skip to main content"
     },
+    /**
+     * If set to `true`, the skip link will take the full width of its container.
+     * @type {boolean}
+     * @default false
+     */
     fullWidth: {
       type: Boolean,
       default: false
