@@ -9,7 +9,7 @@ export default {
   name: "wra-footer",
   props: {
     /**
-     * Set to `true` to hide the app bar when printing.
+     * If true, the footer will be hidden when printing the page.
      */
     hiddenPrint: {
       type: Boolean,
