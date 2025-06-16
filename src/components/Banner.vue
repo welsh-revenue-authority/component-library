@@ -29,14 +29,23 @@
 export default {
   name: "wra-banner",
   props: {
+    /**
+     * If true, the banner will be hidden when printing the page.
+     */
     hiddenPrint: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, applies a yellow background colour to indicate a new service.
+     */
     newService: {
       type: Boolean,
       default: false
     },
+    /**
+     * If true, displays a close button allowing the user to dismiss the banner.
+     */
     closable: {
       type: Boolean,
       default: false
