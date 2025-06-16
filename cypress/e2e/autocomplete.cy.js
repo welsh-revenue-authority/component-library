@@ -15,6 +15,17 @@ describe("Autocomplete", () => {
         .should("be.visible")
         .contains(f.autocompleteResultText);
       cy.log("Assert autocomplete result is visible and has correct text");
+
+      cy.get(a.autocompleteInput).clear();
+      cy.log("Clear the autocomplete input");
+
+      cy.get(a.autocompleteInput).type(f.text);
+      cy.log("Input invalid local authority name");
+
+      cy.get(a.autocompleteResult)
+        .should("be.visible")
+        .contains(f.autocompleteNoResultText);
+      cy.log("Assert autocomplete result is visible and has no results text");
     });
   });
 
@@ -46,6 +57,17 @@ describe("Autocomplete", () => {
       cy.log(
         "Assert autocomplete results are visible and top result has correct text"
       );
+
+      cy.get(a.autocompleteInputPreFilled).clear();
+      cy.log("Clear the autocomplete input");
+
+      cy.get(a.autocompleteInputPreFilled).type(f.text);
+      cy.log("Input invalid local authority name");
+
+      cy.get(a.autocompleteResult)
+        .should("be.visible")
+        .contains(f.autocompleteNoResultText);
+      cy.log("Assert autocomplete result is visible and has no results text");
     });
   });
 });
