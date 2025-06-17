@@ -33,7 +33,7 @@ export default {
       required: true
     },
     /**
-     * The unique id for the checkbox input and label association.
+     * The unique ID for the checkbox input and label association.
      */
     id: {
       type: String,
