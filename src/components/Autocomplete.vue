@@ -53,7 +53,7 @@ export default {
     label: {
       type: String
     },
-    /** Input's ID tag */
+    /** ID tag for input*/
     id: {
       type: String
     },
@@ -62,12 +62,12 @@ export default {
       type: Object,
       required: true
     },
-    /** Change the default object name in options for the data */
+    /** Change the default object name for the data */
     optionValue: {
       type: String,
       default: "value"
     },
-    /** Change the default object name in options for the displayed value */
+    /** Change the default object name for the displayed value */
     optionLabel: {
       type: String,
       default: "label"
@@ -77,7 +77,7 @@ export default {
       type: Number,
       default: 1
     },
-    /** If list should automatically expand when input is focused */
+    /** If true, list will automatically expand when input is focused */
     autoExpand: {
       type: Boolean,
       default: false
