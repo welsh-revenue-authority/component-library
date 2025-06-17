@@ -3,7 +3,6 @@ import WraPriceInput from "../components/PriceInput.vue";
 export default {
   title: "Form Inputs & Controls/PriceInput",
   component: WraPriceInput,
-  tags: ["autodocs"],
   argTypes: {
     inputmode: {
       control: {
