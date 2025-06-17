@@ -79,10 +79,13 @@ export default {
       type: String
     },
     /**
-     * Validation rules for the input field.
+     * An array of validation rule functions. Each function should return true or an error message string.
      * @type {Array<Function>}
      */
-    rules: {},
+    rules: {
+      type: Array,
+      default: () => []
+    },
     /**
      * The prefix text to display before the input field.
      * @type {string}

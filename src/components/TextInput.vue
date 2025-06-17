@@ -88,10 +88,13 @@ export default {
       }
     },
     /**
-     * Validation rules for the input field.
+     * An array of validation rule functions. Each function should return true or an error message string.
      * @type {Array<Function>}
      */
-    rules: {},
+    rules: {
+      type: Array,
+      default: () => []
+    },
     /**
      * The mask pattern for the input field.
      * @type {string}
@@ -158,7 +161,7 @@ export default {
     }
   },
   mounted() {
-    //Run validation rules when component first is rendered as v-model data might be valid/invalid
+    // Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.validate(this.modelValue);
     this.$emit("update:modelValue", this.modelValue);
   },

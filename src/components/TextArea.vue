@@ -42,6 +42,7 @@ export default {
      */
     rules: {
       type: Array,
+      default: () => [],
       required: false
     },
     /**
@@ -93,7 +94,7 @@ export default {
     }
   },
   mounted() {
-    //run validation rules when component is first rendered, as v-model data might be valid/invalid
+    // Run validation rules when component is first rendered, as v-model data might be valid/invalid
     this.validate(this.modelValue);
   }
 };
