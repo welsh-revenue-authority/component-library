@@ -9,7 +9,7 @@ export default {
       control: "color"
     },
     title: {
-      description: "Title of the expansion panel"
+      description: "Title of the expansion panel."
     }
   }
 };
