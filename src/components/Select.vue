@@ -33,12 +33,6 @@ export default {
   name: "wra-select",
   props: {
     /**
-     * The v-model binding for the selected value.
-     */
-    modelValue: {
-      required: true
-    },
-    /**
      * The array of options to display in the select dropdown.
      */
     items: {
@@ -83,7 +77,13 @@ export default {
     /**
      * The label text displayed above the select input.
      */
-    label: {}
+    label: {},
+    /**
+     * The v-model binding for the selected value.
+     */
+    modelValue: {
+      required: true
+    }
   },
   methods: {
     validate(value) {
