@@ -63,7 +63,15 @@ export default {
         return ["numeric"].includes(value);
       }
     },
-    required: {},
+    /**
+     * Whether the input field is required.
+     * @type {boolean}
+     * @default false
+     */
+    required: {
+      default: false,
+      type: Boolean
+    },
     /**
      * The placeholder text for the input field.
      * @type {string}
