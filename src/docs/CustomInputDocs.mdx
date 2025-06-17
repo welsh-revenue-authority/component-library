@@ -1,0 +1,48 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories
+} from "@storybook/addon-docs/blocks";
+
+import * as CustomInputStories from "../stories/CustomInput.stories";
+
+<Meta of={CustomInputStories} />
+
+<Title />
+
+<Primary />
+
+## Usage
+
+### Rules Prop
+
+The `rules` prop is an array of validation functions. Each function receives the current input value and should return either:
+
+- `true` if the value passes the rule, or
+- a **string** (an error message if the value fails the rule).
+
+#### How it works
+
+- On every input, the component calls each function in the `rules` array with the current value.
+- If a rule returns a string, validation stops and that string is shown as the error message.
+- If all rules return `true`, the input is considered valid.
+- The component emits a `valid` event with `{ id, value: true/false }` depending on the result.
+
+#### Example usage
+
+These rules will make the value **required**, and limit it to a maximum of **10 characters**, showing an error message if the rules are not met:
+
+```html
+<wra-custom-input
+  :rules="[
+    value => !!value || 'This field is required',
+    value => value.length <= 10 || 'Maximum 10 characters'
+  ]"
+/>
+```
+
+<Controls />
+
+<Stories />

@@ -139,7 +139,13 @@ export default {
     placeholder: {
       type: String
     },
-    rules: {},
+    /**
+     * An array of validation rule functions. Each function should return true or an error message string.
+     */
+    rules: {
+      type: Array,
+      default: () => []
+    },
     /**
      * The prefix text to display before the input field.
      * @type {string}

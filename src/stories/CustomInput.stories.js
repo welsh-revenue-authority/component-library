@@ -3,7 +3,6 @@ import WraCustomInput from "../components/CustomInput.vue";
 export default {
   title: "Form Inputs & Controls/CustomInput",
   component: WraCustomInput,
-  tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
@@ -43,5 +42,69 @@ export const Default = {
     label: "Custom input label",
     placeholder: "0000 0000 0000",
     dataMaska: "#### #### ####"
+  }
+};
+
+export const Prefix = {
+  args: {
+    label: "Phone number",
+    placeholder: "0000 000000",
+    dataMaska: "#### ######",
+    prefix: "+44"
+  },
+  render: (args) => ({
+    components: { WraCustomInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <WraCustomInput style="width: 150px;" v-bind="args" />
+      `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-custom-input
+  label="Phone number"
+  placeholder="0000 000000"
+  dataMaska="#### ######"
+  prefix="+44"
+/>
+        `
+      }
+    }
+  }
+};
+
+export const Suffix = {
+  args: {
+    label: "Percentage",
+    placeholder: "00.00",
+    dataMaska: "##.##",
+    suffix: "%"
+  },
+  render: (args) => ({
+    components: { WraCustomInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <WraCustomInput style="width: 90px;" v-bind="args" />
+      `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-custom-input
+  label="Percentage"
+  placeholder="00.00"
+  dataMaska="##.##"
+  suffix="%"
+/>
+        `
+      }
+    }
   }
 };
