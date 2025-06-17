@@ -50,7 +50,7 @@ export default {
       default: "Skip to main content"
     },
     /**
-     * If set to `true`, the skip link will take the full width of its container.
+     * If true, the skip link will take the full width of its container.
      * @type {boolean}
      * @default false
      */
