@@ -87,6 +87,10 @@ export default {
       type: Boolean,
       default: false
     },
+    /**
+     * The maximum file size allowed in bytes. If not specified, no size limit is enforced.
+     * @type {number}
+     */
     maxSize: {
       type: Number
     },
@@ -136,7 +140,7 @@ export default {
       default: "An error has occurred"
     },
     /**
-     * The error message to display when the file size is too large. The max file size is displayed in place of {maxsize}.
+     * The error message to display when the file size is too large.
      * @type {string}
      * @default "File size must be less than"
      */
