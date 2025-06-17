@@ -91,7 +91,6 @@ export default {
     },
     /**
      * An array of validation rule functions. Each function should return true or an error message string.
-     * @type {Array<Function>}
      */
     rules: {
       type: Array,
