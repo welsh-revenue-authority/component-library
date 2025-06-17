@@ -3,7 +3,6 @@ import WraTextInput from "../components/TextInput.vue";
 export default {
   title: "Form Inputs & Controls/TextInput",
   component: WraTextInput,
-  tags: ["autodocs"],
   argTypes: {
     type: {
       control: {
