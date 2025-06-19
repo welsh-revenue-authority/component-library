@@ -3,15 +3,6 @@ import WraCustomInput from "../components/CustomInput.vue";
 export default {
   title: "Form Inputs & Controls/CustomInput",
   component: WraCustomInput,
-  parameters: {
-    docs: {
-      description: {
-        component: `
-Refer to [maska v2 docs](https://beholdr.github.io/maska/v2/) for more information on data masking options
-        `
-      }
-    }
-  },
   argTypes: {
     type: {
       control: {
@@ -33,6 +24,10 @@ Refer to [maska v2 docs](https://beholdr.github.io/maska/v2/) for more informati
         "decimal",
         "search"
       ]
+    },
+    dataMaska: {
+      description:
+        "The mask pattern for the input field. [maska v2 docs](https://beholdr.github.io/maska/v2/)"
     }
   }
 };

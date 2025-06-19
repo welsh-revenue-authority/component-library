@@ -24,6 +24,10 @@ export default {
         "decimal",
         "search"
       ]
+    },
+    dataMaska: {
+      description:
+        "The mask pattern for the input field. [maska v2 docs](https://beholdr.github.io/maska/v2/)"
     }
   }
 };
