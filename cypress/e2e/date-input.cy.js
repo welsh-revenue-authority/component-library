@@ -8,6 +8,13 @@ describe("Date Input", () => {
       cy.visit("/iframe.html?id=form-inputs-controls-dateinput--default");
       cy.log("Visiting the Date Input component story");
 
+      cy.get(di.dateInputLabel)
+        .should("be.visible")
+        .contains("Date input label");
+      cy.log(
+        "Asserted that the date input label is visible and contains the correct text"
+      );
+
       cy.get(di.dateInput).clear();
       cy.log("Cleared the date input");
 

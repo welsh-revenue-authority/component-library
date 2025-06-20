@@ -8,8 +8,8 @@ describe("Breadcrumbs", () => {
       cy.visit("/iframe.html?id=navigation-breadcrumbs--default");
       cy.log("Visiting the breadcrumbs component story");
 
-      cy.get(b.activePage).should("be.visible");
-      cy.log("Assert active page is visible and has correct class");
+      cy.get(b.activePage).should("be.visible").should("not.have.attr", "href");
+      cy.log("Assert active page is visible and does not have href attribute");
 
       cy.get(b.inactivePageHyperlink)
         .should("be.visible")
@@ -28,13 +28,18 @@ describe("Breadcrumbs", () => {
       cy.visit("/iframe.html?id=navigation-breadcrumbs--replace-divider");
       cy.log("Visiting the breadcrumbs component story");
 
-      cy.get(b.activePage).should("be.visible");
-      cy.log("Assert active page is visible and has correct class");
+      cy.get(b.activePage).should("be.visible").should("not.have.attr", "href");
+      cy.log("Assert active page is visible and does not have href attribute");
 
       cy.get(b.inactivePageHyperlink)
         .should("be.visible")
         .should("have.attr", "href");
       cy.log("Assert inactive page is visible and has href attribute");
+
+      cy.get(b.breadcrumbReplaceDivider)
+        .should("be.visible")
+        .should("have.class", "wra-breadcrumbs-divider");
+      cy.log("Assert breadcrumb divider is visible and has correct class");
     });
   });
 

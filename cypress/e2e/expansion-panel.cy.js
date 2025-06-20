@@ -20,7 +20,7 @@ describe("Expansion Panel", () => {
         "Asserted that the expansion control has the correct background color following click"
       );
 
-      cy.get(ep.expansionText).should("be.visible");
+      cy.get(ep.expansionText).should("be.visible").contains(f.placeholderText);
       cy.log("Asserted that the expansion text is visible");
     });
   });
@@ -41,6 +41,9 @@ describe("Expansion Panel", () => {
       cy.log(
         "Asserted that the expansion control has the correct background color following click"
       );
+
+      cy.get(ep.expansionSlotText).should("be.visible").contains(f.placeholderText);
+      cy.log("Asserted that the expansion text is visible");
 
       cy.get(ep.expansionSlot1).contains("Custom slot");
       cy.get(ep.expansionSlot2).contains("multi-line");
