@@ -20,7 +20,7 @@ describe("File Upload", () => {
 
       cy.get(fu.fileUploadButton)
         .should("be.visible")
-        .should("have.css", "background-color", "rgb(31, 31, 31)");
+        .should("have.css", "background-color", "rgb(42, 34, 91)");
 
       cy.get(fu.fileUpload).invoke("show");
       cy.get(fu.fileUpload).selectFile("cypress/fixtures/wra-logo.jpg");
@@ -87,7 +87,7 @@ describe("File Upload", () => {
 
       cy.get(fu.fileUploadButton)
         .should("be.visible")
-        .should("have.css", "background-color", "rgb(31, 31, 31)");
+        .should("have.css", "background-color", "rgb(42, 34, 91)");
 
       cy.get(fu.fileUpload).invoke("show");
       cy.get(fu.fileUpload).selectFile("cypress/fixtures/wra-logo.jpg");
