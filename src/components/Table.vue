@@ -77,6 +77,9 @@
 export default {
   name: "wra-table",
   props: {
+    /**
+     * If true, the table inherits its background from its parent and removes external padding.
+     */
     inheritBackground: {
       type: Boolean,
       default: false
@@ -84,9 +87,15 @@ export default {
     caption: {
       type: String
     },
+    /**
+     * The array of header definitions for the table columns.
+     */
     headers: {
       type: Array
     },
+    /**
+     * The array of data objects to display in the table. Each object represents a row.
+     */
     items: {
       type: Array
     }

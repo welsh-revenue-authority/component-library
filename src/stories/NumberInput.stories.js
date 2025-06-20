@@ -3,7 +3,6 @@ import WraNumberInput from "../components/NumberInput.vue";
 export default {
   title: "Form Inputs & Controls/NumberInput",
   component: WraNumberInput,
-  tags: ["autodocs"],
   argTypes: {
     type: {
       control: {

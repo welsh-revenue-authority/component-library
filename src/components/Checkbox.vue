@@ -19,11 +19,22 @@
 export default {
   name: "wra-checkbox",
   props: {
-    modelValue: {},
+    /**
+     * The v-model binding for the checkbox state.
+     */
+    modelValue: {
+      type: Boolean
+    },
+    /**
+     * The label text displayed next to the checkbox.
+     */
     label: {
       type: String,
       required: true
     },
+    /**
+     * The unique ID for the checkbox input and label association.
+     */
     id: {
       type: String,
       required: true

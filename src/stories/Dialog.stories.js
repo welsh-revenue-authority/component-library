@@ -1,11 +1,10 @@
-import WraConfirmationPopup from "../components/Dialog.vue";
+import WraDialog from "../components/Dialog.vue";
 import WraButton from "../components/Button.vue";
 import { ref } from "vue";
 
 export default {
   title: "Containment/Dialog",
-  component: WraConfirmationPopup,
-  tags: ["autodocs"]
+  component: WraDialog
 };
 
 export const Default = {
@@ -16,7 +15,7 @@ export const Default = {
     cancelText: "Cancel"
   },
   render: (args) => ({
-    components: { WraConfirmationPopup, WraButton },
+    components: { WraDialog, WraButton },
     setup() {
       const dialogRef = ref(null);
       function open() {
@@ -33,7 +32,7 @@ export const Default = {
     template: `
       <div>
         <wra-button @click="open">Open Dialog</wra-button>
-        <wra-confirmation-popup
+        <wra-dialog
           ref="dialogRef"
           v-bind="args"
           @confirm="handleConfirm"
@@ -46,11 +45,12 @@ export const Default = {
     docs: {
       source: {
         code: `
-<wra-button @click="open">
+<wra-button @click="openDialog">
   Open Dialog
 </wra-button>
 
-<wra-confirmation-popup
+<wra-dialog
+  ref="dialogRef"
   title="Dialog Title"
   message="Dialog message goes here."
   confirmText="Confirm"
@@ -73,7 +73,7 @@ export const IsDelete = {
     isDelete: true
   },
   render: (args) => ({
-    components: { WraConfirmationPopup, WraButton },
+    components: { WraDialog, WraButton },
     setup() {
       const dialogRef = ref(null);
       function open() {
@@ -90,7 +90,7 @@ export const IsDelete = {
     template: `
       <div>
         <wra-button @click="open">Open Delete Dialog</wra-button>
-        <wra-confirmation-popup
+        <wra-dialog
           ref="dialogRef"
           v-bind="args"
           @confirm="handleConfirm"
@@ -103,12 +103,13 @@ export const IsDelete = {
     docs: {
       source: {
         code: `
-<wra-button @click="open">
+<wra-button @click="openDialog">
   Open Delete Dialog
 </wra-button>
 
-<wra-confirmation-popup
+<wra-dialog
   isDelete
+  ref="dialogRef"
   title="Are you sure?"
   message="This action cannot be undone."
   confirmText="Confirm"

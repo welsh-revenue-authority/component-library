@@ -43,12 +43,19 @@ export default {
       type: String,
       required: true
     },
+    /**
+     * A unique string used to generate ARIA attributes for accessibility.
+     */
     ariaTitle: {
       type: String,
       required: true
     },
+    /**
+     * The text colour of the expansion panel header. Default colour is `--color-wra-revenue`
+     */
     color: {
-      type: String
+      type: String,
+      default: "#2a225b"
     }
   },
   data() {

@@ -14,21 +14,36 @@
 export default {
   name: "wra-service-logo",
   props: {
+    /**
+     * The URL or path to the logo image to display.
+     */
     serviceLogo: {
       type: String,
       required: true
     },
+    /**
+     * The accessible label for the link.
+     */
     label: {
       type: String,
       required: true
     },
+    /**
+     * The alt text for the logo image.
+     */
     alt: {
       type: String,
       required: true
     },
+    /**
+     * The URL to navigate to when the logo is clicked.
+     */
     href: {
       type: String
     },
+    /**
+     * The height of the logo image in pixels.
+     */
     height: {
       type: [String, Number]
     }

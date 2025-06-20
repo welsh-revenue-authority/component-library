@@ -31,6 +31,9 @@
 export default {
   name: "wra-simple-table",
   props: {
+    /**
+     * If true, the table inherits its background from its parent and removes external padding.
+     */
     inheritBackground: {
       type: Boolean,
       default: false
@@ -38,6 +41,9 @@ export default {
     caption: {
       type: String
     },
+    /**
+     * If true, table header cells are left-aligned. Otherwise, they use centre alignment.
+     */
     leftAlignHeaders: {
       type: Boolean,
       default: true

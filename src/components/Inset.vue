@@ -5,36 +5,26 @@
 </template>
 
 <script>
-/**
- * Inset component
- *
- * This component provides a styled inset with a colored border.
- * The color of the border can be customized using the `colour` prop.
- */
 export default {
   name: "wra-inset",
   props: {
     /**
-     * The color of the left border.
+     * The colour of the left border.
      * @type {string}
-     * @default "blue"
-     * @validator value {string} - The color must be one of ["light-blue", "blue", "light-green", "green", "light-red", "red", "light-yellow", "yellow", "grey", "revenue"].
+     * @default "wra-revenue"
+     * @validator value {string} - The colour must be one of ["wra-revenue", "wra-charcoal", "wra-red", "wra-blue", "wra-green", "wra-yellow"]
      */
     colour: {
       type: String,
-      default: "blue",
+      default: "wra-revenue",
       validate(value) {
         return [
-          "light-blue",
-          "blue",
-          "light-green",
-          "green",
-          "light-red",
-          "red",
-          "light-yellow",
-          "yellow",
-          "grey",
-          "revenue-blue"
+          "wra-revenue",
+          "wra-charcoal",
+          "wra-red",
+          "wra-blue",
+          "wra-green",
+          "wra-yellow"
         ].includes(value);
       }
     }
@@ -44,48 +34,33 @@ export default {
 
 <style scoped>
 .wra-inset {
-  padding: 20px 16px 20px 16px;
+  font-size: 16px;
+  padding: 20px;
   border-left-width: 10px;
   border-left-style: solid;
 }
 
-.wra-inset.blue {
-  border-left-color: var(--color-wra-blue);
+.wra-inset.wra-revenue {
+  border-left-color: var(--color-wra-revenue);
 }
 
-.wra-inset.light-blue {
-  border-left-color: var(--color-wra-light-blue);
+.wra-inset.wra-charcoal {
+  border-left-color: var(--color-wra-charcoal);
 }
 
-.wra-inset.red {
+.wra-inset.wra-red {
   border-left-color: var(--color-wra-red);
 }
 
-.wra-inset.light-red {
-  border-left-color: var(--color-wra-light-red);
+.wra-inset.wra-blue {
+  border-left-color: var(--color-wra-blue);
 }
 
-.wra-inset.green {
+.wra-inset.wra-green {
   border-left-color: var(--color-wra-green);
 }
 
-.wra-inset.light-green {
-  border-left-color: var(--color-wra-light-green);
-}
-
-.wra-inset.yellow {
+.wra-inset.wra-yellow {
   border-left-color: var(--color-wra-yellow);
-}
-
-.wra-inset.light-yellow {
-  border-left-color: var(--color-wra-light-yellow);
-}
-
-.wra-inset.grey {
-  border-left-color: var(--color-wra-grey);
-}
-
-.wra-inset.revenue-blue {
-  border-left-color: var(--color-wra-revenue);
 }
 </style>

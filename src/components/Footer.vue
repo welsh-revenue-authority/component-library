@@ -8,7 +8,9 @@
 export default {
   name: "wra-footer",
   props: {
-    /** Display the footer when printed */
+    /**
+     * If true, the footer will be hidden when printing the page.
+     */
     hiddenPrint: {
       type: Boolean,
       default: false

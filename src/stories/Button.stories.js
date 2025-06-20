@@ -5,7 +5,6 @@ import * as mdiIcons from "@mdi/js";
 export default {
   title: "Containment/Button",
   component: WraButton,
-  tags: ["autodocs"],
   argTypes: {
     size: {
       control: {

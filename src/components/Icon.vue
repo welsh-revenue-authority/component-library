@@ -29,12 +29,12 @@ export default {
       type: Number,
       default: 24
     },
-    /** Override default viewbox, the size and postion of the SVG, that is calculated from height and width. */
+    /** Override default viewbox, the size and postion of the SVG, that is calculated from height and width */
     viewBox: {
       type: String,
       default: "0 0 24 24"
     },
-    /** Defines the colour of the outline of the icon; */
+    /** Defines the colour of the outline of the icon */
     stroke: {
       type: String
     },

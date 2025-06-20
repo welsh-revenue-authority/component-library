@@ -24,12 +24,6 @@
 <script>
 import { vMaska } from "maska/vue";
 
-/**
- * PriceInput component
- *
- * This component provides a masked price input field with optional prefix and suffix.
- * It uses the `maska` directive to apply input masks.
- */
 export default {
   directives: { maska: vMaska },
   name: "wra-price-input",
@@ -85,10 +79,12 @@ export default {
       type: String
     },
     /**
-     * Validation rules for the input field.
-     * @type {Array<Function>}
+     * An array of validation rule functions. Each function should return true or an error message string.
      */
-    rules: {},
+    rules: {
+      type: Array,
+      default: () => []
+    },
     /**
      * The prefix text to display before the input field.
      * @type {string}

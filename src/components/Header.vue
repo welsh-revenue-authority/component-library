@@ -24,6 +24,9 @@
 export default {
   name: "wra-header",
   props: {
+    /**
+     * The heading level to render (h1 - h6).
+     */
     size: {
       type: String,
       required: true

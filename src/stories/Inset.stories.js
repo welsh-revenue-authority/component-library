@@ -3,7 +3,22 @@ import WraInset from "../components/Inset.vue";
 export default {
   title: "Containment/Inset",
   component: WraInset,
-  tags: ["autodocs"]
+  tags: ["autodocs"],
+  argTypes: {
+    colour: {
+      control: {
+        type: "radio"
+      },
+      options: [
+        "wra-revenue",
+        "wra-charcoal",
+        "wra-red",
+        "wra-blue",
+        "wra-green",
+        "wra-yellow"
+      ]
+    }
+  }
 };
 
 export const Default = {
@@ -12,30 +27,37 @@ export const Default = {
   }
 };
 
+export const CharcoalInset = {
+  args: {
+    default: "This is a charcoal inset",
+    colour: "wra-charcoal"
+  }
+};
+
 export const RedInset = {
   args: {
     default: "This is a red inset",
-    colour: "red"
+    colour: "wra-red"
+  }
+};
+
+export const BlueInset = {
+  args: {
+    default: "This is a blue inset",
+    colour: "wra-blue"
+  }
+};
+
+export const GreenInset = {
+  args: {
+    default: "This is a green inset",
+    colour: "wra-green"
   }
 };
 
 export const YellowInset = {
   args: {
     default: "This is a yellow inset",
-    colour: "yellow"
-  }
-};
-
-export const LightGreenInset = {
-  args: {
-    default: "This is a light green inset",
-    colour: "light-green"
-  }
-};
-
-export const RevenueBlueInset = {
-  args: {
-    default: "This is a revenue blue inset",
-    colour: "revenue-blue"
+    colour: "wra-yellow"
   }
 };

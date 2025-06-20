@@ -17,6 +17,9 @@
 export default {
   name: "wra-validation-tooltip",
   props: {
+    /**
+     * The type of validation message, which determines the tooltip's style.
+     */
     type: {
       type: String,
       required: true

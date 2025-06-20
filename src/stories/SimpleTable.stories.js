@@ -6,7 +6,8 @@ export default {
   tags: ["autodocs"],
   argTypes: {
     caption: {
-      control: "text"
+      control: "text",
+      description: "The caption text displayed above the table."
     }
   }
 };

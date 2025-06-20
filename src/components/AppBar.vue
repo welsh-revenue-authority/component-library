@@ -13,6 +13,9 @@
 export default {
   name: "wra-app-bar",
   props: {
+    /**
+     * If true, the app bar will be hidden when printing the page.
+     */
     hiddenPrint: {
       type: Boolean,
       default: false

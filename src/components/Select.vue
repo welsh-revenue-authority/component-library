@@ -32,26 +32,58 @@
 export default {
   name: "wra-select",
   props: {
-    modelValue: {
-      required: true
-    },
+    /**
+     * The array of options to display in the select dropdown.
+     */
     items: {
-      required: true,
       type: Array,
+      required: true,
       default: () => []
     },
+    /**
+     * The property name to use as the value from each option object.
+     */
     itemValue: {
-      required: true,
-      type: String
+      type: String,
+      required: true
     },
+    /**
+     * The property name to use as the label from each option object.
+     */
     itemLabel: {
-      required: true,
+      type: String,
+      required: true
+    },
+    /**
+     * The unique id for the select input and label association.
+     */
+    id: {
       type: String
     },
-    id: {},
-    name: {},
-    required: {},
-    label: {}
+    /**
+     * The name attribute for the select input.
+     */
+    name: {
+      type: String,
+      default: "select"
+    },
+    /**
+     * If true, the select is required and must have a value.
+     */
+    required: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * The label text displayed above the select input.
+     */
+    label: {},
+    /**
+     * The v-model binding for the selected value.
+     */
+    modelValue: {
+      required: true
+    }
   },
   methods: {
     validate(value) {
@@ -91,7 +123,7 @@ export default {
     }
   },
   mounted() {
-    //run validation rules when component is first rendered, as v-model data might be valid/invalid
+    // Run validation rules when component is first rendered, as v-model data might be valid/invalid
     this.validate(this.modelValue);
   },
   emits: ["update:modelValue", "valid"]

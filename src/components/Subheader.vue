@@ -9,8 +9,12 @@ export default {
   name: "wra-subheader",
 
   props: {
+    /**
+     * The text colour of the subheader.
+     */
     color: {
-      type: String
+      type: String,
+      default: "#000000"
     }
   },
 

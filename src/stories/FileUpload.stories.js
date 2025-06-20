@@ -1,8 +1,8 @@
-import FileUpload from "../components/FileUpload.vue";
+import WraFileUpload from "../components/FileUpload.vue";
 
 export default {
   title: "Form Inputs & Controls/FileUpload",
-  component: FileUpload,
+  component: WraFileUpload,
   tags: ["autodocs"],
   argTypes: {
     backgroundColor: {

@@ -117,8 +117,8 @@ export default {
 .snackbar {
   background: var(--color-wra-light-grey);
   font-size: 18px;
-  padding: 20px 16px 20px 24px;
-  border-left: 3px solid var(--color-wra-dark-grey);
+  padding: 20px;
+  border-left: 5px solid var(--color-wra-dark-grey);
   position: fixed;
   left: 50%;
   transform: translateX(-50%);

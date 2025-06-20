@@ -1,0 +1,100 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+
+<Meta title="Resources/Colour library" />
+
+# Colour Library
+
+Library of colours for use with the component library. Refer to [tailwind docs](https://tailwindcss.com/docs/colors) for a full list of utilities that use the colour palette.
+
+## Usage
+
+By default, registering the component library imports the CSS variables.
+
+They can be used like this:
+
+`app.css`
+
+```css
+/* style sheet classes ~ background colour */
+
+.wra-red {
+  background-color: var(--color-wra-red);
+}
+
+.wra-light-blue {
+  background-color: var(--color-wra-light-blue);
+}
+```
+
+---
+
+However, to use the colours in Tailwind helper classes like this ...
+
+```html
+<!-- html ~ background colours -->
+
+<div class="bg-wra-red"></div>
+
+<div class="bg-wra-light-blue"></div>
+```
+
+... the component library's Tailwind stylesheet must be imported.
+
+The instructions are created for Tailwind 4+. The CSS file must be the file imported by `index.html`
+
+`tailwind.css` / `index.css`/ `style.css`,
+
+```css
+@import "tailwindcss";
+@import "@wra-gov/vue-components/tailwind.css";
+```
+
+<ColorPalette>
+  <ColorItem title="Default" colors={{ "--color-wra-revenue": "#2a225b" }} />
+  <ColorItem
+    title="Black"
+    colors={{
+      "--color-wra-black": "#1f1f1f",
+      "--color-wra-charcoal": "#323232"
+    }}
+  />
+  <ColorItem
+    title="Grey"
+    colors={{
+      "--color-wra-light-grey": "#f1f1f1",
+      "--color-wra-grey": "#e5e5e5",
+      "--color-wra-mid-grey": "#b5b5b5",
+      "--color-wra-dark-grey": "#666666"
+    }}
+  />
+  <ColorItem
+    title="Red"
+    colors={{
+      "--color-wra-light-red": "#ffe4e5",
+      "--color-wra-red": "#aa1111"
+    }}
+  />
+  <ColorItem
+    title="Blue"
+    colors={{
+      "--color-wra-light-blue": "#c2e0fc",
+      "--color-wra-blue": "#0360a6",
+      "--color-wra-mid-blue": "#3b7dc5",
+      "--color-wra-dark-blue": "#1f446d"
+    }}
+  />
+  <ColorItem
+    title="Green"
+    colors={{
+      "--color-wra-light-green": "#cdf7d4",
+      "--color-wra-green": "#007015"
+    }}
+  />
+  <ColorItem
+    title="Yellow"
+    colors={{
+      "--color-wra-light-yellow": "#fff5ce",
+      "--color-wra-yellow": "#ffd530"
+    }}
+  />
+</ColorPalette>

@@ -5,6 +5,15 @@ import * as mdiIcons from "@mdi/js";
 export default {
   title: "Containment/ValidationTooltip",
   component: WraValidationTooltip,
+  parameters: {
+    docs: {
+      description: {
+        component: `
+Refer to [Icon component](/docs/images-icons-icon--icondocs) for more information on custom icons.
+        `
+      }
+    }
+  },
   tags: ["autodocs"],
   argTypes: {
     type: {

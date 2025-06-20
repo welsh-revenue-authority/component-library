@@ -7,6 +7,9 @@ export default {
   argTypes: {
     color: {
       control: "color"
+    },
+    title: {
+      description: "Title of the expansion panel."
     }
   }
 };

@@ -3,10 +3,10 @@ import WraTable from "../components/Table.vue";
 export default {
   title: "Data & Display/Table",
   component: WraTable,
-  tags: ["autodocs"],
   argTypes: {
     caption: {
-      control: "text"
+      control: "text",
+      description: "The caption text displayed above the table."
     }
   },
   parameters: {

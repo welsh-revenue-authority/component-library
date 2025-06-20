@@ -1,0 +1,59 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories
+} from "@storybook/addon-docs/blocks";
+
+import * as DialogStories from "../stories/Dialog.stories";
+
+<Meta of={DialogStories} />
+
+<Title />
+
+<Primary />
+
+## Usage
+
+### Open dialog
+
+Add a `ref` to the dialog component:
+
+```html
+<wra-dialog ref="dialogRef" ... />
+```
+
+Call the `openDialog()` method on the `ref` to open the dialog:
+
+```js
+this.$refs.dialogRef.openDialog();
+```
+
+### Close dialog
+
+<p>
+  The dialog closes automatically when the user clicks the confirm or cancel
+  button. You can also close it programmatically by calling:
+</p>
+
+```js
+this.$refs.dialogRef.closeDialog();
+```
+
+<Controls />
+
+<p>Use the `@confirm` and `@cancel` events to handle user actions:</p>
+
+```js
+  methods: {
+    handleConfirm() {
+      // handle confirm action
+    },
+    handleCancel() {
+      // handle cancel action
+    }
+  }
+```
+
+<Stories />
