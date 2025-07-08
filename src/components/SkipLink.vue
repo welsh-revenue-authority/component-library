@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "wra-skiplink",
+  name: "wra-skip-link",
   emits: ["click"],
   methods: {
     /**
