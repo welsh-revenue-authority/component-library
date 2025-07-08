@@ -75,7 +75,7 @@ h6 {
   line-height: 24px;
 }
 
-@media (max-width: 599px) {
+@media (max-width: 600px) {
   h1 {
     margin: 0px;
     font-size: 34px;
