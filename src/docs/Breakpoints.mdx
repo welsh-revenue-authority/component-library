@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Resources/Responsive design" />
+
+# Responsive Design
+
+Our breakpoints are developed using a mobile first approach, starting with the smallest screen size of 320px and scaling up to larger screens.
+
+Refer to [tailwind docs](https://tailwindcss.com/docs/responsive-design) for a full list of instructions on how to utilise custom breakpoints.
+
+## Usage
+
+The component library operates using the following breakpoints:
+
+```
+| Breakpoint prefix | Minimum width |
+| ----------------- | ------------- |
+| `xs`              | 320px         |
+| `sm`              | 600px         |
+| `md`              | 768px         |
+| `lg`              | 960px         |
+```
+
+Use `--breakpoint-*` theme variables to register our custom breakpoints in Tailwind:
+
+`app.css`
+
+```css
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 960px;
+}
+```
