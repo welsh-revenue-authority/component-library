@@ -10,7 +10,10 @@
         @change="checkInput()"
         @click="$emit('click')"
       />
-      <span class="checkbox-text">{{ label }}</span>
+      <span class="checkbox-text">
+        <p>{{ label }}</p>
+        <p v-if="info" class="further-information-text" v-html="info"></p>
+      </span>
     </label>
   </div>
 </template>
@@ -31,6 +34,12 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    /**
+     * Additional information about the checkbox option.
+     */
+    info: {
+      type: String
     },
     /**
      * The unique ID for the checkbox input and label association.
@@ -131,5 +140,13 @@ export default {
 .checkbox-text {
   padding: 0px 0px 0px 10px;
   font-size: 18px;
+}
+
+.further-information-text {
+  font-size: 14px;
+}
+
+p {
+  margin: 0px;
 }
 </style>
