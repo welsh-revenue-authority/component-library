@@ -14,7 +14,7 @@ Dependencies:
 
 Install,
 
-`npm install @wra/vue-components`
+`npm install @wra-gov/vue-components`
 
 ## Usage
 

@@ -30,6 +30,8 @@ export default {
 
 <style scoped>
 .validation-tooltip {
+  display: flex;
+  align-items: flex-start;
   color: var(--color-wra-black);
   border-radius: 0px;
   font-size: 18px;
@@ -64,6 +66,6 @@ export default {
 }
 
 .custom-icon-wrapper {
-  margin-right: 8px;
+  margin-right: 12px;
 }
 </style>

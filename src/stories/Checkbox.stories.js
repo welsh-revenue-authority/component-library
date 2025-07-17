@@ -12,3 +12,11 @@ export const Default = {
     id: "checkboxId"
   }
 };
+
+export const InfoText = {
+  args: {
+    label: "This is a checkbox label",
+    id: "checkboxId",
+    info: "This is additional information about the checkbox"
+  }
+};
