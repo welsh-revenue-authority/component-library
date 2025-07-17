@@ -14,7 +14,14 @@
         :aria-checked="checked[checkForObjectValue(option)]"
         @change="checkInput(checkForObjectValue(option))"
       />
-      <span class="checkbox-text">{{ checkForObjectLabel(option) }}</span>
+      <span class="checkbox-text">
+        <p>{{ checkForObjectLabel(option) }}</p>
+        <p
+          v-if="checkForObjectInfo(option)"
+          class="further-information-text"
+          v-html="checkForObjectInfo(option)"
+        ></p>
+      </span>
     </label>
   </div>
 </template>
@@ -54,6 +61,14 @@ export default {
       type: String,
       required: true,
       default: "label"
+    },
+    /**
+     * The property name to use as the further info text from each option object.
+     */
+    itemInfo: {
+      type: String,
+      required: false,
+      default: "info"
     },
     /**
      * If true, the emitted value will be an array of option objects instead of values.
@@ -109,6 +124,14 @@ export default {
         return input[this.itemLabel];
       } else {
         return input;
+      }
+    },
+    checkForObjectInfo(input) {
+      //check if item is an object
+      if (typeof input === "object") {
+        return input[this.itemInfo];
+      } else {
+        return null;
       }
     },
     checkForObjectValue(input) {
@@ -210,5 +233,13 @@ export default {
 .checkbox-text {
   padding: 0px 0px 0px 10px;
   font-size: 18px;
+}
+
+.further-information-text {
+  font-size: 14px;
+}
+
+p {
+  margin: 0px;
 }
 </style>
