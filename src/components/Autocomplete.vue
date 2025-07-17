@@ -193,6 +193,14 @@ export default {
     }
     this.userInput[this.optionLabel] = "";
     this.userInput[this.optionValue] = "";
+  },
+  watch: {
+    options: {
+      handler(newOptions) {
+        this.validatedOptions = newOptions ?? [];
+      },
+      immediate: true
+    }
   }
 };
 </script>
