@@ -4,26 +4,39 @@
       {{ label }}
     </label>
     <input
+      inputmode="text"
       ref="autocompleteInput"
       v-model="userInput[optionLabel]"
       role="combobox"
-      inputmode="text"
+      aria-autocomplete="list"
+      :aria-expanded="showOptions.toString()"
+      aria-controls="autocomplete-list"
+      :aria-activedescendant="
+        optionIndex !== null ? `option${optionIndex}` : undefined
+      "
+      autocomplete="off"
       :id="id"
       class="autocomplete-input"
       :class="{ 'autocomplete-input--focus': hasFocus }"
-      aria-owns="autocomplete-list"
-      autocomplete="off"
       @input="onInputTyping()"
       @focus="hasFocus = true"
       @blur="onBlur"
       @keydown.prevent.up="onUpKey"
       @keydown.prevent.down="onDownKey"
     />
-    <ul v-show="showOptions" role="listbox" class="autocomplete-list">
+    <ul
+      v-show="showOptions"
+      role="listbox"
+      id="autocomplete-list"
+      class="autocomplete-list"
+    >
       <li
         v-for="(option, index) in filterOptions"
         :ref="`option${index}`"
+        :id="`option${index}`"
+        role="option"
         tabindex="-1"
+        :aria-selected="index === optionIndex"
         :class="{
           'autocomplete-item-not-clickable': option.clickable === false,
           'autocomplete-item--focus': index === optionIndex
