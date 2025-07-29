@@ -1,13 +1,18 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
 
-export default {
+const meta: Meta<typeof WraBanner> = {
   title: "Feedback/Banner",
   component: WraBanner,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {
+type BannerProps = InstanceType<typeof WraBanner>["$props"];
+type Story = StoryObj<BannerProps>;
+
+export const Default: Story = {
   render: (args) => ({
     components: { WraBanner },
     setup() {
@@ -18,7 +23,6 @@ export const Default = {
       Tell us what you think of this service by <a href=".">giving feedback</a>.
     </WraBanner>`
   }),
-  // Make source code box accurate
   parameters: {
     docs: {
       source: {
@@ -32,7 +36,7 @@ export const Default = {
   }
 };
 
-export const NewService = {
+export const NewService: Story = {
   args: {
     newService: true
   },
@@ -47,7 +51,6 @@ export const NewService = {
     </WraBanner>
     `
   }),
-  // Make source code box accurate
   parameters: {
     docs: {
       source: {
@@ -61,33 +64,21 @@ export const NewService = {
   }
 };
 
-export const CookiesExample = {
-  args: {
-    default:
-      "We use cookies to collect information about how you use this website. We use this information to improve our services.",
-    actions: `
-      <wra-button size="small" outlined>Accept cookies</wra-button>
-      <wra-button size="small" outlined>Change cookie settings</wra-button>
-    `
-  },
-  // Process for putting other components in slots in storybook
-  render: (args) => ({
+export const CookiesExample: Story = {
+  render: () => ({
     components: { WraBanner, WraButton },
-    setup() {
-      return args;
-    },
     template: `
       <wra-banner>
-        <template v-slot:default v-if="${"default" in args}">
-          ${args.default}
+        <template #default>
+          We use cookies to collect information about how you use this website. We use this information to improve our services.
         </template>
-        <template v-slot:actions v-if="${"actions" in args}">
-          ${args.actions}
+        <template #actions>
+          <wra-button size="small" outlined>Accept cookies</wra-button>
+          <wra-button size="small" outlined>Change cookie settings</wra-button>
         </template>
       </wra-banner>
     `
   }),
-  // Make source code box accurate
   parameters: {
     docs: {
       source: {
@@ -105,7 +96,7 @@ export const CookiesExample = {
   }
 };
 
-export const Closable = {
+export const Closable: Story = {
   args: {
     closable: true
   },
@@ -119,7 +110,6 @@ export const Closable = {
       You've accepted all cookies. You can <a href=".">change your cookie settings</a> at any time.
     </WraBanner>`
   }),
-  // Make source code box accurate
   parameters: {
     docs: {
       source: {
