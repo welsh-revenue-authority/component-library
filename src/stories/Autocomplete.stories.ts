@@ -1,6 +1,32 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import Autocomplete from "../components/Autocomplete.vue";
 
-export default {
+const councilArray = [
+  { value: "Blaenau Gwent", label: "Blaenau Gwent" },
+  { value: "Bridgend", label: "Bridgend" },
+  { value: "Caerphilly", label: "Caerphilly" },
+  { value: "Cardiff", label: "Cardiff" },
+  { value: "Carmarthenshire", label: "Carmarthenshire" },
+  { value: "Ceredigion", label: "Ceredigion" },
+  { value: "Conwy", label: "Conwy" },
+  { value: "Denbighshire", label: "Denbighshire" },
+  { value: "Flintshire", label: "Flintshire" },
+  { value: "Gwynedd", label: "Gwynedd" },
+  { value: "Isle of Anglesey", label: "Isle of Anglesey" },
+  { value: "Merthyr Tydfil", label: "Merthyr Tydfil" },
+  { value: "Monmouthshire", label: "Monmouthshire" },
+  { value: "Neath Port Talbot", label: "Neath Port Talbot" },
+  { value: "Newport", label: "Newport" },
+  { value: "Pembrokeshire", label: "Pembrokeshire" },
+  { value: "Powys", label: "Powys" },
+  { value: "Rhondda Cynon Taf", label: "Rhondda Cynon Taf" },
+  { value: "Swansea", label: "Swansea" },
+  { value: "Torfaen", label: "Torfaen" },
+  { value: "Vale of Glamorgan", label: "Vale of Glamorgan" },
+  { value: "Wrexham", label: "Wrexham" }
+];
+
+const meta: Meta<typeof Autocomplete> = {
   title: "Form Inputs & Controls/Autocomplete",
   component: Autocomplete,
   argTypes: {
@@ -20,98 +46,13 @@ export default {
   tags: ["autodocs"]
 };
 
-let councilArray = [
-  {
-    value: "Blaenau Gwent",
-    label: "Blaenau Gwent"
-  },
-  {
-    value: "Bridgend",
-    label: "Bridgend"
-  },
-  {
-    value: "Caerphilly",
-    label: "Caerphilly"
-  },
-  {
-    value: "Cardiff",
-    label: "Cardiff"
-  },
-  {
-    value: "Carmarthenshire",
-    label: "Carmarthenshire"
-  },
-  {
-    value: "Ceredigion",
-    label: "Ceredigion"
-  },
-  {
-    value: "Conwy",
-    label: "Conwy"
-  },
-  {
-    value: "Denbighshire",
-    label: "Denbighshire"
-  },
-  {
-    value: "Flintshire",
-    label: "Flintshire"
-  },
-  {
-    value: "Gwynedd",
-    label: "Gwynedd"
-  },
-  {
-    value: "Isle of Anglesey",
-    label: "Isle of Anglesey"
-  },
-  {
-    value: "Merthyr Tydfil",
-    label: "Merthyr Tydfil"
-  },
-  {
-    value: "Monmouthshire",
-    label: "Monmouthshire"
-  },
-  {
-    value: "Neath Port Talbot",
-    label: "Neath Port Talbot"
-  },
-  {
-    value: "Newport",
-    label: "Newport"
-  },
-  {
-    value: "Pembrokeshire",
-    label: "Pembrokeshire"
-  },
-  {
-    value: "Powys",
-    label: "Powys"
-  },
-  {
-    value: "Rhondda Cynon Taf",
-    label: "Rhondda Cynon Taf"
-  },
-  {
-    value: "Swansea",
-    label: "Swansea"
-  },
-  {
-    value: "Torfaen",
-    label: "Torfaen"
-  },
-  {
-    value: "Vale of Glamorgan",
-    label: "Vale of Glamorgan"
-  },
-  {
-    value: "Wrexham",
-    label: "Wrexham"
-  }
-];
+export default meta;
 
-export const Default = {
+type AutocompleteProps = InstanceType<typeof Autocomplete>["$props"];
+
+type Story = StoryObj<AutocompleteProps>;
+
+export const Default: Story = {
   args: {
     label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
@@ -132,7 +73,7 @@ export const Default = {
   }
 };
 
-export const Autoexpand = {
+export const Autoexpand: Story = {
   args: {
     label:
       "This is an autocomplete showing Welsh local authorities that expands when clicked",
@@ -156,7 +97,7 @@ export const Autoexpand = {
   }
 };
 
-export const PreFilled = {
+export const PreFilled: Story = {
   args: {
     label: "This is an autocomplete that is prefilled with a value",
     id: "test-autocomplete-prefill",
