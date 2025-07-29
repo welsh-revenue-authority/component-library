@@ -1,9 +1,14 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraAppBar from "../components/AppBar.vue";
 import WraButton from "../components/Button.vue";
 import WraServiceLogo from "../components/ServiceLogo.vue";
 import WgLogoFile from "./assets/wg-logo-white.svg";
 
 import { Small } from "./Button.stories";
+
+const wgImage = {
+  src: WgLogoFile as string
+};
 
 export default {
   title: "Navigation/AppBar",
@@ -21,21 +26,24 @@ export default {
       }
     }
   }
+} as Meta;
+
+type AppBarProps = {
+  hiddenPrint?: boolean;
 };
 
-const wgImage = {
-  src: WgLogoFile
-};
-
-export const Default = {
+export const Default: StoryObj<AppBarProps> = {
   args: {
-    ...Small.args,
-    backgroundColor: "wra-white"
+    hiddenPrint: false
   },
   render: (args) => ({
     components: { WraAppBar, WraServiceLogo, WraButton },
     setup() {
-      return { args };
+      const buttonProps = {
+        backgroundColor: "wra-white",
+        size: Small.args?.size
+      };
+      return { args, buttonProps };
     },
     template: `<WraAppBar v-bind="args" style="display: flex; align-items: center;">
       <WraServiceLogo
@@ -46,7 +54,7 @@ export const Default = {
         height="34px"
       />
       <WraButton
-        v-bind="args"
+        v-bind="buttonProps"
         style="margin-left: auto;"
       >
         Cymraeg

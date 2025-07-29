@@ -9,19 +9,21 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-app-bar",
   props: {
     /**
      * If true, the app bar will be hidden when printing the page.
      */
     hiddenPrint: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   }
-};
+});
 </script>
 
 <style scoped>
