@@ -1,21 +1,18 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraButton from "../components/Button.vue";
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
 
-export default {
+const meta: Meta<typeof WraButton> = {
   title: "Containment/Button",
   component: WraButton,
   argTypes: {
     size: {
-      control: {
-        type: "radio"
-      },
+      control: { type: "radio" },
       options: ["default", "small"]
     },
     backgroundColor: {
-      control: {
-        type: "radio"
-      },
+      control: { type: "radio" },
       options: [
         "wra-revenue",
         "wra-blue",
@@ -25,26 +22,18 @@ export default {
         "wra-black"
       ]
     },
-    outlined: {
-      control: "boolean"
-    },
-    prependIcon: {
-      table: {
-        disable: true
-      }
-    },
-    appendIcon: {
-      table: {
-        disable: true
-      }
-    }
+    outlined: { control: "boolean" },
+    prependIcon: { table: { disable: true } },
+    appendIcon: { table: { disable: true } }
   }
 };
+export default meta;
 
-export const Default = {
-  args: {
-    size: "default"
-  },
+type ButtonProps = InstanceType<typeof WraButton>["$props"];
+type Story = StoryObj<ButtonProps>;
+
+export const Default: Story = {
+  args: { size: "default" },
   render: (args) => ({
     components: { WraButton },
     setup() {
@@ -65,10 +54,8 @@ export const Default = {
   }
 };
 
-export const Small = {
-  args: {
-    size: "small"
-  },
+export const Small: Story = {
+  args: { size: "small" },
   render: (args) => ({
     components: { WraButton },
     setup() {
@@ -89,10 +76,8 @@ export const Small = {
   }
 };
 
-export const BackgroundColour = {
-  args: {
-    backgroundColor: "wra-blue"
-  },
+export const BackgroundColour: Story = {
+  args: { backgroundColor: "wra-blue" },
   render: (args) => ({
     components: { WraButton },
     setup() {
@@ -113,10 +98,8 @@ export const BackgroundColour = {
   }
 };
 
-export const Outlined = {
-  args: {
-    outlined: "true"
-  },
+export const Outlined: Story = {
+  args: { outlined: true },
   render: (args) => ({
     components: { WraButton },
     setup() {
@@ -137,22 +120,19 @@ export const Outlined = {
   }
 };
 
-export const PrependIcon = {
-  args: {
-    prependIcon: "true",
-    icon: "mdiChevronLeft",
-    fill: "white"
-  },
+export const PrependIcon: Story = {
+  args: { prependIcon: true },
   render: (args) => ({
     components: { WraButton, WraIcon },
-    computed: { icon: () => mdiIcons[args.icon] },
     setup() {
-      return { args };
+      const icon = mdiIcons.mdiChevronLeft;
+      const fill = "white";
+      return { args, icon, fill };
     },
     template: `
     <WraButton v-bind="args">
       <template #prepend-icon>
-        <wra-icon v-bind="args" :icon="icon" />
+        <wra-icon :icon="icon" :fill="fill" />
       </template>
       Back Button
     </WraButton>
@@ -174,23 +154,20 @@ export const PrependIcon = {
   }
 };
 
-export const AppendIcon = {
-  args: {
-    appendIcon: "true",
-    icon: "mdiChevronRight",
-    fill: "white"
-  },
+export const AppendIcon: Story = {
+  args: { appendIcon: true },
   render: (args) => ({
     components: { WraButton, WraIcon },
-    computed: { icon: () => mdiIcons[args.icon] },
     setup() {
-      return { args };
+      const icon = mdiIcons.mdiChevronRight;
+      const fill = "white";
+      return { args, icon, fill };
     },
     template: `
     <WraButton v-bind="args">
       Next Button
       <template #append-icon>
-        <wra-icon v-bind="args" :icon="icon" />
+        <wra-icon :icon="icon" :fill="fill" />
       </template>
     </WraButton>
     `
@@ -211,23 +188,20 @@ export const AppendIcon = {
   }
 };
 
-export const AppendCustomIcon = {
-  args: {
-    appendIcon: "true",
-    icon: "mdiUpload",
-    fill: "white"
-  },
+export const AppendCustomIcon: Story = {
+  args: { appendIcon: true },
   render: (args) => ({
     components: { WraButton, WraIcon },
-    computed: { icon: () => mdiIcons[args.icon] },
     setup() {
-      return { args };
+      const icon = mdiIcons.mdiUpload;
+      const fill = "white";
+      return { args, icon, fill };
     },
     template: `
     <WraButton v-bind="args">
       Upload File
       <template #append-icon>
-        <wra-icon v-bind="args" :icon="icon" />
+        <wra-icon :icon="icon" :fill="fill" />
       </template>
     </WraButton>
     `
@@ -248,10 +222,8 @@ export const AppendCustomIcon = {
   }
 };
 
-export const Disabled = {
-  args: {
-    disabled: "true"
-  },
+export const Disabled: Story = {
+  args: { disabled: true },
   render: (args) => ({
     components: { WraButton },
     setup() {
