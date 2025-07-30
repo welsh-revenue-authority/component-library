@@ -1,14 +1,19 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraCard from "../components/Card.vue";
 import WraHeader from "../components/Header.vue";
 import WraButton from "../components/Button.vue";
 
-export default {
+const meta: Meta<typeof WraCard> = {
   title: "Containment/Card",
   component: WraCard,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {
+type CardProps = InstanceType<typeof WraCard>["$props"];
+type Story = StoryObj<CardProps>;
+
+export const Default: Story = {
   render: (args) => ({
     components: { WraCard, WraHeader, WraButton },
     setup() {
@@ -29,7 +34,6 @@ export const Default = {
       <WraButton style="margin-top: 18px">Button</WraButton>
     </WraCard>`
   }),
-  // Make source code box accurate
   parameters: {
     docs: {
       source: {
