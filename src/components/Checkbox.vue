@@ -6,7 +6,7 @@
         type="checkbox"
         :id="id"
         :checked="isChecked"
-        :aria-checked="ariaIsChecked"
+        :aria-checked="isChecked"
         @change="checkInput()"
         @click="$emit('click')"
       />
@@ -18,63 +18,59 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-checkbox",
   props: {
     /**
      * The v-model binding for the checkbox state.
      */
     modelValue: {
-      type: Boolean
+      type: Boolean as PropType<boolean>
     },
     /**
      * The label text displayed next to the checkbox.
      */
     label: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * Additional information about the checkbox option.
      */
     info: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The unique ID for the checkbox input and label association.
      */
     id: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     }
   },
   data() {
     return {
-      isChecked: this.value,
-      ariaIsChecked: null
+      isChecked: this.modelValue as boolean | undefined
     };
   },
   watch: {
     modelValue: {
-      handler() {
+      handler(this: any) {
         this.isChecked = this.modelValue;
-        if (this.isChecked == true) {
-          this.ariaIsChecked = "true";
-        } else {
-          this.ariaIsChecked = "false";
-        }
       },
       immediate: true
     }
   },
   methods: {
-    checkInput: function () {
+    checkInput(this: any) {
       this.isChecked = !this.isChecked;
       this.$emit("update:modelValue", this.isChecked);
     }
   }
-};
+});
 </script>
 
 <style scoped>
