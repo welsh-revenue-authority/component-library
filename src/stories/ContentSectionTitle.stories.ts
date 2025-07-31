@@ -1,27 +1,32 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraContentSectionTitle from "../components/ContentSectionTitle.vue";
 import WraHeader from "../components/Header.vue";
 
-import { Header1 } from "./Header.stories";
-
-export default {
+const meta: Meta = {
   title: "Miscellaneous/ContentSectionTitle",
   component: WraContentSectionTitle,
   tags: ["autodocs"],
   argTypes: {
     size: {
-      control: {
-        type: "select"
-      },
+      control: { type: "select" },
       options: ["h1", "h2", "h3", "h4", "h5", "h6"],
       description:
         "The size of the header. This will apply the appropriate HTML tag and styling."
+    },
+    default: {
+      control: { type: "text" },
+      description: "Header text content."
     }
   }
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj;
+
+export const Default: Story = {
   args: {
-    ...Header1.args
+    size: "h1",
+    default: "This is a H1 header"
   },
   render: (args) => ({
     components: { WraContentSectionTitle, WraHeader },
@@ -29,7 +34,7 @@ export const Default = {
       return { args };
     },
     template:
-      '<WraContentSectionTitle v-bind="args"><WraHeader v-bind="args">{{ args.default }}</WraHeader></WraContentSectionTitle>'
+      '<WraContentSectionTitle><WraHeader :size="args.size">{{ args.default }}</WraHeader></WraContentSectionTitle>'
   }),
   parameters: {
     docs: {
