@@ -1,12 +1,17 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraCheckboxGroup from "../components/CheckboxGroup.vue";
 
-export default {
+const meta: Meta<typeof WraCheckboxGroup> = {
   title: "Form Inputs & Controls/CheckboxGroup",
   component: WraCheckboxGroup,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {
+type CheckboxGroupProps = InstanceType<typeof WraCheckboxGroup>["$props"];
+type Story = StoryObj<CheckboxGroupProps>;
+
+export const Default: Story = {
   args: {
     options: [
       { value: "OptionOne", label: "Option 1" },
@@ -34,7 +39,7 @@ export const Default = {
   }
 };
 
-export const InfoText = {
+export const InfoText: Story = {
   args: {
     options: [
       { value: "OptionOne", label: "Option 1", info: "This is option 1" },
@@ -58,17 +63,6 @@ export const InfoText = {
   item-label="label"
   item-info="info"
 ></wra-checkbox-group>
-
-<script>
-export default {
-  data: () => ({
-    options: [
-      { value: "OptionOne", label: "Option 1", info: "This is option 1" },
-      { value: "OptionTwo", label: "Option 2", info: "This is option 2" }
-    ]
-  })
-}
-</script>
         `
       }
     }

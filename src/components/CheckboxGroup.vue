@@ -26,23 +26,27 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import WraCheckbox from "./Checkbox.vue";
 
-export default {
+type OptionType = Record<string, any> | string;
+
+export default defineComponent({
   name: "wra-checkbox-group",
   props: {
     /**
      * The v-model binding for the checkbox group. Should be an array of selected values or objects.
      */
     modelValue: {
+      type: Array as PropType<OptionType[]>,
       default: () => []
     },
     /**
      * The array of options to display as checkboxes.
      */
     options: {
-      type: Array,
+      type: Array as PropType<OptionType[]>,
       required: true,
       default: () => []
     },
@@ -50,7 +54,7 @@ export default {
      * The property name to use as the value from each option object.
      */
     itemValue: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "value"
     },
@@ -58,7 +62,7 @@ export default {
      * The property name to use as the label from each option object.
      */
     itemLabel: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "label"
     },
@@ -66,7 +70,7 @@ export default {
      * The property name to use as the further info text from each option object.
      */
     itemInfo: {
-      type: String,
+      type: String as PropType<string>,
       required: false,
       default: "info"
     },
@@ -74,27 +78,27 @@ export default {
      * If true, the emitted value will be an array of option objects instead of values.
      */
     returnObject: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   },
   data() {
     return {
-      checked: {},
-      value: {}
+      checked: {} as Record<string, boolean>,
+      value: [] as OptionType[]
     };
   },
   methods: {
-    checkInput(value) {
+    checkInput(this: any, value: string) {
       this.checked[value] = !this.checked[value];
 
       //create array of only 'true' values from this.checked
-      let checkedArray = [];
+      let checkedArray: OptionType[] = [];
       //loop through this.checked object
-      if (this.returnObject == true) {
-        Object.keys(this.checked).forEach((key) => {
+      if (this.returnObject === true) {
+        Object.keys(this.checked).forEach((key: string) => {
           const element = this.checked[key];
-          if (element == true) {
+          if (element === true) {
             for (let index = 0; index < this.validOptions.length; index++) {
               const option = this.validOptions[index];
               //check if item is an object
@@ -118,24 +122,21 @@ export default {
 
       this.$emit("update:modelValue", checkedArray);
     },
-    checkForObjectLabel(input) {
-      //check if item is an object
+    checkForObjectLabel(this: any, input: OptionType): string {
       if (typeof input === "object") {
         return input[this.itemLabel];
       } else {
         return input;
       }
     },
-    checkForObjectInfo(input) {
-      //check if item is an object
+    checkForObjectInfo(this: any, input: OptionType): string | null {
       if (typeof input === "object") {
         return input[this.itemInfo];
       } else {
         return null;
       }
     },
-    checkForObjectValue(input) {
-      //check if item is an object
+    checkForObjectValue(this: any, input: OptionType): string {
       if (typeof input === "object") {
         return input[this.itemValue];
       } else {
@@ -144,13 +145,13 @@ export default {
     }
   },
   computed: {
-    validOptions() {
+    validOptions(this: any): OptionType[] {
       return this.options ?? [];
     }
   },
-  mounted() {
+  mounted(this: any) {
     //sets up which values should be checked initially e.g. if editing existing data
-    this.value = this.modelValue ?? {};
+    this.value = this.modelValue ?? [];
     for (let index = 0; index < this.value.length; index++) {
       const element = this.value[index];
       if (typeof element === "object") {
@@ -163,7 +164,7 @@ export default {
   components: {
     WraCheckbox
   }
-};
+});
 </script>
 
 <style scoped>
