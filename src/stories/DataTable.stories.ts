@@ -1,41 +1,43 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraDataTable from "../components/DataTable.vue";
 
-export default {
+type Header = {
+  key: string;
+  title: string;
+  searchable?: boolean;
+};
+
+type Item = Record<string, any> & { bold?: boolean };
+
+interface DataTableArgs {
+  caption: string;
+  headers: Header[];
+  items: Item[];
+}
+
+const meta: Meta<DataTableArgs> = {
   title: "Data & Display/DataTable",
   component: WraDataTable,
-  argTypes: {
-    body: {
-      table: {
-        disable: true
-      }
-    },
-    item: {
-      table: {
-        disable: true
-      }
-    },
-    "`item.${header.key}`": {
-      table: {
-        disable: true
-      }
-    }
-  },
   parameters: {
+    controls: {
+      exclude: ["body", "item", "`item.${header.key}`"]
+    },
     docs: {
       source: {
         code: `
 <wra-data-table
-  caption="Nutrition Facts for 30 Common Vegetables"
-  :headers="headers"
-  :items="items"
-></wra-data-table>
-        `
+  caption=\"Nutrition Facts for 30 Common Vegetables\"
+  :headers=\"headers\"
+  :items=\"items\"
+></wra-data-table>`
       }
     }
   }
 };
 
-export const Default = {
+export default meta;
+
+export const Default: StoryObj<DataTableArgs> = {
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
@@ -291,7 +293,7 @@ export const Default = {
   }
 };
 
-export const BoldRows = {
+export const BoldRows: StoryObj<DataTableArgs> = {
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
@@ -352,9 +354,9 @@ export const BoldRows = {
       source: {
         code: `
 <wra-data-table
-  caption="Nutrition Facts for 30 Common Vegetables"
-  :headers="headers"
-  :items="items"
+  caption=\"Nutrition Facts for 30 Common Vegetables\"
+  :headers=\"headers\"
+  :items=\"items\"
 ></wra-data-table>
         `
       }
@@ -362,7 +364,7 @@ export const BoldRows = {
   }
 };
 
-export const ClickableRows = {
+export const ClickableRows: StoryObj<DataTableArgs> = {
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
@@ -421,10 +423,10 @@ export const ClickableRows = {
       source: {
         code: `
 <wra-data-table
-  caption="Nutrition Facts for 30 Common Vegetables"
-  :headers="headers"
-  :items="items"
-  @click:row="handleRowClick"
+  caption=\"Nutrition Facts for 30 Common Vegetables\"
+  :headers=\"headers\"
+  :items=\"items\"
+  @click:row=\"handleRowClick\"
 ></wra-data-table>
         `
       }
@@ -434,7 +436,7 @@ export const ClickableRows = {
     return {
       components: { WraDataTable },
       setup() {
-        const onClickRow = (row) => {
+        const onClickRow = (row: Item) => {
           alert(`Row clicked: ${row.name}`);
         };
         return { args, onClickRow };
