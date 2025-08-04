@@ -1,19 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraCustomInput from "../components/CustomInput.vue";
 
-export default {
+const meta: Meta<typeof WraCustomInput> = {
   title: "Form Inputs & Controls/CustomInput",
   component: WraCustomInput,
   argTypes: {
     type: {
-      control: {
-        type: "select"
-      },
+      control: { type: "select" },
       options: ["none", "text", "tel", "url", "email", "numeric", "decimal"]
     },
     inputmode: {
-      control: {
-        type: "select"
-      },
+      control: { type: "select" },
       options: [
         "none",
         "text",
@@ -31,8 +28,12 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+type CustomInputProps = InstanceType<typeof WraCustomInput>["$props"];
+type Story = StoryObj<CustomInputProps>;
+
+export const Default: Story = {
   args: {
     label: "Custom input label",
     placeholder: "0000 0000 0000",
@@ -40,7 +41,7 @@ export const Default = {
   }
 };
 
-export const Prefix = {
+export const Prefix: Story = {
   args: {
     label: "Phone number",
     placeholder: "0000 000000",
@@ -72,7 +73,7 @@ export const Prefix = {
   }
 };
 
-export const Suffix = {
+export const Suffix: Story = {
   args: {
     label: "Percentage",
     placeholder: "00.00",

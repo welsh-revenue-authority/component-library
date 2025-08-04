@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
+  <div :class="{ error: !!errorMessage }">
     <label :for="id" v-if="label">{{ label }}</label>
     <div class="input-wrapper">
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
@@ -7,7 +7,7 @@
         :id="id"
         :type="type"
         :value="modelValue"
-        :inputmode="inputmode || 'numeric'"
+        :inputmode="inputmode"
         :placeholder="placeholder"
         v-maska="dataMaska"
         @maska="onMaska"
@@ -22,10 +22,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
-export default {
+export default defineComponent({
   directives: { maska: vMaska },
   name: "wra-custom-input",
   props: {
@@ -35,6 +36,7 @@ export default {
      * @required
      */
     modelValue: {
+      type: [String, Number] as PropType<string | number>,
       required: true,
       default: ""
     },
@@ -43,7 +45,8 @@ export default {
      * @type {string}
      */
     dataMaska: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * Whether to apply the mask eagerly.
@@ -51,7 +54,7 @@ export default {
      * @default false
      */
     dataMaskaEager: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /**
@@ -60,7 +63,7 @@ export default {
      * @default false
      */
     dataMaskaReversed: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /**
@@ -68,14 +71,16 @@ export default {
      * @type {string}
      */
     dataMaskaTokens: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * The label for the input field.
      * @type {string}
      */
     label: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * The ID for the input field.
@@ -84,7 +89,7 @@ export default {
      * @default "customInput"
      */
     id: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "customInput"
     },
@@ -95,21 +100,17 @@ export default {
      * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
      */
     inputmode: {
-      default: "numeric",
-      type: String,
-      validator(value) {
-        // Types that take typical text input
-        return [
-          "none",
-          "text",
-          "tel",
-          "url",
-          "email",
-          "numeric",
-          "decimal",
-          "search"
-        ].includes(value);
-      }
+      type: String as PropType<
+        | "none"
+        | "text"
+        | "tel"
+        | "url"
+        | "email"
+        | "numeric"
+        | "decimal"
+        | "search"
+      >,
+      default: "numeric"
     },
     /**
      * The type of the input field.
@@ -118,32 +119,24 @@ export default {
      * @validator value {string} - The type must be one of ["text", "none", "tel", "url", "email", "numeric", "decimal"].
      */
     type: {
-      type: String,
-      default: "text",
-      validator(value) {
-        return [
-          "text",
-          "none",
-          "tel",
-          "url",
-          "email",
-          "numeric",
-          "decimal"
-        ].includes(value);
-      }
+      type: String as PropType<
+        "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal"
+      >,
+      default: "text"
     },
     /**
      * The placeholder text for the input field.
      * @type {string}
      */
     placeholder: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * An array of validation rule functions. Each function should return true or an error message string.
      */
     rules: {
-      type: Array,
+      type: Array as PropType<Array<(value: string | number) => true | string>>,
       default: () => []
     },
     /**
@@ -151,14 +144,16 @@ export default {
      * @type {string}
      */
     prefix: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * The suffix text to display after the input field.
      * @type {string}
      */
     suffix: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     /**
      * Whether to emit maska details.
@@ -166,22 +161,24 @@ export default {
      * @default false
      */
     emitMaskaDetails: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   },
   emits: ["update:modelValue", "valid"],
-  data: () => ({
-    errorMessage: "",
-    firstValidation: true
-  }),
+  data() {
+    return {
+      errorMessage: "" as string,
+      firstValidation: true as boolean
+    };
+  },
   methods: {
-    onMaska(event) {
+    onMaska(event: any) {
       const unmaskedValue = event.detail.unmasked;
       this.$emit("update:modelValue", unmaskedValue);
       this.validate(unmaskedValue);
     },
-    validate(value) {
+    validate(value: string | number) {
       this.errorMessage = "";
 
       if (this.rules != undefined) {
@@ -213,7 +210,7 @@ export default {
     }
   },
   computed: {
-    prefixPadding() {
+    prefixPadding(): string {
       if (this.prefix != undefined) {
         return "padding-for-prefix";
       } else {
@@ -226,7 +223,7 @@ export default {
     this.$emit("update:modelValue", this.modelValue);
     this.validate(this.modelValue);
   }
-};
+});
 </script>
 
 <style scoped>
