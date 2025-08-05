@@ -10,7 +10,10 @@
       </p>
       <p class="file-upload-error-text" v-if="fileSizeError">
         {{
-          `${fileSizeErrorMessage.replace("{maxsize}", humanReadableMaxSize)}`
+          fileSizeErrorMessage.replace(
+            "{maxsize}",
+            String(humanReadableMaxSize)
+          )
         }}
       </p>
     </ValidationTooltip>
@@ -31,7 +34,7 @@
       ref="fileInput"
       :id="id"
       :accept="accept"
-      :capture="capture"
+      :capture="capture as any"
       :multiple="multiple"
       @change="handleFileChange"
     />
@@ -39,11 +42,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import ValidationTooltip from "./ValidationTooltip.vue";
 import Button from "./Button.vue";
 
-export default {
+export default defineComponent({
   name: "file-upload",
   emits: ["change"],
   components: {
@@ -57,7 +61,7 @@ export default {
      * @default "file-upload"
      */
     id: {
-      type: String,
+      type: String as PropType<string>,
       default: "file-upload"
     },
     /**
@@ -65,7 +69,7 @@ export default {
      * @type {string}
      */
     accept: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The capture attribute for the file input, specifying the type of media to capture.
@@ -73,8 +77,8 @@ export default {
      * @validator value {string} - The capture value must be one of ["user", "environment"].
      */
     capture: {
-      type: String,
-      validator(value) {
+      type: String as PropType<string>,
+      validator(value: string) {
         return ["user", "environment"].includes(value);
       }
     },
@@ -84,7 +88,7 @@ export default {
      * @default false
      */
     multiple: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /**
@@ -92,7 +96,7 @@ export default {
      * @type {number}
      */
     maxSize: {
-      type: Number
+      type: Number as PropType<number>
     },
     /**
      * The label for the file input.
@@ -100,7 +104,7 @@ export default {
      * @default "Upload File"
      */
     label: {
-      type: String,
+      type: String as PropType<string>,
       default: "File upload label"
     },
     /**
@@ -109,7 +113,7 @@ export default {
      * @default "wra-revenue"
      */
     backgroundColor: {
-      type: String,
+      type: String as PropType<string>,
       default: "wra-revenue"
     },
     /**
@@ -118,7 +122,7 @@ export default {
      * @default "Upload file"
      */
     buttonText: {
-      type: String,
+      type: String as PropType<string>,
       default: "Upload file"
     },
     /**
@@ -127,7 +131,7 @@ export default {
      * @default false
      */
     error: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /**
@@ -136,7 +140,7 @@ export default {
      * @default "An error has occurred"
      */
     errorMessage: {
-      type: String,
+      type: String as PropType<string>,
       default: "An error has occurred"
     },
     /**
@@ -145,21 +149,22 @@ export default {
      * @default "File size must be less than"
      */
     fileSizeErrorMessage: {
-      type: String,
+      type: String as PropType<string>,
       default: "File size must be less than {maxsize}"
     }
   },
   data() {
     return {
-      fileName: "No file chosen",
-      fileSizeError: false,
-      fileSize: 0
+      fileName: "No file chosen" as string,
+      fileSizeError: false as boolean,
+      fileSize: 0 as number
     };
   },
   methods: {
-    handleFileChange(event) {
-      const files = event.target.files;
-      if (files.length > 0) {
+    handleFileChange(event: Event) {
+      const target = event.target as HTMLInputElement;
+      const files = target.files;
+      if (files && files.length > 0) {
         // FileList does not behave like a normal array so must convert
         const fileArray = Array.from(files);
         if (typeof this.maxSize !== "undefined" && this.maxSize !== null) {
@@ -174,16 +179,16 @@ export default {
       this.$emit("change", files);
     },
     triggerFileInput() {
-      this.$refs.fileInput.click();
+      (this.$refs.fileInput as HTMLInputElement).click();
     }
   },
   computed: {
-    isError() {
+    isError(): boolean {
       return this.error || this.fileSizeError;
     },
-    humanReadableMaxSize() {
+    humanReadableMaxSize(): string {
       if (typeof this.maxSize == "undefined" || this.maxSize === null) {
-        return 0;
+        return "0";
       }
 
       if (this.maxSize < 1024) {
@@ -195,7 +200,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 
 <style scoped>

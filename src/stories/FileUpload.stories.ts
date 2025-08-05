@@ -1,6 +1,7 @@
 import WraFileUpload from "../components/FileUpload.vue";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
-export default {
+const meta: Meta<typeof WraFileUpload> = {
   title: "Form Inputs & Controls/FileUpload",
   component: WraFileUpload,
   tags: ["autodocs"],
@@ -13,8 +14,9 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+export const Default: StoryObj<typeof WraFileUpload> = {
   args: {
     label: "File upload label",
     buttonText: "Upload file",
@@ -22,7 +24,7 @@ export const Default = {
   }
 };
 
-export const CustomButtonColour = {
+export const CustomButtonColour: StoryObj<typeof WraFileUpload> = {
   args: {
     label: "File upload label",
     buttonText: "Upload file",
@@ -31,7 +33,7 @@ export const CustomButtonColour = {
   }
 };
 
-export const Error = {
+export const Error: StoryObj<typeof WraFileUpload> = {
   args: {
     label: "File upload label",
     buttonText: "Upload file",
