@@ -1,6 +1,7 @@
 import WraExpansionPanel from "../components/ExpansionPanel.vue";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
-export default {
+const meta: Meta<typeof WraExpansionPanel> = {
   title: "Containment/ExpansionPanel",
   component: WraExpansionPanel,
   tags: ["autodocs"],
@@ -13,8 +14,9 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+export const Default: StoryObj<typeof WraExpansionPanel> = {
   args: {
     title: "Expansion panel title",
     ariaTitle: "expansion-panel-title"
@@ -79,7 +81,7 @@ export const Default = {
   }
 };
 
-export const TitleSlot = {
+export const TitleSlot: StoryObj<typeof WraExpansionPanel> = {
   args: {
     ariaTitle: "expansion-panel-title-slot"
   },
