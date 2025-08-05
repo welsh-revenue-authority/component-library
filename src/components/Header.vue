@@ -20,19 +20,21 @@
     </h6>
   </div>
 </template>
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-header",
   props: {
     /**
      * The heading level to render (h1 - h6).
      */
     size: {
-      type: String,
+      type: String as PropType<"h1" | "h2" | "h3" | "h4" | "h5" | "h6">,
       required: true
     }
   }
-};
+});
 </script>
 <style scoped>
 div {
