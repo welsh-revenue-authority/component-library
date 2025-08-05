@@ -1,13 +1,15 @@
 import WraDialog from "../components/Dialog.vue";
 import WraButton from "../components/Button.vue";
-import { ref } from "vue";
+import { ref, Ref } from "vue";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
-export default {
+const meta: Meta<typeof WraDialog> = {
   title: "Containment/Dialog",
   component: WraDialog
 };
+export default meta;
 
-export const Default = {
+export const Default: StoryObj<typeof WraDialog> = {
   args: {
     title: "Dialog Title",
     message: "Dialog message goes here.",
@@ -17,14 +19,14 @@ export const Default = {
   render: (args) => ({
     components: { WraDialog, WraButton },
     setup() {
-      const dialogRef = ref(null);
-      function open() {
+      const dialogRef: Ref<InstanceType<typeof WraDialog> | null> = ref(null);
+      function open(): void {
         dialogRef.value?.openDialog();
       }
-      function handleConfirm() {
+      function handleConfirm(): void {
         console.log("Confirmed");
       }
-      function handleCancel() {
+      function handleCancel(): void {
         console.log("Cancelled");
       }
       return { args, open, handleConfirm, handleCancel, dialogRef };
@@ -64,7 +66,7 @@ export const Default = {
   }
 };
 
-export const IsDelete = {
+export const IsDelete: StoryObj<typeof WraDialog> = {
   args: {
     title: "Are you sure?",
     message: "This action cannot be undone.",
@@ -75,14 +77,14 @@ export const IsDelete = {
   render: (args) => ({
     components: { WraDialog, WraButton },
     setup() {
-      const dialogRef = ref(null);
-      function open() {
+      const dialogRef: Ref<InstanceType<typeof WraDialog> | null> = ref(null);
+      function open(): void {
         dialogRef.value?.openDialog();
       }
-      function handleConfirm() {
+      function handleConfirm(): void {
         console.log("Confirmed");
       }
-      function handleCancel() {
+      function handleCancel(): void {
         console.log("Cancelled");
       }
       return { args, open, handleConfirm, handleCancel, dialogRef };
