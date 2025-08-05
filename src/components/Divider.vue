@@ -9,15 +9,17 @@
   />
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-divider",
   props: {
     /** Thickness of the divider */
     thickness: {
-      type: String,
+      type: String as PropType<"large" | "medium" | "small">,
       default: "medium",
-      validator(value) {
+      validator(value: string) {
         if (value == "large" || value == "medium" || value == "small") {
           return true;
         } else {
@@ -27,14 +29,14 @@ export default {
     },
     /** Aria role for the divider */
     role: {
-      type: String,
+      type: String as PropType<string>,
       default: "presentation"
     }
   },
   data() {
     return {};
   }
-};
+});
 </script>
 
 <style scoped>
