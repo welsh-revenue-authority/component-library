@@ -1,7 +1,8 @@
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
-export default {
+const meta: Meta<typeof WraIcon> = {
   title: "Images & Icons/Icon",
   component: WraIcon,
   argTypes: {
@@ -55,8 +56,9 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+export const Default: StoryObj<typeof WraIcon> = {
   args: {
     icon: "mdiAbacus"
   }
