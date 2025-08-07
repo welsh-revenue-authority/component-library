@@ -10,45 +10,47 @@
   </a>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-service-logo",
   props: {
     /**
      * The URL or path to the logo image to display.
      */
     serviceLogo: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The accessible label for the link.
      */
     label: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The alt text for the logo image.
      */
     alt: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The URL to navigate to when the logo is clicked.
      */
     href: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The height of the logo image in pixels.
      */
     height: {
-      type: [String, Number]
+      type: [String, Number] as PropType<string | number>
     }
   }
-};
+});
 </script>
 
 <style scoped>

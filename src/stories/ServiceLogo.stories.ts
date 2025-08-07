@@ -1,12 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraServiceLogo from "../components/ServiceLogo.vue";
 import WraLogoFile from "./assets/wra-logo-english.svg";
 import WgLogoFile from "./assets/wg-logo.svg";
 
-export default {
+const meta: Meta<typeof WraServiceLogo> = {
   title: "Images & Icons/ServiceLogo",
   component: WraServiceLogo,
   tags: ["autodocs"]
 };
+export default meta;
+
+type Story = StoryObj<typeof WraServiceLogo>;
 
 const wraImage = {
   src: WraLogoFile
@@ -16,7 +20,7 @@ const wgImage = {
   src: WgLogoFile
 };
 
-export const WRA = {
+export const WRA: Story = {
   args: {
     label: "Go to the main Welsh Revenue Authority site",
     alt: "Welsh Revenue Authority Logo",
@@ -26,7 +30,7 @@ export const WRA = {
   }
 };
 
-export const WG = {
+export const WG: Story = {
   args: {
     label: "Go to the main Welsh Government site",
     alt: "Welsh Government Logo",
