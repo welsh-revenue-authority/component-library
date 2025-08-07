@@ -1,6 +1,7 @@
 import WraNumberInput from "../components/NumberInput.vue";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
-export default {
+const meta: Meta<typeof WraNumberInput> = {
   title: "Form Inputs & Controls/NumberInput",
   component: WraNumberInput,
   argTypes: {
@@ -8,7 +9,7 @@ export default {
       control: {
         type: "select"
       },
-      options: ["number", "password", "search"]
+      options: ["text", "password", "search"]
     },
     inputmode: {
       control: {
@@ -18,8 +19,9 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+export const Default: StoryObj<typeof WraNumberInput> = {
   args: {
     label: "Number input label",
     modelValue: 123,
