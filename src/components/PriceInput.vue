@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
+  <div :class="{ error: errorMessage !== '' }">
     <label :for="id" v-if="label">{{ label }}</label>
     <div class="input-wrapper">
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
@@ -21,10 +21,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { vMaska } from "maska/vue";
+import { PropType, defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   directives: { maska: vMaska },
   name: "wra-price-input",
   props: {
@@ -36,14 +37,15 @@ export default {
      */
     modelValue: {
       required: true,
-      default: ""
+      default: "",
+      type: [String, Number] as PropType<string | number>
     },
     /**
      * The label for the input field.
      * @type {string}
      */
     label: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The ID for the input field.
@@ -52,7 +54,7 @@ export default {
      * @default "priceInput"
      */
     id: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "priceInput"
     },
@@ -64,8 +66,8 @@ export default {
      */
     inputmode: {
       default: "decimal",
-      type: String,
-      validator(value) {
+      type: String as PropType<"numeric" | "decimal" | "text">,
+      validator(value: string) {
         return ["numeric", "decimal", "text"].includes(value);
       }
     },
@@ -76,13 +78,13 @@ export default {
      */
     placeholder: {
       default: "0.00",
-      type: String
+      type: String as PropType<string>
     },
     /**
      * An array of validation rule functions. Each function should return true or an error message string.
      */
     rules: {
-      type: Array,
+      type: Array as PropType<Array<(value: string | number) => true | string>>,
       default: () => []
     },
     /**
@@ -92,40 +94,47 @@ export default {
      */
     prefix: {
       default: "£",
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The suffix text to display after the input field.
      * @type {string}
      */
     suffix: {
-      type: String
+      type: String as PropType<string>
     }
   },
   emits: ["update:modelValue", "valid"],
-  data: () => ({
-    maskedValue: "",
-    mask: {
-      preProcess: (val) => val.replace(/[£,]/g, ""),
-      postProcess: (val) => {
-        if (!val) return "";
+  data() {
+    return {
+      maskedValue: "" as string,
+      mask: {
+        preProcess: (val: string) => val.replace(/[£,]/g, ""),
+        postProcess: (val: string) => {
+          if (!val) return "";
 
-        const sub = 3 - (val.includes(".") ? val.length - val.indexOf(".") : 0);
+          const sub =
+            3 - (val.includes(".") ? val.length - val.indexOf(".") : 0);
 
-        return Intl.NumberFormat("en-GB", {
-          style: "currency",
-          currency: "GBP"
-        })
-          .format(val)
-          .slice(0, sub ? -sub : undefined)
-          .replace("£", "");
-      }
-    },
-    errorMessage: "",
-    firstValidation: true
-  }),
+          // Convert val to number for formatting
+          const num = Number(val.replace(/,/g, ""));
+          if (isNaN(num)) return val;
+
+          return Intl.NumberFormat("en-GB", {
+            style: "currency",
+            currency: "GBP"
+          })
+            .format(num)
+            .slice(0, sub ? -sub : undefined)
+            .replace("£", "");
+        }
+      },
+      errorMessage: "" as string,
+      firstValidation: true as boolean
+    };
+  },
   watch: {
-    modelValue(newValue) {
+    modelValue(newValue: string | number) {
       // Add thousand separators with , to the value which is a decimal number
       // Helps avoid rendered fields from flickering as the commas are deleted/added
       this.maskedValue = newValue
@@ -134,13 +143,13 @@ export default {
     }
   },
   methods: {
-    onMaska(event) {
+    onMaska(event: { detail: { masked: string } }): void {
       // Remove all non-numeric characters except the decimal point
       const unmaskedValue = event.detail.masked.replace(/[^0-9.]/g, "");
       this.$emit("update:modelValue", unmaskedValue);
       this.validate(unmaskedValue);
     },
-    validate(value) {
+    validate(value: string | number): void {
       this.errorMessage = "";
       if (this.rules != undefined) {
         // Checks if rules exist
@@ -171,7 +180,7 @@ export default {
     }
   },
   computed: {
-    prefixPadding() {
+    prefixPadding(): string {
       if (this.prefix != undefined) {
         return "padding-for-prefix";
       } else {
@@ -185,7 +194,7 @@ export default {
     this.$emit("update:modelValue", this.maskedValue);
     this.validate(this.modelValue);
   }
-};
+});
 </script>
 
 <style scoped>

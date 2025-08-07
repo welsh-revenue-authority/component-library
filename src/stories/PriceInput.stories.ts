@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraPriceInput from "../components/PriceInput.vue";
 
-export default {
+const meta: Meta<typeof WraPriceInput> = {
   title: "Form Inputs & Controls/PriceInput",
   component: WraPriceInput,
   argTypes: {
@@ -12,8 +13,11 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof WraPriceInput>;
+
+export const Default: Story = {
   args: {
     label: "Price input label",
     modelValue: 1234.56,
