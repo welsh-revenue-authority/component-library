@@ -6,7 +6,7 @@
         :name="groupName"
         :value="option.value"
         :id="groupName + '-' + option.value"
-        @change="$parent.$emit('update:modelValue', option.value)"
+        @change="onChange"
         class="radio-input"
         :checked="isChecked == true"
         :aria-checked="isChecked"
@@ -23,32 +23,46 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+interface RadioOption {
+  label: string;
+  value: string | number;
+  info?: string;
+}
+
+export default defineComponent({
   name: "wra-radio",
   props: {
     groupName: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     option: {
-      type: Object,
+      type: Object as PropType<RadioOption>,
       required: true,
       default: () => ({ label: "", value: "" }),
-      validator: function (value) {
+      validator: function (value: RadioOption) {
         return (
-          value.hasOwnProperty("label") &&
-          value.hasOwnProperty("value") &&
-          value.hasOwnProperty("info")
+          Object.prototype.hasOwnProperty.call(value, "label") &&
+          Object.prototype.hasOwnProperty.call(value, "value") &&
+          Object.prototype.hasOwnProperty.call(value, "info")
         );
       }
     },
     isChecked: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       required: true
     }
+  },
+  methods: {
+    onChange(event: Event) {
+      // Emit the value directly to the parent
+      this.$emit("update:modelValue", this.option.value);
+    }
   }
-};
+});
 </script>
 
 <style scoped>

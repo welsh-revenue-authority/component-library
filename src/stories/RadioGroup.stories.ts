@@ -1,12 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraRadioGroup from "../components/RadioGroup.vue";
 
-export default {
+const meta: Meta<typeof WraRadioGroup> = {
   title: "Form Inputs & Controls/RadioGroup",
   component: WraRadioGroup,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof WraRadioGroup>;
+
+export const Default: Story = {
   args: {
     groupName: "groupName",
     options: [
@@ -28,12 +32,20 @@ export const Default = {
   }
 };
 
-export const InfoText = {
+export const InfoText: Story = {
   args: {
     groupName: "groupName",
     options: [
-      { value: "OptionOne", label: "Option 1", info: "This is option 1" },
-      { value: "OptionTwo", label: "Option 2", info: "This is option 2" }
+      {
+        value: "OptionOneInfoText",
+        label: "Option 1",
+        info: "This is option 1"
+      },
+      {
+        value: "OptionTwoInfoText",
+        label: "Option 2",
+        info: "This is option 2"
+      }
     ]
   },
   parameters: {
