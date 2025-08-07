@@ -190,7 +190,7 @@ export default defineComponent({
   },
   mounted() {
     // Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.maskedValue = this.modelValue;
+    this.maskedValue = String(this.modelValue);
     this.$emit("update:modelValue", this.maskedValue);
     this.validate(this.modelValue);
   }
