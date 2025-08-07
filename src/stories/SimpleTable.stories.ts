@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraSimpleTable from "../components/SimpleTable.vue";
 
-export default {
+const meta: Meta<typeof WraSimpleTable> = {
   title: "Data & Display/SimpleTable",
   component: WraSimpleTable,
   tags: ["autodocs"],
@@ -11,8 +12,11 @@ export default {
     }
   }
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof WraSimpleTable>;
+
+export const Default: Story = {
   args: {
     caption: "Table caption",
     leftAlignHeaders: true
@@ -78,7 +82,7 @@ export const Default = {
   }
 };
 
-export const InheritBackground = {
+export const InheritBackground: Story = {
   args: {
     caption: "Table caption",
     inheritBackground: true
