@@ -1,12 +1,16 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraPagination from "../components/Pagination.vue";
 
-export default {
+const meta: Meta<typeof WraPagination> = {
   title: "Navigation/Pagination",
   component: WraPagination,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {
+type Story = StoryObj<typeof WraPagination>;
+
+export const Default: Story = {
   args: {
     modelValue: 1,
     totalPages: 20,
@@ -18,7 +22,7 @@ export const Default = {
   }
 };
 
-export const CustomDivider = {
+export const CustomDivider: Story = {
   args: {
     modelValue: 1,
     totalPages: 20,
