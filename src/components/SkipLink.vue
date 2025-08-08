@@ -8,8 +8,10 @@
   </button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-skip-link",
   emits: ["click"],
   methods: {
@@ -18,7 +20,7 @@ export default {
      * Focuses the target element specified by the `id` prop.
      * If no `id` is provided, emits a "click" event.
      */
-    onClick() {
+    onClick(): void {
       if (typeof this.skipId === "undefined" || this.skipId === null) {
         this.$emit("click");
         return;
@@ -38,7 +40,7 @@ export default {
      * @type {string}
      */
     skipId: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The text to display on the skip link button.
@@ -46,7 +48,7 @@ export default {
      * @default "Skip to main content"
      */
     text: {
-      type: String,
+      type: String as PropType<string>,
       default: "Skip to main content"
     },
     /**
@@ -55,11 +57,11 @@ export default {
      * @default false
      */
     fullWidth: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   }
-};
+});
 </script>
 
 <style scoped>

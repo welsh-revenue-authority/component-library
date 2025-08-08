@@ -1,29 +1,33 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraSkipLink from "../components/SkipLink.vue";
 import WraCard from "../components/Card.vue";
 import WraButton from "../components/Button.vue";
 
-export default {
+const meta: Meta<typeof WraSkipLink> = {
   title: "Form Inputs & Controls/SkipLink",
   component: WraSkipLink,
   tags: ["autodocs"]
 };
+export default meta;
 
-export const Default = {};
+type Story = StoryObj<typeof WraSkipLink>;
 
-export const CustomText = {
+export const Default: Story = {};
+
+export const CustomText: Story = {
   args: {
     text: "Skip cookies"
   }
 };
 
-export const FullWidthSkiplink = {
+export const FullWidthSkiplink: Story = {
   args: {
     text: "Skip cookies",
     fullWidth: true
   }
 };
 
-export const SkipId = {
+export const SkipId: Story = {
   args: {
     text: "Skip to main content",
     skipId: "container"
