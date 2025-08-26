@@ -16,21 +16,22 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import Tab from "./Tab.vue";
 
-export default {
+export default defineComponent({
   name: "wra-tabs",
-  emits: "update:modelValue",
+  emits: ["update:modelValue"],
   props: {
     /** The currently selected tab, starts from 0 */
     modelValue: {
-      type: Number,
+      type: Number as PropType<number>,
       default: 0
     },
     /** Tabs to display */
     options: {
-      type: Array,
+      type: Array as PropType<string[]>,
       required: true
     }
   },
@@ -39,31 +40,31 @@ export default {
   },
   data() {
     return {
-      activeTab: 0,
-      focusTab: 0
+      activeTab: 0 as number,
+      focusTab: 0 as number
     };
   },
   methods: {
-    onTabClick(index) {
+    onTabClick(this: any, index: number) {
       this.activeTab = index;
       this.focusTab = index;
       this.$emit("update:modelValue", this.activeTab);
     },
-    onKeyLeft() {
+    onKeyLeft(this: any) {
       if (this.focusTab > 0) {
         this.focusTab--;
       }
     },
-    onKeyRight() {
+    onKeyRight(this: any) {
       if (this.focusTab < this.options.length - 1) {
         this.focusTab++;
       }
     }
   },
-  created() {
+  created(this: any) {
     this.activeTab = this.modelValue;
   }
-};
+});
 </script>
 
 <style scoped>

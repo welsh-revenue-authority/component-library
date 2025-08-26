@@ -1,12 +1,17 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import Tabs from "../components/Tabs.vue";
 
-export default {
+const meta: Meta<typeof Tabs> = {
   title: "Navigation/Tabs",
   component: Tabs,
   tags: ["autodocs"]
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof Tabs>;
+
+export const Default: Story = {
   args: {
     options: ["Tab 1", "Tab 2"],
     modelValue: 0
@@ -22,7 +27,7 @@ export const Default = {
   }
 };
 
-export const ThirdTabSelected = {
+export const ThirdTabSelected: Story = {
   args: {
     options: ["Tab 1", "Tab 2", "Tab 3"],
     modelValue: 2

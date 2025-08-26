@@ -8,38 +8,39 @@
   </button>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 /** Works with Tabs to form a tab component */
-export default {
+export default defineComponent({
   name: "wra-tab",
   props: {
     label: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /** Whether on active tab or not */
     active: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     focus: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   },
   data() {
     return {
-      activeTab: 0
+      activeTab: 0 as number
     };
   },
   watch: {
-    focus(newValue) {
+    focus(this: any, newValue: boolean) {
       if (newValue === true) {
-        this.$refs.tabButton.focus();
+        (this.$refs.tabButton as HTMLButtonElement)?.focus();
       }
     }
   }
-};
+});
 </script>
 
 <style scoped>
