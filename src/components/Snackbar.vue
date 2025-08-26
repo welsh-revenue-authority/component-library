@@ -28,54 +28,60 @@
   </transition>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-snackbar",
   emits: ["update:visible"],
   props: {
     /** If snackbar is visible */
     visible: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /** Snackbar text content */
     label: {
-      type: String
+      type: String as PropType<string | undefined>
     },
     /** Time in ms for the snackbar to disappear after appearing */
     timeout: {
-      type: Number,
-      validator(value) {
+      type: Number as PropType<number | undefined>,
+      validator(value: number) {
         return value >= 0;
       }
     },
     /** Theme of snackbar */
     type: {
-      type: String,
+      type: String as PropType<
+        "wra-error" | "wra-success" | "wra-info" | "wra-warning" | string
+      >,
       default: "wra-info"
     },
     /** Show the close dialogue */
     showClose: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: true
     }
   },
-  data: () => ({
-    showSnackbar: false
-  }),
+  data() {
+    return {
+      showSnackbar: false as boolean
+    };
+  },
   methods: {
-    snackbarTimer(time) {
+    snackbarTimer(time: number) {
       setTimeout(() => {
-        this.showSnackbar = false;
+        (this as any).showSnackbar = false;
       }, time);
     },
     closeSnackbar() {
-      this.showSnackbar = false;
-      this.$emit("update:visible", this.showSnackbar);
+      (this as any).showSnackbar = false;
+      this.$emit("update:visible", (this as any).showSnackbar);
     }
   },
   watch: {
-    visible(newValue) {
+    visible(this: any, newValue: boolean) {
       this.showSnackbar = newValue;
       // If there is timer, run it
       if (newValue === true && this.timeout) {
@@ -83,7 +89,7 @@ export default {
       }
     }
   },
-  created() {
+  created(this: any) {
     if (this.visible === true) {
       this.showSnackbar = true;
       // If there is timer, run it
@@ -93,7 +99,7 @@ export default {
     }
   },
   computed: {
-    class() {
+    class(this: any) {
       return {
         "wra-error": this.type === "wra-error",
         "wra-success": this.type === "wra-success",
@@ -102,7 +108,7 @@ export default {
       };
     }
   }
-};
+});
 </script>
 
 <style scoped>

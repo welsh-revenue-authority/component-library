@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraSnackBar from "../components/Snackbar.vue";
 
-export default {
+const meta: Meta<typeof WraSnackBar> = {
   title: "Feedback/Snackbar",
   component: WraSnackBar,
   tags: ["autodocs"],
@@ -17,12 +18,6 @@ export default {
         type: "radio"
       },
       options: ["wra-info", "wra-success", "wra-warning", "wra-error"]
-    },
-    default: {
-      description: "Slot to override the default label HTML content",
-      control: {
-        type: "text"
-      }
     }
   },
   decorators: [
@@ -32,7 +27,11 @@ export default {
   ]
 };
 
-export const Info = {
+export default meta;
+
+type Story = StoryObj<typeof WraSnackBar>;
+
+export const Info: Story = {
   args: {
     label: "This is an info snackbar",
     visible: true,
@@ -40,7 +39,7 @@ export const Info = {
   }
 };
 
-export const Success = {
+export const Success: Story = {
   args: {
     label: "This is a success snackbar",
     visible: true,
@@ -48,7 +47,7 @@ export const Success = {
   }
 };
 
-export const Warning = {
+export const Warning: Story = {
   args: {
     label: "This is a warning snackbar",
     visible: true,
@@ -56,7 +55,7 @@ export const Warning = {
   }
 };
 
-export const Error = {
+export const Error: Story = {
   args: {
     label: "This is an error snackbar",
     visible: true,
@@ -64,7 +63,7 @@ export const Error = {
   }
 };
 
-export const NoCloseButton = {
+export const NoCloseButton: Story = {
   args: {
     label: "Snackbar with no close button",
     showClose: false,
