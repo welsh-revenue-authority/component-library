@@ -1,9 +1,9 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <div :class="{ error: errorMessage }">
+    <label :for="String(id)" v-if="label">{{ label }}</label>
     <textarea
       rows="5"
-      :id="id"
+      :id="String(id)"
       :value="modelValue"
       @input="validate(($event.target as HTMLTextAreaElement)?.value || '')"
       :maxlength="maxLength"

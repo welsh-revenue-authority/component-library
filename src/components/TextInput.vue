@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
+  <div :class="{ error: errorMessage }">
     <label :for="id" v-if="label">{{ label }}</label>
     <input
       :id="id"
@@ -8,7 +8,7 @@
       :dataMaskaTokens="dataMaskaTokens"
       :value="modelValue"
       @input="validate(($event.target as HTMLInputElement)?.value ?? '')"
-      :inputmode="inputmode ?? 'text'"
+      :inputmode="inputmode"
       :placeholder="placeholder"
     />
     <p>{{ errorMessage }}</p>

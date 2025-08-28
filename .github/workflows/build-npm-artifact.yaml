@@ -27,7 +27,7 @@ jobs:
     if: ${{ needs.check_versions.outputs.old_version_num != needs.check_versions.outputs.new_version_num }}
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [22.x]
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}

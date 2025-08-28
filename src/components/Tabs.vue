@@ -10,8 +10,8 @@
       @focus="focusTab = index"
       @keydown.enter="onTabClick(index)"
       @keydown.space="onTabClick(index)"
-      @keydown.left="onKeyLeft(index)"
-      @keydown.right="onKeyRight(index)"
+      @keydown.left="onKeyLeft"
+      @keydown.right="onKeyRight"
     ></tab>
   </div>
 </template>

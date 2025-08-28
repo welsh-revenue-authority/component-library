@@ -26,7 +26,7 @@ const meta: Meta<typeof WraIcon> = {
   },
   render: (args) => ({
     components: { WraIcon },
-    computed: { icon: () => mdiIcons[args.icon] },
+    computed: { icon: () => (mdiIcons as Record<string, string>)[args.icon] },
     setup() {
       return { args };
     },
