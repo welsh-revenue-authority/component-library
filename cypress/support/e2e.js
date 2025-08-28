@@ -16,5 +16,9 @@
 // Import commands.js using ES2015 syntax:
 import "./commands";
 
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
+// Linked to Issue 180 in GitHub to prevent failing tests on Snackbar
+Cypress.on("uncaught:exception", (error) => {
+  if (error.message.includes("The user aborted a request.")) {
+    return false;
+  }
+});
