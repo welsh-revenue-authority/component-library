@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraTable from "../components/Table.vue";
 
-export default {
+const meta: Meta<typeof WraTable> = {
   title: "Data & Display/Table",
   component: WraTable,
   argTypes: {
@@ -39,7 +40,11 @@ export default {
   }
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof WraTable>;
+
+export const Default: Story = {
   args: {
     caption: "Table caption",
     headers: [
@@ -49,26 +54,29 @@ export const Default = {
       { key: "tax", title: "Tax due (£)", align: "right" }
     ],
     items: [
-      { description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
+      { id: 1, description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
       {
+        id: 2,
         description: "Above 225,000 and up to 400,000",
         rate: 6,
         amount: 175000,
         tax: 10500
       },
       {
+        id: 3,
         description: "Above 400,000 and up to 750,000",
         rate: 7.5,
         amount: 10000,
         tax: 7500
       },
       {
+        id: 4,
         description: "Above 750,000 and up to 1,500,000",
         rate: 10,
         amount: 0,
         tax: 0
       },
-      { description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
+      { id: 5, description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
     ]
   },
   parameters: {
@@ -86,7 +94,7 @@ export const Default = {
   }
 };
 
-export const InheritBackground = {
+export const InheritBackground: Story = {
   args: {
     caption: "Table caption",
     inheritBackground: true,
@@ -97,26 +105,29 @@ export const InheritBackground = {
       { key: "tax", title: "Tax due (£)", align: "right" }
     ],
     items: [
-      { description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
+      { id: 1, description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
       {
+        id: 2,
         description: "Above 225,000 and up to 400,000",
         rate: 6,
         amount: 175000,
         tax: 10500
       },
       {
+        id: 3,
         description: "Above 400,000 and up to 750,000",
         rate: 7.5,
         amount: 10000,
         tax: 7500
       },
       {
+        id: 4,
         description: "Above 750,000 and up to 1,500,000",
         rate: 10,
         amount: 0,
         tax: 0
       },
-      { description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
+      { id: 5, description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
     ]
   },
   parameters: {
@@ -135,7 +146,7 @@ export const InheritBackground = {
   }
 };
 
-export const BoldRows = {
+export const BoldRows: Story = {
   args: {
     caption: "Table caption",
     inheritBackground: true,
@@ -146,8 +157,9 @@ export const BoldRows = {
       { key: "tax", title: "Tax due (£)", align: "right" }
     ],
     items: [
-      { description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
+      { id: 1, description: "Up to 225,000", rate: 0, amount: 225000, tax: 0 },
       {
+        id: 2,
         description: "Above 225,000 and up to 400,000",
         rate: 6,
         amount: 175000,
@@ -155,19 +167,21 @@ export const BoldRows = {
         bold: true
       },
       {
+        id: 3,
         description: "Above 400,000 and up to 750,000",
         rate: 7.5,
         amount: 10000,
         tax: 7500
       },
       {
+        id: 4,
         description: "Above 750,000 and up to 1,500,000",
         rate: 10,
         amount: 0,
         tax: 0,
         bold: true
       },
-      { description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
+      { id: 5, description: "Above 1,500,000", rate: 12, amount: 0, tax: 0 }
     ]
   },
   parameters: {
