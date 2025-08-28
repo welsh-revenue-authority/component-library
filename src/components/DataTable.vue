@@ -8,7 +8,7 @@
         </slot>
       </caption>
       <thead>
-        <slot name="headers" v-if="$slots.headerSlot" :headers="headers"></slot>
+        <slot name="headers" v-if="$slots.header" :headers="headers"></slot>
 
         <tr v-else>
           <th
@@ -95,7 +95,7 @@
               :value="item[header.key]"
               :item="item"
               :items="sortedArray"
-              v-if="$slots['item.' + header.key]"
+              v-if="`item.${header.key}` in $slots"
             ></slot>
 
             <span v-else>{{ item[header.key] }}</span>
