@@ -135,7 +135,7 @@ export default defineComponent({
      * Validates the input value based on the provided rules.
      * @param {string|number} value - The input value to validate.
      */
-    validate(this: any, value: string | number) {
+    validate(value: string | number) {
       this.$emit("update:modelValue", value);
       this.errorMessage = "";
 
@@ -167,7 +167,7 @@ export default defineComponent({
       }
     }
   },
-  mounted(this: any) {
+  mounted() {
     // Run validation rules when component first is rendered as v-model data might be valid/invalid
     this.validate(this.modelValue);
     this.$emit("update:modelValue", this.modelValue);

@@ -73,7 +73,7 @@ export {
   Tabs as WraTabs,
   TextArea as WraTextArea,
   TextInput as WraTextInput,
-  ValidationTooltip as WraValidationTooltip,
+  ValidationTooltip as WraValidationTooltip
 };
 
 // Default import

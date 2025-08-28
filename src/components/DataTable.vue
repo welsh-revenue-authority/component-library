@@ -194,7 +194,7 @@ export default defineComponent({
     };
   },
   methods: {
-    sortByColumn(this: any, key: string) {
+    sortByColumn(key: string) {
       this.localSortBy = [
         {
           key,
@@ -209,18 +209,18 @@ export default defineComponent({
     }
   },
   computed: {
-    localItemsPerPage(this: any): number {
+    localItemsPerPage(): number {
       return this.itemsPerPage != undefined ? this.itemsPerPage : 10;
     },
-    totalNumberOfPages(this: any): number {
+    totalNumberOfPages(): number {
       return Math.ceil(this.sortedArray.length / this.localItemsPerPage);
     },
-    paginatedArray(this: any): any[] {
+    paginatedArray(): any[] {
       const start = (this.currentPage - 1) * this.localItemsPerPage;
       const end = start + this.localItemsPerPage;
       return this.sortedArray.slice(start, end);
     },
-    filteredItems(this: any): any[] {
+    filteredItems(): any[] {
       let filtered = this.items;
 
       // Apply global search if applicable
@@ -257,7 +257,7 @@ export default defineComponent({
 
       return filtered;
     },
-    sortedArray(this: any): any[] {
+    sortedArray(): any[] {
       // Always start with the filtered items
       // sort-by is [{ key: 'submittedDate', order: 'desc' }]
       let localCopy = JSON.parse(JSON.stringify(this.filteredItems));

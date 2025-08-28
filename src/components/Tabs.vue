@@ -45,23 +45,23 @@ export default defineComponent({
     };
   },
   methods: {
-    onTabClick(this: any, index: number) {
+    onTabClick(index: number) {
       this.activeTab = index;
       this.focusTab = index;
       this.$emit("update:modelValue", this.activeTab);
     },
-    onKeyLeft(this: any) {
+    onKeyLeft() {
       if (this.focusTab > 0) {
         this.focusTab--;
       }
     },
-    onKeyRight(this: any) {
+    onKeyRight() {
       if (this.focusTab < this.options.length - 1) {
         this.focusTab++;
       }
     }
   },
-  created(this: any) {
+  created() {
     this.activeTab = this.modelValue;
   }
 });

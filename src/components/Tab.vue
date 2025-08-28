@@ -34,7 +34,7 @@ export default defineComponent({
     };
   },
   watch: {
-    focus(this: any, newValue: boolean) {
+    focus(newValue: boolean) {
       if (newValue === true) {
         (this.$refs.tabButton as HTMLButtonElement)?.focus();
       }

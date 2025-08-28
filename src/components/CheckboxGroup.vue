@@ -89,7 +89,7 @@ export default defineComponent({
     };
   },
   methods: {
-    checkInput(this: any, value: string) {
+    checkInput(value: string) {
       this.checked[value] = !this.checked[value];
 
       //create array of only 'true' values from this.checked
@@ -122,21 +122,21 @@ export default defineComponent({
 
       this.$emit("update:modelValue", checkedArray);
     },
-    checkForObjectLabel(this: any, input: OptionType): string {
+    checkForObjectLabel(input: OptionType): string {
       if (typeof input === "object") {
         return input[this.itemLabel];
       } else {
         return input;
       }
     },
-    checkForObjectInfo(this: any, input: OptionType): string | null {
+    checkForObjectInfo(input: OptionType): string | null {
       if (typeof input === "object") {
         return input[this.itemInfo];
       } else {
         return null;
       }
     },
-    checkForObjectValue(this: any, input: OptionType): string {
+    checkForObjectValue(input: OptionType): string {
       if (typeof input === "object") {
         return input[this.itemValue];
       } else {
@@ -145,11 +145,11 @@ export default defineComponent({
     }
   },
   computed: {
-    validOptions(this: any): OptionType[] {
+    validOptions(): OptionType[] {
       return this.options ?? [];
     }
   },
-  mounted(this: any) {
+  mounted() {
     //sets up which values should be checked initially e.g. if editing existing data
     this.value = this.modelValue ?? [];
     for (let index = 0; index < this.value.length; index++) {
