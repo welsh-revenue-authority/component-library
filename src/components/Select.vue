@@ -93,7 +93,7 @@ export default defineComponent({
       this.$emit("update:modelValue", value);
 
       //check if value exists in the item array
-      let exists = this.validItems.some((item: any) => {
+      const exists = this.validItems.some((item: any) => {
         return this.checkForObjectValue(item) == value;
       });
 

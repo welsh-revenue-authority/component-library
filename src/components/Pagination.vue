@@ -169,11 +169,11 @@ export default defineComponent({
       );
     },
     skipStart(): boolean {
-      let visibleRange = Math.ceil(this.length / 2) + this.startIndex;
+      const visibleRange = Math.ceil(this.length / 2) + this.startIndex;
       return this.skip && this.currentPage >= visibleRange;
     },
     skipEnd(): boolean {
-      let visibleRange =
+      const visibleRange =
         this.totalPages - Math.floor(this.length / 2) - this.startIndex;
       return this.skip && this.currentPage <= visibleRange;
     }

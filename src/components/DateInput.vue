@@ -149,7 +149,7 @@ export default defineComponent({
      */
     swapMonthDay(input: string): string {
       const value = input.split("/");
-      let d = value[1] + "/" + value[0] + "/" + value[2];
+      const d = value[1] + "/" + value[0] + "/" + value[2];
       return d;
     },
     convertToDate(value: string): void {
@@ -162,7 +162,7 @@ export default defineComponent({
           newDate.getTime() - newDate.getTimezoneOffset() * 60 * 1000
         );
 
-        let result = this.validate(newDate);
+        const result = this.validate(newDate);
         this.$emit("valid", { id: this.id, value: result });
 
         if (result == true) {
@@ -173,7 +173,7 @@ export default defineComponent({
           this.$emit("update:modelValue", null);
         }
       } else {
-        let result = this.validate(null);
+        const result = this.validate(null);
         this.$emit("valid", { id: this.id, value: result });
         this.dateObjectValue = null;
         this.$emit("update:modelValue", null);
@@ -214,7 +214,7 @@ export default defineComponent({
         result = false;
       }
 
-      let inputMonth = parseInt(this.maskedValue.split("/")[1]) - 1;
+      const inputMonth = parseInt(this.maskedValue.split("/")[1]) - 1;
       //Required as JavaScript will accept an invalid date e.g. 31/06/2020
       //It will just return it as 01/07/2020 & back-end will throw errors
       if (typeof dateInput === "object" && inputMonth != dateInput.getMonth()) {
@@ -245,7 +245,7 @@ export default defineComponent({
       if (typeof this.modelValue === "object") {
         //If parent has passed a Date object
         //Convert Date object into DD/MM/YYYY
-        let formatted =
+        const formatted =
           (this.modelValue as Date).getDate().toString().padStart(2, "0") +
           "/" +
           ((this.modelValue as Date).getMonth() + 1)
@@ -259,8 +259,8 @@ export default defineComponent({
         this.modelValue.includes("T")
       ) {
         //If input has JavaScript date string e.g. 2022-02-28T00:00:00 into 28/02/2022
-        let dt = new Date(this.modelValue);
-        let formatted =
+        const dt = new Date(this.modelValue);
+        const formatted =
           dt.getDate().toString().padStart(2, "0") +
           "/" +
           (dt.getMonth() + 1).toString().padStart(2, "0") +

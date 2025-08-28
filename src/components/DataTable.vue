@@ -260,14 +260,14 @@ export default defineComponent({
     sortedArray(): any[] {
       // Always start with the filtered items
       // sort-by is [{ key: 'submittedDate', order: 'desc' }]
-      let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
+      const localCopy = JSON.parse(JSON.stringify(this.filteredItems));
 
       // If sorting is defined, apply sorting logic
       if (this.localSortBy && this.localSortBy.length > 0) {
         return localCopy.sort((a: any, b: any) => {
           const localSortBy = this.localSortBy[0];
-          var aValue = a[localSortBy.key];
-          var bValue = b[localSortBy.key];
+          const aValue = a[localSortBy.key];
+          const bValue = b[localSortBy.key];
 
           // Check for null or undefined values
           if (aValue == null && bValue == null) {
