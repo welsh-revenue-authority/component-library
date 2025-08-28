@@ -1,6 +1,7 @@
+import type { Meta, StoryObj } from "@storybook/vue3";
 import WraTextInput from "../components/TextInput.vue";
 
-export default {
+const meta: Meta<typeof WraTextInput> = {
   title: "Form Inputs & Controls/TextInput",
   component: WraTextInput,
   argTypes: {
@@ -32,7 +33,11 @@ export default {
   }
 };
 
-export const Default = {
+export default meta;
+
+type Story = StoryObj<typeof WraTextInput>;
+
+export const Default: Story = {
   args: {
     label: "Text input label",
     modelValue: "Enter text here...",
