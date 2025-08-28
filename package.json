@@ -18,12 +18,14 @@
     "vue3",
     "component library"
   ],
+  "types": "dist/index.d.ts",
   "main": "dist/vue-components.umd.cjs",
   "module": "dist/vue-components.js",
   "exports": {
     ".": {
       "import": "./dist/vue-components.js",
-      "require": "./dist/vue-components.umd.cjs"
+      "require": "./dist/vue-components.umd.cjs",
+      "types": "./dist/index.d.ts"
     },
     "./tailwind.css": "./dist/tailwind.css"
   },
@@ -67,6 +69,7 @@
     "storybook": "^7.6.17",
     "vite": "^5.4.14",
     "vite-plugin-css-injected-by-js": "^3.5.0",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-static-copy": "^2.3.0",
     "vue": "^3.3.4"
   }

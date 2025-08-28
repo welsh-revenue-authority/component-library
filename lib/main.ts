@@ -1,7 +1,7 @@
 import "../src/styles/global.css";
 import "../src/styles/tailwind.css";
 
-//Alphabetical order
+// Alphabetical order
 import AppBar from "../src/components/AppBar.vue";
 import Autocomplete from "../src/components/Autocomplete.vue";
 import Banner from "../src/components/Banner.vue";
@@ -73,7 +73,7 @@ export {
   Tabs as WraTabs,
   TextArea as WraTextArea,
   TextInput as WraTextInput,
-  ValidationTooltip as WraValidationTooltip
+  ValidationTooltip as WraValidationTooltip,
 };
 
 // Default import
