@@ -4,19 +4,21 @@
   </footer>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-footer",
   props: {
     /**
      * If true, the footer will be hidden when printing the page.
      */
     hiddenPrint: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   }
-};
+});
 </script>
 
 <style scoped>

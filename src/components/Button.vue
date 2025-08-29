@@ -25,51 +25,51 @@
   </button>
 </template>
 
-<script>
-export default {
-  name: "wra-button",
+<script lang="ts">
+import { defineComponent } from "vue";
 
+export default defineComponent({
+  name: "wra-button",
   props: {
     /**
      * The size of the button.
      */
     size: {
-      type: String,
+      type: String as () => string,
       default: "default"
     },
     /**
      * The background colour of the button.
      */
     backgroundColor: {
-      type: String,
+      type: String as () => string,
       default: "wra-black"
     },
     /**
      * If true, renders the button with an outlined style instead of a solid background.
      */
     outlined: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     },
     prependIcon: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     },
     appendIcon: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     },
     /**
      * If true, disables the button and prevents user interaction.
      */
     disabled: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     }
   },
-
   computed: {
-    buttonClass() {
+    buttonClass(): Record<string, boolean> {
       return {
         "outlined-button": this.outlined,
         [`${this.size || "default"}-button`]: true,
@@ -82,7 +82,7 @@ export default {
       };
     }
   }
-};
+});
 </script>
 
 <style scoped>

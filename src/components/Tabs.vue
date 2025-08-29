@@ -10,27 +10,28 @@
       @focus="focusTab = index"
       @keydown.enter="onTabClick(index)"
       @keydown.space="onTabClick(index)"
-      @keydown.left="onKeyLeft(index)"
-      @keydown.right="onKeyRight(index)"
+      @keydown.left="onKeyLeft"
+      @keydown.right="onKeyRight"
     ></tab>
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import Tab from "./Tab.vue";
 
-export default {
+export default defineComponent({
   name: "wra-tabs",
-  emits: "update:modelValue",
+  emits: ["update:modelValue"],
   props: {
     /** The currently selected tab, starts from 0 */
     modelValue: {
-      type: Number,
+      type: Number as PropType<number>,
       default: 0
     },
     /** Tabs to display */
     options: {
-      type: Array,
+      type: Array as PropType<string[]>,
       required: true
     }
   },
@@ -39,12 +40,12 @@ export default {
   },
   data() {
     return {
-      activeTab: 0,
-      focusTab: 0
+      activeTab: 0 as number,
+      focusTab: 0 as number
     };
   },
   methods: {
-    onTabClick(index) {
+    onTabClick(index: number) {
       this.activeTab = index;
       this.focusTab = index;
       this.$emit("update:modelValue", this.activeTab);
@@ -63,7 +64,7 @@ export default {
   created() {
     this.activeTab = this.modelValue;
   }
-};
+});
 </script>
 
 <style scoped>

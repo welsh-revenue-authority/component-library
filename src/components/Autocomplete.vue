@@ -9,7 +9,7 @@
       v-model="userInput[optionLabel]"
       role="combobox"
       aria-autocomplete="list"
-      :aria-expanded="showOptions.toString()"
+      :aria-expanded="showOptions"
       aria-controls="autocomplete-list"
       :aria-activedescendant="
         optionIndex !== null ? `option${optionIndex}` : undefined
@@ -54,97 +54,111 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+interface Option {
+  [key: string]: any;
+  clickable?: boolean;
+}
+
+export default defineComponent({
   name: "wra-autocomplete",
   emits: ["update:modelValue"],
   props: {
     modelValue: {
-      type: Object
+      type: Object as () => Record<string, any>
     },
     /** Label for autocomplete */
     label: {
-      type: String
+      type: String as () => string
     },
     /** ID tag for input*/
     id: {
-      type: String
+      type: String as () => string
     },
     /** Options for autocomplete list */
     options: {
-      type: Object,
+      type: Array as () => Option[],
       required: true
     },
     /** Change the default object name for the data */
     optionValue: {
-      type: String,
+      type: String as () => string,
       default: "value"
     },
     /** Change the default object name for the displayed value */
     optionLabel: {
-      type: String,
+      type: String as () => string,
       default: "label"
     },
     /** Mininum number of characters before the list appears */
     minLength: {
-      type: Number,
+      type: Number as () => number,
       default: 1
     },
     /** If true, list will automatically expand when input is focused */
     autoExpand: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     }
   },
-  data: () => ({
-    userInput: {},
-    hasFocus: false,
-    listHasFocus: false,
-    optionIndex: null,
-    validatedOptions: []
-  }),
+  data() {
+    return {
+      userInput: {} as Record<string, any>,
+      hasFocus: false as boolean,
+      listHasFocus: false as boolean,
+      optionIndex: null as number | null,
+      validatedOptions: [] as Option[]
+    };
+  },
   methods: {
-    onInputTyping() {
+    /** Handle typing in the input field */
+    onInputTyping(): void {
       this.optionIndex = null;
       this.userInput[this.optionValue] = this.getInputValue;
       this.$emit("update:modelValue", this.userInput);
     },
-    onOptionSelect(option) {
+    /** Handle selecting an option from the list */
+    onOptionSelect(option: Option): void {
       if (option?.clickable === false) {
         return;
       }
-      this.userInput = option;
       this.userInput = Object.assign({}, option);
       this.$emit("update:modelValue", this.userInput);
     },
-    onBlur() {
+    /** Handle blur event on the input */
+    onBlur(): void {
       if (this.listHasFocus === false) {
         this.hasFocus = false;
       }
     },
-    onOptionBlur(index) {
-      // If the blur was not for changing between options, remove focus
+    /** Handle blur event on an option */
+    onOptionBlur(index: number): void {
       if (index === this.optionIndex) {
         this.hasFocus = false;
         this.listHasFocus = false;
       }
     },
-    onUpKey() {
+    /** Handle up arrow key navigation */
+    onUpKey(): void {
       if (this.optionsHasMatches === false || this.showOptions === false) {
         return;
       }
       if (this.optionIndex === 0) {
         this.optionIndex = null;
         this.listHasFocus = false;
-        this.$refs["autocompleteInput"].focus();
-      } else if (this.optionIndex > 0) {
+        (this.$refs["autocompleteInput"] as HTMLInputElement).focus();
+      } else if (this.optionIndex !== null && this.optionIndex > 0) {
         this.optionIndex--;
         this.listHasFocus = true;
         const refName = `option${this.optionIndex}`;
-        this.$refs[refName][0].focus();
+        const ref = (this.$refs[refName] as HTMLElement[])[0];
+        ref && ref.focus();
       }
     },
-    onDownKey() {
+    /** Handle down arrow key navigation */
+    onDownKey(): void {
       if (this.optionsHasMatches === false || this.showOptions === false) {
         return;
       }
@@ -155,26 +169,29 @@ export default {
       }
       this.listHasFocus = true;
       const refName = `option${this.optionIndex}`;
-      this.$refs[refName][0].focus();
+      const ref = (this.$refs[refName] as HTMLElement[])[0];
+      ref && ref.focus();
     }
   },
   computed: {
-    showOptions() {
+    showOptions(): boolean {
       const inputMatchesOption = this.validatedOptions.some(
         (element) =>
           element[this.optionLabel] === this.userInput[this.optionLabel]
       );
       const inputLongEnough =
-        this.userInput[this.optionLabel].length >= this.minLength;
+        (this.userInput[this.optionLabel] || "").length >= this.minLength;
       const showOptions =
         inputMatchesOption !== true &&
         this.hasFocus === true &&
         (this.autoExpand === true || inputLongEnough === true);
       return showOptions;
     },
-    filterOptions() {
+    filterOptions(): Option[] {
       const searchForInput = this.validatedOptions.filter((item) =>
-        item.label.toLowerCase().includes(this.getInputValue)
+        (item[this.optionLabel] || "")
+          .toLowerCase()
+          .includes(this.getInputValue)
       );
       if (searchForInput.length > 0) {
         return searchForInput;
@@ -188,13 +205,13 @@ export default {
       });
       return searchForInput;
     },
-    optionsHasMatches() {
+    optionsHasMatches(): boolean {
       return this.filterOptions.every((item) =>
         Object.hasOwn(item, "clickable") ? item.clickable === true : true
       );
     },
-    getInputValue() {
-      return this.userInput[this.optionLabel].toLowerCase();
+    getInputValue(): string {
+      return (this.userInput[this.optionLabel] || "").toLowerCase();
     }
   },
   created() {
@@ -209,13 +226,13 @@ export default {
   },
   watch: {
     options: {
-      handler(newOptions) {
+      handler(newOptions: Option[]) {
         this.validatedOptions = newOptions ?? [];
       },
       immediate: true
     }
   }
-};
+});
 </script>
 
 <style scoped>

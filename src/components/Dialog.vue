@@ -32,11 +32,12 @@
   </teleport>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType, nextTick } from "vue";
 import WraHeader from "./Header.vue";
 import WraButton from "./Button.vue";
 
-export default {
+export default defineComponent({
   name: "wra-dialog",
   components: {
     WraHeader,
@@ -47,21 +48,21 @@ export default {
      * The title text displayed at the top of the dialog.
      */
     title: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The main message or content displayed in the dialog body.
      */
     message: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The text label for the confirm button.
      */
     confirmText: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "Confirm"
     },
@@ -69,7 +70,7 @@ export default {
      * The text label for the cancel button.
      */
     cancelText: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "Cancel"
     },
@@ -77,36 +78,42 @@ export default {
      * If true, styles the confirm button as a destructive action (red for delete).
      */
     isDelete: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   },
   emits: ["confirm", "cancel", "close"],
+  data() {
+    return {
+      lastFocused: null as Element | null
+    };
+  },
   methods: {
-    openDialog() {
-      this.$refs.dialog.showModal();
+    openDialog(): void {
+      (this.$refs.dialog as HTMLDialogElement).showModal();
       this.focusConfirm();
     },
-    closeDialog() {
+    closeDialog(): void {
       this.$emit("close");
       this.restoreFocus();
     },
-    confirm() {
-      this.$refs.dialog.close();
+    confirm(): void {
+      (this.$refs.dialog as HTMLDialogElement).close();
       this.$emit("confirm");
     },
-    cancel() {
-      this.$refs.dialog.close();
+    cancel(): void {
+      (this.$refs.dialog as HTMLDialogElement).close();
       this.$emit("cancel");
     },
-    handleTab(e) {
+    handleTab(e: KeyboardEvent): void {
       // Trap focus between the two buttons
-      const focusable = [
-        this.$refs.confirmBtn?.$el || this.$refs.confirmBtn,
-        this.$refs.cancelBtn?.$el || this.$refs.cancelBtn
-      ].filter(Boolean);
+      const confirmBtn =
+        (this.$refs.confirmBtn as any)?.$el || this.$refs.confirmBtn;
+      const cancelBtn =
+        (this.$refs.cancelBtn as any)?.$el || this.$refs.cancelBtn;
+      const focusable: HTMLElement[] = [confirmBtn, cancelBtn].filter(Boolean);
       if (!focusable.length) return;
-      const index = focusable.indexOf(document.activeElement);
+      const index = focusable.indexOf(document.activeElement as HTMLElement);
       if (e.shiftKey) {
         // Shift+Tab
         const prev = (index - 1 + focusable.length) % focusable.length;
@@ -117,28 +124,29 @@ export default {
         focusable[next].focus();
       }
     },
-    focusConfirm() {
-      this.$nextTick(() => {
+    focusConfirm(): void {
+      nextTick(() => {
         // Focus the confirm button when dialog opens
-        const btn = this.$refs.confirmBtn?.$el || this.$refs.confirmBtn;
+        const btn =
+          (this.$refs.confirmBtn as any)?.$el || this.$refs.confirmBtn;
         if (btn && typeof btn.focus === "function") btn.focus();
       });
     },
-    restoreFocus() {
+    restoreFocus(): void {
       if (
         this.lastFocused &&
-        typeof this.lastFocused.focus === "function" &&
+        typeof (this.lastFocused as HTMLElement).focus === "function" &&
         document.contains(this.lastFocused)
       ) {
         // Restore focus only if the element is still in the document
-        this.lastFocused.focus();
+        (this.lastFocused as HTMLElement).focus();
       }
     }
   },
   mounted() {
     this.lastFocused = document.activeElement;
   }
-};
+});
 </script>
 
 <style scoped>

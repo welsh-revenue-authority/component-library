@@ -28,43 +28,49 @@
   </transition>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-snackbar",
   emits: ["update:visible"],
   props: {
     /** If snackbar is visible */
     visible: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /** Snackbar text content */
     label: {
-      type: String
+      type: String as PropType<string | undefined>
     },
     /** Time in ms for the snackbar to disappear after appearing */
     timeout: {
-      type: Number,
-      validator(value) {
+      type: Number as PropType<number | undefined>,
+      validator(value: number) {
         return value >= 0;
       }
     },
     /** Theme of snackbar */
     type: {
-      type: String,
+      type: String as PropType<
+        "wra-error" | "wra-success" | "wra-info" | "wra-warning" | string
+      >,
       default: "wra-info"
     },
     /** Show the close dialogue */
     showClose: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: true
     }
   },
-  data: () => ({
-    showSnackbar: false
-  }),
+  data() {
+    return {
+      showSnackbar: false as boolean
+    };
+  },
   methods: {
-    snackbarTimer(time) {
+    snackbarTimer(time: number) {
       setTimeout(() => {
         this.showSnackbar = false;
       }, time);
@@ -75,7 +81,7 @@ export default {
     }
   },
   watch: {
-    visible(newValue) {
+    visible(newValue: boolean) {
       this.showSnackbar = newValue;
       // If there is timer, run it
       if (newValue === true && this.timeout) {
@@ -102,7 +108,7 @@ export default {
       };
     }
   }
-};
+});
 </script>
 
 <style scoped>

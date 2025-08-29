@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
+  <div :class="{ error: !!errorMessage }">
     <label :for="id" v-if="label">{{ label }}</label>
     <div class="input-wrapper">
       <span class="prefix" v-if="!!prefix">{{ prefix }}</span>
@@ -21,10 +21,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
-export default {
+type RuleFunction = (value: string | number) => true | string;
+
+export default defineComponent({
   directives: { maska: vMaska },
   name: "wra-number-input",
   props: {
@@ -34,6 +37,7 @@ export default {
      * @required
      */
     modelValue: {
+      type: [String, Number] as PropType<string | number>,
       required: true,
       default: ""
     },
@@ -42,7 +46,7 @@ export default {
      * @type {string}
      */
     label: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The ID for the input field.
@@ -51,7 +55,7 @@ export default {
      * @default "numberInput"
      */
     id: {
-      type: String,
+      type: String as PropType<string>,
       required: true,
       default: "numberInput"
     },
@@ -62,10 +66,10 @@ export default {
      * @validator value {string} - The type must be one of ["text", "password", "search"].
      */
     type: {
-      type: String,
+      type: String as PropType<"text" | "password" | "search">,
       // Default of number causes issues with maska
       default: "text",
-      validator(value) {
+      validator(value: string) {
         // Types that take typical text input
         return ["text", "password", "search"].includes(value);
       }
@@ -76,9 +80,9 @@ export default {
      * @default "numeric"
      */
     inputmode: {
-      type: String,
+      type: String as PropType<"numeric" | "decimal" | "text">,
       default: "numeric",
-      validator(value) {
+      validator(value: string) {
         return ["numeric", "decimal", "text"].includes(value);
       }
     },
@@ -87,13 +91,13 @@ export default {
      * @type {string}
      */
     placeholder: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * An array of validation rule functions. Each function should return true or an error message string.
      */
     rules: {
-      type: Array,
+      type: Array as PropType<RuleFunction[]>,
       default: () => []
     },
     /**
@@ -101,14 +105,14 @@ export default {
      * @type {string}
      */
     prefix: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The suffix text to display after the input field.
      * @type {string}
      */
     suffix: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * Whether to emit full maska details, including masked and unmasked values.
@@ -116,27 +120,29 @@ export default {
      * @default false
      */
     emitMaskaDetails: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     }
   },
   emits: ["update:modelValue", "valid"],
-  data: () => ({
-    dataValue: "",
-    errorMessage: "",
-    firstValidation: true,
-    returnValue: ""
-  }),
+  data() {
+    return {
+      dataValue: "" as string,
+      errorMessage: "" as string,
+      firstValidation: true as boolean,
+      returnValue: "" as string
+    };
+  },
   methods: {
-    validate(value) {
+    validate(value: string | number) {
       this.errorMessage = "";
       if (this.rules != undefined) {
         //Checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
-          let result = element(value);
+          const result = element(value);
           if (result != true) {
-            this.errorMessage = result;
+            this.errorMessage = result as string;
             this.$emit("valid", { id: this.id, value: false });
             break;
           }
@@ -155,14 +161,14 @@ export default {
         }
       }
     },
-    onMaska(value) {
+    onMaska(value: any) {
       const emittedValue = this.emitMaskaDetails ? value : value.unmasked;
       this.$emit("update:modelValue", emittedValue);
       this.validate(value.unmasked);
     }
   },
   computed: {
-    prefixPadding() {
+    prefixPadding(): string {
       if (this.prefix != undefined) {
         return "padding-for-prefix";
       } else {
@@ -176,7 +182,7 @@ export default {
     this.validate(this.modelValue);
     this.$emit("update:modelValue", this.modelValue);
   }
-};
+});
 </script>
 
 <style scoped>

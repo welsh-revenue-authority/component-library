@@ -1,11 +1,7 @@
 <template>
   <label :for="id || name">{{ label }}</label>
   <div class="select">
-    <select
-      :id="id || name"
-      :value="modelValue"
-      @change="validate($event.target.value)"
-    >
+    <select :id="id || name" :value="modelValue" @change="onSelectChange">
       <!-- default placeholder to avoid having a null ID in parent but the select box displaying a value -->
       <option value="" selected disabled hidden>-</option>
       <option
@@ -28,15 +24,17 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-select",
   props: {
     /**
      * The array of options to display in the select dropdown.
      */
     items: {
-      type: Array,
+      type: Array as PropType<any[]>,
       required: true,
       default: () => []
     },
@@ -44,40 +42,40 @@ export default {
      * The property name to use as the value from each option object.
      */
     itemValue: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The property name to use as the label from each option object.
      */
     itemLabel: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The unique id for the select input and label association.
      */
     id: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * The name attribute for the select input.
      */
     name: {
-      type: String,
+      type: String as PropType<string>,
       default: "select"
     },
     /**
      * If true, the select is required and must have a value.
      */
     required: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     /**
      * The label text displayed above the select input.
      */
-    label: {},
+    label: {} as PropType<string>,
     /**
      * The v-model binding for the selected value.
      */
@@ -86,11 +84,16 @@ export default {
     }
   },
   methods: {
-    validate(value) {
+    onSelectChange(event: Event): void {
+      const target = event.target as HTMLSelectElement | null;
+      const value = target ? target.value : "";
+      this.validate(value);
+    },
+    validate(value: any): void {
       this.$emit("update:modelValue", value);
 
       //check if value exists in the item array
-      let exists = this.validItems.some((item) => {
+      const exists = this.validItems.some((item: any) => {
         return this.checkForObjectValue(item) == value;
       });
 
@@ -100,7 +103,7 @@ export default {
       }
       this.$emit("valid", { id: this.id || this.name, value: true });
     },
-    checkForObjectValue(input) {
+    checkForObjectValue(input: any): any {
       //check if item is an object
       if (typeof input === "object") {
         return input[this.itemValue];
@@ -108,7 +111,7 @@ export default {
         return input;
       }
     },
-    checkForObjectLabel(input) {
+    checkForObjectLabel(input: any): any {
       //check if item is an object
       if (typeof input === "object") {
         return input[this.itemLabel];
@@ -118,7 +121,7 @@ export default {
     }
   },
   computed: {
-    validItems() {
+    validItems(): any[] {
       return this.items ?? [];
     }
   },
@@ -127,7 +130,7 @@ export default {
     this.validate(this.modelValue);
   },
   emits: ["update:modelValue", "valid"]
-};
+});
 </script>
 
 <style scoped>

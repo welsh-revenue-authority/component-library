@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-inset",
   props: {
     /**
@@ -15,9 +17,16 @@ export default {
      * @validator value {string} - The colour must be one of ["wra-revenue", "wra-charcoal", "wra-red", "wra-blue", "wra-green", "wra-yellow"]
      */
     colour: {
-      type: String,
+      type: String as PropType<
+        | "wra-revenue"
+        | "wra-charcoal"
+        | "wra-red"
+        | "wra-blue"
+        | "wra-green"
+        | "wra-yellow"
+      >,
       default: "wra-revenue",
-      validate(value) {
+      validator(value: string) {
         return [
           "wra-revenue",
           "wra-charcoal",
@@ -29,7 +38,7 @@ export default {
       }
     }
   }
-};
+});
 </script>
 
 <style scoped>

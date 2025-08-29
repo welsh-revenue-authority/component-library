@@ -35,47 +35,49 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-expansion-panel",
   props: {
     title: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * A unique string used to generate ARIA attributes for accessibility.
      */
     ariaTitle: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The text colour of the expansion panel header. Default colour is `--color-wra-revenue`
      */
     color: {
-      type: String,
+      type: String as PropType<string>,
       default: "#2a225b"
     }
   },
   data() {
     return {
-      showPanel: false
+      showPanel: false as boolean
     };
   },
   computed: {
-    style() {
+    style(): { color: string } {
       return {
         color: this.color
       };
     }
   },
   methods: {
-    togglePanel() {
+    togglePanel(): void {
       this.showPanel = !this.showPanel;
     }
   }
-};
+});
 </script>
 
 <style scoped>

@@ -23,32 +23,34 @@
   </ul>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "wra-breadcrumbs",
   props: {
     /** Items to display in the breadcrumbs */
     items: {
-      type: Array,
+      type: Array as () => Array<Record<string, any>>,
       required: true
     },
     /** Change the default object name in items for the breadcrumb title */
     itemTitle: {
-      type: String,
+      type: String as () => string,
       default: "title"
     },
     /** Change the default object name in items for disabling the breadcrumb */
     itemDisabled: {
-      type: String,
+      type: String as () => string,
       default: "disabled"
     },
     /** Change the default object name in items for the breadcrumb link */
     itemHref: {
-      type: String,
+      type: String as () => string,
       default: "href"
     }
   }
-};
+});
 </script>
 
 <style scoped>

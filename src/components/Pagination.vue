@@ -27,7 +27,7 @@
       @click="changePage(page)"
       @keydown.left="onKeyLeft()"
       @keydown.right="onKeyRight()"
-      :ref="page"
+      :ref="'page-' + page"
       class="pagination-number"
       :class="currentPage === page && 'pagination-number--selected'"
     >
@@ -52,18 +52,22 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-pagination",
-  data: () => ({
-    currentPage: 0
-  }),
+  data() {
+    return {
+      currentPage: 0 as number
+    };
+  },
   props: {
     /**
      * The current page number (v-model).
      */
     modelValue: {
-      type: Number,
+      type: Number as PropType<number>,
       required: true,
       default: 1
     },
@@ -71,88 +75,91 @@ export default {
      * The total number of pages available.
      */
     totalPages: {
-      type: Number,
+      type: Number as PropType<number>,
       required: true
     },
     /**
      * The maximum number of page buttons to display at once.
      */
     length: {
-      type: Number,
+      type: Number as PropType<number>,
       default: 5
     },
     /**
      * If true, shows 'skip' controls (divider & jump to start/end).
      */
     skip: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: true
     },
     /**
      * The starting page number (usually 1).
      */
     startIndex: {
-      type: Number,
+      type: Number as PropType<number>,
       default: 1
     },
     /**
      * The label text for the 'previous' button.
      */
     previousLabel: {
-      type: String,
+      type: String as PropType<string>,
       default: "Previous"
     },
     /**
      * The label text for the 'next' button.
      */
     nextLabel: {
-      type: String,
+      type: String as PropType<string>,
       default: "Next"
     }
   },
+  emits: ["update:modelValue"],
   methods: {
-    incPage() {
+    incPage(): void {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
         this.$emit("update:modelValue", this.currentPage);
       }
     },
-    decPage() {
+    decPage(): void {
       if (this.currentPage >= this.startIndex + 1) {
         this.currentPage--;
         this.$emit("update:modelValue", this.currentPage);
       }
     },
-    changePage(page) {
+    changePage(page: number): void {
       this.currentPage = page;
       this.$emit("update:modelValue", this.currentPage);
       this.$nextTick(() => {
-        if (!this.$refs?.[page]?.[0]) {
+        const refKey = `page-${page}`;
+        const refEl = this.$refs[refKey] as HTMLElement[] | undefined;
+        if (!refEl || !refEl[0]) {
           console.log("No ref found for page", page);
+          return;
         }
-        this.$refs[page][0].focus();
+        refEl[0].focus();
       });
     },
-    onKeyLeft() {
+    onKeyLeft(): void {
       if (this.currentPage > this.startIndex + 1) {
         this.changePage(this.currentPage - 1);
       }
     },
-    onKeyRight() {
+    onKeyRight(): void {
       if (this.currentPage < this.totalPages) {
         this.changePage(this.currentPage + 1);
       }
     }
   },
-  emits: ["update:modelValue"],
   computed: {
-    pageArray() {
+    pageArray(): number[] {
       return Array.from(
         { length: this.totalPages },
         (_, i) => i + this.startIndex
       );
     },
-    viewablePages() {
+    viewablePages(): number[] {
       return this.pageArray.slice(
         Math.max(0, this.currentPage - Math.ceil(this.length / 2)),
         Math.min(
@@ -161,25 +168,25 @@ export default {
         )
       );
     },
-    skipStart() {
-      let visibleRange = Math.ceil(this.length / 2) + this.startIndex;
+    skipStart(): boolean {
+      const visibleRange = Math.ceil(this.length / 2) + this.startIndex;
       return this.skip && this.currentPage >= visibleRange;
     },
-    skipEnd() {
-      let visibleRange =
+    skipEnd(): boolean {
+      const visibleRange =
         this.totalPages - Math.floor(this.length / 2) - this.startIndex;
       return this.skip && this.currentPage <= visibleRange;
     }
   },
   watch: {
-    modelValue(newValue) {
+    modelValue(newValue: number) {
       this.changePage(newValue);
     }
   },
   created() {
     this.currentPage = this.modelValue;
   }
-};
+});
 </script>
 
 <style scoped>
