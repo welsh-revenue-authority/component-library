@@ -72,16 +72,16 @@ export default defineComponent({
   methods: {
     snackbarTimer(time: number) {
       setTimeout(() => {
-        (this as any).showSnackbar = false;
+        this.showSnackbar = false;
       }, time);
     },
     closeSnackbar() {
-      (this as any).showSnackbar = false;
-      this.$emit("update:visible", (this as any).showSnackbar);
+      this.showSnackbar = false;
+      this.$emit("update:visible", this.showSnackbar);
     }
   },
   watch: {
-    visible(this: any, newValue: boolean) {
+    visible(newValue: boolean) {
       this.showSnackbar = newValue;
       // If there is timer, run it
       if (newValue === true && this.timeout) {
@@ -89,7 +89,7 @@ export default defineComponent({
       }
     }
   },
-  created(this: any) {
+  created() {
     if (this.visible === true) {
       this.showSnackbar = true;
       // If there is timer, run it
@@ -99,7 +99,7 @@ export default defineComponent({
     }
   },
   computed: {
-    class(this: any) {
+    class() {
       return {
         "wra-error": this.type === "wra-error",
         "wra-success": this.type === "wra-success",

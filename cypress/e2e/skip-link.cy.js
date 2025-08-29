@@ -43,9 +43,7 @@ describe("Skip Link", () => {
 
   it("Skip Link - Skip Id", () => {
     cy.fixture("component-fixtures").then((f) => {
-      cy.visit(
-        "/iframe.html?id=form-inputs-controls-skiplink--skip-id"
-      );
+      cy.visit("/iframe.html?id=form-inputs-controls-skiplink--skip-id");
       cy.log("Visiting the Skip Link component story");
 
       cy.get(sl.skipLink)

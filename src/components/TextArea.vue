@@ -65,7 +65,7 @@ export default defineComponent({
     };
   },
   methods: {
-    validate(this: any, value: string) {
+    validate(value: string) {
       this.$emit("update:modelValue", value);
       this.errorMessage = "";
 
@@ -73,7 +73,7 @@ export default defineComponent({
         //checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
-          let result = element(value);
+          const result = element(value);
           if (result != true) {
             this.errorMessage = result;
             this.$emit("valid", { id: this.id, value: false });
@@ -97,7 +97,7 @@ export default defineComponent({
       }
     }
   },
-  mounted(this: any) {
+  mounted() {
     // Run validation rules when component is first rendered, as v-model data might be valid/invalid
     this.validate(this.modelValue);
   }

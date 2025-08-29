@@ -37,8 +37,9 @@
               ></span>
             </span>
             <span
-              v-else
-              v-if="header.sortable == true || header.sortable == undefined"
+              v-else-if="
+                header.sortable == true || header.sortable == undefined
+              "
               class="wra-chevron wra-chevron-up sort-icons"
             ></span>
 
@@ -63,7 +64,7 @@
         </tr>
       </tbody>
 
-      <tbody v-else v-if="$slots.body">
+      <tbody v-else-if="$slots.body">
         <slot name="body" :items="paginatedArray"></slot>
       </tbody>
 
@@ -194,7 +195,7 @@ export default defineComponent({
     };
   },
   methods: {
-    sortByColumn(this: any, key: string) {
+    sortByColumn(key: string) {
       this.localSortBy = [
         {
           key,
@@ -209,18 +210,18 @@ export default defineComponent({
     }
   },
   computed: {
-    localItemsPerPage(this: any): number {
+    localItemsPerPage(): number {
       return this.itemsPerPage != undefined ? this.itemsPerPage : 10;
     },
-    totalNumberOfPages(this: any): number {
+    totalNumberOfPages(): number {
       return Math.ceil(this.sortedArray.length / this.localItemsPerPage);
     },
-    paginatedArray(this: any): any[] {
+    paginatedArray(): any[] {
       const start = (this.currentPage - 1) * this.localItemsPerPage;
       const end = start + this.localItemsPerPage;
       return this.sortedArray.slice(start, end);
     },
-    filteredItems(this: any): any[] {
+    filteredItems(): any[] {
       let filtered = this.items;
 
       // Apply global search if applicable
@@ -257,17 +258,17 @@ export default defineComponent({
 
       return filtered;
     },
-    sortedArray(this: any): any[] {
+    sortedArray(): any[] {
       // Always start with the filtered items
       // sort-by is [{ key: 'submittedDate', order: 'desc' }]
-      let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
+      const localCopy = JSON.parse(JSON.stringify(this.filteredItems));
 
       // If sorting is defined, apply sorting logic
       if (this.localSortBy && this.localSortBy.length > 0) {
         return localCopy.sort((a: any, b: any) => {
           const localSortBy = this.localSortBy[0];
-          var aValue = a[localSortBy.key];
-          var bValue = b[localSortBy.key];
+          const aValue = a[localSortBy.key];
+          const bValue = b[localSortBy.key];
 
           // Check for null or undefined values
           if (aValue == null && bValue == null) {

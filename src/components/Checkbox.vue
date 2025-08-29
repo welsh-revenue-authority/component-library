@@ -58,14 +58,14 @@ export default defineComponent({
   },
   watch: {
     modelValue: {
-      handler(this: any) {
+      handler() {
         this.isChecked = this.modelValue;
       },
       immediate: true
     }
   },
   methods: {
-    checkInput(this: any) {
+    checkInput() {
       this.isChecked = !this.isChecked;
       this.$emit("update:modelValue", this.isChecked);
     }

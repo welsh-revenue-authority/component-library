@@ -140,7 +140,7 @@ export default defineComponent({
         //Checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
-          let result = element(value);
+          const result = element(value);
           if (result != true) {
             this.errorMessage = result as string;
             this.$emit("valid", { id: this.id, value: false });
