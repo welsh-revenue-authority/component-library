@@ -23,10 +23,12 @@
         <th
           v-for="header in headers"
           :key="header.key"
-          :style="{
-            textAlign: header.align || 'left',
-            width: header.width + 'px'
-          }"
+          :style="
+            {
+              textAlign: header.align || 'left',
+              width: header.width + 'px'
+            } as any
+          "
         >
           {{ header.title }}
         </th>
@@ -37,7 +39,7 @@
         <td
           v-for="header in headers"
           :key="header.key"
-          :style="{ textAlign: header.align || 'left' }"
+          :style="{ textAlign: header.align || 'left' } as any"
         >
           {{ item[header.key] }}
         </td>
@@ -73,34 +75,52 @@
   </table>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+interface TableHeader {
+  key: string;
+  title: string;
+  align?: string;
+  width?: number;
+}
+
+interface TableItem {
+  id: string | number;
+  bold?: boolean;
+  [key: string]: any;
+}
+
+export default defineComponent({
   name: "wra-table",
   props: {
     /**
      * If true, the table inherits its background from its parent and removes external padding.
      */
     inheritBackground: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     caption: {
-      type: String
+      type: String as PropType<string | undefined>,
+      default: undefined
     },
     /**
      * The array of header definitions for the table columns.
      */
     headers: {
-      type: Array
+      type: Array as PropType<TableHeader[]>,
+      required: true
     },
     /**
      * The array of data objects to display in the table. Each object represents a row.
      */
     items: {
-      type: Array
+      type: Array as PropType<TableItem[]>,
+      required: true
     }
   }
-};
+});
 </script>
 
 <style>

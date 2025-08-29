@@ -27,29 +27,31 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-simple-table",
   props: {
     /**
      * If true, the table inherits its background from its parent and removes external padding.
      */
     inheritBackground: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: false
     },
     caption: {
-      type: String
+      type: String as PropType<string>
     },
     /**
      * If true, table header cells are left-aligned. Otherwise, they use centre alignment.
      */
     leftAlignHeaders: {
-      type: Boolean,
+      type: Boolean as PropType<boolean>,
       default: true
     }
   }
-};
+});
 </script>
 
 <style>

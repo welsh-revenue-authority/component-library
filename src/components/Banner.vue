@@ -25,43 +25,45 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "wra-banner",
   props: {
     /**
      * If true, the banner will be hidden when printing the page.
      */
     hiddenPrint: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     },
     /**
      * If true, applies a yellow background colour to indicate a new service.
      */
     newService: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     },
     /**
      * If true, displays a close button allowing the user to dismiss the banner.
      */
     closable: {
-      type: Boolean,
+      type: Boolean as () => boolean,
       default: false
     }
   },
   data() {
     return {
-      visible: true
+      visible: true as boolean
     };
   },
   methods: {
-    closeBanner() {
+    closeBanner(): void {
       this.visible = false;
     }
   }
-};
+});
 </script>
 
 <style scoped>

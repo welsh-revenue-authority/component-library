@@ -13,19 +13,21 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-validation-tooltip",
   props: {
     /**
      * The type of validation message, which determines the tooltip's style.
      */
     type: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     }
   }
-};
+});
 </script>
 
 <style scoped>

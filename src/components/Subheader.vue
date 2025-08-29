@@ -4,8 +4,10 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+export default defineComponent({
   name: "wra-subheader",
 
   props: {
@@ -13,19 +15,19 @@ export default {
      * The text colour of the subheader.
      */
     color: {
-      type: String,
+      type: String as PropType<string>,
       default: "#000000"
     }
   },
 
   computed: {
-    style() {
+    style(): { color: string } {
       return {
-        color: this.color
+        color: this.color as string
       };
     }
   }
-};
+});
 </script>
 
 <style scoped>

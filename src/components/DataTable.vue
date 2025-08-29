@@ -8,7 +8,7 @@
         </slot>
       </caption>
       <thead>
-        <slot name="headers" v-if="$slots.headerSlot" :headers="headers"></slot>
+        <slot name="headers" v-if="$slots.header" :headers="headers"></slot>
 
         <tr v-else>
           <th
@@ -37,8 +37,9 @@
               ></span>
             </span>
             <span
-              v-else
-              v-if="header.sortable == true || header.sortable == undefined"
+              v-else-if="
+                header.sortable == true || header.sortable == undefined
+              "
               class="wra-chevron wra-chevron-up sort-icons"
             ></span>
 
@@ -57,13 +58,13 @@
 
       <tbody v-if="loading == true">
         <tr>
-          <td class="text-center" :colspan="headers.length">
+          <td class="text-center" :colspan="headers ? headers.length : 1">
             <span class="loader"></span>
           </td>
         </tr>
       </tbody>
 
-      <tbody v-else v-if="$slots.body">
+      <tbody v-else-if="$slots.body">
         <slot name="body" :items="paginatedArray"></slot>
       </tbody>
 
@@ -95,7 +96,7 @@
               :value="item[header.key]"
               :item="item"
               :items="sortedArray"
-              v-if="$slots['item.' + header.key]"
+              v-if="`item.${header.key}` in $slots"
             ></slot>
 
             <span v-else>{{ item[header.key] }}</span>
@@ -127,57 +128,74 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+type DataTableHeader = {
+  key: string;
+  title: string;
+  width?: number;
+  align?: "left" | "right" | "center";
+  sortable?: boolean;
+  searchable?: boolean;
+};
+
+type DataTableSort = { key: string; order: "asc" | "desc" };
+
+export default defineComponent({
   name: "wra-data-table",
   props: {
     /**
      * The array of data objects to display in the table. Each object represents a row.
      */
     items: {
-      type: Array
+      type: Array as PropType<any[]>
     },
     headers: {
-      type: Array
+      type: Array as PropType<DataTableHeader[]>
     },
     /**
      * The initial sort order for the table. Should be an array of objects.
      */
     sortBy: {
-      type: Array
+      type: Array as PropType<DataTableSort[]>,
+      required: false
     },
     /**
      * The number of items to display per page.
      */
     itemsPerPage: {
-      type: Number,
+      type: Number as PropType<number>,
       default: 10
     },
     /**
      * If true, shows a loading spinner instead of table rows.
      */
     loading: {
-      type: Boolean
+      type: Boolean as PropType<boolean>,
+      required: false
     },
     /**
      * A global search string to filter table rows.
      */
     search: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     },
     caption: {
-      type: String
+      type: String as PropType<string>,
+      required: false
     }
   },
   data() {
     return {
-      localSortBy: this.sortBy,
-      currentPage: 1,
-      columnFilters: {} // Stores search values for each column
+      localSortBy: this.sortBy as DataTableSort[] | undefined,
+      currentPage: 1 as number,
+      columnFilters: {} as Record<string, string> // Stores search values for each column
     };
   },
   methods: {
-    sortByColumn(key) {
+    sortByColumn(key: string) {
       this.localSortBy = [
         {
           key,
@@ -192,18 +210,18 @@ export default {
     }
   },
   computed: {
-    localItemsPerPage() {
+    localItemsPerPage(): number {
       return this.itemsPerPage != undefined ? this.itemsPerPage : 10;
     },
-    totalNumberOfPages() {
+    totalNumberOfPages(): number {
       return Math.ceil(this.sortedArray.length / this.localItemsPerPage);
     },
-    paginatedArray() {
+    paginatedArray(): any[] {
       const start = (this.currentPage - 1) * this.localItemsPerPage;
       const end = start + this.localItemsPerPage;
       return this.sortedArray.slice(start, end);
     },
-    filteredItems() {
+    filteredItems(): any[] {
       let filtered = this.items;
 
       // Apply global search if applicable
@@ -212,12 +230,13 @@ export default {
         this.currentPage = 1;
         const searchLowercased = this.search.toLowerCase();
         // Extract key of each column from headers array
-        const relevantHeaders = this.headers.map((header) => header.key);
+        const relevantHeaders =
+          this.headers?.map((header: DataTableHeader) => header.key) ?? [];
 
         // Iterate over each row in the filtered array
-        filtered = filtered.filter((item) =>
+        filtered = filtered.filter((item: any) =>
           // Use .some() to check all relevant columns
-          relevantHeaders.some((header) =>
+          relevantHeaders.some((header: string) =>
             String(item[header]).toLowerCase().includes(searchLowercased)
           )
         );
@@ -231,7 +250,7 @@ export default {
           // Reset to first page when filtering
           this.currentPage = 1;
           // Use .filter() to keep only rows where column value matches filter value
-          filtered = filtered.filter((item) =>
+          filtered = filtered.filter((item: any) =>
             String(item[key]).toLowerCase().includes(filterValue)
           );
         }
@@ -239,17 +258,17 @@ export default {
 
       return filtered;
     },
-    sortedArray() {
+    sortedArray(): any[] {
       // Always start with the filtered items
       // sort-by is [{ key: 'submittedDate', order: 'desc' }]
-      let localCopy = JSON.parse(JSON.stringify(this.filteredItems));
+      const localCopy = JSON.parse(JSON.stringify(this.filteredItems));
 
       // If sorting is defined, apply sorting logic
       if (this.localSortBy && this.localSortBy.length > 0) {
-        return localCopy.sort((a, b) => {
+        return localCopy.sort((a: any, b: any) => {
           const localSortBy = this.localSortBy[0];
-          var aValue = a[localSortBy.key];
-          var bValue = b[localSortBy.key];
+          const aValue = a[localSortBy.key];
+          const bValue = b[localSortBy.key];
 
           // Check for null or undefined values
           if (aValue == null && bValue == null) {
@@ -261,7 +280,7 @@ export default {
           }
 
           // Convert numerical strings to numbers
-          const parseNumber = (value) => {
+          const parseNumber = (value: any) => {
             // Use regex to check string only contains:
             // - Optional negative sign
             // - Digits
@@ -276,7 +295,7 @@ export default {
             return value;
           };
 
-          const parseDate = (value) => {
+          const parseDate = (value: any) => {
             // Use regex to check string matches DD/MM/YYYY format
             if (
               typeof value === "string" &&
@@ -323,7 +342,7 @@ export default {
       return localCopy;
     }
   }
-};
+});
 </script>
 
 <style scoped>

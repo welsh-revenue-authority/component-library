@@ -1,47 +1,51 @@
 <template>
-  <div :class="{ error: errorMessage != false }">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <div :class="{ error: errorMessage }">
+    <label :for="String(id)" v-if="label">{{ label }}</label>
     <textarea
       rows="5"
-      :id="id"
+      :id="String(id)"
       :value="modelValue"
-      @input="validate($event.target.value)"
+      @input="validate(($event.target as HTMLTextAreaElement)?.value || '')"
       :maxlength="maxLength"
     />
     <p>{{ errorMessage }}</p>
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+
+type ValidationRule = (value: string) => true | string;
+
+export default defineComponent({
   name: "wra-text-area",
   props: {
     /**
      * The unique id for the textarea input and label association.
      */
     id: {
-      type: Number,
+      type: Number as PropType<number>,
       required: true
     },
     /**
      * The v-model binding for the textarea value.
      */
     modelValue: {
-      type: String,
+      type: String as PropType<string>,
       required: true
     },
     /**
      * The label text displayed above the textarea.
      */
     label: {
-      type: String,
+      type: String as PropType<string>,
       required: false
     },
     /**
      * An array of validation rule functions. Each function should return true or an error message string.
      */
     rules: {
-      type: Array,
+      type: Array as PropType<ValidationRule[]>,
       default: () => [],
       required: false
     },
@@ -49,19 +53,19 @@ export default {
      * The maximum number of characters allowed in the textarea.
      */
     maxLength: {
-      type: Number,
+      type: Number as PropType<number>,
       required: false
     }
   },
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      errorMessage: "",
-      firstValidation: true
+      errorMessage: "" as string,
+      firstValidation: true as boolean
     };
   },
   methods: {
-    validate(value) {
+    validate(value: string) {
       this.$emit("update:modelValue", value);
       this.errorMessage = "";
 
@@ -69,7 +73,7 @@ export default {
         //checks if rules exists
         for (let index = 0; index < this.rules.length; index++) {
           const element = this.rules[index];
-          let result = element(value);
+          const result = element(value);
           if (result != true) {
             this.errorMessage = result;
             this.$emit("valid", { id: this.id, value: false });
@@ -97,7 +101,7 @@ export default {
     // Run validation rules when component is first rendered, as v-model data might be valid/invalid
     this.validate(this.modelValue);
   }
-};
+});
 </script>
 
 <style scoped>

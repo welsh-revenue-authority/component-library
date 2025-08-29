@@ -25,12 +25,12 @@ blockquote {
 
 /*Links*/
 a {
-  color: var(--color-wra-revenue);
+  color: var(--color-wra-blue);
   font-weight: bold;
 }
 
 a:hover {
-  color: var(--color-wra-revenue);
+  color: var(--color-wra-blue);
   text-decoration: none;
 }
 
