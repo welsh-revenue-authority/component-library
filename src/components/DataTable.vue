@@ -37,8 +37,9 @@
               ></span>
             </span>
             <span
-              v-else
-              v-if="header.sortable == true || header.sortable == undefined"
+              v-else-if="
+                header.sortable == true || header.sortable == undefined
+              "
               class="wra-chevron wra-chevron-up sort-icons"
             ></span>
 
@@ -63,7 +64,7 @@
         </tr>
       </tbody>
 
-      <tbody v-else v-if="$slots.body">
+      <tbody v-else-if="$slots.body">
         <slot name="body" :items="paginatedArray"></slot>
       </tbody>
 
