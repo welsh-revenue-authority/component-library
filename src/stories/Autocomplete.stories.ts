@@ -73,6 +73,30 @@ export const Default: Story = {
   }
 };
 
+export const Placeholder: Story = {
+  args: {
+    label:
+      "This is an autocomplete for Welsh local authorities that has placeholder text",
+    id: "test-autocomplete-placeholder",
+    options: councilArray,
+    placeholder: "Search for a local authority"
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-autocomplete
+  label="This is an autocomplete for Welsh local authorities that has placeholder text"
+  id="test-autocomplete-placeholder"
+  :options="options"
+  placeholder="Search for a local authority"
+></wra-autocomplete>
+        `
+      }
+    }
+  }
+};
+
 export const Autoexpand: Story = {
   args: {
     label:
@@ -87,7 +111,7 @@ export const Autoexpand: Story = {
         code: `
 <wra-autocomplete
   label="This is an autocomplete for Welsh local authorities"
-  id="test-autocomplete"
+  id="test-autocomplete-autoexpand"
   :options="options"
   auto-expand
 ></wra-autocomplete>
@@ -110,7 +134,7 @@ export const PreFilled: Story = {
         code: `
 <wra-autocomplete
   label="This is an autocomplete for Welsh local authorities"
-  id="test-autocomplete"
+  id="test-autocomplete-prefill"
   :options="options"
   :model-value="modelValue"
 ></wra-autocomplete>

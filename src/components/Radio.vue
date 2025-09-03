@@ -57,9 +57,13 @@ export default defineComponent({
     }
   },
   methods: {
-    onChange(event: Event) {
+    onChange(_: Event) {
+      // if this.$parent is null, throw exception
+      if (!this.$parent) {
+        throw new Error("Parent component not found");
+      }
       // Emit the value directly to the parent
-      this.$emit("update:modelValue", this.option.value);
+      this.$parent.$emit("update:modelValue", this.option.value);
     }
   }
 });
