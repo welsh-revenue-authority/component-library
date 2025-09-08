@@ -18,6 +18,7 @@
       :id="id"
       class="autocomplete-input"
       :class="{ 'autocomplete-input--focus': hasFocus }"
+      :placeholder="placeholder"
       @input="onInputTyping()"
       @focus="hasFocus = true"
       @blur="onBlur"
@@ -96,6 +97,11 @@ export default defineComponent({
     minLength: {
       type: Number as () => number,
       default: 1
+    },
+    /** Placeholder text for the input */
+    placeholder: {
+      type: String as () => string,
+      default: ""
     },
     /** If true, list will automatically expand when input is focused */
     autoExpand: {
