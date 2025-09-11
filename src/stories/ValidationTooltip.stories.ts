@@ -21,7 +21,13 @@ Refer to [Icon component](/docs/images-icons-icon--icondocs) for more informatio
       control: {
         type: "radio"
       },
-      options: ["wra-info", "wra-success", "wra-warning", "wra-error"]
+      options: [
+        "wra-default",
+        "wra-info",
+        "wra-success",
+        "wra-warning",
+        "wra-error"
+      ]
     }
   }
 };
@@ -29,6 +35,30 @@ Refer to [Icon component](/docs/images-icons-icon--icondocs) for more informatio
 export default meta;
 
 type Story = StoryObj<typeof WraValidationTooltip>;
+
+export const Default: Story = {
+  args: {
+    type: "wra-default"
+  },
+  render: (args) => ({
+    components: { WraValidationTooltip },
+    setup() {
+      return { args };
+    },
+    template: `<WraValidationTooltip v-bind="args">This is a message</WraValidationTooltip>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-validation-tooltip type="wra-default">
+  This is a message
+</wra-validation-tooltip>
+        `
+      }
+    }
+  }
+};
 
 export const Info: Story = {
   args: {

@@ -24,7 +24,8 @@ export default defineComponent({
      */
     type: {
       type: String as PropType<string>,
-      required: true
+      required: true,
+      default: "wra-default"
     }
   }
 });
@@ -58,6 +59,11 @@ export default defineComponent({
 .wra-warning {
   background-color: var(--color-wra-light-yellow);
   border-left: 10px solid var(--color-wra-yellow);
+}
+
+.wra-default {
+  background-color: var(--color-wra-light-grey);
+  border-left: 10px solid var(--color-wra-blue);
 }
 
 .icon {
