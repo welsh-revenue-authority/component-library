@@ -15,6 +15,11 @@
         :data-maska-reversed="dataMaskaReversed"
         :data-maska-tokens="dataMaskaTokens"
         :class="prefixPadding"
+        v-bind="
+          type === 'number' && minimumValue !== undefined
+            ? { min: minimumValue }
+            : {}
+        "
       />
       <span class="suffix" v-if="!!suffix">{{ suffix }}</span>
     </div>
@@ -120,9 +125,24 @@ export default defineComponent({
      */
     type: {
       type: String as PropType<
-        "text" | "none" | "tel" | "url" | "email" | "numeric" | "decimal"
+        | "text"
+        | "none"
+        | "tel"
+        | "url"
+        | "email"
+        | "numeric"
+        | "decimal"
+        | "number"
       >,
       default: "text"
+    },
+    /**
+     * The minimum value allowed for the input field.
+     * @type {number}
+     */
+    minimumValue: {
+      type: Number as PropType<number>,
+      required: false
     },
     /**
      * The placeholder text for the input field.

@@ -41,6 +41,14 @@ export const Default: Story = {
   }
 };
 
+export const MinimumValue: Story = {
+  args: {
+    label: "Custom input with minimum value of 0",
+    type: "number",
+    minimumValue: 0
+  }
+};
+
 export const Prefix: Story = {
   args: {
     label: "Phone number",
