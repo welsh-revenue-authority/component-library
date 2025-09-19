@@ -8,7 +8,7 @@
       @input="validate(($event.target as HTMLTextAreaElement)?.value || '')"
       :maxlength="maxLength"
     />
-    <p>{{ errorMessage }}</p>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
 
@@ -138,8 +138,9 @@ label {
 }
 
 div.error > p {
-  margin-top: 10px;
-  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  padding: 12px;
   background: var(--color-wra-light-red);
   color: var(--color-wra-black);
   font-size: 16px;
