@@ -112,3 +112,41 @@ export const Suffix: Story = {
     }
   }
 };
+
+export const MaxLengthRule: Story = {
+  args: {
+    label: "Maximum 10 characters",
+    placeholder: "Type up to 10 characters",
+    rules: [
+      (value: string | number) => {
+        if (String(value).length > 10) {
+          return "Maximum 10 characters allowed";
+        }
+        return true;
+      }
+    ]
+  },
+  render: (args) => ({
+    components: { WraCustomInput },
+    setup() {
+      return { args };
+    },
+    template: `
+      <WraCustomInput v-bind="args" />
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-custom-input
+  label="Maximum 10 characters"
+  placeholder="Type up to 10 characters"
+  :rules="[(value) => value.length > 10 ? 'Maximum 10 characters allowed' : true]"
+/>
+type CustomInputProps = InstanceType<typeof WraCustomInput>["$props"];
+        `
+      }
+    }
+  }
+};
