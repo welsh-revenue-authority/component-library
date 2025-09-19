@@ -230,7 +230,7 @@ export default defineComponent({
 
 .file-upload-error-text {
   margin-block: 0px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .file-upload-error-box > .file-upload-error-text {
