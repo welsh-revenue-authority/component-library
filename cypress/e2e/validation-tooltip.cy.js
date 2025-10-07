@@ -12,7 +12,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is a message")
         .should("have.css", "background-color", "rgb(241, 241, 241)")
-        .should("have.css", "border-left", "9.6px solid rgb(3, 96, 166)");
+        .should("have.css", "border-left", "10px solid rgb(3, 96, 166)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -28,7 +28,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is an info message")
         .should("have.css", "background-color", "rgb(194, 224, 252)")
-        .should("have.css", "border-left", "9.6px solid rgb(3, 96, 166)");
+        .should("have.css", "border-left", "10px solid rgb(3, 96, 166)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -44,7 +44,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is a success message")
         .should("have.css", "background-color", "rgb(205, 247, 212)")
-        .should("have.css", "border-left", "9.6px solid rgb(0, 112, 21)");
+        .should("have.css", "border-left", "10px solid rgb(0, 112, 21)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -60,7 +60,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is a warning message")
         .should("have.css", "background-color", "rgb(255, 245, 206)")
-        .should("have.css", "border-left", "9.6px solid rgb(255, 213, 48)");
+        .should("have.css", "border-left", "10px solid rgb(255, 213, 48)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -76,7 +76,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is an error message")
         .should("have.css", "background-color", "rgb(255, 228, 229)")
-        .should("have.css", "border-left", "9.6px solid rgb(170, 17, 17)");
+        .should("have.css", "border-left", "10px solid rgb(170, 17, 17)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -94,7 +94,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is an info message")
         .should("have.css", "background-color", "rgb(194, 224, 252)")
-        .should("have.css", "border-left", "9.6px solid rgb(3, 96, 166)");
+        .should("have.css", "border-left", "10px solid rgb(3, 96, 166)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
@@ -119,7 +119,7 @@ describe("Validation Tooltip", () => {
         .should("be.visible")
         .should("contain", "This is an error message")
         .should("have.css", "background-color", "rgb(255, 228, 229)")
-        .should("have.css", "border-left", "9.6px solid rgb(170, 17, 17)");
+        .should("have.css", "border-left", "10px solid rgb(170, 17, 17)");
       cy.log(
         "Asserted that the validation tooltip is visible and contains the expected text and styles"
       );
