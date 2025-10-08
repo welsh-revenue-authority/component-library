@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSkipLink from "../components/SkipLink.vue";
 import WraCard from "../components/Card.vue";
 import WraButton from "../components/Button.vue";

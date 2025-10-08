@@ -1,6 +1,6 @@
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraIcon> = {
   title: "Images & Icons/Icon",
