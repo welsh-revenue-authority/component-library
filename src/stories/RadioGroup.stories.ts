@@ -72,3 +72,44 @@ export default {
     }
   }
 };
+
+export const CustomIds: Story = {
+  args: {
+    groupName: "groupName",
+    options: [
+      {
+        id: "custom-id-option-1",
+        value: "OptionOneInfoText",
+        label: "Option 1"
+      },
+      {
+        id: "custom-id-option-2",
+        value: "OptionTwoInfoText",
+        label: "Option 2"
+      }
+    ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-radio-group
+  group-name="groupName"
+  :options="options"
+></wra-radio-group>
+
+<script>
+export default {
+  data: () => ({
+    options: [
+      { id: "custom-id-option-1", value: "OptionOneInfoText", label: "Option 1" },
+      { id: "custom-id-option-2", value: "OptionTwoInfoText", label: "Option 2" }
+    ]
+  })
+}
+</script>
+        `
+      }
+    }
+  }
+};

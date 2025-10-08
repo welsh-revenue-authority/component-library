@@ -1,11 +1,11 @@
 <template>
   <div>
-    <label :for="groupName + '-' + option.value" class="radio-label">
+    <label :for="id ?? groupName + '-' + option.value" class="radio-label">
       <input
         type="radio"
         :name="groupName"
         :value="option.value"
-        :id="groupName + '-' + option.value"
+        :id="id ?? groupName + '-' + option.value"
         @change="onChange"
         class="radio-input"
         :checked="isChecked == true"
@@ -44,20 +44,20 @@ export default defineComponent({
       required: true,
       default: () => ({ label: "", value: "" }),
       validator: function (value: RadioOption) {
-        return (
-          Object.prototype.hasOwnProperty.call(value, "label") &&
-          Object.prototype.hasOwnProperty.call(value, "value") &&
-          Object.prototype.hasOwnProperty.call(value, "info")
-        );
+        return Object.hasOwn(value, "label") && Object.hasOwn(value, "value");
       }
     },
     isChecked: {
       type: Boolean as PropType<boolean>,
       required: true
+    },
+    id: {
+      type: String as PropType<string | undefined>,
+      required: false
     }
   },
   methods: {
-    onChange(_: Event) {
+    onChange() {
       // if this.$parent is null, throw exception
       if (!this.$parent) {
         throw new Error("Parent component not found");
@@ -74,10 +74,8 @@ export default defineComponent({
   background: var(--color-wra-grey);
   padding: 20px 20px 20px 20px;
   min-height: 24px;
-  display: flex;
-  cursor: pointer;
-
   display: grid;
+  cursor: pointer;
   grid-template-columns: 20px auto;
 }
 
@@ -87,18 +85,15 @@ export default defineComponent({
 
 .radio-input {
   cursor: pointer;
-
   appearance: none;
   background-color: #fff;
   margin: 0;
-
   color: var(--color-wra-black);
   width: 20px;
   height: 20px;
   border: 1px solid var(--color-wra-black);
   border-radius: 50%;
   transform: translateY(1px);
-
   display: grid;
   place-content: center;
 }
