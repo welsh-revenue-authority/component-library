@@ -7,6 +7,7 @@
       :key="option.value"
       class="radio"
       :isChecked="checkInput(option.value)"
+      :id="option.id"
     />
   </div>
 </template>
@@ -16,6 +17,7 @@ import { defineComponent, PropType } from "vue";
 import WraRadio from "./Radio.vue";
 
 interface RadioOption {
+  id?: string;
   label: string;
   value: string | number;
   info?: string;
