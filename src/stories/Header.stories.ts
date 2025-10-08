@@ -1,5 +1,5 @@
 import WraHeader from "../components/Header.vue";
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraHeader> = {
   title: "Miscellaneous/Header",

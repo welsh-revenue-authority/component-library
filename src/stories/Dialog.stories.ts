@@ -1,7 +1,7 @@
 import WraDialog from "../components/Dialog.vue";
 import WraButton from "../components/Button.vue";
 import { ref, Ref } from "vue";
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraDialog> = {
   title: "Containment/Dialog",

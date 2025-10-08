@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import Tabs from "../components/Tabs.vue";
 
 const meta: Meta<typeof Tabs> = {

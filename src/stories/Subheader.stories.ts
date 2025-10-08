@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSubheader from "../components/Subheader.vue";
 import WraHeader from "../components/Header.vue";
 

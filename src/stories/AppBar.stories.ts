@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraAppBar from "../components/AppBar.vue";
 import WraButton from "../components/Button.vue";
 import WraServiceLogo from "../components/ServiceLogo.vue";
