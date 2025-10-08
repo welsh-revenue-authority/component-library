@@ -44,11 +44,7 @@ export default defineComponent({
       required: true,
       default: () => ({ label: "", value: "" }),
       validator: function (value: RadioOption) {
-        return (
-          Object.hasOwn(value, "label") &&
-          Object.hasOwn(value, "value") &&
-          Object.hasOwn(value, "info")
-        );
+        return Object.hasOwn(value, "label") && Object.hasOwn(value, "value");
       }
     },
     isChecked: {
@@ -78,7 +74,7 @@ export default defineComponent({
   background: var(--color-wra-grey);
   padding: 20px 20px 20px 20px;
   min-height: 24px;
-  display: flex;
+  display: grid;
   cursor: pointer;
   grid-template-columns: 20px auto;
 }

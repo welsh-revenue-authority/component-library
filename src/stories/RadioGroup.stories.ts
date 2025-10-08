@@ -102,8 +102,8 @@ export const CustomIds: Story = {
 export default {
   data: () => ({
     options: [
-      { id: "custom-id-option-1", value: "OptionOne", label: "Option 1" },
-      { id: "custom-id-option-2", value: "OptionTwo", label: "Option 2" }
+      { id: "custom-id-option-1", value: "OptionOneInfoText", label: "Option 1" },
+      { id: "custom-id-option-2", value: "OptionTwoInfoText", label: "Option 2" }
     ]
   })
 }
