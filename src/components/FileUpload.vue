@@ -23,12 +23,13 @@
     {{ label }}
   </div>
   <div class="file-upload-wrapper">
-    <Button
+    <wra-button
       size="small"
       :backgroundColor="backgroundColor"
       @click="triggerFileInput"
-      >{{ buttonText }}</Button
     >
+      {{ buttonText }}
+    </wra-button>
     <input
       type="file"
       ref="fileInput"
@@ -45,14 +46,14 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import ValidationTooltip from "./ValidationTooltip.vue";
-import Button from "./Button.vue";
+import WraButton from "./Button.vue";
 
 export default defineComponent({
   name: "file-upload",
   emits: ["change"],
   components: {
     ValidationTooltip,
-    Button
+    WraButton
   },
   props: {
     /**

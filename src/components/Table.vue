@@ -78,14 +78,14 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-interface TableHeader {
+export interface TableHeader {
   key: string;
   title: string;
   align?: string;
   width?: number;
 }
 
-interface TableItem {
+export interface TableItem {
   id: string | number;
   bold?: boolean;
   [key: string]: any;

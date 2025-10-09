@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-type ValidationRule = (value: string) => true | string;
+export type ValidationRule = (value: string) => true | string;
 
 export default defineComponent({
   name: "wra-text-area",

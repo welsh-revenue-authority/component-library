@@ -22,13 +22,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, Directive, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
-type RuleFunction = (value: string | number) => true | string;
+export type RuleFunction = (value: string | number) => true | string;
+
+const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
-  directives: { maska: vMaska },
+  directives: { maska: vMaskaDirective },
   name: "wra-number-input",
   props: {
     /**

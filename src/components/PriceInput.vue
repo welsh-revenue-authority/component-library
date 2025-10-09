@@ -23,10 +23,13 @@
 
 <script lang="ts">
 import { vMaska } from "maska/vue";
-import { PropType, defineComponent } from "vue";
+import { Directive, PropType, defineComponent } from "vue";
+
+// Getting around vmaska incorrect typing
+const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
-  directives: { maska: vMaska },
+  directives: { maska: vMaskaDirective },
   name: "wra-price-input",
   props: {
     /**

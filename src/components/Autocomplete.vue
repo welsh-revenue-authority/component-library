@@ -58,7 +58,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-interface Option {
+export interface Option {
   [key: string]: any;
   clickable?: boolean;
 }

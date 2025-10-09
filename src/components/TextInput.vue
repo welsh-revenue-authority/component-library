@@ -16,13 +16,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, Directive, HTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
-type ValidationRule = (value: string | number) => true | string;
+export type ValidationRule = (value: string | number) => true | string;
+
+// Getting around vmaska incorrect typing
+const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
-  directives: { maska: vMaska },
+  directives: { maska: vMaskaDirective },
   name: "wra-text-input",
   props: {
     /**
@@ -62,7 +65,7 @@ export default defineComponent({
      * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
      */
     inputmode: {
-      type: String as PropType<string>,
+      type: String as PropType<HTMLAttributes["inputmode"]>,
       default: "text",
       validator(value: string) {
         return [
