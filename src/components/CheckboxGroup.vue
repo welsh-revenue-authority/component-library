@@ -30,7 +30,7 @@
 import { defineComponent, PropType } from "vue";
 import WraCheckbox from "./Checkbox.vue";
 
-type OptionType = Record<string, any> | string;
+export type OptionType = Record<string, any> | string;
 
 export default defineComponent({
   name: "wra-checkbox-group",

@@ -28,11 +28,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, Directive, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
+const vMaskaDirective = vMaska as unknown as Directive;
+
 export default defineComponent({
-  directives: { maska: vMaska },
+  directives: { maska: vMaskaDirective },
   name: "wra-custom-input",
   props: {
     /**

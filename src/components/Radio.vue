@@ -26,10 +26,11 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-interface RadioOption {
+export interface RadioOption {
   label: string;
   value: string | number;
   info?: string;
+  id?: string;
 }
 
 export default defineComponent({

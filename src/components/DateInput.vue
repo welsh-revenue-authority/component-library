@@ -18,10 +18,12 @@
 
 <script lang="ts">
 import { vMaska } from "maska/vue";
-import { defineComponent, PropType } from "vue";
+import { defineComponent, Directive, PropType } from "vue";
+
+const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
-  directives: { maska: vMaska },
+  directives: { maska: vMaskaDirective },
   name: "wra-date-input",
   props: {
     /**

@@ -14,14 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import WraRadio from "./Radio.vue";
-
-interface RadioOption {
-  id?: string;
-  label: string;
-  value: string | number;
-  info?: string;
-}
+import WraRadio, { RadioOption } from "./Radio.vue";
 
 export default defineComponent({
   name: "wra-radio-group",

@@ -131,7 +131,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-type DataTableHeader = {
+export type DataTableHeader = {
   key: string;
   title: string;
   width?: number;
