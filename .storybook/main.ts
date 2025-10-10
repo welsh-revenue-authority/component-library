@@ -6,7 +6,7 @@ const config = {
     builder: "@storybook/builder-vite"
   },
   async viteFinal(config) {
-    config.plugins = await withoutVitePlugins(config.plugins, ["vite:dts"]);
+    config.plugins = await withoutVitePlugins(config.plugins, ["unplugin-dts"]);
     return config;
   },
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
