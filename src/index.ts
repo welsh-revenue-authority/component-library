@@ -38,6 +38,18 @@ import TextArea from "@/components/TextArea.vue";
 import TextInput from "@/components/TextInput.vue";
 import ValidationTooltip from "@/components/ValidationTooltip.vue";
 
+export type { TextInputValidationRule } from "@/components/TextInput.vue";
+export type { AutocompleteOption } from "@/components/Autocomplete.vue";
+export type { CheckboxOption } from "@/components/CheckboxGroup.vue";
+export type {
+  DataTableHeader,
+  DataTableSort
+} from "@/components/DataTable.vue";
+export type { RuleFunction } from "@/components/NumberInput.vue";
+export type { RadioOption } from "@/components/Radio.vue";
+export type { TableHeader, TableItem } from "@/components/Table.vue";
+export type { TextAreaValidationRule } from "@/components/TextArea.vue";
+
 export {
   AppBar as WraAppBar,
   Autocomplete as WraAutocomplete,

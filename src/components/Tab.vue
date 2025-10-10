@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
+
 /** Works with Tabs to form a tab component */
 export default defineComponent({
   name: "wra-tab",

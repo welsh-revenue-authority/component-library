@@ -140,7 +140,7 @@ export type DataTableHeader = {
   searchable?: boolean;
 };
 
-type DataTableSort = { key: string; order: "asc" | "desc" };
+export type DataTableSort = { key: string; order: "asc" | "desc" };
 
 export default defineComponent({
   name: "wra-data-table",

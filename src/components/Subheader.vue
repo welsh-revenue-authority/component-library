@@ -9,7 +9,6 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "wra-subheader",
-
   props: {
     /**
      * The text colour of the subheader.
@@ -19,7 +18,6 @@ export default defineComponent({
       default: "#000000"
     }
   },
-
   computed: {
     style(): { color: string } {
       return {

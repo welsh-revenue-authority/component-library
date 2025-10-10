@@ -30,7 +30,7 @@
 import { defineComponent, PropType } from "vue";
 import WraCheckbox from "./Checkbox.vue";
 
-export type OptionType = Record<string, any> | string;
+export type CheckboxOption = Record<string, any> | string;
 
 export default defineComponent({
   name: "wra-checkbox-group",
@@ -39,14 +39,14 @@ export default defineComponent({
      * The v-model binding for the checkbox group. Should be an array of selected values or objects.
      */
     modelValue: {
-      type: Array as PropType<OptionType[]>,
+      type: Array as PropType<CheckboxOption[]>,
       default: () => []
     },
     /**
      * The array of options to display as checkboxes.
      */
     options: {
-      type: Array as PropType<OptionType[]>,
+      type: Array as PropType<CheckboxOption[]>,
       required: true,
       default: () => []
     },
@@ -85,7 +85,7 @@ export default defineComponent({
   data() {
     return {
       checked: {} as Record<string, boolean>,
-      value: [] as OptionType[]
+      value: [] as CheckboxOption[]
     };
   },
   methods: {
@@ -93,7 +93,7 @@ export default defineComponent({
       this.checked[value] = !this.checked[value];
 
       //create array of only 'true' values from this.checked
-      let checkedArray: OptionType[] = [];
+      let checkedArray: CheckboxOption[] = [];
       //loop through this.checked object
       if (this.returnObject === true) {
         Object.keys(this.checked).forEach((key: string) => {
@@ -122,21 +122,21 @@ export default defineComponent({
 
       this.$emit("update:modelValue", checkedArray);
     },
-    checkForObjectLabel(input: OptionType): string {
+    checkForObjectLabel(input: CheckboxOption): string {
       if (typeof input === "object") {
         return input[this.itemLabel];
       } else {
         return input;
       }
     },
-    checkForObjectInfo(input: OptionType): string | null {
+    checkForObjectInfo(input: CheckboxOption): string | null {
       if (typeof input === "object") {
         return input[this.itemInfo];
       } else {
         return null;
       }
     },
-    checkForObjectValue(input: OptionType): string {
+    checkForObjectValue(input: CheckboxOption): string {
       if (typeof input === "object") {
         return input[this.itemValue];
       } else {
@@ -145,7 +145,7 @@ export default defineComponent({
     }
   },
   computed: {
-    validOptions(): OptionType[] {
+    validOptions(): CheckboxOption[] {
       return this.options ?? [];
     }
   },

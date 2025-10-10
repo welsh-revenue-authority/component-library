@@ -15,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 
-export type ValidationRule = (value: string) => true | string;
+export type TextAreaValidationRule = (value: string) => true | string;
 
 export default defineComponent({
   name: "wra-text-area",
@@ -45,7 +45,7 @@ export default defineComponent({
      * An array of validation rule functions. Each function should return true or an error message string.
      */
     rules: {
-      type: Array as PropType<ValidationRule[]>,
+      type: Array as PropType<TextAreaValidationRule[]>,
       default: () => [],
       required: false
     },

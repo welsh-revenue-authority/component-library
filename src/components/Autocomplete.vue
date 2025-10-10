@@ -58,7 +58,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-export interface Option {
+export interface AutocompleteOption {
   [key: string]: any;
   clickable?: boolean;
 }
@@ -80,7 +80,7 @@ export default defineComponent({
     },
     /** Options for autocomplete list */
     options: {
-      type: Array as () => Option[],
+      type: Array as () => AutocompleteOption[],
       required: true
     },
     /** Change the default object name for the data */
@@ -115,7 +115,7 @@ export default defineComponent({
       hasFocus: false as boolean,
       listHasFocus: false as boolean,
       optionIndex: null as number | null,
-      validatedOptions: [] as Option[]
+      validatedOptions: [] as AutocompleteOption[]
     };
   },
   methods: {
@@ -126,7 +126,7 @@ export default defineComponent({
       this.$emit("update:modelValue", this.userInput);
     },
     /** Handle selecting an option from the list */
-    onOptionSelect(option: Option): void {
+    onOptionSelect(option: AutocompleteOption): void {
       if (option?.clickable === false) {
         return;
       }
@@ -193,7 +193,7 @@ export default defineComponent({
         (this.autoExpand === true || inputLongEnough === true);
       return showOptions;
     },
-    filterOptions(): Option[] {
+    filterOptions(): AutocompleteOption[] {
       const searchForInput = this.validatedOptions.filter((item) =>
         (item[this.optionLabel] || "")
           .toLowerCase()
@@ -232,7 +232,7 @@ export default defineComponent({
   },
   watch: {
     options: {
-      handler(newOptions: Option[]) {
+      handler(newOptions: AutocompleteOption[]) {
         this.validatedOptions = newOptions ?? [];
       },
       immediate: true
