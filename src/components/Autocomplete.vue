@@ -33,6 +33,7 @@
     >
       <li
         v-for="(option, index) in filterOptions"
+        :key="option.value"
         :ref="`option${index}`"
         :id="`option${index}`"
         role="option"
@@ -59,7 +60,8 @@
 import { defineComponent } from "vue";
 
 export interface AutocompleteOption {
-  [key: string]: any;
+  label: string;
+  value: string;
   clickable?: boolean;
 }
 
@@ -68,7 +70,7 @@ export default defineComponent({
   emits: ["update:modelValue"],
   props: {
     modelValue: {
-      type: Object as () => Record<string, any>
+      type: Object as () => AutocompleteOption
     },
     /** Label for autocomplete */
     label: {
@@ -111,7 +113,7 @@ export default defineComponent({
   },
   data() {
     return {
-      userInput: {} as Record<string, any>,
+      userInput: {} as AutocompleteOption,
       hasFocus: false as boolean,
       listHasFocus: false as boolean,
       optionIndex: null as number | null,
@@ -234,6 +236,11 @@ export default defineComponent({
     options: {
       handler(newOptions: AutocompleteOption[]) {
         this.validatedOptions = newOptions ?? [];
+        this.userInput =
+          newOptions.find(
+            (option) =>
+              option[this.optionValue] === this.userInput[this.optionValue]
+          ) ?? this.userInput;
       },
       immediate: true
     }
