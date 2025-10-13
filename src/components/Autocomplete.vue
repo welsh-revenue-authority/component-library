@@ -109,6 +109,10 @@ export default defineComponent({
     autoExpand: {
       type: Boolean as () => boolean,
       default: false
+    },
+    forceSelection: {
+      type: Boolean as () => boolean,
+      default: true
     }
   },
   data() {
@@ -125,7 +129,9 @@ export default defineComponent({
     onInputTyping(): void {
       this.optionIndex = null;
       this.userInput[this.optionValue] = this.getInputValue;
-      this.$emit("update:modelValue", this.userInput);
+      if (this.forceSelection === false) {
+        this.$emit("update:modelValue", this.userInput);
+      }
     },
     /** Handle selecting an option from the list */
     onOptionSelect(option: AutocompleteOption): void {
