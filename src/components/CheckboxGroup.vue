@@ -27,10 +27,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, InputHTMLAttributes, PropType } from "vue";
 import WraCheckbox from "./Checkbox.vue";
 
-export type CheckboxOption = Record<string, any> | string;
+export type CheckboxOption =
+  | Record<string, InputHTMLAttributes["value"]>
+  | string;
 
 export default defineComponent({
   name: "wra-checkbox-group",

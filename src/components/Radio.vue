@@ -24,11 +24,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, InputHTMLAttributes, PropType } from "vue";
 
 export interface RadioOption {
   label: string;
-  value: string | number;
+  value: InputHTMLAttributes["value"];
   info?: string;
   id?: string;
 }
