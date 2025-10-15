@@ -248,12 +248,20 @@ export default defineComponent({
   created() {
     this.validatedOptions = this.options ?? [];
     // Set initial value if it is formatted correctly
-    if (this.modelValue && Object.keys(this.modelValue).length >= 2) {
-      this.userInput = this.modelValue;
+    if (!(this.modelValue && Object.keys(this.modelValue).length >= 2)) {
+      this.userInput[this.optionLabel] = "";
+      this.userInput[this.optionValue] = "";
       return;
     }
-    this.userInput[this.optionLabel] = "";
-    this.userInput[this.optionValue] = "";
+    this.userInput = this.modelValue;
+    const optionExists = this.options.find(
+      (option) =>
+        option[this.optionLabel].toLowerCase() ===
+        this.userInput[this.optionLabel].toLowerCase()
+    );
+    if (optionExists) {
+      this.$emit("validOption", true);
+    }
   },
   watch: {
     options: {
