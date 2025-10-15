@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 
 export interface AutocompleteOption {
   label: string;
@@ -67,10 +67,10 @@ export interface AutocompleteOption {
 
 export default defineComponent({
   name: "wra-autocomplete",
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "validOption"],
   props: {
     modelValue: {
-      type: Object as () => AutocompleteOption
+      type: Object as PropType<AutocompleteOption>
     },
     /** Label for autocomplete */
     label: {
@@ -82,7 +82,7 @@ export default defineComponent({
     },
     /** Options for autocomplete list */
     options: {
-      type: Array as () => AutocompleteOption[],
+      type: Array as PropType<AutocompleteOption[]>,
       required: true
     },
     /** Change the default object name for the data */
@@ -129,6 +129,18 @@ export default defineComponent({
     onInputTyping(): void {
       this.optionIndex = null;
       this.userInput[this.optionValue] = this.getInputValue;
+      const manuallyTypedOption = this.options.find(
+        (option) =>
+          option[this.optionLabel].toLowerCase() ===
+          this.userInput[this.optionLabel].toLowerCase()
+      );
+      if (manuallyTypedOption) {
+        this.$emit("validOption", true);
+        this.userInput = { ...manuallyTypedOption };
+        this.$emit("update:modelValue", this.userInput);
+        return;
+      }
+      this.$emit("validOption", false);
       if (this.forceSelection === false) {
         this.$emit("update:modelValue", this.userInput);
       }
@@ -138,7 +150,8 @@ export default defineComponent({
       if (option?.clickable === false) {
         return;
       }
-      this.userInput = Object.assign({}, option);
+      this.userInput = { ...option };
+      this.$emit("validOption", true);
       this.$emit("update:modelValue", this.userInput);
     },
     /** Handle blur event on the input */
@@ -168,7 +181,9 @@ export default defineComponent({
         this.listHasFocus = true;
         const refName = `option${this.optionIndex}`;
         const ref = (this.$refs[refName] as HTMLElement[])[0];
-        ref && ref.focus();
+        if (ref) {
+          ref.focus();
+        }
       }
     },
     /** Handle down arrow key navigation */
@@ -184,7 +199,9 @@ export default defineComponent({
       this.listHasFocus = true;
       const refName = `option${this.optionIndex}`;
       const ref = (this.$refs[refName] as HTMLElement[])[0];
-      ref && ref.focus();
+      if (ref) {
+        ref.focus();
+      }
     }
   },
   computed: {
@@ -242,11 +259,14 @@ export default defineComponent({
     options: {
       handler(newOptions: AutocompleteOption[]) {
         this.validatedOptions = newOptions ?? [];
-        this.userInput =
-          newOptions.find(
-            (option) =>
-              option[this.optionValue] === this.userInput[this.optionValue]
-          ) ?? this.userInput;
+        this.userInputMatchesOption = newOptions.find(
+          (option) =>
+            option[this.optionValue] === this.userInput[this.optionValue]
+        );
+        if (this.userInputMatchesOption) {
+          this.$emit("validOption", true);
+          this.userInput = { ...this.userInputMatchesOption };
+        }
       },
       immediate: true
     }
