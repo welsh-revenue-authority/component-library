@@ -9,7 +9,7 @@
       <input
         class="checkbox-input"
         type="checkbox"
-        :id="checkForObjectValue(option)"
+        :id="typeof option === 'object' && option.id ? option.id : checkForObjectValue(option)"
         :checked="checked[checkForObjectValue(option)]"
         :aria-checked="checked[checkForObjectValue(option)]"
         @change="checkInput(checkForObjectValue(option))"
@@ -27,11 +27,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, InputHTMLAttributes, PropType } from "vue";
-import WraCheckbox from "./Checkbox.vue";
+import { defineComponent, PropType } from "vue";
 
 export type CheckboxOption =
-  | Record<string, InputHTMLAttributes["value"]>
+  | {
+      label: string;
+      value: any;
+      info?: string;
+      id?: string;
+    }
   | string;
 
 export default defineComponent({
@@ -86,8 +90,7 @@ export default defineComponent({
   },
   data() {
     return {
-      checked: {} as Record<string, boolean>,
-      value: [] as CheckboxOption[]
+      checked: {} as Record<string, boolean>
     };
   },
   methods: {
@@ -117,54 +120,60 @@ export default defineComponent({
           }
         });
       } else {
-        checkedArray = Object.keys(this.checked).filter(
-          (key) => this.checked[key]
-        );
+        checkedArray = Object.keys(this.checked).filter((key) => this.checked[key]);
       }
-
-      this.$emit("update:modelValue", checkedArray);
+      this.localModelValue = checkedArray;
     },
     checkForObjectLabel(input: CheckboxOption): string {
       if (typeof input === "object") {
         return input[this.itemLabel];
-      } else {
-        return input;
       }
+      return input;
     },
     checkForObjectInfo(input: CheckboxOption): string | null {
       if (typeof input === "object") {
         return input[this.itemInfo];
-      } else {
-        return null;
       }
+      return null;
     },
     checkForObjectValue(input: CheckboxOption): string {
       if (typeof input === "object") {
         return input[this.itemValue];
-      } else {
-        return input;
+      }
+      return input;
+    }
+  },
+  watch: {
+    localModelValue: {
+      immediate: true,
+      deep: true,
+      handler(newVal: CheckboxOption[]) {
+        for (const element of newVal) {
+          if (typeof element === "object") {
+            this.checked[element[this.itemValue]] = true;
+          } else {
+            this.checked[element] = true;
+          }
+        }
       }
     }
   },
   computed: {
     validOptions(): CheckboxOption[] {
       return this.options ?? [];
+    },
+    localModelValue: {
+      get() {
+        return this.modelValue;
+      },
+      set(value: CheckboxOption[]) {
+        this.$emit("update:modelValue", value);
+      }
     }
   },
   mounted() {
     //sets up which values should be checked initially e.g. if editing existing data
-    this.value = this.modelValue ?? [];
-    for (let index = 0; index < this.value.length; index++) {
-      const element = this.value[index];
-      if (typeof element === "object") {
-        this.checked[element[this.itemValue]] = true;
-      } else {
-        this.checked[element] = true;
-      }
-    }
-  },
-  components: {
-    WraCheckbox
+    this.localModelValue = this.modelValue ?? [];
   }
 });
 </script>
@@ -181,7 +190,6 @@ export default defineComponent({
   display: flex;
   cursor: pointer;
   line-height: 1.375rem;
-
   display: grid;
   grid-template-columns: 20px auto;
 }
