@@ -12,7 +12,7 @@
             {{ title }}
           </slot>
         </div>
-        <div class="accordion-description pb-1" v-if="description">
+        <div class="accordion-description pb-1" v-if="description || $slots.description">
           <slot name="description">
             {{ description }}
           </slot>
