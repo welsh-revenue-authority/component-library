@@ -10,6 +10,7 @@ import Button from "@/components/Button.vue";
 import Card from "@/components/Card.vue";
 import Checkbox from "@/components/Checkbox.vue";
 import CheckboxGroup from "@/components/CheckboxGroup.vue";
+import ContentAccordion from "@/components/ContentAccordion.vue";
 import ContentSectionTitle from "@/components/ContentSectionTitle.vue";
 import CustomInput from "@/components/CustomInput.vue";
 import DataTable from "@/components/DataTable.vue";
@@ -59,6 +60,7 @@ export {
   Card as WraCard,
   Checkbox as WraCheckbox,
   CheckboxGroup as WraCheckboxGroup,
+  ContentAccordion as WraContentAccordion,
   ContentSectionTitle as WraContentSectionTitle,
   CustomInput as WraCustomInput,
   DataTable as WraDataTable,
@@ -98,6 +100,7 @@ const components = {
   WraCard: Card,
   WraCheckbox: Checkbox,
   WraCheckboxGroup: CheckboxGroup,
+  WraContentAccordion: ContentAccordion,
   WraContentSectionTitle: ContentSectionTitle,
   WraCustomInput: CustomInput,
   WraDataTable: DataTable,
