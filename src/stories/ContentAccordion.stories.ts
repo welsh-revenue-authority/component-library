@@ -26,7 +26,7 @@ export const Default: StoryObj<typeof WraContentAccordion> = {
     setup() {
       return { args };
     },
-    template: `<WraContentAccordion title='{{ args.title }}' description='{{ args.description }}' ariaTitle='{{ args.ariaTitle }}' showText='{{ args.showText }}' hideText='{{ args.hideText }}' v-bind="args">
+    template: `<WraContentAccordion v-bind="args">
         <div>
           <p style="margin-block-start: 0px;">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

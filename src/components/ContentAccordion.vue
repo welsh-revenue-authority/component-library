@@ -37,7 +37,7 @@
       <div
         class="panel-content"
         :aria-hidden="!showPanel"
-        :id="'content-' + ariaTitle"
+        :id="'expansion-content-' + ariaTitle"
         v-if="showPanel"
       >
         <div class="inner-panel">
