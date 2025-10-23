@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Directive, PropType } from "vue";
+import { defineComponent, Directive, InputHTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
 const vMaskaDirective = vMaska as unknown as Directive;
@@ -107,16 +107,7 @@ export default defineComponent({
      * @validator value {string} - The input mode must be one of ["none", "text", "tel", "url", "email", "numeric", "decimal", "search"].
      */
     inputmode: {
-      type: String as PropType<
-        | "none"
-        | "text"
-        | "tel"
-        | "url"
-        | "email"
-        | "numeric"
-        | "decimal"
-        | "search"
-      >,
+      type: String as PropType<InputHTMLAttributes["inputmode"]>,
       default: "numeric"
     },
     /**
@@ -127,14 +118,7 @@ export default defineComponent({
      */
     type: {
       type: String as PropType<
-        | "text"
-        | "none"
-        | "tel"
-        | "url"
-        | "email"
-        | "numeric"
-        | "decimal"
-        | "number"
+        "text" | "tel" | "url" | "email" | "number" | "search" | "password"
       >,
       default: "text"
     },
@@ -190,12 +174,12 @@ export default defineComponent({
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      errorMessage: "" as string,
-      firstValidation: true as boolean
+      errorMessage: "",
+      firstValidation: true
     };
   },
   methods: {
-    onMaska(event: any) {
+    onMaska(event) {
       const unmaskedValue = event.detail.unmasked;
       this.$emit("update:modelValue", unmaskedValue);
       this.validate(unmaskedValue);
