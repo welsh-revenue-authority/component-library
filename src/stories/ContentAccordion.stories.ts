@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 const meta: Meta<typeof WraContentAccordion> = {
   title: "Containment/ContentAccordion",
   component: WraContentAccordion,
-  tags: ["autodocs"],
   argTypes: {
     title: {
       description: "Title of the content accordion."

@@ -1,0 +1,63 @@
+import {
+  Meta,
+  Title,
+  Primary,
+  Controls,
+  Stories
+} from "@storybook/addon-docs/blocks";
+
+import * as ContentAccordionStories from "../stories/ContentAccordion.stories";
+
+<Meta of={ContentAccordionStories} />
+
+<Title />
+
+<Primary />
+
+## Usage
+
+### Expand Override Prop
+
+The `expandOverride` prop allows you to control the expanded/collapsed state of the accordion programmatically from a parent component. This is useful when you want to show or hide the content based on external state, such as a button click or a form event.
+
+When `expandOverride` is set, the accordion will use its value to determine whether the content is shown. The component also emits an `update:expanded` event when the user toggles the accordion, so you can update your state in response.
+
+#### Example usage
+
+```html
+<template>
+  <div>
+    <button @click="toggleAccordion">Toggle Accordion</button>
+    <WraContentAccordion
+      :title="'Controlled Accordion'"
+      :description="'This accordion is controlled by the parent.'"
+      :ariaTitle="'controlled-accordion'"
+      :expandOverride="isExpanded"
+      @update:expanded="handleAccordionUpdate"
+    >
+      <div>
+        <p>This content is shown or hidden based on the parent’s state.</p>
+      </div>
+    </WraContentAccordion>
+  </div>
+</template>
+
+<script setup>
+  import { ref } from "vue";
+  import WraContentAccordion from "./ContentAccordion.vue";
+
+  const isExpanded = ref(false);
+
+  function toggleAccordion() {
+    isExpanded.value = !isExpanded.value;
+  }
+
+  function handleAccordionUpdate(newState) {
+    isExpanded.value = newState;
+  }
+</script>
+```
+
+<Controls />
+
+<Stories />

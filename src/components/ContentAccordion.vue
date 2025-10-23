@@ -12,7 +12,10 @@
             {{ title }}
           </slot>
         </div>
-        <div class="accordion-description pb-1" v-if="description || $slots.description">
+        <div
+          class="accordion-description pb-1"
+          v-if="description || $slots.description"
+        >
           <slot name="description">
             {{ description }}
           </slot>
@@ -85,16 +88,38 @@ export default defineComponent({
     hideText: {
       type: String as PropType<string>,
       default: "Hide"
+    },
+    /**
+     * If set, overrides the expanded/collapsed state programmatically
+     */
+    expandOverride: {
+      type: Boolean as PropType<boolean>,
+      default: undefined
     }
   },
   data() {
     return {
-      showPanel: false
+      internalPanel: false as boolean
     };
+  },
+  computed: {
+    showPanel(): boolean {
+      // If expandOverride is explicitly set, use it; otherwise use internal state
+      return this.expandOverride !== undefined
+        ? this.expandOverride
+        : this.internalPanel;
+    }
   },
   methods: {
     togglePanel(): void {
-      this.showPanel = !this.showPanel;
+      // Only update internal state if not controlled by expandOverride
+      if (this.expandOverride === undefined) {
+        this.internalPanel = !this.internalPanel;
+        this.$emit("update:expanded", this.internalPanel);
+      } else {
+        // Emit event so parent can update expandOverride
+        this.$emit("update:expanded", !this.expandOverride);
+      }
     }
   }
 });
