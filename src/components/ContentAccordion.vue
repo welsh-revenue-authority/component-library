@@ -56,6 +56,7 @@ import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
   name: "wra-content-accordion",
+  emits: ["update:expanded"],
   props: {
     title: {
       type: String as PropType<string>,
