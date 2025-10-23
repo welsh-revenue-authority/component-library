@@ -89,7 +89,7 @@ export default defineComponent({
   },
   data() {
     return {
-      showPanel: false as boolean
+      showPanel: false
     };
   },
   methods: {
