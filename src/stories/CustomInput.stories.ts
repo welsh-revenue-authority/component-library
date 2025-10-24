@@ -7,7 +7,7 @@ const meta: Meta<typeof WraCustomInput> = {
   argTypes: {
     type: {
       control: { type: "select" },
-      options: ["none", "text", "tel", "url", "email", "numeric", "decimal"]
+      options: ["text", "tel", "url", "email", "number", "search", "password"]
     },
     inputmode: {
       control: { type: "select" },
