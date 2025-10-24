@@ -2,46 +2,44 @@
   <div>
     <button
       class="expansion-button"
-      :aria-controls="'expansion-content-' + ariaTitle"
+      :aria-controls="`expansion-content-${ariaTitle}`"
       :id="`expansion-control-${ariaTitle}`"
       @click="togglePanel"
     >
-      <div class="w-full">
-        <div class="accordion-title pb-1">
-          <slot name="title">
-            {{ title }}
-          </slot>
-        </div>
-        <div
-          class="accordion-description pb-1"
-          v-if="description || $slots.description"
-        >
-          <slot name="description">
-            {{ description }}
-          </slot>
-        </div>
-        <div class="flex items-center">
-          <span class="accordion-description">
-            {{ showPanel ? hideText : showText }}
-          </span>
-          <span class="icon-wrapper">
-            <span
-              class="panel-icon"
-              :class="{
-                'show-panel-icon': showPanel,
-                'hide-panel-icon': !showPanel
-              }"
-            ></span>
-          </span>
-        </div>
+      <div class="accordion-title">
+        <slot name="title">
+          {{ title }}
+        </slot>
+      </div>
+      <div
+        class="accordion-description"
+        v-if="description || $slots.description"
+      >
+        <slot name="description">
+          {{ description }}
+        </slot>
+      </div>
+      <div class="accordion-toggle">
+        <span>
+          {{ showPanel ? hideText : showText }}
+        </span>
+        <span class="accordion-icon-wrapper">
+          <span
+            class="accordion-icon"
+            :class="{
+              'accordion-icon--show': showPanel,
+              'accordion-icon--hide': !showPanel
+            }"
+          ></span>
+        </span>
       </div>
     </button>
     <transition name="slide-fade">
       <div
+        v-show="showPanel"
         class="panel-content"
         :aria-hidden="!showPanel"
         :id="`expansion-content-${ariaTitle}`"
-        v-if="showPanel"
       >
         <div class="inner-panel">
           <slot></slot>
@@ -127,7 +125,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.panel-icon {
+.accordion-icon {
   content: " ";
   display: inline-block;
   border: solid var(--color-wra-black);
@@ -139,17 +137,22 @@ export default defineComponent({
   transition: transform 0.2s ease-out;
 }
 
-.icon-wrapper {
+.accordion-icon-wrapper {
   margin-left: 8px;
 }
 
-.show-panel-icon {
+.accordion-toggle {
+  display: flex;
+  align-items: center;
+}
+
+.accordion-icon--show {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   margin-top: 3px;
 }
 
-.hide-panel-icon {
+.accordion-icon--hide {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   margin-top: -5px;
@@ -164,16 +167,22 @@ export default defineComponent({
   font-weight: bold;
   line-height: 28px;
   color: var(--color-wra-blue);
+  padding-bottom: 0.25rem;
 }
 
 button:focus .accordion-title {
   color: var(--color-wra-black);
 }
 
-.accordion-description {
+.accordion-description,
+.accordion-toggle {
   font-size: 14px;
   line-height: 20px;
   color: var(--color-wra-black);
+}
+
+.accordion-description {
+  padding-bottom: 0.25rem;
 }
 
 button {
