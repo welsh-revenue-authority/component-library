@@ -226,8 +226,6 @@ export default defineComponent({
       );
       if (searchForInput.length > 0) {
         return searchForInput;
-      } else if (this.autoExpand === true) {
-        return this.validatedOptions;
       }
       searchForInput.push({
         [this.optionLabel]: "No results found",
@@ -356,7 +354,7 @@ ul.autocomplete-list > li.autocomplete-item--focus {
   color: #ffffff;
 }
 
-.autocomplete-item-not-clickable {
+.autocomplete-list > li.autocomplete-item-not-clickable {
   cursor: not-allowed;
 }
 
