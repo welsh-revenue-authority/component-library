@@ -113,6 +113,10 @@ export default defineComponent({
     forceSelection: {
       type: Boolean as () => boolean,
       default: true
+    },
+    /** Label that shows when none of the options match */
+    notFoundContent: {
+      type: String as () => string
     }
   },
   data() {
@@ -228,7 +232,7 @@ export default defineComponent({
         return searchForInput;
       }
       searchForInput.push({
-        [this.optionLabel]: "No results found",
+        [this.optionLabel]: this.notFoundContent,
         [this.optionValue]: "",
         clickable: false
       });

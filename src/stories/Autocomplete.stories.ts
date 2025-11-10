@@ -56,7 +56,8 @@ export const Default: Story = {
   args: {
     label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
-    options: councilArray
+    options: councilArray,
+    notFoundContent: "No results found"
   },
   parameters: {
     docs: {
@@ -66,6 +67,7 @@ export const Default: Story = {
   label="This is an autocomplete for Welsh local authorities"
   id="test-autocomplete"
   :options="options"
+  not-found-content="No results found"
 ></wra-autocomplete>
         `
       }
@@ -79,7 +81,8 @@ export const Placeholder: Story = {
       "This is an autocomplete for Welsh local authorities that has placeholder text",
     id: "test-autocomplete-placeholder",
     options: councilArray,
-    placeholder: "Search for a local authority"
+    placeholder: "Search for a local authority",
+    notFoundContent: "No results found"
   },
   parameters: {
     docs: {
@@ -90,6 +93,7 @@ export const Placeholder: Story = {
   id="test-autocomplete-placeholder"
   :options="options"
   placeholder="Search for a local authority"
+  not-found-content="No results found"
 ></wra-autocomplete>
         `
       }
@@ -103,7 +107,8 @@ export const Autoexpand: Story = {
       "This is an autocomplete showing Welsh local authorities that expands when clicked",
     id: "test-autocomplete-autoexpand",
     autoExpand: true,
-    options: councilArray
+    options: councilArray,
+    notFoundContent: "No results found"
   },
   parameters: {
     docs: {
@@ -114,6 +119,7 @@ export const Autoexpand: Story = {
   id="test-autocomplete-autoexpand"
   :options="options"
   auto-expand
+  not-found-content="No results found"
 ></wra-autocomplete>
         `
       }
@@ -126,7 +132,8 @@ export const PreFilled: Story = {
     label: "This is an autocomplete that is prefilled with a value",
     id: "test-autocomplete-prefill",
     options: councilArray,
-    modelValue: { value: "alice-council", label: "Alice's council" }
+    modelValue: { value: "alice-council", label: "Alice's council" },
+    notFoundContent: "No results found"
   },
   parameters: {
     docs: {
@@ -137,6 +144,7 @@ export const PreFilled: Story = {
   id="test-autocomplete-prefill"
   :options="options"
   :model-value="modelValue"
+  not-found-content="No results found"
 ></wra-autocomplete>
         `
       }
