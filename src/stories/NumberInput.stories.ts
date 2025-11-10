@@ -9,7 +9,7 @@ const meta: Meta<typeof WraNumberInput> = {
       control: {
         type: "select"
       },
-      options: ["text", "password", "search"]
+      options: ["text", "number"]
     },
     inputmode: {
       control: {
