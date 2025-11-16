@@ -9,7 +9,7 @@
         :inputmode="inputmode || 'numeric'"
         :placeholder="placeholder"
         :value="modelValue"
-        v-maska="'9,99#'"
+        v-maska="type === 'number' ? '999#' : '9,99#'"
         data-maska-tokens="9:[0-9]:repeated"
         data-maska-reversed
         @maska="onMaska($event.detail)"
@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Directive, PropType } from "vue";
+import { defineComponent, Directive, InputHTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
 
 export type RuleFunction = (value: string | number) => true | string;
@@ -65,15 +65,13 @@ export default defineComponent({
      * The type of the input field.
      * @type {string}
      * @default "text"
-     * @validator value {string} - The type must be one of ["text", "password", "search"].
+     * @validator value {string}
      */
     type: {
-      type: String as PropType<"text" | "password" | "search">,
-      // Default of number causes issues with maska
+      type: String as PropType<"text" | "number">,
       default: "text",
       validator(value: string) {
-        // Types that take typical text input
-        return ["text", "password", "search"].includes(value);
+        return ["text", "number"].includes(value);
       }
     },
     /**
@@ -82,10 +80,19 @@ export default defineComponent({
      * @default "numeric"
      */
     inputmode: {
-      type: String as PropType<"numeric" | "decimal" | "text">,
+      type: String as PropType<InputHTMLAttributes["inputmode"]>,
       default: "numeric",
       validator(value: string) {
-        return ["numeric", "decimal", "text"].includes(value);
+        return [
+          "text",
+          "none",
+          "tel",
+          "url",
+          "email",
+          "numeric",
+          "decimal",
+          "search"
+        ].includes(value);
       }
     },
     /**
@@ -129,10 +136,10 @@ export default defineComponent({
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      dataValue: "" as string,
-      errorMessage: "" as string,
-      firstValidation: true as boolean,
-      returnValue: "" as string
+      dataValue: "",
+      errorMessage: "",
+      firstValidation: true,
+      returnValue: ""
     };
   },
   methods: {
@@ -163,7 +170,7 @@ export default defineComponent({
         }
       }
     },
-    onMaska(value: any) {
+    onMaska(value) {
       const emittedValue = this.emitMaskaDetails ? value : value.unmasked;
       this.$emit("update:modelValue", emittedValue);
       this.validate(value.unmasked);
