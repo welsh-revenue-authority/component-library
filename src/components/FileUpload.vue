@@ -48,6 +48,14 @@ import { defineComponent, PropType } from "vue";
 import ValidationTooltip from "./ValidationTooltip.vue";
 import WraButton from "./Button.vue";
 
+
+defineProps<
+
+
+
+
+>()
+
 export default defineComponent({
   name: "file-upload",
   emits: ["change"],
