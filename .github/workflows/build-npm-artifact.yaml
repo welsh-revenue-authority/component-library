@@ -42,6 +42,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: "https://registry.npmjs.org"
           cache: "npm"
+      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm run build
       # First time package is scoped to private, explicitly set to public
