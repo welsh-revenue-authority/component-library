@@ -1,9 +1,15 @@
 name: Build, upload to NPM
+
 on:
   push:
     branches: ["main"]
     paths:
       - "package.json"
+
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   check_versions:
     name: "Check package.json version numbers"
@@ -40,5 +46,3 @@ jobs:
       - run: npm run build
       # First time package is scoped to private, explicitly set to public
       - run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
