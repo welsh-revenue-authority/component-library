@@ -279,6 +279,25 @@ export default defineComponent({
         }
       },
       immediate: true
+    },
+    modelValue: {
+      handler(newValue: AutocompleteOption) {
+        if (!(newValue && Object.keys(newValue).length >= 2)) {
+          this.userInput[this.optionLabel] = "";
+          this.userInput[this.optionValue] = "";
+          return;
+        }
+        this.userInput = newValue;
+        const optionExists = this.options.find(
+          (option) =>
+            option[this.optionLabel].toLowerCase() ===
+            this.userInput[this.optionLabel].toLowerCase()
+        );
+        if (optionExists) {
+          this.$emit("validOption", true);
+        }
+      },
+      immediate: true
     }
   }
 });
