@@ -17,7 +17,7 @@
           ref="dayInput"
           :id="`${id}-day`"
           type="text"
-          class="date-input__input date-input__input--width-2"
+          class="date-input__input date-input__input--day"
           :value="day"
           :inputmode="inputmode"
           :placeholder="placeholderDay"
@@ -35,7 +35,7 @@
           ref="monthInput"
           :id="`${id}-month`"
           type="text"
-          class="date-input__input date-input__input--width-2"
+          class="date-input__input date-input__input--month"
           :value="month"
           :inputmode="inputmode"
           :placeholder="placeholderMonth"
@@ -53,7 +53,7 @@
           ref="yearInput"
           :id="`${id}-year`"
           type="text"
-          class="date-input__input date-input__input--width-4"
+          class="date-input__input date-input__input--year"
           :value="year"
           :inputmode="inputmode"
           :placeholder="placeholderYear"
@@ -378,11 +378,15 @@ fieldset {
   box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
-.date-input__input--width-2 {
+.date-input__input--day {
   max-width: var(--day-input-width, 47px);
 }
 
-.date-input__input--width-4 {
+.date-input__input--month {
+  max-width: var(--month-input-width, 47px);
+}
+
+.date-input__input--year {
   max-width: var(--year-input-width, 72px);
 }
 </style>
