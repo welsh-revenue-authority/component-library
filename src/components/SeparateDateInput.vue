@@ -73,16 +73,14 @@ export default defineComponent({
   props: {
     /**
      * The value of the date input (object with day, month, year properties).
-     * @required
      * @default null
      */
     modelValue: {
-      type: [Object, null] as PropType<{
+      type: Object as PropType<{
         day: number | null;
         month: number | null;
         year: number | null;
       } | null>,
-      required: true,
       default: null
     },
     /**
