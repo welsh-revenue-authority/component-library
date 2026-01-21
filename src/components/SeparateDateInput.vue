@@ -72,12 +72,16 @@ export default defineComponent({
   name: "wra-separate-date-input",
   props: {
     /**
-     * The value of the date input (Date object or ISO string).
+     * The value of the date input (object with day, month, year properties).
      * @required
      * @default null
      */
     modelValue: {
-      type: [String, Object, null] as PropType<string | Date | null>,
+      type: [Object, null] as PropType<{
+        day: number | null;
+        month: number | null;
+        year: number | null;
+      } | null>,
       required: true,
       default: null
     },
@@ -233,31 +237,24 @@ export default defineComponent({
     };
   },
   watch: {
-    modelValue(newValue: string | Date | null) {
-      if (newValue !== this.getDateObject()) {
-        this.setInitialState();
-      }
+    modelValue() {
+      this.setInitialState();
     }
   },
   methods: {
     /**
-     * Gets the current date object from the component state.
+     * Gets the current date object to emit.
      */
-    getDateObject(): Date | null {
-      if (!this.day || !this.month || !this.year) {
-        return null;
-      }
-      const d = parseInt(this.day);
-      const m = parseInt(this.month);
-      const y = parseInt(this.year);
-
-      if (isNaN(d) || isNaN(m) || isNaN(y)) {
-        return null;
-      }
-
-      const date = new Date(y, m - 1, d);
-      // Remove timezone offset
-      return new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    getDateObject(): {
+      day: number | null;
+      month: number | null;
+      year: number | null;
+    } {
+      return {
+        day: this.day ? parseInt(this.day) : null,
+        month: this.month ? parseInt(this.month) : null,
+        year: this.year ? parseInt(this.year) : null
+      };
     },
     /**
      * Handles day input.
@@ -311,39 +308,18 @@ export default defineComponent({
      * Sets the initial state based on modelValue prop.
      */
     setInitialState(): void {
-      if (
-        typeof this.modelValue === "undefined" ||
-        this.modelValue == null ||
-        this.modelValue === ""
-      ) {
+      if (this.modelValue === null || typeof this.modelValue !== "object") {
         this.day = "";
         this.month = "";
         this.year = "";
         return;
       }
 
-      let date: Date;
-      if (typeof this.modelValue === "object") {
-        date = this.modelValue as Date;
-      } else if (typeof this.modelValue === "string") {
-        date = new Date(this.modelValue);
-      } else {
-        this.day = "";
-        this.month = "";
-        this.year = "";
-        return;
-      }
+      const { day, month, year } = this.modelValue;
 
-      if (isNaN(date.getTime())) {
-        this.day = "";
-        this.month = "";
-        this.year = "";
-        return;
-      }
-
-      this.day = date.getDate().toString().padStart(2, "0");
-      this.month = (date.getMonth() + 1).toString().padStart(2, "0");
-      this.year = date.getFullYear().toString();
+      this.day = day !== null ? day.toString().padStart(2, "0") : "";
+      this.month = month !== null ? month.toString().padStart(2, "0") : "";
+      this.year = year !== null ? year.toString() : "";
     }
   },
   mounted() {

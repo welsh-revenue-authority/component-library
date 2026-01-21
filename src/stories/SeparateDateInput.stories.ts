@@ -2,7 +2,11 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSeparateDateInput from "../components/SeparateDateInput.vue";
 
 type SeparateDateInputArgs = {
-  modelValue: Date | null;
+  modelValue: {
+    day: number | null;
+    month: number | null;
+    year: number | null;
+  } | null;
   dayLabel: string;
   monthLabel: string;
   yearLabel: string;
@@ -32,7 +36,7 @@ export const Default: StoryObj<SeparateDateInputArgs> = {
 
 export const WithInitialValue: StoryObj<SeparateDateInputArgs> = {
   args: {
-    modelValue: new Date("1995-06-15"),
+    modelValue: { day: 15, month: 6, year: 1995 },
     dayLabel: "Day",
     monthLabel: "Month",
     yearLabel: "Year",
