@@ -59,7 +59,7 @@ export default defineComponent({
      * The input mode for the input field.
      * @type {string}
      * @default "numeric"
-     * @validator value {string} - The input mode must be "numeric".
+     * @validator value {string}
      */
     inputmode: {
       type: String as PropType<
