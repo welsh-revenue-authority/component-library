@@ -3,7 +3,7 @@ name: Build, upload to NPM
 on:
   push:
     tags:
-      - "v*" 
+      - "v*"
 
 permissions:
   id-token: write
@@ -13,7 +13,7 @@ jobs:
   build:
     name: Publish NPM package
     runs-on: ubuntu-latest
-    needs: check_versions
+    strategy:
       matrix:
         node-version: [22.x]
     steps:

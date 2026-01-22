@@ -5,14 +5,15 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     name: Build and deploy Storybook to GitHub Pages
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     strategy:
       matrix:
         node-version: [22.x]
