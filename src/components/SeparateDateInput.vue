@@ -315,8 +315,8 @@ export default defineComponent({
 
       const { day, month, year } = this.modelValue;
 
-      this.day = day !== null ? day.toString().padStart(2, "0") : "";
-      this.month = month !== null ? month.toString().padStart(2, "0") : "";
+      this.day = day !== null ? day.toString() : "";
+      this.month = month !== null ? month.toString() : "";
       this.year = year !== null ? year.toString() : "";
     }
   },
