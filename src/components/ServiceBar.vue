@@ -19,6 +19,7 @@
             v-for="link in navigationLinks"
             :key="link.label"
             :href="link.href"
+            class="menu-links"
           >
             {{ link.label }}
           </a>
@@ -55,6 +56,7 @@
             v-for="link in navigationLinks"
             :key="link.label"
             :href="link.href"
+            class="menu-links"
           >
             {{ link.label }}
           </a>
@@ -209,6 +211,11 @@ export default defineComponent({
   flex-direction: column;
   gap: 10px;
   padding: 4px 0px;
+}
+
+.menu-links {
+  color: var(--color-wra-black);
+  font-weight: normal;
 }
 
 .slide-fade-enter-active {
