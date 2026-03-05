@@ -38,7 +38,7 @@
             <span class="icon prepend-icon-wrapper">
               <wra-icon :icon="isMenuOpen ? mdiClose : mdiMenu" />
             </span>
-            Menu
+            {{ menuLabel }}
           </button>
         </div>
       </div>
@@ -105,6 +105,13 @@ export default defineComponent({
     mobileBreakpoint: {
       type: Number as PropType<number>,
       default: 768
+    },
+    /**
+     * Label text for the menu button.
+     */
+    menuLabel: {
+      type: String as PropType<string>,
+      default: "Menu"
     }
   },
   data() {
