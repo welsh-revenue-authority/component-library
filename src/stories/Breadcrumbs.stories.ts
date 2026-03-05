@@ -94,3 +94,39 @@ export const replaceContent: Story = {
     }
   }
 };
+
+export const customRouterLink: Story = {
+  args: {
+    items: [
+      { title: "Dashboard", to: { name: "dashboard" }, disabled: false },
+      { title: "Link 1", to: { name: "link1" }, disabled: false },
+      { title: "Link 2", to: { name: "link2" }, disabled: true }
+    ]
+  },
+  render: (args) => ({
+    components: { Breadcrumbs },
+    setup() {
+      return { args };
+    },
+    template: `
+      <Breadcrumbs v-bind="args">
+        <template #link="{ to, title, disabled }">
+          <RouterLink :to="to" :class="{ 'disabled-link': disabled }">{{ title }}</RouterLink>
+        </template>
+      </Breadcrumbs>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<WraBreadcrumbs :items="items">
+  <template #link="{ to, title, disabled }">
+    <RouterLink :to="to" :class="{ 'disabled-link': disabled }">{{ title }}</RouterLink>
+  </template>
+</WraBreadcrumbs>
+        `
+      }
+    }
+  }
+};
