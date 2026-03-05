@@ -47,7 +47,7 @@
     <!-- Menu content displayed below service bar when open -->
     <transition name="slide-fade">
       <div
-        v-show="isMenuOpen && usesBurgerMenu"
+        v-if="isMenuOpen && usesBurgerMenu"
         class="burger-menu-content"
         id="service-bar-menu"
         :aria-hidden="!isMenuOpen"
