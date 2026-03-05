@@ -19,6 +19,7 @@
             v-for="link in navigationLinks"
             :key="link.label"
             :href="link.href"
+            :aria-label="link.ariaLabel"
             class="menu-links"
           >
             {{ link.label }}
@@ -56,6 +57,7 @@
             v-for="link in navigationLinks"
             :key="link.label"
             :href="link.href"
+            :aria-label="link.ariaLabel"
             class="menu-links"
           >
             {{ link.label }}
@@ -82,10 +84,12 @@ export default defineComponent({
       required: true
     },
     /**
-     * Array of navigation links. Each link should have a label and href.
+     * Array of navigation links. Each link should have a label, href, and aria label.
      */
     navigationLinks: {
-      type: Array as PropType<Array<{ label: string; href: string }>>,
+      type: Array as PropType<
+        Array<{ label: string; href: string; ariaLabel: string }>
+      >,
       default: () => []
     },
     /**

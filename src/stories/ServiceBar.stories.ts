@@ -13,7 +13,7 @@ const meta = {
     navigationLinks: {
       control: "object",
       description:
-        "Array of navigation links. Each link should have a label and href. If more than 3, burger menu will be displayed"
+        "Array of navigation links. Each link should have a label, href, and aria label. If more than 3, burger menu will be displayed"
     },
     hiddenPrint: {
       control: "boolean",
@@ -33,9 +33,9 @@ export const Default: Story = {
   args: {
     serviceName: "Service name",
     navigationLinks: [
-      { label: "Navigation link", href: "#" },
-      { label: "Navigation link", href: "#" },
-      { label: "Navigation link", href: "#" }
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 1" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 2" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 3" }
     ],
     hiddenPrint: false
   }
@@ -48,10 +48,10 @@ export const BurgerMenu: Story = {
   args: {
     serviceName: "Service name",
     navigationLinks: [
-      { label: "Navigation link", href: "#" },
-      { label: "Navigation link", href: "#" },
-      { label: "Navigation link", href: "#" },
-      { label: "Navigation link", href: "#" }
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 1" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 2" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 3" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 4" }
     ],
     hiddenPrint: false
   }
