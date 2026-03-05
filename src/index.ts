@@ -29,6 +29,7 @@ import PriceInput from "@/components/PriceInput.vue";
 import RadioGroup from "@/components/RadioGroup.vue";
 import Select from "@/components/Select.vue";
 import SeparateDateInput from "@/components/SeparateDateInput.vue";
+import ServiceBar from "@/components/ServiceBar.vue";
 import ServiceLogo from "@/components/ServiceLogo.vue";
 import SimpleTable from "@/components/SimpleTable.vue";
 import SkipLink from "@/components/SkipLink.vue";
@@ -80,6 +81,7 @@ export {
   RadioGroup as WraRadioGroup,
   Select as WraSelect,
   SeparateDateInput as WraSeparateDateInput,
+  ServiceBar as WraServiceBar,
   ServiceLogo as WraServiceLogo,
   SimpleTable as WraSimpleTable,
   SkipLink as WraSkipLink,
@@ -121,6 +123,7 @@ const components = {
   WraRadioGroup: RadioGroup,
   WraSelect: Select,
   WraSeparateDateInput: SeparateDateInput,
+  WraServiceBar: ServiceBar,
   WraServiceLogo: ServiceLogo,
   WraSimpleTable: SimpleTable,
   WraSkipLink: SkipLink,
