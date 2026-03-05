@@ -8,14 +8,20 @@
     >
       <!-- Service Name on the left -->
       <div class="service-section">
-        <slot name="service"> </slot>
+        {{ serviceName }}
       </div>
 
       <!-- Navigation Links on the right or under burger menu -->
       <div class="navigation-section">
         <!-- Show links directly if 3 or fewer -->
         <div v-if="!usesBurgerMenu" class="navigation-links">
-          <slot name="navigation"> </slot>
+          <a
+            v-for="link in navigationLinks"
+            :key="link.label"
+            :href="link.href"
+          >
+            {{ link.label }}
+          </a>
         </div>
 
         <!-- Show burger menu if more than 3 links -->
@@ -45,7 +51,13 @@
         :aria-hidden="!isMenuOpen"
       >
         <div class="menu-inner">
-          <slot name="navigation"> </slot>
+          <a
+            v-for="link in navigationLinks"
+            :key="link.label"
+            :href="link.href"
+          >
+            {{ link.label }}
+          </a>
         </div>
       </div>
     </transition>
@@ -61,19 +73,25 @@ export default defineComponent({
   name: "wra-service-bar",
   props: {
     /**
+     * The name of the service to display.
+     */
+    serviceName: {
+      type: String as PropType<string>,
+      required: true
+    },
+    /**
+     * Array of navigation links. Each link should have a label and href.
+     */
+    navigationLinks: {
+      type: Array as PropType<Array<{ label: string; href: string }>>,
+      default: () => []
+    },
+    /**
      * If true, the service bar will be hidden when printing the page.
      */
     hiddenPrint: {
       type: Boolean as PropType<boolean>,
       default: false
-    },
-    /**
-     * The number of navigation links. Used to determine if burger menu should be shown.
-     * If more than 3, burger menu will be displayed.
-     */
-    navigationCount: {
-      type: Number as PropType<number>,
-      default: 0
     }
   },
   data() {
@@ -88,7 +106,7 @@ export default defineComponent({
   },
   computed: {
     usesBurgerMenu(): boolean {
-      return this.navigationCount > 3;
+      return this.navigationLinks.length > 3;
     }
   }
 });
