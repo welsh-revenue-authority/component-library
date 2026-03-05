@@ -229,6 +229,7 @@ export default defineComponent({
   display: grid;
   background-color: #e9f5ff;
   padding: 0px 20px 20px 20px;
+  grid-template-rows: 1fr;
 }
 
 .menu-inner {
