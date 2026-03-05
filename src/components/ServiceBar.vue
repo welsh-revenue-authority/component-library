@@ -13,7 +13,7 @@
 
       <!-- Navigation Links on the right or under burger menu -->
       <div class="navigation-section">
-        <!-- Show links directly if 3 or fewer -->
+        <!-- Show links directly if 3 or fewer AND not on mobile -->
         <div v-if="!usesBurgerMenu" class="navigation-links">
           <a
             v-for="link in navigationLinks"
@@ -25,7 +25,7 @@
           </a>
         </div>
 
-        <!-- Show burger menu if more than 3 links -->
+        <!-- Show burger menu if more than 3 links OR on mobile -->
         <div v-if="usesBurgerMenu" class="burger-menu-container">
           <button
             class="burger-menu-button"
@@ -94,13 +94,21 @@ export default defineComponent({
     hiddenPrint: {
       type: Boolean as PropType<boolean>,
       default: false
+    },
+    /**
+     * Mobile breakpoint in pixels. Burger menu shows on screens smaller than this width.
+     */
+    mobileBreakpoint: {
+      type: Number as PropType<number>,
+      default: 768
     }
   },
   data() {
     return {
       isMenuOpen: false,
       mdiMenu,
-      mdiClose
+      mdiClose,
+      windowWidth: typeof window !== "undefined" ? window.innerWidth : 768
     };
   },
   components: {
@@ -108,7 +116,21 @@ export default defineComponent({
   },
   computed: {
     usesBurgerMenu(): boolean {
-      return this.navigationLinks.length > 3;
+      return (
+        this.navigationLinks.length > 3 ||
+        this.windowWidth < this.mobileBreakpoint
+      );
+    }
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleWindowResize);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.handleWindowResize);
+  },
+  methods: {
+    handleWindowResize() {
+      this.windowWidth = window.innerWidth;
     }
   }
 });
