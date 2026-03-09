@@ -13,6 +13,7 @@ jobs:
   build:
     name: Publish NPM package
     runs-on: ubuntu-latest
+    environment: release
     strategy:
       matrix:
         node-version: [22.x]
