@@ -40,6 +40,7 @@ import Tabs from "@/components/Tabs.vue";
 import TextArea from "@/components/TextArea.vue";
 import TextInput from "@/components/TextInput.vue";
 import ValidationTooltip from "@/components/ValidationTooltip.vue";
+import WraTag from "@/components/WraTag.vue";
 
 export type { TextInputValidationRule } from "@/components/TextInput.vue";
 export type { AutocompleteOption } from "@/components/Autocomplete.vue";
@@ -65,6 +66,7 @@ export {
   ContentAccordion as WraContentAccordion,
   ContentSectionTitle as WraContentSectionTitle,
   CustomInput as WraCustomInput,
+  WraTag,
   DataTable as WraDataTable,
   DateInput as WraDateInput,
   Dialog as WraDialog,
@@ -133,7 +135,8 @@ const components = {
   WraTabs: Tabs,
   WraTextArea: TextArea,
   WraTextInput: TextInput,
-  WraValidationTooltip: ValidationTooltip
+  WraValidationTooltip: ValidationTooltip,
+  WraTag: WraTag
 };
 
 const plugin = {
