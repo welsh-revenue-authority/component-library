@@ -34,8 +34,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType, nextTick } from "vue";
-import WraHeader from "./Header.vue";
-import WraButton from "./Button.vue";
+import WraHeader from "@/components/Header.vue";
+import WraButton from "@/components/Button.vue";
 
 export default defineComponent({
   name: "wra-dialog",

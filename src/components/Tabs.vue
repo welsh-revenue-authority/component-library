@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import Tab from "./Tab.vue";
+import Tab from "@/components/Tab.vue";
 
 export default defineComponent({
   name: "wra-tabs",

@@ -1,4 +1,4 @@
-import WraContentAccordion from "../components/ContentAccordion.vue";
+import WraContentAccordion from "@/components/ContentAccordion.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraContentAccordion> = {

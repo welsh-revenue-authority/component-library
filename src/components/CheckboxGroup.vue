@@ -9,7 +9,11 @@
       <input
         class="checkbox-input"
         type="checkbox"
-        :id="typeof option === 'object' && option.id ? option.id : checkForObjectValue(option)"
+        :id="
+          typeof option === 'object' && option.id
+            ? option.id
+            : checkForObjectValue(option)
+        "
         :checked="checked[checkForObjectValue(option)]"
         :aria-checked="checked[checkForObjectValue(option)]"
         @change="checkInput(checkForObjectValue(option))"
@@ -120,7 +124,9 @@ export default defineComponent({
           }
         });
       } else {
-        checkedArray = Object.keys(this.checked).filter((key) => this.checked[key]);
+        checkedArray = Object.keys(this.checked).filter(
+          (key) => this.checked[key]
+        );
       }
       this.localModelValue = checkedArray;
     },
