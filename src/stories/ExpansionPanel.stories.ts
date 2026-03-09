@@ -1,4 +1,4 @@
-import WraExpansionPanel from "../components/ExpansionPanel.vue";
+import WraExpansionPanel from "@/components/ExpansionPanel.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraExpansionPanel> = {

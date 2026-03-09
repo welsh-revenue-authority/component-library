@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraButton from "../components/Button.vue";
-import WraIcon from "../components/Icon.vue";
+import WraButton from "@/components/Button.vue";
+import WraIcon from "@/components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
 
 const meta: Meta<typeof WraButton> = {

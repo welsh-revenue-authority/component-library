@@ -70,7 +70,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import WraIcon from "./Icon.vue";
+import WraIcon from "@/components/Icon.vue";
 import { mdiMenu, mdiClose } from "@mdi/js";
 
 export default defineComponent({

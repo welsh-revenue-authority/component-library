@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraRadioGroup from "../components/RadioGroup.vue";
+import WraRadioGroup from "@/components/RadioGroup.vue";
 
 const meta: Meta<typeof WraRadioGroup> = {
   title: "Form Inputs & Controls/RadioGroup",

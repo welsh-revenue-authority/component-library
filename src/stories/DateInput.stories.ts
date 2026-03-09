@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraDateInput from "../components/DateInput.vue";
+import WraDateInput from "@/components/DateInput.vue";
 
 type DateInputArgs = {
   label?: string;

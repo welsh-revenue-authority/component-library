@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSelect from "../components/Select.vue";
+import WraSelect from "@/components/Select.vue";
 
 const meta: Meta<typeof WraSelect> = {
   title: "Form Inputs & Controls/Select",
