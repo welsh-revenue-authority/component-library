@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   build:
-    if: ${{ github.event.base_ref == 'refs/heads/main' }}
     name: Build and deploy Storybook to GitHub Pages
     runs-on: ubuntu-latest
     strategy:
