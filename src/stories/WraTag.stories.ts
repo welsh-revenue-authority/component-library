@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraTag from "../components/WraTag.vue";
+import WraTag from "@/components/WraTag.vue";
 
 const meta: Meta<typeof WraTag> = {
   title: "Containment/Tag",
@@ -7,7 +7,7 @@ const meta: Meta<typeof WraTag> = {
   argTypes: {
     color: {
       control: { type: "radio" },
-      options: ["wra-tag-blue", "wra-tag-green", "wra-tag-grey"]
+      options: ["wra-blue", "wra-green", "wra-grey"]
     },
     content: {
       control: "text"
@@ -45,7 +45,7 @@ export const Default: Story = {
 export const Blue: Story = {
   args: {
     content: "In progress",
-    color: "wra-tag-blue"
+    color: "wra-blue"
   },
   render: (args) => ({
     components: { WraTag },
@@ -58,7 +58,7 @@ export const Blue: Story = {
     docs: {
       source: {
         code: `
-<wra-tag content="In progress" colour="wra-tag-blue" />
+<wra-tag content="In progress" colour="wra-blue" />
         `
       }
     }
@@ -68,7 +68,7 @@ export const Blue: Story = {
 export const Green: Story = {
   args: {
     content: "Completed",
-    color: "wra-tag-green"
+    color: "wra-green"
   },
   render: (args) => ({
     components: { WraTag },
@@ -81,7 +81,7 @@ export const Green: Story = {
     docs: {
       source: {
         code: `
-<wra-tag content="Completed" colour="wra-tag-green" />
+<wra-tag content="Completed" colour="wra-green" />
         `
       }
     }
@@ -90,7 +90,7 @@ export const Green: Story = {
 
 export const WithSlot: Story = {
   args: {
-    color: "wra-tag-blue"
+    color: "wra-blue"
   },
   render: (args) => ({
     components: { WraTag },
@@ -103,7 +103,7 @@ export const WithSlot: Story = {
     docs: {
       source: {
         code: `
-<wra-tag colour="wra-tag-blue">
+<wra-tag colour="wra-blue">
   Custom slot content
 </wra-tag>
         `

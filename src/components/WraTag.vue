@@ -1,5 +1,5 @@
 <template>
-  <div class="wra-tag" :class="color">
+  <div class="wra-tag" :class="tagClass">
     <slot>
       {{ content }}
     </slot>
@@ -7,17 +7,29 @@
 </template>
 
 <script setup lang="ts">
-export type WraTagAvailableColors = "wra-tag-blue" | "wra-tag-green" | "wra-tag-grey";
+import { computed } from "vue";
 
-withDefaults(
+export type WraTagAvailableColors = "wra-blue" | "wra-green" | "wra-grey";
+
+const props = withDefaults(
   defineProps<{
     content: string;
     color?: WraTagAvailableColors;
   }>(),
   {
-    color: "wra-tag-grey"
+    color: "wra-grey"
   }
 );
+
+const tagClass = computed(() => {
+  const colorMap: Record<WraTagAvailableColors, string> = {
+    "wra-blue": "wra-tag-blue",
+    "wra-green": "wra-tag-green",
+    "wra-grey": "wra-tag-grey"
+  };
+
+  return colorMap[props.color] ?? "wra-tag-grey";
+});
 </script>
 
 <style scoped>
