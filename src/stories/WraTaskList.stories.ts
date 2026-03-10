@@ -270,3 +270,68 @@ export const WithHintsAndStatus: Story = {
     }
   }
 };
+
+export const WithLongContent: Story = {
+  render: (args) => ({
+    components: { WraTaskList, WraTaskListItem, WraTag },
+    setup() {
+      return { args };
+    },
+    template: `
+      <WraTaskList v-bind="args">
+        <WraTaskListItem>
+          Comprehensive review and analysis of all system documentation including API specifications, integration guides, and architectural diagrams
+          <template #hint>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</template>
+          <template #status>
+            <WraTag content="Completed" color="wra-green" />
+          </template>
+        </WraTaskListItem>
+        <WraTaskListItem>
+          Update and refactor component property definitions to ensure full backward compatibility while introducing new optional features for enhanced functionality
+          <template #hint>Analyze all existing component props, maintain backward compatibility for deprecated props, add new props with proper TypeScript typing, and update JSDoc comments with detailed examples</template>
+          <template #status>
+            <WraTag content="In progress" color="wra-blue" />
+          </template>
+        </WraTaskListItem>
+        <WraTaskListItem>
+          Implement comprehensive unit test suite with broad code coverage, integration tests, and edge case handling for all component variations and user interactions
+          <template #hint>Write unit tests for all component methods and computed properties, create integration tests with real-world scenarios, aim for minimum 80% code coverage, and document test cases for future maintainers</template>
+          <template #status>
+            <WraTag content="Not started" color="wra-grey" />
+          </template>
+        </WraTaskListItem>
+      </WraTaskList>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<WraTaskList>
+  <WraTaskListItem>
+    Comprehensive review and analysis of all system documentation including API specifications, integration guides, and architectural diagrams
+    <template #hint>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</template>
+    <template #status>
+      <WraTag content="Completed" color="wra-green" />
+    </template>
+  </WraTaskListItem>
+  <WraTaskListItem>
+    Update and refactor component property definitions to ensure full backward compatibility while introducing new optional features for enhanced functionality
+    <template #hint>Analyze all existing component props, maintain backward compatibility for deprecated props, add new props with proper TypeScript typing, and update JSDoc comments with detailed examples</template>
+    <template #status>
+      <WraTag content="In progress" color="wra-blue" />
+    </template>
+  </WraTaskListItem>
+  <WraTaskListItem>
+    Implement comprehensive unit test suite with broad code coverage, integration tests, and edge case handling for all component variations and user interactions
+    <template #hint>Write unit tests for all component methods and computed properties, create integration tests with real-world scenarios, aim for minimum 80% code coverage, and document test cases for future maintainers</template>
+    <template #status>
+      <WraTag content="Not started" color="wra-grey" />
+    </template>
+  </WraTaskListItem>
+</WraTaskList>
+        `
+      }
+    }
+  }
+};
