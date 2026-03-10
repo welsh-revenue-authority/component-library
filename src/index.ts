@@ -41,6 +41,9 @@ import TextArea from "@/components/TextArea.vue";
 import TextInput from "@/components/TextInput.vue";
 import ValidationTooltip from "@/components/ValidationTooltip.vue";
 import WraTag from "@/components/WraTag.vue";
+import WraTaskList from "@/components/WraTaskList.vue";
+import WraTaskListItem from "@/components/WraTaskListItem.vue";
+import WraTaskListHint from "@/components/WraTaskListHint.vue";
 
 export type { TextInputValidationRule } from "@/components/TextInput.vue";
 export type { AutocompleteOption } from "@/components/Autocomplete.vue";
@@ -53,6 +56,7 @@ export type { RuleFunction } from "@/components/NumberInput.vue";
 export type { RadioOption } from "@/components/Radio.vue";
 export type { TableHeader, TableItem } from "@/components/Table.vue";
 export type { TextAreaValidationRule } from "@/components/TextArea.vue";
+export type { WraTagAvailableColors } from "@/components/WraTag.vue";
 
 export {
   AppBar as WraAppBar,
@@ -67,6 +71,9 @@ export {
   ContentSectionTitle as WraContentSectionTitle,
   CustomInput as WraCustomInput,
   WraTag,
+  WraTaskList,
+  WraTaskListItem,
+  WraTaskListHint,
   DataTable as WraDataTable,
   DateInput as WraDateInput,
   Dialog as WraDialog,
@@ -136,7 +143,10 @@ const components = {
   WraTextArea: TextArea,
   WraTextInput: TextInput,
   WraValidationTooltip: ValidationTooltip,
-  WraTag: WraTag
+  WraTag: WraTag,
+  WraTaskList: WraTaskList,
+  WraTaskListItem: WraTaskListItem,
+  WraTaskListHint: WraTaskListHint
 };
 
 const plugin = {
