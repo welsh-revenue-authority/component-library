@@ -31,5 +31,6 @@ import WraTaskListHint from "@/components/WraTaskListHint.vue";
   display: flex;
   justify-content: space-between;
   align-items: start;
+  column-gap: 20px;
 }
 </style>
