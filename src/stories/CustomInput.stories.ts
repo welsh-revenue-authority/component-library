@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraCustomInput from "../components/CustomInput.vue";
+import WraCustomInput from "../components/WraCustomInput.vue";
 
 const meta: Meta<typeof WraCustomInput> = {
   title: "Form Inputs & Controls/CustomInput",

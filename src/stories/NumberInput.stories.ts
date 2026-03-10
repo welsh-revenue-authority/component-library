@@ -1,4 +1,4 @@
-import WraNumberInput from "../components/NumberInput.vue";
+import WraNumberInput from "../components/WraNumberInput.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraNumberInput> = {

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraPagination from "../components/Pagination.vue";
+import WraPagination from "../components/WraPagination.vue";
 
 const meta: Meta<typeof WraPagination> = {
   title: "Navigation/Pagination",

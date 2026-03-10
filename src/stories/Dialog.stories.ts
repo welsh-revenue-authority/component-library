@@ -1,5 +1,5 @@
-import WraDialog from "../components/Dialog.vue";
-import WraButton from "../components/Button.vue";
+import WraDialog from "../components/WraDialog.vue";
+import WraButton from "../components/WraButton.vue";
 import { ref, Ref } from "vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 

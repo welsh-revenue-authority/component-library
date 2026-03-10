@@ -1,4 +1,4 @@
-import WraHeader from "../components/Header.vue";
+import WraHeader from "../components/WraHeader.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraHeader> = {

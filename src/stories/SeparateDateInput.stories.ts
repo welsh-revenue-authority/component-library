@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSeparateDateInput from "../components/SeparateDateInput.vue";
+import WraSeparateDateInput from "../components/WraSeparateDateInput.vue";
 
 type SeparateDateInputArgs = {
   modelValue: {

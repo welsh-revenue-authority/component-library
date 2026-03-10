@@ -1,4 +1,4 @@
-import WraIcon from "../components/Icon.vue";
+import WraIcon from "../components/WraIcon.vue";
 import * as mdiIcons from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 

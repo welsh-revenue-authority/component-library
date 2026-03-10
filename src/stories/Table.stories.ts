@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraTable from "../components/Table.vue";
+import WraTable from "../components/WraTable.vue";
 
 const meta: Meta<typeof WraTable> = {
   title: "Data & Display/Table",

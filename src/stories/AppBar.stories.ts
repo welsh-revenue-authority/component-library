@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraAppBar from "../components/AppBar.vue";
-import WraButton from "../components/Button.vue";
-import WraServiceLogo from "../components/ServiceLogo.vue";
+import WraAppBar from "../components/WraAppBar.vue";
+import WraButton from "../components/WraButton.vue";
+import WraServiceLogo from "../components/WraServiceLogo.vue";
 import WgLogoFile from "./assets/wg-logo-white.svg";
 
 import { Small } from "./Button.stories";

@@ -45,8 +45,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import ValidationTooltip from "./ValidationTooltip.vue";
-import WraButton from "./Button.vue";
+import ValidationTooltip from "./WraValidationTooltip.vue";
+import WraButton from "./WraButton.vue";
 
 export default defineComponent({
   name: "file-upload",

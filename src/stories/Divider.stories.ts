@@ -1,4 +1,4 @@
-import Divider from "../components/Divider.vue";
+import Divider from "../components/WraDivider.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof Divider> = {
