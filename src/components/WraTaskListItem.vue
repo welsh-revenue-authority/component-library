@@ -9,7 +9,9 @@
         <slot name="hint"></slot>
       </WraTaskListHint>
     </div>
-    <slot name="status"></slot>
+    <div class="wra-task-list-item-status" v-if="$slots.status">
+      <slot name="status"></slot>
+    </div>
   </li>
 </template>
 
@@ -32,5 +34,9 @@ import WraTaskListHint from "@/components/WraTaskListHint.vue";
   justify-content: space-between;
   align-items: flex-start;
   column-gap: 20px;
+}
+
+.wra-task-list-item-status {
+  flex-shrink: 0;
 }
 </style>
