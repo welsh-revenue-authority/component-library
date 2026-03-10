@@ -30,7 +30,7 @@ import WraTaskListHint from "@/components/WraTaskListHint.vue";
 .wra-task-list-item-with-status {
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: flex-start;
   column-gap: 20px;
 }
 </style>
