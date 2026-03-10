@@ -1,4 +1,4 @@
-import WraFileUpload from "../components/FileUpload.vue";
+import WraFileUpload from "../components/WraFileUpload.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraFileUpload> = {

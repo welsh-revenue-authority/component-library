@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraValidationTooltip from "../components/ValidationTooltip.vue";
-import WraIcon from "../components/Icon.vue";
+import WraValidationTooltip from "../components/WraValidationTooltip.vue";
+import WraIcon from "../components/WraIcon.vue";
 import * as mdiIcons from "@mdi/js";
 
 const meta: Meta<typeof WraValidationTooltip> = {

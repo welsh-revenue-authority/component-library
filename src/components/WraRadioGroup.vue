@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import WraRadio, { RadioOption } from "./Radio.vue";
+import WraRadio, { RadioOption } from "./WraRadio.vue";
 
 export default defineComponent({
   name: "wra-radio-group",

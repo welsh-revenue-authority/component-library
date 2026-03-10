@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import ServiceBar from "../components/ServiceBar.vue";
+import ServiceBar from "../components/WraServiceBar.vue";
 
 const meta = {
   title: "Navigation/ServiceBar",
