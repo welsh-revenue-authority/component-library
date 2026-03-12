@@ -9,7 +9,6 @@
         @change="onChange"
         class="radio-input"
         :checked="isChecked == true"
-        :aria-checked="isChecked"
       />
       <span class="radio-text">
         <p>{{ option.label }}</p>

@@ -12,18 +12,17 @@
           {{ label }}
         </slot>
       </div>
-      <div
+      <button
+        type="button"
         class="close-icon-wrapper"
-        tabindex="0"
         v-if="showClose"
         @click="closeSnackbar"
-        @keyup.enter="closeSnackbar"
       >
         <span class="sr-only">Close</span>
         <div class="close-icon-line-one">
           <div class="close-icon-line-two"></div>
         </div>
-      </div>
+      </button>
     </div>
   </transition>
 </template>
@@ -153,6 +152,9 @@ export default defineComponent({
 }
 
 .close-icon-wrapper {
+  background: none;
+  border: none;
+  padding: 0;
   position: absolute;
   top: 50%;
   right: 16px;

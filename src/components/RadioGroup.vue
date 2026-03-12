@@ -1,5 +1,5 @@
 <template>
-  <div role="radiogroup" :aria-label="label" :aria-describedby="hint">
+  <div>
     <wra-radio
       :groupName="groupName"
       v-for="option in validOptions"
@@ -39,18 +39,6 @@ export default defineComponent({
       type: Array as PropType<RadioOption[]>,
       required: true,
       default: () => []
-    },
-    /**
-     * The label text for the radio group, used for accessibility.
-     */
-    label: {
-      type: String as PropType<string>
-    },
-    /**
-     * The hint or description for the radio group, referenced by aria-describedby.
-     */
-    hint: {
-      type: String as PropType<string>
     }
   },
   methods: {

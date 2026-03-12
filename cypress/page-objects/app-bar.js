@@ -1,5 +1,5 @@
 class AppBar {
-  appBar = "#storybook-root > div";
+  appBar = "#storybook-root > header";
   languageToggleButton = "div > button";
   wgLogo = "div > a";
 }
