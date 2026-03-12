@@ -1,12 +1,12 @@
 <template>
-  <div
+  <header
     class="wra-app-bar"
     :class="{
       'hidden-print': hiddenPrint === true
     }"
   >
     <slot> </slot>
-  </div>
+  </header>
 </template>
 
 <script lang="ts">

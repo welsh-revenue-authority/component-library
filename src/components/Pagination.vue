@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination">
+  <nav class="pagination" aria-label="Pagination">
     <button class="pagination-button" @click="decPage()">
       <slot name="previous">
         <!-- Standard content -->
@@ -49,7 +49,7 @@
         <span class="pagination-icon next-icon"></span>
       </slot>
     </button>
-  </div>
+  </nav>
 </template>
 
 <script lang="ts">
