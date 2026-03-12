@@ -73,6 +73,31 @@ export default {
   }
 };
 
+export const WithCaption: Story = {
+  args: {
+    groupName: "groupName",
+    caption: "Which is the best color?",
+    options: [
+      { value: "purple", label: "Purple" },
+      { value: "aubergine", label: "Aubergine" },
+      { value: "magenta", label: "Magenta" }
+    ]
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-radio-group
+  group-name="groupName"
+  caption="Which is the best color?"
+  :options="options"
+></wra-radio-group>
+        `
+      }
+    }
+  }
+};
+
 export const CustomIds: Story = {
   args: {
     groupName: "groupName",
