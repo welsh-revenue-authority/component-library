@@ -7,7 +7,10 @@
 <style scoped>
 .wra-task-list {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline: 0;
+  padding-block-start: 0;
+  padding-block-end: 0;
 }
 </style>

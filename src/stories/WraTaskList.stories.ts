@@ -280,8 +280,8 @@ export const WithLongContent: Story = {
     template: `
       <WraTaskList v-bind="args">
         <WraTaskListItem>
-          Comprehensive review and analysis of all system documentation including API specifications, integration guides, and architectural diagrams
-          <template #hint>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</template>
+          Comprehensive review and analysis of all system documentation including API specifications, integration guides, and architectural diagrams fdsasdafsdsadsdsafsa fdafsd fdafsda test 
+          <template #hint><p>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</p></template>
           <template #status>
             <WraTag content="Completed" color="wra-green" />
           </template>
@@ -310,7 +310,7 @@ export const WithLongContent: Story = {
 <WraTaskList>
   <WraTaskListItem>
     Comprehensive review and analysis of all system documentation including API specifications, integration guides, and architectural diagrams
-    <template #hint>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</template>
+    <template #hint><p>Review all documentation files in the docs directory, verify examples work correctly on all supported platforms, and check for any outdated or deprecated information that needs updating</p></template>
     <template #status>
       <WraTag content="Completed" color="wra-green" />
     </template>

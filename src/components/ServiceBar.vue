@@ -102,7 +102,7 @@ const props = withDefaults(
      * Label text for the menu button.
      */
     menuLabel?: string;
-    id: string;
+    id?: string;
   }>(),
   {
     navigationLinks: () => [],
