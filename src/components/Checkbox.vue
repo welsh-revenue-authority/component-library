@@ -1,12 +1,11 @@
 <template>
-  <div role="checkbox" :aria-label="label">
+  <div>
     <label :for="id" class="checkbox-label">
       <input
         class="checkbox-input"
         type="checkbox"
         :id="id"
         :checked="isChecked"
-        :aria-checked="isChecked"
         @change="checkInput()"
         @click="$emit('click')"
       />
