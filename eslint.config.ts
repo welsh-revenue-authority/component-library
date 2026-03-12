@@ -1,9 +1,12 @@
-import pluginVue from "eslint-plugin-vue";
+import pluginVitest from "@vitest/eslint-plugin";
+import prettierConfig from "@vue/eslint-config-prettier";
 import {
   defineConfigWithVueTs,
   vueTsConfigs
 } from "@vue/eslint-config-typescript";
-import prettierConfig from "@vue/eslint-config-prettier";
+import pluginVue from "eslint-plugin-vue";
+import pluginVueA11y from "eslint-plugin-vuejs-accessibility";
+import { globalIgnores } from "eslint/config";
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -12,25 +15,23 @@ import prettierConfig from "@vue/eslint-config-prettier";
 
 export default defineConfigWithVueTs(
   {
-    name: "app/files-to-lint",
-    files: ["**/*.{ts,mts,tsx,vue}"]
+    ignores: ["**/cypress/support/commands.ts"]
   },
-
+  globalIgnores(["**/dist/**", "**/dist-ssr/**", "**/coverage/**"]),
+  pluginVue.configs["flat/strongly-recommended"],
+  pluginVueA11y.configs["flat/recommended"],
+  vueTsConfigs.recommended,
   {
-    name: "app/files-to-ignore",
-    ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**"]
+    ...pluginVitest.configs.recommended,
+    files: ["src/**/tests/*"]
   },
+  prettierConfig,
   {
     rules: {
-      "@typescript-eslint/no-empty-object-type": [
-        "error",
-        {
-          allowInterfaces: "always"
-        }
-      ]
+      "no-else-return": "warn",
+      "vue/component-name-in-template-casing": ["error", "PascalCase"],
+      "vue/no-undef-components": ["error"],
+      "vue/multi-word-component-names": "off"
     }
-  },
-  pluginVue.configs["flat/essential"],
-  vueTsConfigs.recommended,
-  prettierConfig
+  }
 );
