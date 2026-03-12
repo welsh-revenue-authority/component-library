@@ -32,7 +32,7 @@
           <button
             class="burger-menu-button"
             :aria-expanded="isMenuOpen"
-            aria-controls="service-bar-menu"
+            :aria-controls="props.id"
             aria-label="Toggle navigation menu"
             @click="isMenuOpen = !isMenuOpen"
           >
@@ -50,7 +50,7 @@
       <div
         v-if="isMenuOpen && usesBurgerMenu"
         class="burger-menu-content"
-        id="service-bar-menu"
+        :id="props.id"
         :aria-hidden="!isMenuOpen"
       >
         <div class="menu-inner">
@@ -102,12 +102,14 @@ const props = withDefaults(
      * Label text for the menu button.
      */
     menuLabel?: string;
+    id: string;
   }>(),
   {
     navigationLinks: () => [],
     hiddenPrint: false,
     mobileBreakpoint: 768,
-    menuLabel: "Menu"
+    menuLabel: "Menu",
+    id: "wra-service-bar-menu"
   }
 );
 
