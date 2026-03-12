@@ -240,11 +240,6 @@ onBeforeUnmount(() => {
   padding: 4px 0px;
 }
 
-.menu-links {
-  color: var(--color-wra-black);
-  font-weight: normal;
-}
-
 .slide-fade-enter-active {
   transition: grid-template-rows 0.3s ease-out;
 }
@@ -262,5 +257,13 @@ onBeforeUnmount(() => {
   .hidden-print {
     display: none;
   }
+}
+</style>
+
+<style>
+.wra-service-bar .menu-links a,
+.wra-service-bar .menu-links button {
+  color: var(--color-wra-black);
+  font-weight: normal;
 }
 </style>
