@@ -56,3 +56,57 @@ export const BurgerMenu: Story = {
     hiddenPrint: false
   }
 };
+
+/**
+ * ServiceBar with custom slot content for navigation links
+ */
+export const WithSlot: Story = {
+  args: {
+    serviceName: "Service name",
+    navigationLinks: [],
+    hiddenPrint: false
+  },
+  render: (args) => ({
+    components: { ServiceBar },
+    setup() {
+      return { args };
+    },
+    template: `
+      <ServiceBar v-bind="args">
+        <a href="#home" aria-label="Home">Home</a>
+        <a href="#about" aria-label="About">About</a>
+        <a href="#services" aria-label="Services">Services</a>
+      </ServiceBar>
+    `
+  })
+};
+
+/**
+ * ServiceBar with custom slot content in burger menu mode (4+ links)
+ */
+export const WithSlotBurgerMenu: Story = {
+  args: {
+    serviceName: "Service name",
+    navigationLinks: [
+      { label: "Placeholder 1", href: "#", ariaLabel: "Placeholder 1" },
+      { label: "Placeholder 2", href: "#", ariaLabel: "Placeholder 2" },
+      { label: "Placeholder 3", href: "#", ariaLabel: "Placeholder 3" },
+      { label: "Placeholder 4", href: "#", ariaLabel: "Placeholder 4" }
+    ],
+    hiddenPrint: false
+  },
+  render: (args) => ({
+    components: { ServiceBar },
+    setup() {
+      return { args };
+    },
+    template: `
+      <ServiceBar v-bind="args">
+        <a href="#home" aria-label="Home">Custom Home</a>
+        <a href="#about" aria-label="About">Custom About</a>
+        <a href="#services" aria-label="Services">Custom Services</a>
+        <a href="#contact" aria-label="Contact">Custom Contact</a>
+      </ServiceBar>
+    `
+  })
+};

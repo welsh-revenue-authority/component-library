@@ -14,29 +14,30 @@
       <!-- Navigation Links on the right or under burger menu -->
       <div class="navigation-section">
         <!-- Show links directly if 3 or fewer AND not on mobile -->
-        <div v-if="!usesBurgerMenu" class="navigation-links">
-          <a
-            v-for="link in navigationLinks"
-            :key="link.label"
-            :href="link.href"
-            :aria-label="link.ariaLabel"
-            class="menu-links"
-          >
-            {{ link.label }}
-          </a>
+        <div v-if="!usesBurgerMenu" class="navigation-links menu-links">
+          <slot>
+            <a
+              v-for="link in navigationLinks"
+              :key="link.label"
+              :href="link.href"
+              :aria-label="link.ariaLabel"
+            >
+              {{ link.label }}
+            </a>
+          </slot>
         </div>
 
         <!-- Show burger menu if more than 3 links OR on mobile -->
-        <div v-if="usesBurgerMenu" class="burger-menu-container">
+        <div v-else class="burger-menu-container">
           <button
             class="burger-menu-button"
             :aria-expanded="isMenuOpen"
-            aria-controls="service-bar-menu"
+            :aria-controls="props.id"
             aria-label="Toggle navigation menu"
             @click="isMenuOpen = !isMenuOpen"
           >
             <span class="icon prepend-icon-wrapper">
-              <wra-icon :icon="isMenuOpen ? mdiClose : mdiMenu" />
+              <WraIcon :icon="isMenuOpen ? mdiClose : mdiMenu" />
             </span>
             {{ menuLabel }}
           </button>
@@ -49,7 +50,7 @@
       <div
         v-if="isMenuOpen && usesBurgerMenu"
         class="burger-menu-content"
-        id="service-bar-menu"
+        :id="props.id"
         :aria-hidden="!isMenuOpen"
       >
         <div class="menu-inner">
@@ -68,82 +69,76 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from "vue";
-import WraIcon from "./Icon.vue";
+<script setup lang="ts">
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import WraIcon from "@/components/Icon.vue";
 import { mdiMenu, mdiClose } from "@mdi/js";
 
-export default defineComponent({
-  name: "wra-service-bar",
-  props: {
+export interface NavigationLink {
+  label: string;
+  href: string;
+  ariaLabel: string;
+}
+
+const props = withDefaults(
+  defineProps<{
     /**
      * The name of the service to display.
      */
-    serviceName: {
-      type: String as PropType<string>,
-      required: true
-    },
+    serviceName: string;
     /**
      * Array of navigation links. Each link should have a label, href, and aria label.
      */
-    navigationLinks: {
-      type: Array as PropType<
-        Array<{ label: string; href: string; ariaLabel: string }>
-      >,
-      default: () => []
-    },
+    navigationLinks?: NavigationLink[];
     /**
      * If true, the service bar will be hidden when printing the page.
      */
-    hiddenPrint: {
-      type: Boolean as PropType<boolean>,
-      default: false
-    },
+    hiddenPrint?: boolean;
     /**
      * Mobile breakpoint in pixels. Burger menu shows on screens smaller than this width.
      */
-    mobileBreakpoint: {
-      type: Number as PropType<number>,
-      default: 768
-    },
+    mobileBreakpoint?: number;
     /**
      * Label text for the menu button.
      */
-    menuLabel: {
-      type: String as PropType<string>,
-      default: "Menu"
-    }
-  },
-  data() {
-    return {
-      isMenuOpen: false,
-      mdiMenu,
-      mdiClose,
-      windowWidth: typeof window !== "undefined" ? window.innerWidth : 768
-    };
-  },
-  components: {
-    WraIcon
-  },
-  computed: {
-    usesBurgerMenu(): boolean {
-      return (
-        this.navigationLinks.length > 3 ||
-        this.windowWidth < this.mobileBreakpoint
-      );
-    }
-  },
-  mounted() {
-    window.addEventListener("resize", this.handleWindowResize);
-  },
-  beforeUnmount() {
-    window.removeEventListener("resize", this.handleWindowResize);
-  },
-  methods: {
-    handleWindowResize() {
-      this.windowWidth = window.innerWidth;
-    }
+    menuLabel?: string;
+    id: string;
+  }>(),
+  {
+    navigationLinks: () => [],
+    hiddenPrint: false,
+    mobileBreakpoint: 768,
+    menuLabel: "Menu",
+    id: "wra-service-bar-menu"
   }
+);
+
+// Reactive state
+const isMenuOpen = ref(false);
+const windowWidth = ref(
+  typeof window !== "undefined" ? window.innerWidth : 768
+);
+
+// Computed property
+const usesBurgerMenu = computed(() => {
+  return (
+    props.navigationLinks.length > 3 ||
+    windowWidth.value < props.mobileBreakpoint
+  );
+});
+
+// Methods
+const handleWindowResize = () => {
+  windowWidth.value = window.innerWidth;
+};
+
+// Lifecycle hooks
+onMounted(() => {
+  window.addEventListener("resize", handleWindowResize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", handleWindowResize);
 });
 </script>
 
@@ -247,11 +242,6 @@ export default defineComponent({
   padding: 4px 0px;
 }
 
-.menu-links {
-  color: var(--color-wra-black);
-  font-weight: normal;
-}
-
 .slide-fade-enter-active {
   transition: grid-template-rows 0.3s ease-out;
 }
@@ -269,5 +259,13 @@ export default defineComponent({
   .hidden-print {
     display: none;
   }
+}
+</style>
+
+<style>
+.wra-service-bar .menu-links a,
+.wra-service-bar .menu-links button {
+  color: var(--color-wra-black);
+  font-weight: normal;
 }
 </style>
