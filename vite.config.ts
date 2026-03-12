@@ -25,7 +25,7 @@ export default defineConfig({
       processor: "vue",
       bundleTypes: true,
       exclude: ["src/stories", "src/docs"],
-      tsConfigPath: "./tsconfig.app.json",
+      tsconfigPath: "./tsconfig.app.json",
       copyDtsFiles: true,
       insertTypesEntry: true
     })
