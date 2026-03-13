@@ -160,25 +160,29 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .service-section {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
   font-family: Arvo;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.18px;
   max-width: 300px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .navigation-section {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .navigation-links {
