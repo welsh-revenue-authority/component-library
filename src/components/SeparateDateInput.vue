@@ -1,5 +1,5 @@
 <template>
-  <fieldset role="group">
+  <fieldset>
     <div
       class="date-input-container"
       :style="{

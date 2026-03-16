@@ -1,26 +1,28 @@
 <template>
-  <ul class="wra-breadcrumbs">
-    <template v-for="(item, index) in items">
-      <li class="wra-breadcrumbs-item">
-        <slot>
-          <a
-            v-if="!item[itemDisabled]"
-            :href="item[itemHref]"
-            class="wra-breadcrumbs-link"
-            >{{ item[itemTitle] }}</a
-          >
-          <span v-else class="wra-breadcrumbs-link--disabled">{{
-            item[itemTitle]
-          }}</span>
-        </slot>
-      </li>
-      <li v-if="index !== items.length - 1" class="wra-breadcrumbs-divider">
-        <slot name="divider">
-          <span class="wra-breadcrumbs-chevron"></span>
-        </slot>
-      </li>
-    </template>
-  </ul>
+  <nav aria-label="Breadcrumb">
+    <ul class="wra-breadcrumbs">
+      <template v-for="(item, index) in items">
+        <li class="wra-breadcrumbs-item">
+          <slot>
+            <a
+              v-if="!item[itemDisabled]"
+              :href="item[itemHref]"
+              class="wra-breadcrumbs-link"
+              >{{ item[itemTitle] }}</a
+            >
+            <span v-else class="wra-breadcrumbs-link--disabled">{{
+              item[itemTitle]
+            }}</span>
+          </slot>
+        </li>
+        <li v-if="index !== items.length - 1" class="wra-breadcrumbs-divider">
+          <slot name="divider">
+            <span class="wra-breadcrumbs-chevron"></span>
+          </slot>
+        </li>
+      </template>
+    </ul>
+  </nav>
 </template>
 
 <script lang="ts">

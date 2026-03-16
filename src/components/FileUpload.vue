@@ -19,9 +19,9 @@
     </ValidationTooltip>
   </Transition>
 
-  <div class="file-upload-label" :for="id">
+  <label class="file-upload-label" :for="id">
     {{ label }}
-  </div>
+  </label>
   <div class="file-upload-wrapper">
     <wra-button
       size="small"

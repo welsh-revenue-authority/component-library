@@ -1,8 +1,6 @@
 <template>
   <div
-    role="checkbox"
     class="checkbox"
-    :aria-label="checkForObjectLabel(option)"
     v-for="option in validOptions"
   >
     <label :for="checkForObjectValue(option)" class="checkbox-label">
@@ -15,7 +13,6 @@
             : checkForObjectValue(option)
         "
         :checked="checked[checkForObjectValue(option)]"
-        :aria-checked="checked[checkForObjectValue(option)]"
         @change="checkInput(checkForObjectValue(option))"
       />
       <span class="checkbox-text">

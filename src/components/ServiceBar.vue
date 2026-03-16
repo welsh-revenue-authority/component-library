@@ -14,7 +14,7 @@
       <!-- Navigation Links on the right or under burger menu -->
       <div class="navigation-section">
         <!-- Show links directly if 3 or fewer AND not on mobile -->
-        <div v-if="!usesBurgerMenu" class="navigation-links menu-links">
+        <nav v-if="!usesBurgerMenu" class="navigation-links menu-links">
           <slot>
             <a
               v-for="link in navigationLinks"
@@ -25,7 +25,7 @@
               {{ link.label }}
             </a>
           </slot>
-        </div>
+        </nav>
 
         <!-- Show burger menu if more than 3 links OR on mobile -->
         <div v-else class="burger-menu-container">
@@ -54,15 +54,17 @@
         :aria-hidden="!isMenuOpen"
       >
         <div class="menu-inner">
-          <a
-            v-for="link in navigationLinks"
-            :key="link.label"
-            :href="link.href"
-            :aria-label="link.ariaLabel"
-            class="menu-links"
-          >
-            {{ link.label }}
-          </a>
+          <nav aria-label="Mobile menu">
+            <a
+              v-for="link in navigationLinks"
+              :key="link.label"
+              :href="link.href"
+              :aria-label="link.ariaLabel"
+              class="menu-links"
+            >
+              {{ link.label }}
+            </a>
+          </nav>
         </div>
       </div>
     </transition>
