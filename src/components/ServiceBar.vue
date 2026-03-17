@@ -54,15 +54,17 @@
         :aria-hidden="!isMenuOpen"
       >
         <div class="menu-inner">
-          <a
-            v-for="link in navigationLinks"
-            :key="link.label"
-            :href="link.href"
-            :aria-label="link.ariaLabel"
-            class="menu-links"
-          >
-            {{ link.label }}
-          </a>
+          <slot>
+            <a
+              v-for="link in navigationLinks"
+              :key="link.label"
+              :href="link.href"
+              :aria-label="link.ariaLabel"
+              class="menu-links"
+            >
+              {{ link.label }}
+            </a>
+          </slot>
         </div>
       </div>
     </transition>
