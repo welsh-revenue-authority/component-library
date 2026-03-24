@@ -75,6 +75,9 @@
           clickable: $attrs['onClick:row'] != undefined
         }"
         @click="$emit('click:row', item)"
+        @keydown.enter="$emit('click:row', item)"
+        @keydown.space.prevent="$emit('click:row', item)"
+        :tabindex="$attrs['onClick:row'] != undefined ? 0 : -1"
       >
         <slot
           name="item"
@@ -486,6 +489,11 @@ button:focus > .wra-chevron-left {
 
 tbody.clickable:hover {
   background-color: var(--color-wra-light-grey);
+}
+
+tbody.clickable:focus {
+  outline: 2px solid var(--color-wra-black);
+  outline-offset: -2px;
 }
 
 .sort-icons {
