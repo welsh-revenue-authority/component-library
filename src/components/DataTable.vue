@@ -35,7 +35,7 @@
             }"
             :tabindex="header.sortable || header.sortable == undefined ? 0 : -1"
           >
-            <span class="header-title">
+            <span class="header-title pr-0.5">
               {{ header.title }}
               <span v-if="localSortBy && localSortBy[0].key === header.key">
                 <span
@@ -391,6 +391,7 @@ export default defineComponent({
 
 .wra-data-table > thead > tr > th.clickable:focus .header-title {
   background-color: var(--color-wra-yellow);
+  outline: 1px solid var(--color-wra-black);
 }
 
 .wra-data-table > tbody > tr > td,
@@ -523,6 +524,11 @@ tbody.clickable:focus {
 
 th:hover .sort-icons {
   visibility: visible;
+}
+
+th.clickable:focus .sort-icons {
+  visibility: visible;
+  opacity: 1;
 }
 
 .text-left {
