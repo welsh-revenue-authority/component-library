@@ -18,6 +18,14 @@
               (header.sortable || header.sortable == undefined) &&
                 sortByColumn(header.key)
             "
+            @keydown.enter="
+              (header.sortable || header.sortable == undefined) &&
+                sortByColumn(header.key)
+            "
+            @keydown.space.prevent="
+              (header.sortable || header.sortable == undefined) &&
+                sortByColumn(header.key)
+            "
             :style="{ width: header.width + 'px' }"
             :class="{
               clickable: header.sortable == undefined || header.sortable,
@@ -25,23 +33,27 @@
               'text-right': header.align == 'right',
               'text-center': header.align == 'center'
             }"
+            :tabindex="header.sortable || header.sortable == undefined ? 0 : -1"
           >
-            {{ header.title }}
-            <span v-if="localSortBy && localSortBy[0].key === header.key">
+            <span class="header-title pr-0.5">
+              {{ header.title }}
+              <span v-if="localSortBy && localSortBy[0].key === header.key">
+                <span
+                  :class="{
+                    'wra-chevron wra-chevron-up':
+                      localSortBy[0].order === 'asc',
+                    'wra-chevron wra-chevron-down':
+                      localSortBy[0].order === 'desc'
+                  }"
+                ></span>
+              </span>
               <span
-                :class="{
-                  'wra-chevron wra-chevron-up': localSortBy[0].order === 'asc',
-                  'wra-chevron wra-chevron-down':
-                    localSortBy[0].order === 'desc'
-                }"
+                v-else-if="
+                  header.sortable == true || header.sortable == undefined
+                "
+                class="wra-chevron wra-chevron-up sort-icons"
               ></span>
             </span>
-            <span
-              v-else-if="
-                header.sortable == true || header.sortable == undefined
-              "
-              class="wra-chevron wra-chevron-up sort-icons"
-            ></span>
 
             <!-- Text input for column-specific search -->
             <input
@@ -75,6 +87,9 @@
           clickable: $attrs['onClick:row'] != undefined
         }"
         @click="$emit('click:row', item)"
+        @keydown.enter="$emit('click:row', item)"
+        @keydown.space.prevent="$emit('click:row', item)"
+        :tabindex="$attrs['onClick:row'] != undefined ? 0 : -1"
       >
         <slot
           name="item"
@@ -370,6 +385,15 @@ export default defineComponent({
   border-bottom: 2px solid var(--color-wra-dark-grey);
 }
 
+.wra-data-table > thead > tr > th.clickable:focus-visible {
+  outline: none;
+}
+
+.wra-data-table > thead > tr > th.clickable:focus .header-title {
+  background-color: var(--color-wra-yellow);
+  outline: 1px solid var(--color-wra-black);
+}
+
 .wra-data-table > tbody > tr > td,
 .wra-data-table > tbody > tr > th {
   border-bottom: 1px solid var(--color-wra-dark-grey);
@@ -488,6 +512,11 @@ tbody.clickable:hover {
   background-color: var(--color-wra-light-grey);
 }
 
+tbody.clickable:focus {
+  outline: 2px solid var(--color-wra-black);
+  outline-offset: -2px;
+}
+
 .sort-icons {
   visibility: hidden;
   opacity: 0.4;
@@ -495,6 +524,11 @@ tbody.clickable:hover {
 
 th:hover .sort-icons {
   visibility: visible;
+}
+
+th.clickable:focus .sort-icons {
+  visibility: visible;
+  opacity: 1;
 }
 
 .text-left {
