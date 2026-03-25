@@ -21,6 +21,7 @@ import ExpansionPanel from "@/components/ExpansionPanel.vue";
 import FileUpload from "@/components/FileUpload.vue";
 import Footer from "@/components/Footer.vue";
 import Header from "@/components/Header.vue";
+import HeadingCaption from "@/components/HeadingCaption.vue";
 import Icon from "@/components/Icon.vue";
 import Inset from "@/components/Inset.vue";
 import NumberInput from "@/components/NumberInput.vue";
@@ -82,6 +83,7 @@ export {
   FileUpload as WraFileUpload,
   Footer as WraFooter,
   Header as WraHeader,
+  HeadingCaption as WraHeadingCaption,
   Icon as WraIcon,
   Inset as WraInset,
   NumberInput as WraNumberInput,
@@ -124,6 +126,7 @@ const components = {
   WraFileUpload: FileUpload,
   WraFooter: Footer,
   WraHeader: Header,
+  WraHeadingCaption: HeadingCaption,
   WraIcon: Icon,
   WraInset: Inset,
   WraNumberInput: NumberInput,
