@@ -43,6 +43,9 @@
     "format:check": "prettier --check .",
     "format": "prettier --write .",
     "test": "cypress open",
+    "test:vitest": "vitest",
+    "test:vitest:unit": "vitest --project=unit",
+    "test:vitest:storybook": "vitest --project=storybook",
     "test:Storybook": "npx cypress run"
   },
   "dependencies": {

@@ -19,6 +19,7 @@ export default mergeConfig(
         {
           extends: true,
           test: {
+            name: "unit",
             globals: true,
             exclude: [...configDefaults.exclude, "e2e-tests/**", "cypress/**"],
             environment: "happy-dom",
