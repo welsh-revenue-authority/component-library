@@ -58,6 +58,7 @@ export type { RadioOption } from "@/components/Radio.vue";
 export type { TableHeader, TableItem } from "@/components/Table.vue";
 export type { TextAreaValidationRule } from "@/components/TextArea.vue";
 export type { WraTagAvailableColors } from "@/components/WraTag.vue";
+export type { NavigationLink } from "@/components/ServiceBar.vue";
 
 export {
   AppBar as WraAppBar,

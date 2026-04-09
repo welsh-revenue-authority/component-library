@@ -82,6 +82,49 @@ export const WithSlot: Story = {
 };
 
 /**
+ * ServiceBar with custom slot content for navigation links
+ */
+export const BurgerMenuDoesNotAppearGivenNoSlots: Story = {
+  args: {
+    serviceName: "Service name",
+    navigationLinks: [],
+    hiddenPrint: false
+  },
+  render: (args) => ({
+    components: { ServiceBar },
+    setup() {
+      return { args };
+    },
+    template: `
+      <ServiceBar v-bind="args">
+      </ServiceBar>
+    `
+  })
+}
+
+/**
+ * ServiceBar with custom slot content for navigation links
+ */
+export const BurgerMenuDoesNotAppearGivenNoLinks: Story = {
+  args: {
+    serviceName: "Service name",
+    navigationLinks: [
+    ],
+    hiddenPrint: false
+  },
+  render: (args) => ({
+    components: { ServiceBar },
+    setup() {
+      return { args };
+    },
+    template: `
+      <ServiceBar v-bind="args">
+      </ServiceBar>
+    `
+  })
+}
+
+/**
  * ServiceBar with custom slot content in burger menu mode (4+ links)
  */
 export const WithSlotBurgerMenu: Story = {

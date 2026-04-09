@@ -12,7 +12,7 @@
       </div>
 
       <!-- Navigation Links on the right or under burger menu -->
-      <div class="navigation-section">
+      <div v-if="navigationLinks.length > 0 || $slots.default" class="navigation-section">
         <!-- Show links directly if 3 or fewer AND not on mobile -->
         <div v-if="!usesBurgerMenu" class="navigation-links menu-links">
           <slot>
