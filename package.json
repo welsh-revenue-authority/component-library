@@ -6,7 +6,7 @@
   "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/welsh-revenue-authority/component-library.git"
+    "url": "git+https://github.com/welsh-revenue-authority/component-library.git"
   },
   "bugs": {
     "url": "https://github.com/welsh-revenue-authority/component-library/issues"
