@@ -28,4 +28,4 @@ jobs:
       - run: npm ci
       - run: npm run build
       # First time package is scoped to private, explicitly set to public
-      - run: npm publish --access=public
+      - run: npm publish --access=public --provenance
