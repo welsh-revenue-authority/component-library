@@ -10,9 +10,15 @@
       <div class="service-section">
         {{ serviceName }}
       </div>
-
       <!-- Navigation Links on the right or under burger menu -->
-      <div v-if="navigationLinks.length > 0 || $slots.default" class="navigation-section">
+      <div
+        v-if="
+          props.navigationLinks &&
+          props.navigationLinks.length > 0 &&
+          props.showNavLinks
+        "
+        class="navigation-section"
+      >
         <!-- Show links directly if 3 or fewer AND not on mobile -->
         <div v-if="!usesBurgerMenu" class="navigation-links menu-links">
           <slot>
@@ -105,13 +111,15 @@ const props = withDefaults(
      */
     menuLabel?: string;
     id?: string;
+    showNavLinks?: boolean;
   }>(),
   {
     navigationLinks: () => [],
     hiddenPrint: false,
     mobileBreakpoint: 768,
     menuLabel: "Menu",
-    id: "wra-service-bar-menu"
+    id: "wra-service-bar-menu",
+    showNavLinks: true
   }
 );
 

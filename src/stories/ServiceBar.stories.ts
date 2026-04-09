@@ -19,6 +19,10 @@ const meta = {
       control: "boolean",
       description:
         "If true, the service bar will be hidden when printing the page"
+    },
+    showNavLinks: {
+      control: "boolean",
+      description: "Show navigation links div"
     }
   }
 } satisfies Meta<typeof ServiceBar>;
@@ -84,11 +88,14 @@ export const WithSlot: Story = {
 /**
  * ServiceBar with custom slot content for navigation links
  */
-export const BurgerMenuDoesNotAppearGivenNoSlots: Story = {
+export const BurgerMenuDoesNotAppearGivenShowNavLinksFalse: Story = {
   args: {
     serviceName: "Service name",
-    navigationLinks: [],
-    hiddenPrint: false
+    navigationLinks: [
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 1" },
+    ],
+    hiddenPrint: false,
+    showNavLinks: false
   },
   render: (args) => ({
     components: { ServiceBar },
@@ -101,6 +108,7 @@ export const BurgerMenuDoesNotAppearGivenNoSlots: Story = {
     `
   })
 }
+
 
 /**
  * ServiceBar with custom slot content for navigation links
