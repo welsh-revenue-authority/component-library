@@ -1,5 +1,6 @@
 <template>
-  <div role="radiogroup" :aria-label="label" :aria-describedby="hint">
+  <fieldset class="radio-group">
+    <legend v-if="caption" class="radio-group-legend">{{ caption }}</legend>
     <wra-radio
       :groupName="groupName"
       v-for="option in validOptions"
@@ -9,7 +10,7 @@
       :isChecked="checkInput(option.value)"
       :id="option.id"
     />
-  </div>
+  </fieldset>
 </template>
 
 <script lang="ts">
@@ -41,15 +42,9 @@ export default defineComponent({
       default: () => []
     },
     /**
-     * The label text for the radio group, used for accessibility.
+     * The caption text displayed as a legend for the radio group fieldset.
      */
-    label: {
-      type: String as PropType<string>
-    },
-    /**
-     * The hint or description for the radio group, referenced by aria-describedby.
-     */
-    hint: {
+    caption: {
       type: String as PropType<string>
     }
   },
@@ -70,6 +65,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.radio-group {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
 .radio:not(:last-child):not(:only-child) {
   margin-bottom: 8px;
 }
