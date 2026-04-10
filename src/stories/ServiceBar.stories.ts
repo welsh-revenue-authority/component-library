@@ -42,6 +42,30 @@ export const Default: Story = {
       { label: "Navigation link", href: "#", ariaLabel: "Navigation link 3" }
     ],
     hiddenPrint: false
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+
+const navigationLinks = [
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 1' },
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 2' },
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 3' }
+];
+<\/script>
+
+<template>
+  <ServiceBar
+    service-name="Service name"
+    :navigation-links="navigationLinks"
+  />
+</template>
+        `
+      }
+    }
   }
 };
 
@@ -58,6 +82,31 @@ export const BurgerMenu: Story = {
       { label: "Navigation link", href: "#", ariaLabel: "Navigation link 4" }
     ],
     hiddenPrint: false
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+
+const navigationLinks = [
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 1' },
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 2' },
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 3' },
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 4' }
+];
+<\/script>
+
+<template>
+  <ServiceBar
+    service-name="Service name"
+    :navigation-links="navigationLinks"
+  />
+</template>
+        `
+      }
+    }
   }
 };
 
@@ -67,7 +116,6 @@ export const BurgerMenu: Story = {
 export const WithSlot: Story = {
   args: {
     serviceName: "Service name",
-    navigationLinks: [],
     hiddenPrint: false
   },
   render: (args) => ({
@@ -82,7 +130,26 @@ export const WithSlot: Story = {
         <a href="#services" aria-label="Services">Services</a>
       </ServiceBar>
     `
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+<\/script>
+
+<template>
+  <ServiceBar service-name="Service name">
+    <a href="#home" aria-label="Home">Home</a>
+    <a href="#about" aria-label="About">About</a>
+    <a href="#services" aria-label="Services">Services</a>
+  </ServiceBar>
+</template>
+        `
+      }
+    }
+  }
 };
 
 /**
@@ -92,7 +159,7 @@ export const BurgerMenuDoesNotAppearGivenShowNavLinksFalse: Story = {
   args: {
     serviceName: "Service name",
     navigationLinks: [
-      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 1" },
+      { label: "Navigation link", href: "#", ariaLabel: "Navigation link 1" }
     ],
     hiddenPrint: false,
     showNavLinks: false
@@ -106,9 +173,31 @@ export const BurgerMenuDoesNotAppearGivenShowNavLinksFalse: Story = {
       <ServiceBar v-bind="args">
       </ServiceBar>
     `
-  })
-}
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
 
+const navigationLinks = [
+  { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 1' }
+];
+<\/script>
+
+<template>
+  <ServiceBar
+    service-name="Service name"
+    :navigation-links="navigationLinks"
+    :show-nav-links="false"
+  />
+</template>
+        `
+      }
+    }
+  }
+};
 
 /**
  * ServiceBar with custom slot content for navigation links
@@ -116,8 +205,7 @@ export const BurgerMenuDoesNotAppearGivenShowNavLinksFalse: Story = {
 export const BurgerMenuDoesNotAppearGivenNoLinks: Story = {
   args: {
     serviceName: "Service name",
-    navigationLinks: [
-    ],
+    navigationLinks: [],
     hiddenPrint: false
   },
   render: (args) => ({
@@ -129,8 +217,26 @@ export const BurgerMenuDoesNotAppearGivenNoLinks: Story = {
       <ServiceBar v-bind="args">
       </ServiceBar>
     `
-  })
-}
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+<\/script>
+
+<template>
+  <ServiceBar
+    service-name="Service name"
+    :navigation-links="[]"
+  />
+</template>
+        `
+      }
+    }
+  }
+};
 
 /**
  * ServiceBar with custom slot content in burger menu mode (4+ links)
@@ -159,5 +265,103 @@ export const WithSlotBurgerMenu: Story = {
         <a href="#contact" aria-label="Contact">Custom Contact</a>
       </ServiceBar>
     `
-  })
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+
+const navigationLinks = [
+  { label: 'Placeholder 1', href: '#', ariaLabel: 'Placeholder 1' },
+  { label: 'Placeholder 2', href: '#', ariaLabel: 'Placeholder 2' },
+  { label: 'Placeholder 3', href: '#', ariaLabel: 'Placeholder 3' },
+  { label: 'Placeholder 4', href: '#', ariaLabel: 'Placeholder 4' }
+];
+<\/script>
+
+<template>
+  <ServiceBar service-name="Service name" :navigation-links="navigationLinks">
+    <a href="#home" aria-label="Home">Custom Home</a>
+    <a href="#about" aria-label="About">Custom About</a>
+    <a href="#services" aria-label="Services">Custom Services</a>
+    <a href="#contact" aria-label="Contact">Custom Contact</a>
+  </ServiceBar>
+</template>
+        `
+      }
+    }
+  }
+};
+
+/**
+ * ServiceBar with custom slot content in burger menu mode (4+ links)
+ */
+export const WithEvents: Story = {
+  args: {
+    serviceName: "Service name",
+    navigationLinks: [
+      {
+        label: "Placeholder 1",
+        href: "#",
+        ariaLabel: "Placeholder 1",
+        onClick: () => console.log("Clicked Placeholder 1")
+      },
+      {
+        label: "Placeholder 2",
+        href: "#",
+        ariaLabel: "Placeholder 2",
+        onClick: () => console.log("Clicked Placeholder 2")
+      },
+      {
+        label: "Placeholder 3",
+        href: "#",
+        ariaLabel: "Placeholder 3",
+        onClick: () => console.log("Clicked Placeholder 3")
+      },
+      {
+        label: "Placeholder 4",
+        href: "#",
+        ariaLabel: "Placeholder 4",
+        onClick: () => console.log("Clicked Placeholder 4")
+      }
+    ],
+    hiddenPrint: false
+  },
+  render: (args) => ({
+    components: { ServiceBar },
+    setup() {
+      return { args };
+    },
+    template: `
+      <ServiceBar v-bind="args">
+      </ServiceBar>
+    `
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<script setup>
+import ServiceBar from '@/components/ServiceBar.vue';
+
+const navigationLinks = [
+  { label: 'Placeholder 1', href: '#', ariaLabel: 'Placeholder 1', onClick: () => console.log('Clicked Placeholder 1') },
+  { label: 'Placeholder 2', href: '#', ariaLabel: 'Placeholder 2', onClick: () => console.log('Clicked Placeholder 2') },
+  { label: 'Placeholder 3', href: '#', ariaLabel: 'Placeholder 3', onClick: () => console.log('Clicked Placeholder 3') },
+  { label: 'Placeholder 4', href: '#', ariaLabel: 'Placeholder 4', onClick: () => console.log('Clicked Placeholder 4') }
+];
+<\/script>
+
+<template>
+  <ServiceBar
+    service-name="Service name"
+    :navigation-links="navigationLinks"
+  />
+</template>
+        `
+      }
+    }
+  }
 };

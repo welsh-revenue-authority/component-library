@@ -13,9 +13,9 @@
       <!-- Navigation Links on the right or under burger menu -->
       <div
         v-if="
-          props.navigationLinks &&
-          props.navigationLinks.length > 0 &&
-          props.showNavLinks
+          props.showNavLinks &&
+          (!Array.isArray(props.navigationLinks) ||
+            props.navigationLinks.length > 0)
         "
         class="navigation-section"
       >
@@ -66,6 +66,7 @@
               :key="link.label"
               :href="link.href"
               :aria-label="link.ariaLabel"
+              @click="link.onClick"
               class="menu-links"
             >
               {{ link.label }}
@@ -86,6 +87,7 @@ export interface NavigationLink {
   label: string;
   href: string;
   ariaLabel: string;
+  onClick?: (payload: PointerEvent) => void;
 }
 
 const props = withDefaults(
@@ -114,7 +116,6 @@ const props = withDefaults(
     showNavLinks?: boolean;
   }>(),
   {
-    navigationLinks: () => [],
     hiddenPrint: false,
     mobileBreakpoint: 768,
     menuLabel: "Menu",
@@ -131,6 +132,10 @@ const windowWidth = ref(
 
 // Computed property
 const usesBurgerMenu = computed(() => {
+  if (!props.navigationLinks) {
+    return false;
+  }
+
   return (
     props.navigationLinks.length > 3 ||
     windowWidth.value < props.mobileBreakpoint
