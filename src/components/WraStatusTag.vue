@@ -1,6 +1,6 @@
 <template>
   <span class="wra-status-tag">
-    {{ label ?? variant }}
+    {{ label }}
   </span>
 </template>
 
@@ -13,9 +13,9 @@ const props = defineProps<{
    */
   variant: WraStatusTagVariant;
   /**
-   * Overrides the displayed label. Defaults to the variant name.
+   * The label for the tag.
    */
-  label?: string;
+  label: string;
 }>();
 </script>
 

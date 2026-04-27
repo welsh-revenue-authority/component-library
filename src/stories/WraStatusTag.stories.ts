@@ -22,7 +22,8 @@ type Story = StoryObj<StatusTagProps>;
 
 export const Alpha: Story = {
   args: {
-    variant: "alpha"
+    variant: "alpha",
+    label: "Alpha"
   },
   render: (args) => ({
     components: { WraStatusTag },
@@ -34,7 +35,7 @@ export const Alpha: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<wra-status-tag variant="alpha" />`
+        code: `<wra-status-tag variant="alpha" label="Alpha" />`
       }
     }
   }
@@ -42,7 +43,8 @@ export const Alpha: Story = {
 
 export const Beta: Story = {
   args: {
-    variant: "beta"
+    variant: "beta",
+    label: "Beta"
   },
   render: (args) => ({
     components: { WraStatusTag },
@@ -54,7 +56,7 @@ export const Beta: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<wra-status-tag variant="beta" />`
+        code: `<wra-status-tag variant="beta" label="Beta" />`
       }
     }
   }
@@ -62,7 +64,8 @@ export const Beta: Story = {
 
 export const Live: Story = {
   args: {
-    variant: "live"
+    variant: "live",
+    label: "Live"
   },
   render: (args) => ({
     components: { WraStatusTag },
@@ -74,7 +77,7 @@ export const Live: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<wra-status-tag variant="live" />`
+        code: `<wra-status-tag variant="live" label="Live" />`
       }
     }
   }
@@ -82,7 +85,8 @@ export const Live: Story = {
 
 export const Retired: Story = {
   args: {
-    variant: "retired"
+    variant: "retired",
+    label: "Retired"
   },
   render: (args) => ({
     components: { WraStatusTag },
@@ -94,7 +98,7 @@ export const Retired: Story = {
   parameters: {
     docs: {
       source: {
-        code: `<wra-status-tag variant="retired" />`
+        code: `<wra-status-tag variant="retired" label="Retired" />`
       }
     }
   }

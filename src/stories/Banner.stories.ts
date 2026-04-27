@@ -136,7 +136,7 @@ export const WithBetaTag: Story = {
     template: `
     <WraBanner v-bind="args">
       <template #status-tag>
-        <WraStatusTag variant="beta" />
+        <WraStatusTag variant="beta" label="Beta" />
       </template>
       This is a new service. <a href=".">Give feedback</a> to help improve it.
     </WraBanner>`
@@ -147,7 +147,7 @@ export const WithBetaTag: Story = {
         code: `
 <wra-banner>
   <template #status-tag>
-    <wra-status-tag variant="beta" />
+    <wra-status-tag variant="beta" label="Beta" />
   </template>
   This is a new service. <a href=".">Give feedback</a> to help improve it.
 </wra-banner>
@@ -169,7 +169,7 @@ export const WithAlphaTag: Story = {
     template: `
     <WraBanner v-bind="args">
       <template #status-tag>
-        <WraStatusTag variant="alpha" />
+        <WraStatusTag variant="alpha" label="Alpha" />
       </template>
       This is not a real service.
     </WraBanner>`
@@ -180,7 +180,7 @@ export const WithAlphaTag: Story = {
         code: `
 <wra-banner>
   <template #status-tag>
-    <wra-status-tag variant="alpha" />
+    <wra-status-tag variant="alpha" label="Alpha" />
   </template>
   This is not a real service.
 </wra-banner>
