@@ -145,7 +145,7 @@ export const WithBetaTag: Story = {
     docs: {
       source: {
         code: `
-<wra-banner>
+<wra-banner new-service>
   <template #status-tag>
     <wra-status-tag variant="beta" label="Beta" />
   </template>
@@ -178,7 +178,7 @@ export const WithAlphaTag: Story = {
     docs: {
       source: {
         code: `
-<wra-banner>
+<wra-banner new-service>
   <template #status-tag>
     <wra-status-tag variant="alpha" label="Alpha" />
   </template>
