@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
+import WraStatusTag from "../components/WraStatusTag.vue";
 
 const meta: Meta<typeof WraBanner> = {
   title: "Feedback/Banner",
@@ -116,6 +117,72 @@ export const Closable: Story = {
         code: `
 <wra-banner closable>
   You've accepted all cookies. You can <a href=".">change your cookie settings</a> at any time.
+</wra-banner>
+        `
+      }
+    }
+  }
+};
+
+export const WithBetaTag: Story = {
+  args: {
+    newService: true
+  },
+  render: (args) => ({
+    components: { WraBanner, WraStatusTag },
+    setup() {
+      return { args };
+    },
+    template: `
+    <WraBanner v-bind="args">
+      <template #status-tag>
+        <WraStatusTag variant="beta" label="Beta" />
+      </template>
+      This is a new service. <a href=".">Give feedback</a> to help improve it.
+    </WraBanner>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-banner new-service>
+  <template #status-tag>
+    <wra-status-tag variant="beta" label="Beta" />
+  </template>
+  This is a new service. <a href=".">Give feedback</a> to help improve it.
+</wra-banner>
+        `
+      }
+    }
+  }
+};
+
+export const WithAlphaTag: Story = {
+  args: {
+    newService: true
+  },
+  render: (args) => ({
+    components: { WraBanner, WraStatusTag },
+    setup() {
+      return { args };
+    },
+    template: `
+    <WraBanner v-bind="args">
+      <template #status-tag>
+        <WraStatusTag variant="alpha" label="Alpha" />
+      </template>
+      This is not a real service.
+    </WraBanner>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-banner new-service>
+  <template #status-tag>
+    <wra-status-tag variant="alpha" label="Alpha" />
+  </template>
+  This is not a real service.
 </wra-banner>
         `
       }

@@ -8,8 +8,11 @@
       'closable-padding': closable === true
     }"
   >
-    <div>
-      <slot> </slot>
+    <div class="wra-banner-body">
+      <slot name="status-tag"></slot>
+      <span>
+        <slot></slot>
+      </span>
     </div>
     <div class="wra-banner-actions" v-if="$slots.actions">
       <slot name="actions"></slot>
@@ -88,10 +91,6 @@ export default defineComponent({
   background-color: var(--color-wra-yellow);
 }
 
-.new-service :deep(a) {
-  color: var(--color-wra-black);
-}
-
 .new-service :deep(a):focus {
   color: #ffffff;
   background-color: var(--color-wra-black);
@@ -108,6 +107,13 @@ export default defineComponent({
   display: flex;
   row-gap: 10px;
   column-gap: 14px;
+  flex-wrap: wrap;
+}
+
+.wra-banner-body {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   flex-wrap: wrap;
 }
 

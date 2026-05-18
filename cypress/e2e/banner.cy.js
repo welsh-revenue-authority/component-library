@@ -119,4 +119,44 @@ describe("Banner", () => {
       cy.log("Assert banner is not visible after clicking close button");
     });
   });
+
+  it("Banner - With Beta Tag", () => {
+    cy.fixture("component-fixtures").then((f) => {
+      cy.visit("/iframe.html?id=feedback-banner--with-beta-tag");
+      cy.log("Visiting the Banner component story");
+
+      cy.get(b.banner)
+        .should("have.css", "background-color", "rgb(255, 213, 48)")
+        .should("contain", "This is a new service.")
+        .should("contain", "Give feedback");
+      cy.log("Assert banner background colour and text content");
+
+      cy.get(b.bannerStatusTag)
+        .should("be.visible")
+        .should("have.text", "Beta");
+      cy.log("Assert status tag is visible and has correct text");
+
+      cy.get(b.bannerHyperlink)
+        .should("be.visible")
+        .should("have.attr", "href");
+      cy.log("Assert banner hyperlink is visible and has href attribute");
+    });
+  });
+
+  it("Banner - With Alpha Tag", () => {
+    cy.fixture("component-fixtures").then((f) => {
+      cy.visit("/iframe.html?id=feedback-banner--with-alpha-tag");
+      cy.log("Visiting the Banner component story");
+
+      cy.get(b.banner)
+        .should("have.css", "background-color", "rgb(255, 213, 48)")
+        .should("contain", "This is not a real service.");
+      cy.log("Assert banner background colour and text content");
+
+      cy.get(b.bannerStatusTag)
+        .should("be.visible")
+        .should("have.text", "Alpha");
+      cy.log("Assert status tag is visible and has correct text");
+    });
+  });
 });

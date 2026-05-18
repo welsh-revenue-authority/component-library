@@ -42,6 +42,7 @@ import TextArea from "@/components/TextArea.vue";
 import TextInput from "@/components/TextInput.vue";
 import ValidationTooltip from "@/components/ValidationTooltip.vue";
 import WraTag from "@/components/WraTag.vue";
+import WraStatusTag from "@/components/WraStatusTag.vue";
 import WraTaskList from "@/components/WraTaskList.vue";
 import WraTaskListItem from "@/components/WraTaskListItem.vue";
 import WraTaskListHint from "@/components/WraTaskListHint.vue";
@@ -58,6 +59,7 @@ export type { RadioOption } from "@/components/Radio.vue";
 export type { TableHeader, TableItem } from "@/components/Table.vue";
 export type { TextAreaValidationRule } from "@/components/TextArea.vue";
 export type { WraTagAvailableColors } from "@/components/WraTag.vue";
+export type { WraStatusTagVariant } from "@/components/WraStatusTag.vue";
 export type { NavigationLink } from "@/components/ServiceBar.vue";
 
 export {
@@ -73,6 +75,7 @@ export {
   ContentSectionTitle as WraContentSectionTitle,
   CustomInput as WraCustomInput,
   WraTag,
+  WraStatusTag,
   WraTaskList,
   WraTaskListItem,
   WraTaskListHint,
@@ -148,6 +151,7 @@ const components = {
   WraTextInput: TextInput,
   WraValidationTooltip: ValidationTooltip,
   WraTag: WraTag,
+  WraStatusTag: WraStatusTag,
   WraTaskList: WraTaskList,
   WraTaskListItem: WraTaskListItem,
   WraTaskListHint: WraTaskListHint
