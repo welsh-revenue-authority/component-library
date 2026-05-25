@@ -2,7 +2,7 @@
   <ul class="wra-breadcrumbs">
     <template v-for="(item, index) in items">
       <li class="wra-breadcrumbs-item">
-        <slot>
+        <slot v-bind="item">
           <a
             v-if="!item[itemDisabled]"
             :href="item[itemHref]"
