@@ -1,8 +1,8 @@
 class RadioGroup {
   radio1 = "#groupName-OptionOne";
-  radio1Text = "#storybook-root > div > div:nth-child(1) > label > span";
+  radio1Text = "label[for='groupName-OptionOne']";
   radio2 = "#groupName-OptionTwo";
-  radio2Text = "#storybook-root > div > div:nth-child(2) > label > span";
+  radio2Text = "label[for='groupName-OptionTwo']";
 }
 
 export default RadioGroup;

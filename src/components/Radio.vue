@@ -1,26 +1,23 @@
 <template>
-  <div>
+  <p class="radio-option">
+    <input
+      type="radio"
+      :name="groupName"
+      :value="option.value"
+      :id="id ?? groupName + '-' + option.value"
+      @change="onChange"
+      class="radio-input"
+      :checked="isChecked == true"
+    />
     <label :for="id ?? groupName + '-' + option.value" class="radio-label">
-      <input
-        type="radio"
-        :name="groupName"
-        :value="option.value"
-        :id="id ?? groupName + '-' + option.value"
-        @change="onChange"
-        class="radio-input"
-        :checked="isChecked == true"
-        :aria-checked="isChecked"
-      />
-      <span class="radio-text">
-        <p>{{ option.label }}</p>
-        <p
-          v-if="option.info"
-          class="further-information-text"
-          v-html="option.info"
-        ></p>
-      </span>
+      {{ option.label }}
+      <span
+        v-if="option.info"
+        class="further-information-text"
+        v-html="option.info"
+      ></span>
     </label>
-  </div>
+  </p>
 </template>
 
 <script lang="ts">
@@ -71,16 +68,17 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.radio-label {
+.radio-option {
   background: var(--color-wra-grey);
   padding: 20px 20px 20px 20px;
   min-height: 24px;
   display: grid;
   cursor: pointer;
   grid-template-columns: 20px auto;
+  margin: 0;
 }
 
-.radio-label:hover {
+.radio-option:hover {
   background: var(--color-wra-mid-grey);
 }
 
@@ -122,16 +120,14 @@ export default defineComponent({
   outline-offset: 0px;
 }
 
-.radio-text {
+.radio-label {
   padding: 0px 0px 0px 10px;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .further-information-text {
+  display: block;
   font-size: 14px;
-}
-
-p {
-  margin: 0px;
 }
 </style>
