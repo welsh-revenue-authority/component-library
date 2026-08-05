@@ -113,18 +113,6 @@ export default defineComponent({
   transform: scale(1);
 }
 
-@media (forced-colors: active) {
-  .radio-input {
-    appearance: auto;
-    -webkit-appearance: auto;
-    forced-color-adjust: auto;
-  }
-
-  .radio-input::before {
-    content: none;
-  }
-}
-
 .radio-input:focus {
   outline: 2px solid var(--color-wra-black);
   background-color: var(--color-wra-yellow);
