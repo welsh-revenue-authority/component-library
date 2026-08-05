@@ -1,17 +1,19 @@
 <template>
-  <fieldset class="radio-group" :aria-describedby="hintId">
-    <legend v-if="label" class="sr-only">{{ label }}</legend>
-    <p v-if="hint" :id="hintId" class="sr-only">{{ hint }}</p>
-    <wra-radio
-      :groupName="groupName"
-      v-for="option in validOptions"
-      :option="option"
-      :key="option.value"
-      class="radio"
-      :isChecked="checkInput(option.value)"
-      :id="option.id"
-    />
-  </fieldset>
+  <div>
+    <fieldset class="radio-fieldset" :aria-describedby="hintId">
+      <legend v-if="label" class="sr-only">{{ label }}</legend>
+      <p v-if="hint" :id="hintId" class="sr-only">{{ hint }}</p>
+      <wra-radio
+        :groupName="groupName"
+        v-for="option in validOptions"
+        :option="option"
+        :key="option.value"
+        class="radio"
+        :isChecked="checkInput(option.value)"
+        :id="option.id"
+      />
+    </fieldset>
+  </div>
 </template>
 
 <script lang="ts">
@@ -75,7 +77,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.radio-group {
+.radio-fieldset {
   border: 0;
   margin: 0;
   min-inline-size: 0;
