@@ -77,7 +77,7 @@ export default defineComponent({
   min-height: 24px;
   display: grid;
   cursor: pointer;
-  grid-template-columns: 20px auto;
+  grid-template-columns: 24px auto;
 }
 
 .radio-label:hover {
@@ -90,8 +90,8 @@ export default defineComponent({
   background-color: #fff;
   margin: 0;
   color: var(--color-wra-black);
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border: 1px solid var(--color-wra-black);
   border-radius: 50%;
   transform: translateY(1px);
@@ -101,11 +101,10 @@ export default defineComponent({
 
 .radio-input::before {
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   transform: scale(0);
-  transition: 120ms transform ease-in-out;
   background-color: var(--color-wra-black);
 }
 
