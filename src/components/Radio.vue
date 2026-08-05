@@ -12,12 +12,12 @@
         :aria-checked="isChecked"
       />
       <span class="radio-text">
-        <p>{{ option.label }}</p>
-        <p
+        <span class="leading-[24px]">{{ option.label }}</span>
+        <span
           v-if="option.info"
           class="further-information-text"
           v-html="option.info"
-        ></p>
+        ></span>
       </span>
     </label>
   </div>
@@ -113,6 +113,18 @@ export default defineComponent({
   transform: scale(1);
 }
 
+@media (forced-colors: active) {
+  .radio-input {
+    appearance: auto;
+    -webkit-appearance: auto;
+    forced-color-adjust: auto;
+  }
+
+  .radio-input::before {
+    content: none;
+  }
+}
+
 .radio-input:focus {
   outline: 2px solid var(--color-wra-black);
   background-color: var(--color-wra-yellow);
@@ -128,10 +140,8 @@ export default defineComponent({
 }
 
 .further-information-text {
+  display: block;
   font-size: 14px;
-}
-
-p {
-  margin: 0px;
+  line-height: 24px;
 }
 </style>
