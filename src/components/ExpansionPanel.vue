@@ -2,7 +2,8 @@
   <div>
     <button
       class="expansion-button"
-      :aria-controls="'expansion-content-' + ariaTitle"
+      :aria-controls="'content-' + ariaTitle"
+      :aria-expanded="showPanel"
       :id="'expansion-control-' + ariaTitle"
       @click="togglePanel"
       :style="style"
@@ -21,12 +22,7 @@
       </span>
     </button>
     <transition name="slide-fade">
-      <div
-        class="panel-content"
-        :aria-hidden="!showPanel"
-        :id="'content-' + ariaTitle"
-        v-if="showPanel"
-      >
+      <div class="panel-content" :id="'content-' + ariaTitle" v-if="showPanel">
         <div class="inner-panel">
           <slot></slot>
         </div>

@@ -3,6 +3,7 @@
     <button
       class="expansion-button"
       :aria-controls="`expansion-content-${ariaTitle}`"
+      :aria-expanded="showPanel"
       :id="`expansion-control-${ariaTitle}`"
       @click="togglePanel"
     >
@@ -38,7 +39,6 @@
       <div
         v-show="showPanel"
         class="panel-content"
-        :aria-hidden="!showPanel"
         :id="`expansion-content-${ariaTitle}`"
       >
         <div class="inner-panel">
