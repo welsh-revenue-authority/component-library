@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="wra-service-bar">
     <div
-      class="wra-service-bar"
+      class="wra-service-bar-inner"
       :class="{
         'hidden-print': hiddenPrint === true
       }"
     >
       <!-- Service Name on the left -->
-      <div class="service-section">
+      <div class="wra-service-bar-service-name">
         {{ serviceName }}
       </div>
       <!-- Navigation Links on the right or under burger menu -->
@@ -17,11 +17,12 @@
           (!Array.isArray(props.navigationLinks) ||
             props.navigationLinks.length > 0)
         "
-        class="navigation-section"
+        class="wra-service-bar-navigation"
       >
         <!-- Show links directly if 3 or fewer AND not on mobile -->
-        <div v-if="!usesBurgerMenu" class="navigation-links menu-links">
+        <div v-if="!usesBurgerMenu" class="wra-service-bar-navigation-links">
           <slot>
+            <!-- FIXME: should be list of links instead of just plain anchors -->
             <a
               v-for="link in navigationLinks"
               :key="link.label"
@@ -34,15 +35,15 @@
         </div>
 
         <!-- Show burger menu if more than 3 links OR on mobile -->
-        <div v-else class="burger-menu-container">
+        <div v-else class="wra-service-bar-burger-menu-container">
           <button
-            class="burger-menu-button"
+            class="wra-service-bar-burger-menu-button"
             :aria-expanded="isMenuOpen"
             :aria-controls="props.id"
             aria-label="Toggle navigation menu"
             @click="isMenuOpen = !isMenuOpen"
           >
-            <span class="icon prepend-icon-wrapper">
+            <span class="wra-service-bar-burger-icon prepend-icon-wrapper">
               <WraIcon :icon="isMenuOpen ? mdiClose : mdiMenu" />
             </span>
             {{ menuLabel }}
@@ -55,19 +56,19 @@
     <transition name="slide-fade">
       <div
         v-if="isMenuOpen && usesBurgerMenu"
-        class="burger-menu-content"
+        class="wra-service-bar-burger-menu-navigation"
         :id="props.id"
         :aria-hidden="!isMenuOpen"
       >
-        <div class="menu-inner">
+        <div class="wra-service-bar-burger-menu-navigation-links">
           <slot>
+            <!-- FIXME: should be list of links instead of just plain anchors -->
             <a
               v-for="link in navigationLinks"
               :key="link.label"
               :href="link.href"
               :aria-label="link.ariaLabel"
               @click="link.onClick"
-              class="menu-links"
             >
               {{ link.label }}
             </a>
@@ -168,6 +169,9 @@ onBeforeUnmount(() => {
 
 .wra-service-bar {
   background-color: #e9f5ff;
+}
+
+.wra-service-bar-inner {
   padding: 8px 20px;
   height: 64px;
   border: none;
@@ -178,7 +182,7 @@ onBeforeUnmount(() => {
   flex-wrap: nowrap;
 }
 
-.service-section {
+.wra-service-bar-service-name {
   display: flex;
   align-items: center;
   flex-shrink: 1;
@@ -193,27 +197,27 @@ onBeforeUnmount(() => {
   overflow-wrap: break-word;
 }
 
-.navigation-section {
+.wra-service-bar-navigation {
   display: flex;
   align-items: center;
   flex-shrink: 0;
   margin-left: auto;
 }
 
-.navigation-links {
+.wra-service-bar-navigation-links {
   display: flex;
   gap: 16px;
   align-items: center;
   font-weight: normal;
 }
 
-.burger-menu-container {
+.wra-service-bar-burger-menu-container {
   position: relative;
   display: flex;
   justify-content: flex-end;
 }
 
-.burger-menu-button {
+.wra-service-bar-burger-menu-button {
   background-color: transparent;
   outline: 1px solid var(--color-wra-black);
   border: none;
@@ -228,7 +232,7 @@ onBeforeUnmount(() => {
   line-height: 24px;
 }
 
-.burger-menu-button:focus {
+.wra-service-bar-burger-menu-button:focus {
   color: var(--color-wra-black) !important;
   background-color: var(--color-wra-yellow) !important;
   outline: 2px solid var(--color-wra-black);
@@ -236,7 +240,7 @@ onBeforeUnmount(() => {
   border-color: var(--color-wra-yellow);
 }
 
-.icon {
+.wra-service-bar-burger-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,14 +250,13 @@ onBeforeUnmount(() => {
   margin-right: 5px;
 }
 
-.burger-menu-content {
+.wra-service-bar-burger-menu-navigation {
   display: grid;
-  background-color: #e9f5ff;
   padding: 0px 20px 20px 20px;
   grid-template-rows: 1fr;
 }
 
-.menu-inner {
+.wra-service-bar-burger-menu-navigation-links {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -282,8 +285,8 @@ onBeforeUnmount(() => {
 </style>
 
 <style>
-.wra-service-bar .menu-links a,
-.wra-service-bar .menu-links button {
+.wra-service-bar a,
+.wra-service-bar button {
   color: var(--color-wra-black);
   font-weight: normal;
 }
