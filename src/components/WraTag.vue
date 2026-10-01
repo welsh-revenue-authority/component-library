@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-export type WraTagAvailableColors = "wra-blue" | "wra-green" | "wra-grey";
+export type WraTagAvailableColors = "wra-blue" | "wra-green" | "wra-grey" | "wra-yellow";
 
 const props = withDefaults(
   defineProps<{
@@ -25,6 +25,7 @@ const tagClass = computed(() => {
   const colorMap: Record<WraTagAvailableColors, string> = {
     "wra-blue": "wra-tag-blue",
     "wra-green": "wra-tag-green",
+    "wra-yellow": "wra-tag-yellow",
     "wra-grey": "wra-tag-grey"
   };
 
@@ -49,6 +50,12 @@ const tagClass = computed(() => {
   background-color: var(--color-wra-light-green);
   color: var(--color-wra-green);
   border: 1px solid var(--color-wra-green);
+}
+
+.wra-tag-yellow {
+  background-color: var(--color-wra-light-yellow);
+  color: var(--color-wra-dark-yellow);
+  border: 1px solid var(--color-wra-dark-yellow);
 }
 
 .wra-tag-grey {

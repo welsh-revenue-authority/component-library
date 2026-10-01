@@ -7,7 +7,7 @@ const meta: Meta<typeof WraTag> = {
   argTypes: {
     color: {
       control: { type: "radio" },
-      options: ["wra-blue", "wra-green", "wra-grey"]
+      options: ["wra-blue", "wra-green", "wra-grey", "wra-yellow"]
     },
     content: {
       control: "text"
@@ -82,6 +82,29 @@ export const Green: Story = {
       source: {
         code: `
 <wra-tag content="Completed" colour="wra-green" />
+        `
+      }
+    }
+  }
+};
+
+export const Yellow: Story = {
+  args: {
+    content: "Deregistered",
+    color: "wra-yellow"
+  },
+  render: (args) => ({
+    components: { WraTag },
+    setup() {
+      return { args };
+    },
+    template: `<WraTag v-bind="args" />`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-tag content="Deregistered" colour="wra-yellow" />
         `
       }
     }
