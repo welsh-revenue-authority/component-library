@@ -24,7 +24,7 @@ export default defineComponent({
      * The unique id for the textarea input and label association.
      */
     id: {
-      type: Number as PropType<number>,
+      type: [String] as PropType<string>,
       required: true
     },
     /**
