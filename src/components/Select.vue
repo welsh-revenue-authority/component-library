@@ -171,6 +171,7 @@ select {
 
 .select::after {
   content: "";
+  pointer-events: none;
   width: 0.8em;
   height: 0.5em;
   background-color: var(--color-wra-black);
@@ -184,6 +185,7 @@ select,
 }
 
 select:focus + .focus {
+  pointer-events: none;
   position: absolute;
   top: -1px;
   left: -1px;
