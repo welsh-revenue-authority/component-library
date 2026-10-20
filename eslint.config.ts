@@ -1,9 +1,10 @@
-import pluginVue from "eslint-plugin-vue";
-import {
-  defineConfigWithVueTs,
-  vueTsConfigs
-} from "@vue/eslint-config-typescript";
-import prettierConfig from "@vue/eslint-config-prettier";
+import { globalIgnores } from 'eslint/config'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import pluginVue from 'eslint-plugin-vue'
+import pluginPlaywright from 'eslint-plugin-playwright'
+import pluginVitest from '@vitest/eslint-plugin'
+import pluginOxlint from 'eslint-plugin-oxlint'
+import skipFormatting from 'eslint-config-prettier/flat'
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -12,25 +13,21 @@ import prettierConfig from "@vue/eslint-config-prettier";
 
 export default defineConfigWithVueTs(
   {
-    name: "app/files-to-lint",
-    files: ["**/*.{ts,mts,tsx,vue}"]
+    name: 'app/files-to-lint',
+    files: ['**/*.{vue,ts,mts,tsx}'],
   },
 
-  {
-    name: "app/files-to-ignore",
-    ignores: ["**/dist/**", "**/dist-ssr/**", "**/coverage/**"]
-  },
-  {
-    rules: {
-      "@typescript-eslint/no-empty-object-type": [
-        "error",
-        {
-          allowInterfaces: "always"
-        }
-      ]
-    }
-  },
-  pluginVue.configs["flat/essential"],
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
+
+  ...pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  prettierConfig
-);
+
+  {
+    ...pluginVitest.configs.recommended,
+    files: ['src/**/__tests__/*'],
+  },
+
+  ...pluginOxlint.buildFromOxlintConfigFile('.oxlintrc.json'),
+
+  skipFormatting,
+)

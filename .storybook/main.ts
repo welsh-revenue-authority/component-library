@@ -13,7 +13,8 @@ const config = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-docs",
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
+    "@storybook/addon-vitest"
   ],
   framework: {
     name: "@storybook/vue3-vite",
