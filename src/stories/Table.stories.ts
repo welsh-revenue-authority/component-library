@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 import WraTable from "../components/Table.vue";
 
 const meta: Meta<typeof WraTable> = {
@@ -45,6 +46,13 @@ export default meta;
 type Story = StoryObj<typeof WraTable>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("Table caption")).toBeVisible();
+    await expect(canvas.getByText("Up to 225,000")).toBeVisible();
+    await expect(canvas.getByText("10000")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     headers: [
@@ -95,6 +103,11 @@ export const Default: Story = {
 };
 
 export const InheritBackground: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("10000")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     inheritBackground: true,
@@ -147,6 +160,11 @@ export const InheritBackground: Story = {
 };
 
 export const BoldRows: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("Up to 225,000")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     inheritBackground: true,

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSimpleTable from "../components/SimpleTable.vue";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof WraSimpleTable> = {
   title: "Data & Display/SimpleTable",
@@ -17,6 +18,12 @@ export default meta;
 type Story = StoryObj<typeof WraSimpleTable>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("Table caption")).toBeVisible();
+    await expect(canvas.getByText("Up to 225,000")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     leftAlignHeaders: true
@@ -83,6 +90,11 @@ export const Default: Story = {
 };
 
 export const InheritBackground: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("10000")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     inheritBackground: true

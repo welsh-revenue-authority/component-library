@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import { mergeConfig, defineConfig, configDefaults } from "vitest/config";
-import viteConfig from "./vite.config.ts";
+import viteConfig from "./vite.config";
 import path from "node:path";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
@@ -14,15 +14,12 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      coverage: {
+        provider: "v8",
+        reporter: ["text", "json-summary", "json"],
+        reportOnFailure: true
+      },
       projects: [
-        {
-          extends: true,
-          test: {
-            environment: "jsdom",
-            exclude: [...configDefaults.exclude],
-            root: fileURLToPath(new URL("./", import.meta.url))
-          }
-        },
         {
           extends: true,
           plugins: [

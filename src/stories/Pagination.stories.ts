@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraPagination from "../components/Pagination.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraPagination> = {
   title: "Navigation/Pagination",
@@ -11,6 +12,13 @@ export default meta;
 type Story = StoryObj<typeof WraPagination>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const next = canvas.getByRole("button", { name: /next/i });
+    await expect(canvas.getByText("1")).toHaveClass("active");
+    await userEvent.click(next);
+    await expect(canvas.getByText("2")).toHaveClass("active");
+  },
   args: {
     modelValue: 1,
     totalPages: 20,

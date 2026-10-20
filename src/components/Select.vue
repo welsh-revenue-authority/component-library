@@ -25,10 +25,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-select",
+  name: "WraSelect",
   props: {
     /**
      * The array of options to display in the select dropdown.

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSkipLink from "../components/SkipLink.vue";
 import WraCard from "../components/Card.vue";
 import WraButton from "../components/Button.vue";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof WraSkipLink> = {
   title: "Form Inputs & Controls/SkipLink",
@@ -12,15 +13,27 @@ export default meta;
 
 type Story = StoryObj<typeof WraSkipLink>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+  }
+};
 
 export const CustomText: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("link", { name: /skip/i })
+    ).toBeVisible();
+  },
   args: {
     text: "Skip cookies"
   }
 };
 
 export const FullWidthSkiplink: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+  },
   args: {
     text: "Skip cookies",
     fullWidth: true
@@ -28,6 +41,9 @@ export const FullWidthSkiplink: Story = {
 };
 
 export const SkipId: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+  },
   args: {
     text: "Skip to main content",
     skipId: "container"

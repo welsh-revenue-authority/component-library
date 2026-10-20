@@ -1,5 +1,6 @@
 import WraHeader from "../components/Header.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof WraHeader> = {
   title: "Miscellaneous/Header",
@@ -17,6 +18,11 @@ const meta: Meta<typeof WraHeader> = {
 export default meta;
 
 export const Header1: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 1 })
+    ).toBeVisible();
+  },
   args: {
     size: "h1"
   },
@@ -41,6 +47,11 @@ export const Header1: StoryObj<typeof WraHeader> = {
 };
 
 export const Header2: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 2 })
+    ).toBeVisible();
+  },
   args: {
     size: "h2"
   },
@@ -65,6 +76,11 @@ export const Header2: StoryObj<typeof WraHeader> = {
 };
 
 export const Header3: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 3 })
+    ).toBeVisible();
+  },
   args: {
     size: "h3"
   },
@@ -89,6 +105,11 @@ export const Header3: StoryObj<typeof WraHeader> = {
 };
 
 export const Header4: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 4 })
+    ).toBeVisible();
+  },
   args: {
     size: "h4"
   },
@@ -113,6 +134,11 @@ export const Header4: StoryObj<typeof WraHeader> = {
 };
 
 export const Header5: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 5 })
+    ).toBeVisible();
+  },
   args: {
     size: "h5"
   },
@@ -137,6 +163,11 @@ export const Header5: StoryObj<typeof WraHeader> = {
 };
 
 export const Header6: StoryObj<typeof WraHeader> = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("heading", { level: 6 })
+    ).toBeVisible();
+  },
   args: {
     size: "h6"
   },

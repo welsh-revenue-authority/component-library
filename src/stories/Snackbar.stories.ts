@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSnackBar from "../components/Snackbar.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraSnackBar> = {
   title: "Feedback/Snackbar",
@@ -32,6 +33,13 @@ export default meta;
 type Story = StoryObj<typeof WraSnackBar>;
 
 export const Info: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is an info snackbar");
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /close/i }));
+    await expect(snackbar).not.toBeInTheDocument();
+  },
   args: {
     label: "This is an info snackbar",
     visible: true,
@@ -40,6 +48,13 @@ export const Info: Story = {
 };
 
 export const Success: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is a success snackbar");
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /close/i }));
+    await expect(snackbar).not.toBeInTheDocument();
+  },
   args: {
     label: "This is a success snackbar",
     visible: true,
@@ -48,6 +63,13 @@ export const Success: Story = {
 };
 
 export const Warning: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is a warning snackbar");
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /close/i }));
+    await expect(snackbar).not.toBeInTheDocument();
+  },
   args: {
     label: "This is a warning snackbar",
     visible: true,
@@ -56,6 +78,13 @@ export const Warning: Story = {
 };
 
 export const Error: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is an error snackbar");
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /close/i }));
+    await expect(snackbar).not.toBeInTheDocument();
+  },
   args: {
     label: "This is an error snackbar",
     visible: true,
@@ -64,6 +93,15 @@ export const Error: Story = {
 };
 
 export const NoCloseButton: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(
+      canvas.getByText("Snackbar with no close button")
+    ).toBeVisible();
+    await expect(
+      canvas.queryByRole("button", { name: /close/i })
+    ).not.toBeInTheDocument();
+  },
   args: {
     label: "Snackbar with no close button",
     showClose: false,

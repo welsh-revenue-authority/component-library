@@ -50,10 +50,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-content-accordion",
+  name: "WraContentAccordion",
   emits: ["update:expanded"],
   props: {
     title: {
@@ -98,7 +99,7 @@ export default defineComponent({
   },
   data() {
     return {
-      internalPanel: false as boolean
+      internalPanel: false
     };
   },
   computed: {

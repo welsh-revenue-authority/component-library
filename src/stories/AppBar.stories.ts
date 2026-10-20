@@ -3,11 +3,12 @@ import WraAppBar from "../components/AppBar.vue";
 import WraButton from "../components/Button.vue";
 import WraServiceLogo from "../components/ServiceLogo.vue";
 import WgLogoFile from "./assets/wg-logo-white.svg";
+import { expect, userEvent, within } from "storybook/test";
 
 import { Small } from "./Button.stories";
 
 const wgImage = {
-  src: WgLogoFile as string
+  src: WgLogoFile
 };
 
 export default {
@@ -33,6 +34,23 @@ type AppBarProps = {
 };
 
 export const Default: StoryObj<AppBarProps> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const languageButton = canvas.getByRole("button", { name: "Cymraeg" });
+    const logo = canvas.getByRole("link");
+    await expect(canvasElement.querySelector(".app-bar")).toHaveStyle({
+      backgroundColor: "rgb(50, 50, 50)"
+    });
+    await expect(logo).toBeVisible();
+    await expect(languageButton).toBeVisible();
+    await expect(languageButton).toHaveStyle({
+      backgroundColor: "rgb(255, 255, 255)"
+    });
+    await userEvent.click(languageButton);
+    await expect(languageButton).toHaveStyle({
+      backgroundColor: "rgb(255, 213, 48)"
+    });
+  },
   args: {
     hiddenPrint: false
   },

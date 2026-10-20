@@ -16,7 +16,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Directive, HTMLAttributes, PropType } from "vue";
+import type { Directive, HTMLAttributes, PropType } from "vue";
+import { defineComponent } from "vue";
 import { vMaska } from "maska/vue";
 
 export type TextInputValidationRule = (value: string | number) => true | string;
@@ -26,7 +27,7 @@ const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
   directives: { maska: vMaskaDirective },
-  name: "wra-text-input",
+  name: "WraTextInput",
   props: {
     /**
      * The value of the input field.
@@ -129,8 +130,8 @@ export default defineComponent({
   },
   data() {
     return {
-      errorMessage: "" as string,
-      firstValidation: true as boolean
+      errorMessage: "",
+      firstValidation: true
     };
   },
   methods: {

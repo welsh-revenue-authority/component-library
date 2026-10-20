@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import Autocomplete from "../components/Autocomplete.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const councilArray = [
   { value: "Blaenau Gwent", label: "Blaenau Gwent" },
@@ -53,6 +54,15 @@ type AutocompleteProps = InstanceType<typeof Autocomplete>["$props"];
 type Story = StoryObj<AutocompleteProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("combobox");
+    await userEvent.type(input, "Card");
+    await expect(canvas.getByText("Cardiff")).toBeVisible();
+    await userEvent.clear(input);
+    await userEvent.type(input, "not a local authority");
+    await expect(canvas.getByText("No results found")).toBeVisible();
+  },
   args: {
     label: "This is an autocomplete for Welsh local authorities",
     id: "test-autocomplete",
@@ -102,6 +112,11 @@ export const Placeholder: Story = {
 };
 
 export const Autoexpand: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await userEvent.click(canvas.getByRole("combobox"));
+    await expect(canvas.getByText("Blaenau Gwent")).toBeVisible();
+  },
   args: {
     label:
       "This is an autocomplete showing Welsh local authorities that expands when clicked",
@@ -128,6 +143,14 @@ export const Autoexpand: Story = {
 };
 
 export const PreFilled: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("combobox");
+    await expect(input).toHaveValue("Alice's council");
+    await userEvent.clear(input);
+    await userEvent.type(input, "not a local authority");
+    await expect(canvas.getByText("No results found")).toBeVisible();
+  },
   args: {
     label: "This is an autocomplete that is prefilled with a value",
     id: "test-autocomplete-prefill",

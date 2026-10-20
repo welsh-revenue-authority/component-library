@@ -1,7 +1,11 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Tests
+name: Build, Lint, and Test
+
+permissions:
+  contents: read
+  pull-requests: write
 
 on:
   push:
@@ -10,7 +14,7 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 jobs:
-  cypress-run:
+  build-lint-test-run:
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.64.1-noble
@@ -28,8 +32,13 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm ci
-      - name: Cypress Storybook tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: npm run storybook
-          run: npm run test
+      - name: Check formatting
+        run: npm run format:check
+      - name: Lint code
+        run: npm run lint
+        continue-on-error: true
+      - name: Run tests
+        run: npm run test:coverage
+      - name: "Report Coverage"
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2

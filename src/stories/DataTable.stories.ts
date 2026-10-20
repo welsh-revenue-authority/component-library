@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraDataTable from "../components/DataTable.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 type Header = {
   key: string;
@@ -38,6 +39,13 @@ const meta: Meta<DataTableArgs> = {
 export default meta;
 
 export const Default: StoryObj<DataTableArgs> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const nameInput = canvas.getByRole("textbox", { name: /vegetable/i });
+    await expect(canvas.getByText("Artichoke")).toBeVisible();
+    await userEvent.type(nameInput, "Broccoli");
+    await expect(canvas.getByText("Broccoli")).toBeVisible();
+  },
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
@@ -293,7 +301,27 @@ export const Default: StoryObj<DataTableArgs> = {
   }
 };
 
+export const DefaultSearchCalories: StoryObj<DataTableArgs> = {
+  ...Default,
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(
+      canvas.getByText("Nutrition Facts for 30 Common Vegetables")
+    ).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /next/i }));
+    await expect(canvas.getByText("Chard")).toBeVisible();
+    const caloriesInput = canvas.getByRole("textbox", { name: /calories/i });
+    await userEvent.type(caloriesInput, "55");
+    await expect(canvas.getByText("Broccoli")).toBeVisible();
+  }
+};
+
 export const BoldRows: StoryObj<DataTableArgs> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("Artichoke")).toBeVisible();
+    await expect(canvas.getByText("Asparagus")).toBeVisible();
+  },
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [
@@ -365,6 +393,16 @@ export const BoldRows: StoryObj<DataTableArgs> = {
 };
 
 export const ClickableRows: StoryObj<DataTableArgs> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const nameInput = canvas.getByRole("textbox", { name: /vegetable/i });
+    await expect(canvas.getByText("Artichoke")).toBeVisible();
+    await userEvent.type(nameInput, "Broccoli");
+    await expect(canvas.getByText("Broccoli")).toBeVisible();
+    await expect(canvas.getByText("Broccoli").closest("tr")).toHaveClass(
+      "clickable"
+    );
+  },
   args: {
     caption: "Nutrition Facts for 30 Common Vegetables",
     headers: [

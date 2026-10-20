@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraCard from "../components/Card.vue";
+import { expect, userEvent, within } from "storybook/test";
 import WraHeader from "../components/Header.vue";
 import WraButton from "../components/Button.vue";
 
@@ -14,6 +15,19 @@ type CardProps = InstanceType<typeof WraCard>["$props"];
 type Story = StoryObj<CardProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const card = canvasElement.querySelector(".card");
+    const button = canvas.getByRole("button");
+    await expect(card).toBeVisible();
+    await expect(card).toHaveClass("card");
+    await expect(
+      canvas.getByRole("heading", { name: "H1 Header" })
+    ).toBeVisible();
+    await expect(button).toBeVisible();
+    await userEvent.click(button);
+    await expect(button).toHaveStyle({ backgroundColor: "rgb(255, 213, 48)" });
+  },
   render: (args) => ({
     components: { WraCard, WraHeader, WraButton },
     setup() {

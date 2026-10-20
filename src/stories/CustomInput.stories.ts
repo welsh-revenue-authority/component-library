@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraCustomInput from "../components/CustomInput.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraCustomInput> = {
   title: "Form Inputs & Controls/CustomInput",
@@ -34,6 +35,13 @@ type CustomInputProps = InstanceType<typeof WraCustomInput>["$props"];
 type Story = StoryObj<CustomInputProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("textbox");
+    await userEvent.clear(input);
+    await userEvent.type(input, "1234");
+    await expect(input).toHaveValue("1,234");
+  },
   args: {
     label: "Custom input label",
     placeholder: "0000 0000 0000",

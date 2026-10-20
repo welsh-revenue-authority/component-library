@@ -1,7 +1,9 @@
 import WraDialog from "../components/Dialog.vue";
 import WraButton from "../components/Button.vue";
-import { ref, Ref } from "vue";
+import type { Ref } from "vue";
+import { ref } from "vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraDialog> = {
   title: "Containment/Dialog",
@@ -10,6 +12,20 @@ const meta: Meta<typeof WraDialog> = {
 export default meta;
 
 export const Default: StoryObj<typeof WraDialog> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const body = within(document.body);
+    await expect(body.queryByRole("dialog")).not.toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: "Open Dialog" }));
+    const dialog = body.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toHaveTextContent("Dialog Title");
+    await expect(dialog).toHaveTextContent("Dialog message goes here.");
+    await userEvent.click(
+      within(dialog).getByRole("button", { name: "Confirm" })
+    );
+    await expect(dialog).not.toBeVisible();
+  },
   args: {
     title: "Dialog Title",
     message: "Dialog message goes here.",
@@ -67,6 +83,22 @@ export const Default: StoryObj<typeof WraDialog> = {
 };
 
 export const IsDelete: StoryObj<typeof WraDialog> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const body = within(document.body);
+    await expect(body.queryByRole("dialog")).not.toBeVisible();
+    await userEvent.click(
+      canvas.getByRole("button", { name: "Open Delete Dialog" })
+    );
+    const dialog = body.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toHaveTextContent("Are you sure?");
+    await expect(dialog).toHaveTextContent("This action cannot be undone.");
+    await userEvent.click(
+      within(dialog).getByRole("button", { name: "Confirm" })
+    );
+    await expect(dialog).not.toBeVisible();
+  },
   args: {
     title: "Are you sure?",
     message: "This action cannot be undone.",

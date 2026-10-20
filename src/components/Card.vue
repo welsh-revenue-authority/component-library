@@ -8,7 +8,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-card"
+  name: "WraCard"
 });
 </script>
 

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraValidationTooltip from "../components/ValidationTooltip.vue";
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof WraValidationTooltip> = {
   title: "Containment/ValidationTooltip",
@@ -37,6 +38,9 @@ export default meta;
 type Story = StoryObj<typeof WraValidationTooltip>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+  },
   args: {
     type: "wra-default"
   },
@@ -61,6 +65,9 @@ export const Default: Story = {
 };
 
 export const Info: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+  },
   args: {
     type: "wra-info"
   },
@@ -85,6 +92,9 @@ export const Info: Story = {
 };
 
 export const Success: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+  },
   args: {
     type: "wra-success"
   },
@@ -109,6 +119,9 @@ export const Success: Story = {
 };
 
 export const Warning: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+  },
   args: {
     type: "wra-warning"
   },
@@ -133,6 +146,9 @@ export const Warning: Story = {
 };
 
 export const Error: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+  },
   args: {
     type: "wra-error"
   },
@@ -157,6 +173,10 @@ export const Error: Story = {
 };
 
 export const CustomIconInfo: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    await expect(canvasElement.querySelector("svg")).toBeVisible();
+  },
   args: {
     type: "wra-info"
   },
@@ -195,6 +215,10 @@ export const CustomIconInfo: Story = {
 };
 
 export const CustomIconError: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    await expect(canvasElement.querySelector("svg")).toBeVisible();
+  },
   args: {
     type: "wra-error"
   },

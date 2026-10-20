@@ -23,14 +23,15 @@
 
 <script lang="ts">
 import { vMaska } from "maska/vue";
-import { Directive, PropType, defineComponent } from "vue";
+import type { Directive, PropType } from "vue";
+import { defineComponent } from "vue";
 
 // Getting around vmaska incorrect typing
 const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
   directives: { maska: vMaskaDirective },
-  name: "wra-price-input",
+  name: "WraPriceInput",
   props: {
     /**
      * The value of the input field.
@@ -110,7 +111,7 @@ export default defineComponent({
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      maskedValue: "" as string,
+      maskedValue: "",
       mask: {
         preProcess: (val: string) => val.replace(/[£,]/g, ""),
         postProcess: (val: string) => {
@@ -132,8 +133,8 @@ export default defineComponent({
             .replace("£", "");
         }
       },
-      errorMessage: "" as string,
-      firstValidation: true as boolean
+      errorMessage: "",
+      firstValidation: true
     };
   },
   watch: {

@@ -32,10 +32,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-expansion-panel",
+  name: "WraExpansionPanel",
   props: {
     title: {
       type: String as PropType<string>,
@@ -58,7 +59,7 @@ export default defineComponent({
   },
   data() {
     return {
-      showPanel: false as boolean
+      showPanel: false
     };
   },
   computed: {

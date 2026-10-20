@@ -25,7 +25,7 @@
   <div class="file-upload-wrapper">
     <wra-button
       size="small"
-      :backgroundColor="backgroundColor"
+      :background-color="backgroundColor"
       @click="triggerFileInput"
     >
       {{ buttonText }}
@@ -44,12 +44,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 import ValidationTooltip from "./ValidationTooltip.vue";
 import WraButton from "./Button.vue";
 
 export default defineComponent({
-  name: "file-upload",
+  name: "FileUpload",
   emits: ["change"],
   components: {
     ValidationTooltip,
@@ -156,9 +157,9 @@ export default defineComponent({
   },
   data() {
     return {
-      fileName: "No file chosen" as string,
-      fileSizeError: false as boolean,
-      fileSize: 0 as number
+      fileName: "No file chosen",
+      fileSizeError: false,
+      fileSize: 0
     };
   },
   methods: {

@@ -27,8 +27,8 @@ export default defineConfig({
     dts({
       processor: "vue",
       bundleTypes: true,
+      tsconfigPath: "./tsconfig.app.json",
       exclude: ["src/stories", "src/docs"],
-      tsConfigPath: "./tsconfig.app.json",
       copyDtsFiles: true,
       insertTypesEntry: true
     })

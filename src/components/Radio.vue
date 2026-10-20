@@ -24,7 +24,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, InputHTMLAttributes, PropType } from "vue";
+import type { InputHTMLAttributes, PropType } from "vue";
+import { defineComponent } from "vue";
 
 export interface RadioOption {
   label: string;
@@ -34,7 +35,7 @@ export interface RadioOption {
 }
 
 export default defineComponent({
-  name: "wra-radio",
+  name: "WraRadio",
   props: {
     groupName: {
       type: String as PropType<string>,

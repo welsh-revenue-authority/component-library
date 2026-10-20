@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, type PropType } from "vue";
 
 export interface AutocompleteOption {
   label: string;
@@ -66,7 +66,7 @@ export interface AutocompleteOption {
 }
 
 export default defineComponent({
-  name: "wra-autocomplete",
+  name: "WraAutocomplete",
   emits: ["update:modelValue", "validOption"],
   props: {
     modelValue: {
@@ -107,11 +107,11 @@ export default defineComponent({
     },
     /** If true, list will automatically expand when input is focused */
     autoExpand: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: false
     },
     forceSelection: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: true
     },
     /** Label that shows when none of the options match */
@@ -122,8 +122,8 @@ export default defineComponent({
   data() {
     return {
       userInput: {} as AutocompleteOption,
-      hasFocus: false as boolean,
-      listHasFocus: false as boolean,
+      hasFocus: false,
+      listHasFocus: false,
       optionIndex: null as number | null,
       validatedOptions: [] as AutocompleteOption[]
     };

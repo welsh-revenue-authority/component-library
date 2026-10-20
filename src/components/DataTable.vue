@@ -16,15 +16,15 @@
             :key="header.key"
             @click="
               (header.sortable || header.sortable == undefined) &&
-                sortByColumn(header.key)
+              sortByColumn(header.key)
             "
             @keydown.enter="
               (header.sortable || header.sortable == undefined) &&
-                sortByColumn(header.key)
+              sortByColumn(header.key)
             "
             @keydown.space.prevent="
               (header.sortable || header.sortable == undefined) &&
-                sortByColumn(header.key)
+              sortByColumn(header.key)
             "
             :style="{ width: header.width + 'px' }"
             :class="{
@@ -144,7 +144,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export type DataTableHeader = {
   key: string;
@@ -158,7 +159,7 @@ export type DataTableHeader = {
 export type DataTableSort = { key: string; order: "asc" | "desc" };
 
 export default defineComponent({
-  name: "wra-data-table",
+  name: "WraDataTable",
   props: {
     /**
      * The array of data objects to display in the table. Each object represents a row.
@@ -204,8 +205,10 @@ export default defineComponent({
   },
   data() {
     return {
-      localSortBy: this.sortBy as DataTableSort[] | undefined,
-      currentPage: 1 as number,
+      localSortBy: this.sortBy,
+      currentPage: 1,
+      // Fix once composition API is used
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       columnFilters: {} as Record<string, string> // Stores search values for each column
     };
   },

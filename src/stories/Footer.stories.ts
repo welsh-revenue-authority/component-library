@@ -1,5 +1,6 @@
 import Footer from "../components/Footer.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof Footer> = {
   title: "Navigation/Footer",
@@ -10,6 +11,9 @@ const meta: Meta<typeof Footer> = {
 export default meta;
 
 export const Default: StoryObj<typeof Footer> = {
+  play: async ({ canvasElement }) => {
+    await expect(within(canvasElement).getByRole("contentinfo")).toBeVisible();
+  },
   render: (args) => ({
     components: { Footer },
     setup() {

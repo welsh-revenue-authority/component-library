@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import Breadcrumbs from "../components/Breadcrumbs.vue";
+import { expect, within } from "storybook/test";
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: "Navigation/Breadcrumbs",
@@ -13,6 +14,14 @@ type BreadcrumbsProps = InstanceType<typeof Breadcrumbs>["$props"];
 type Story = StoryObj<BreadcrumbsProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("Link 2")).toBeVisible();
+    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+    await expect(
+      canvasElement.querySelector(".wra-breadcrumbs-chevron")
+    ).toBeVisible();
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },
@@ -32,6 +41,14 @@ export const Default: Story = {
 };
 
 export const replaceDivider: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("Link 2")).toBeVisible();
+    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+    await expect(
+      canvasElement.querySelector(".wra-breadcrumbs-divider")
+    ).toBeVisible();
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },
@@ -64,6 +81,13 @@ export const replaceDivider: Story = {
 };
 
 export const replaceContent: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText("Link")).toBeVisible();
+    await expect(
+      canvasElement.querySelector(".wra-breadcrumbs-chevron")
+    ).toBeVisible();
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },

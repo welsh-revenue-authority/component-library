@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraPriceInput from "../components/PriceInput.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraPriceInput> = {
   title: "Form Inputs & Controls/PriceInput",
@@ -18,6 +19,14 @@ export default meta;
 type Story = StoryObj<typeof WraPriceInput>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("textbox");
+    await userEvent.clear(input);
+    await userEvent.type(input, "1234");
+    await expect(input).toHaveValue("1,234.00");
+    await expect(canvas.getByText("£")).toBeVisible();
+  },
   args: {
     label: "Price input label",
     modelValue: 1234.56,

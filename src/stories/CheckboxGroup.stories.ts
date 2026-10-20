@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraCheckboxGroup from "../components/CheckboxGroup.vue";
+import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraCheckboxGroup> = {
   title: "Form Inputs & Controls/CheckboxGroup",
@@ -12,6 +13,15 @@ type CheckboxGroupProps = InstanceType<typeof WraCheckboxGroup>["$props"];
 type Story = StoryObj<CheckboxGroupProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const checkboxes = canvas.getAllByRole("checkbox");
+    await userEvent.click(checkboxes[0]);
+    await expect(checkboxes[0]).not.toBeChecked();
+    await expect(checkboxes[1]).toBeChecked();
+    await expect(canvas.getByText("Option 1")).toBeVisible();
+    await expect(canvas.getByText("Option 2")).toBeVisible();
+  },
   args: {
     options: [
       { value: "OptionOne", label: "Option 1" },
