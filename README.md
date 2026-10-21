@@ -3,7 +3,7 @@
 Vue component library created by Welsh Revenue Authority
 
 [![NPM Version](https://img.shields.io/npm/v/%40wra-gov%2Fvue-components)](https://www.npmjs.com/package/@wra-gov/vue-components)
-[![Cypress Tests](https://github.com/welsh-revenue-authority/component-library/actions/workflows/cypress-tests.yml/badge.svg?branch=main)](https://github.com/welsh-revenue-authority/component-library/actions/workflows/cypress-tests.yml)
+[![Build & test](https://github.com/welsh-revenue-authority/component-library/actions/workflows/build-lint-test.yaml/badge.svg)](https://github.com/welsh-revenue-authority/component-library/actions/workflows/build-lint-test.yaml)
 
 ## Installation
 
