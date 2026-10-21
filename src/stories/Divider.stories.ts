@@ -41,4 +41,3 @@ export const SmallDivider: StoryObj<typeof Divider> = {
     thickness: "small"
   }
 };
-  

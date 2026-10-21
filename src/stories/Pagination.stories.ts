@@ -15,9 +15,13 @@ export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const next = canvas.getByRole("button", { name: /next/i });
-    await expect(canvas.getByText("1")).toHaveClass("pagination-number--selected");
+    await expect(canvas.getByText("1")).toHaveClass(
+      "pagination-number--selected"
+    );
     await userEvent.click(next);
-    await expect(canvas.getByText("2")).toHaveClass("pagination-number--selected");
+    await expect(canvas.getByText("2")).toHaveClass(
+      "pagination-number--selected"
+    );
   },
   args: {
     modelValue: 1,

@@ -19,7 +19,7 @@ export const Default: Story = {
     const allLinks = canvas.getAllByRole("link");
     await expect(allLinks).toHaveLength(2);
     await expect(canvas.getByText("Link 2")).toBeVisible();
-    allLinks.forEach(link => expect(link).toBeVisible());
+    allLinks.forEach((link) => expect(link).toBeVisible());
     await expect(
       canvasElement.querySelector(".wra-breadcrumbs-chevron")
     ).toBeVisible();
@@ -48,8 +48,8 @@ export const replaceDivider: Story = {
     const allLinks = canvas.getAllByRole("link");
     await expect(allLinks).toHaveLength(2);
     await expect(canvas.getByText("Link 2")).toBeVisible();
-    allLinks.forEach(link => expect(link).toBeVisible());
-    allLinks.forEach(link => expect(link).toHaveAttribute("href"));
+    allLinks.forEach((link) => expect(link).toBeVisible());
+    allLinks.forEach((link) => expect(link).toHaveAttribute("href"));
     await expect(
       canvasElement.querySelector(".wra-breadcrumbs-divider")
     ).toBeVisible();
