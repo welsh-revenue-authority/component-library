@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 import WraContentSectionTitle from "../components/ContentSectionTitle.vue";
 import WraHeader from "../components/Header.vue";
-import { expect, within } from "storybook/test";
 
 const meta: Meta = {
   title: "Miscellaneous/ContentSectionTitle",

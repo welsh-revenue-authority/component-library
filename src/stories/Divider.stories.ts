@@ -1,6 +1,6 @@
-import Divider from "../components/Divider.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect } from "storybook/test";
+import Divider from "../components/Divider.vue";
 
 const meta: Meta<typeof Divider> = {
   title: "Containment/Divider",

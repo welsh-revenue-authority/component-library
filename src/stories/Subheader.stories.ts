@@ -1,9 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSubheader from "../components/Subheader.vue";
-import WraHeader from "../components/Header.vue";
-
-import { Header1 } from "./Header.stories";
 import { expect, within } from "storybook/test";
+import WraHeader from "../components/Header.vue";
+import WraSubheader from "../components/Subheader.vue";
+import { Header1 } from "./Header.stories";
 
 const meta: Meta<typeof WraSubheader> = {
   title: "Miscellaneous/Subheader",

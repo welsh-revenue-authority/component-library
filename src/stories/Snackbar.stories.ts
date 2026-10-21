@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSnackBar from "../components/Snackbar.vue";
 import { expect, userEvent, waitFor, within } from "storybook/test";
+import WraSnackBar from "../components/Snackbar.vue";
 
 const meta: Meta<typeof WraSnackBar> = {
   title: "Feedback/Snackbar",

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraDateInput from "../components/DateInput.vue";
 import { expect, userEvent, within } from "storybook/test";
+import WraDateInput from "../components/DateInput.vue";
 
 type DateInputArgs = {
   label?: string;

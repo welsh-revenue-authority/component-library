@@ -28,13 +28,13 @@
 </template>
 
 <script lang="ts">
+import { vMaska } from "maska/vue";
 import {
   defineComponent,
   type Directive,
   type InputHTMLAttributes,
   type PropType
 } from "vue";
-import { vMaska } from "maska/vue";
 
 const vMaskaDirective = vMaska as unknown as Directive;
 

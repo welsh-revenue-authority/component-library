@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraServiceLogo from "../components/ServiceLogo.vue";
-import WraLogoFile from "./assets/wra-logo-english.svg";
-import WgLogoFile from "./assets/wg-logo.svg";
 import { expect, within } from "storybook/test";
+import WraServiceLogo from "../components/ServiceLogo.vue";
+import WgLogoFile from "./assets/wg-logo.svg";
+import WraLogoFile from "./assets/wra-logo-english.svg";
 
 const meta: Meta<typeof WraServiceLogo> = {
   title: "Images & Icons/ServiceLogo",

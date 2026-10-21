@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraDataTable from "../components/DataTable.vue";
 import { expect, userEvent, within } from "storybook/test";
+import WraDataTable from "../components/DataTable.vue";
 
 type Header = {
   key: string;
@@ -28,9 +28,9 @@ const meta: Meta<DataTableArgs> = {
       source: {
         code: `
 <wra-data-table
-  caption=\"Nutrition Facts for 30 Common Vegetables\"
-  :headers=\"headers\"
-  :items=\"items\"
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
 ></wra-data-table>`
       }
     }
@@ -383,9 +383,9 @@ export const BoldRows: StoryObj<DataTableArgs> = {
       source: {
         code: `
 <wra-data-table
-  caption=\"Nutrition Facts for 30 Common Vegetables\"
-  :headers=\"headers\"
-  :items=\"items\"
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
 ></wra-data-table>
         `
       }
@@ -462,10 +462,10 @@ export const ClickableRows: StoryObj<DataTableArgs> = {
       source: {
         code: `
 <wra-data-table
-  caption=\"Nutrition Facts for 30 Common Vegetables\"
-  :headers=\"headers\"
-  :items=\"items\"
-  @click:row=\"handleRowClick\"
+  caption="Nutrition Facts for 30 Common Vegetables"
+  :headers="headers"
+  :items="items"
+  @click:row="handleRowClick"
 ></wra-data-table>
         `
       }

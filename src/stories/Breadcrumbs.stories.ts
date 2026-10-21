@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import Breadcrumbs from "../components/Breadcrumbs.vue";
 import { expect, within } from "storybook/test";
+import Breadcrumbs from "../components/Breadcrumbs.vue";
 
 const meta: Meta<typeof Breadcrumbs> = {
   title: "Navigation/Breadcrumbs",

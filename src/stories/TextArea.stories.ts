@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import TextArea from "../components/TextArea.vue";
 import { expect, userEvent, within } from "storybook/test";
+import TextArea from "../components/TextArea.vue";
 
 const meta: Meta<typeof TextArea> = {
   title: "Form Inputs & Controls/TextArea",

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSimpleTable from "../components/SimpleTable.vue";
 import { expect, within } from "storybook/test";
+import WraSimpleTable from "../components/SimpleTable.vue";
 
 const meta: Meta<typeof WraSimpleTable> = {
   title: "Data & Display/SimpleTable",

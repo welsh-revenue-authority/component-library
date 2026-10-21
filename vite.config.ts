@@ -1,10 +1,10 @@
-import { fileURLToPath, URL } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
+import { fileURLToPath, URL } from "node:url";
 import { resolve } from "path";
+import dts from "unplugin-dts/vite";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import dts from "unplugin-dts/vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));

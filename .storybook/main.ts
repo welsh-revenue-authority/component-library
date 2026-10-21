@@ -18,7 +18,12 @@ const config = {
   ],
   framework: {
     name: "@storybook/vue3-vite",
-    options: {}
+    options: {
+      docgen: {
+        plugin: "vue-component-meta",
+        tsconfig: "tsconfig.app.json"
+      }
+    }
   }
 };
 

@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraAppBar from "../components/AppBar.vue";
 import WraButton from "../components/Button.vue";
 import WraServiceLogo from "../components/ServiceLogo.vue";
 import WgLogoFile from "./assets/wg-logo-white.svg";
-import { expect, userEvent, within } from "storybook/test";
-
 import { Small } from "./Button.stories";
 
 const wgImage = {

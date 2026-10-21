@@ -1,9 +1,9 @@
-import WraDialog from "../components/Dialog.vue";
-import WraButton from "../components/Button.vue";
-import type { Ref } from "vue";
-import { ref } from "vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, userEvent, within } from "storybook/test";
+import type { Ref } from "vue";
+import { ref } from "vue";
+import WraButton from "../components/Button.vue";
+import WraDialog from "../components/Dialog.vue";
 
 const meta: Meta<typeof WraDialog> = {
   title: "Containment/Dialog",

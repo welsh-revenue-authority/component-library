@@ -1,8 +1,8 @@
+import * as mdiIcons from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import WraButton from "../components/Button.vue";
 import WraIcon from "../components/Icon.vue";
-import * as mdiIcons from "@mdi/js";
 
 const meta: Meta<typeof WraButton> = {
   title: "Containment/Button",

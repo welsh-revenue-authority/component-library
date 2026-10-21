@@ -23,9 +23,9 @@ Install,
 `main.js`,
 
 ```js
+import Wra from "@wra-gov/vue-components";
 import { createApp } from "vue";
 import App from "./App.vue";
-import Wra from "@wra-gov/vue-components";
 
 const app = createApp(App);
 

@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSkipLink from "../components/SkipLink.vue";
-import WraCard from "../components/Card.vue";
+import { expect, userEvent, within } from "storybook/test";
 import WraButton from "../components/Button.vue";
-import { expect, within, userEvent } from "storybook/test";
+import WraCard from "../components/Card.vue";
+import WraSkipLink from "../components/SkipLink.vue";
 
 const meta: Meta<typeof WraSkipLink> = {
   title: "Form Inputs & Controls/SkipLink",

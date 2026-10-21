@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import Autocomplete from "../components/Autocomplete.vue";
 import { expect, userEvent, within } from "storybook/test";
+import Autocomplete from "../components/Autocomplete.vue";
 
 const councilArray = [
   { value: "Blaenau Gwent", label: "Blaenau Gwent" },

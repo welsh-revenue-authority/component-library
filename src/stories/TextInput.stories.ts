@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraTextInput from "../components/TextInput.vue";
 import { expect, userEvent, within } from "storybook/test";
+import WraTextInput from "../components/TextInput.vue";
 
 const meta: Meta<typeof WraTextInput> = {
   title: "Form Inputs & Controls/TextInput",

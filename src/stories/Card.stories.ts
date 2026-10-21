@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraCard from "../components/Card.vue";
 import { expect, userEvent, within } from "storybook/test";
-import WraHeader from "../components/Header.vue";
 import WraButton from "../components/Button.vue";
+import WraCard from "../components/Card.vue";
+import WraHeader from "../components/Header.vue";
 
 const meta: Meta<typeof WraCard> = {
   title: "Containment/Card",

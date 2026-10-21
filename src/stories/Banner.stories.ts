@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
 import WraStatusTag from "../components/WraStatusTag.vue";
-import { expect, userEvent, within } from "storybook/test";
 
 const meta: Meta<typeof WraBanner> = {
   title: "Feedback/Banner",

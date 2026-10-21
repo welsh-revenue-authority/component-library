@@ -1,6 +1,6 @@
-import WraExpansionPanel from "../components/ExpansionPanel.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, userEvent, within } from "storybook/test";
+import WraExpansionPanel from "../components/ExpansionPanel.vue";
 
 const meta: Meta<typeof WraExpansionPanel> = {
   title: "Containment/ExpansionPanel",

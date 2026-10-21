@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraCheckboxGroup from "../components/CheckboxGroup.vue";
 import { expect, userEvent, within } from "storybook/test";
+import WraCheckboxGroup from "../components/CheckboxGroup.vue";
 
 const meta: Meta<typeof WraCheckboxGroup> = {
   title: "Form Inputs & Controls/CheckboxGroup",

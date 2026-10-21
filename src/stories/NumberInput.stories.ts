@@ -1,6 +1,6 @@
-import WraNumberInput from "../components/NumberInput.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, userEvent, within } from "storybook/test";
+import WraNumberInput from "../components/NumberInput.vue";
 
 const meta: Meta<typeof WraNumberInput> = {
   title: "Form Inputs & Controls/NumberInput",

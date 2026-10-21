@@ -22,9 +22,9 @@
 </template>
 
 <script lang="ts">
+import { vMaska } from "maska/vue";
 import type { Directive, InputHTMLAttributes, PropType } from "vue";
 import { defineComponent } from "vue";
-import { vMaska } from "maska/vue";
 
 export type RuleFunction = (value: string | number) => true | string;
 

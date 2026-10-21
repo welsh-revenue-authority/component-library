@@ -1,6 +1,6 @@
-import WraFileUpload from "../components/FileUpload.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, userEvent, within } from "storybook/test";
+import WraFileUpload from "../components/FileUpload.vue";
 
 const meta: Meta<typeof WraFileUpload> = {
   title: "Form Inputs & Controls/FileUpload",

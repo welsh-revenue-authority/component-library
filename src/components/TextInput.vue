@@ -16,9 +16,9 @@
 </template>
 
 <script lang="ts">
+import { vMaska } from "maska/vue";
 import type { Directive, HTMLAttributes, PropType } from "vue";
 import { defineComponent } from "vue";
-import { vMaska } from "maska/vue";
 
 export type TextInputValidationRule = (value: string | number) => true | string;
 

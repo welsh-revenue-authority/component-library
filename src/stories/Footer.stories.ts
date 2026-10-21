@@ -1,6 +1,6 @@
-import Footer from "../components/Footer.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, within } from "storybook/test";
+import Footer from "../components/Footer.vue";
 
 const meta: Meta<typeof Footer> = {
   title: "Navigation/Footer",

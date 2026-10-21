@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import WraTag from "@/components/WraTag.vue";
 import WraTaskList from "@/components/WraTaskList.vue";
 import WraTaskListItem from "@/components/WraTaskListItem.vue";
-import WraTag from "@/components/WraTag.vue";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraTaskList> = {
   title: "Containment/TaskList",

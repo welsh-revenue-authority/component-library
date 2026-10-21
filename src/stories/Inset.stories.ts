@@ -1,6 +1,6 @@
-import WraInset from "../components/Inset.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import { expect, within } from "storybook/test";
+import WraInset from "../components/Inset.vue";
 
 const meta: Meta<typeof WraInset> = {
   title: "Containment/Inset",
