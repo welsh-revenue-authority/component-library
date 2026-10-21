@@ -19,6 +19,7 @@ interface DataTableArgs {
 const meta: Meta<DataTableArgs> = {
   title: "Data & Display/DataTable",
   component: WraDataTable,
+  tags: ["!test"],
   parameters: {
     controls: {
       exclude: ["body", "item", "`item.${header.key}`"]

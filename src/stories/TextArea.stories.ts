@@ -29,11 +29,13 @@ export const Default: Story = {
 export const MaxLength: Story = {
   play: async ({ canvasElement }) => {
     const textarea = within(canvasElement).getByRole("textbox");
+    const text = "This text is longer than the allowed maximum";
+    const expected = text.slice(0, 10);
     await userEvent.type(
       textarea,
       "This text is longer than the allowed maximum"
     );
-    await expect(textarea).toHaveValue(/./);
+    await expect(textarea).toHaveValue(expected);
   },
   args: {
     label: "Text area label",

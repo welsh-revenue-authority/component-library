@@ -39,8 +39,8 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("textbox");
     await userEvent.clear(input);
-    await userEvent.type(input, "1234");
-    await expect(input).toHaveValue("1,234");
+    await userEvent.type(input, "123412341234");
+    await expect(input).toHaveValue("1234 1234 1234");
   },
   args: {
     label: "Custom input label",

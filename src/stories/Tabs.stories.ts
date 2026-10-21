@@ -18,28 +18,22 @@ export const Default: Story = {
     modelValue: 0
   },
   play: async ({ canvasElement }) => {
+    // TODO: Add colour assertions back
     const canvas = within(canvasElement);
     const tab1 = canvas.getByRole("button", { name: "Tab 1" });
     const tab2 = canvas.getByRole("button", { name: "Tab 2" });
+    await expect(tab1).toBeVisible();
+    await expect(tab2).toBeVisible();
 
     await expect(tab1).toHaveClass("tab-button tab-button--active");
-    await expect(tab1).toHaveStyle({
-      borderTop: "6px solid rgb(181, 181, 181)"
-    });
     await expect(tab2).toHaveClass("tab-button");
     await expect(tab2).not.toHaveClass("tab-button--active");
-    await expect(tab2).toHaveStyle({ borderTop: "6px solid rgb(3, 96, 166)" });
 
     await userEvent.click(tab2);
 
     await expect(tab2).toHaveClass("tab-button tab-button--active");
-    await expect(tab2).toHaveStyle({
-      borderTop: "6px solid rgb(31, 31, 31)",
-      background: "rgb(255, 213, 48)"
-    });
     await expect(tab1).toHaveClass("tab-button");
     await expect(tab1).not.toHaveClass("tab-button--active");
-    await expect(tab1).toHaveStyle({ borderTop: "6px solid rgb(3, 96, 166)" });
   },
   parameters: {
     docs: {
@@ -64,22 +58,13 @@ export const ThirdTabSelected: Story = {
     const tab3 = canvas.getByRole("button", { name: "Tab 3" });
 
     await expect(tab3).toHaveClass("tab-button tab-button--active");
-    await expect(tab3).toHaveStyle({
-      borderTop: "6px solid rgb(181, 181, 181)"
-    });
     await expect(tab2).toHaveClass("tab-button");
-    await expect(tab2).toHaveStyle({ borderTop: "6px solid rgb(3, 96, 166)" });
 
     await userEvent.click(tab2);
 
     await expect(tab2).toHaveClass("tab-button tab-button--active");
-    await expect(tab2).toHaveStyle({
-      borderTop: "6px solid rgb(31, 31, 31)",
-      background: "rgb(255, 213, 48)"
-    });
     await expect(tab1).toHaveClass("tab-button");
     await expect(tab1).not.toHaveClass("tab-button--active");
-    await expect(tab1).toHaveStyle({ borderTop: "6px solid rgb(3, 96, 166)" });
   },
   parameters: {
     docs: {

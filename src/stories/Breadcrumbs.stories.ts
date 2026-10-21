@@ -16,8 +16,10 @@ type Story = StoryObj<BreadcrumbsProps>;
 export const Default: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const allLinks = canvas.getAllByRole("link");
+    await expect(allLinks).toHaveLength(2);
     await expect(canvas.getByText("Link 2")).toBeVisible();
-    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+    allLinks.forEach(link => expect(link).toBeVisible());
     await expect(
       canvasElement.querySelector(".wra-breadcrumbs-chevron")
     ).toBeVisible();
@@ -43,8 +45,11 @@ export const Default: Story = {
 export const replaceDivider: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
+    const allLinks = canvas.getAllByRole("link");
+    await expect(allLinks).toHaveLength(2);
     await expect(canvas.getByText("Link 2")).toBeVisible();
-    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+    allLinks.forEach(link => expect(link).toBeVisible());
+    allLinks.forEach(link => expect(link).toHaveAttribute("href"));
     await expect(
       canvasElement.querySelector(".wra-breadcrumbs-divider")
     ).toBeVisible();
@@ -83,10 +88,7 @@ export const replaceDivider: Story = {
 export const replaceContent: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await expect(canvas.getByText("Link")).toBeVisible();
-    await expect(
-      canvasElement.querySelector(".wra-breadcrumbs-chevron")
-    ).toBeVisible();
+    await expect(canvas.getAllByText("Link")).toHaveLength(3);
   },
   args: {
     items: [

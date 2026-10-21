@@ -1,7 +1,7 @@
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import { expect, within } from "storybook/test";
+import { expect } from "storybook/test";
 
 const meta: Meta<typeof WraIcon> = {
   title: "Images & Icons/Icon",
@@ -61,7 +61,11 @@ export default meta;
 
 export const Default: StoryObj<typeof WraIcon> = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByRole("img")).toBeVisible();
+    await expect(canvasElement.querySelector("svg")).toBeVisible();
+    await expect(canvasElement.querySelector("path")).toHaveAttribute(
+      "d",
+      mdiIcons.mdiAbacus
+    );
   },
   args: {
     icon: "mdiAbacus"

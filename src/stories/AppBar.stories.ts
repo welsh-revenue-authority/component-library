@@ -37,8 +37,9 @@ export const Default: StoryObj<AppBarProps> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const languageButton = canvas.getByRole("button", { name: "Cymraeg" });
+    await expect(languageButton).toBeVisible();
     const logo = canvas.getByRole("link");
-    await expect(canvasElement.querySelector(".app-bar")).toHaveStyle({
+    await expect(canvasElement.querySelector(".wra-app-bar")).toHaveStyle({
       backgroundColor: "rgb(50, 50, 50)"
     });
     await expect(logo).toBeVisible();

@@ -86,8 +86,8 @@ export const CookiesExample: Story = {
     await expect(accept).toBeVisible();
     await expect(settings).toBeVisible();
     await userEvent.click(accept);
-    await userEvent.click(settings);
     await expect(accept).toHaveStyle({ backgroundColor: "rgb(255, 213, 48)" });
+    await userEvent.click(settings);
     await expect(settings).toHaveStyle({
       backgroundColor: "rgb(255, 213, 48)"
     });

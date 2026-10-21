@@ -20,7 +20,10 @@ export default meta;
 export const Default: StoryObj<typeof WraFileUpload> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText("File upload label");
+    const input = canvasElement.querySelector(
+      'input[type="file"]'
+    ) as HTMLInputElement;
+
     await expect(canvas.getByText("No file chosen")).toBeVisible();
     await expect(
       canvas.getByRole("button", { name: /upload file/i })
@@ -43,7 +46,9 @@ export const Default: StoryObj<typeof WraFileUpload> = {
 export const CustomButtonColour: StoryObj<typeof WraFileUpload> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText("File upload label");
+    const input = canvasElement.querySelector(
+      'input[type="file"]'
+    ) as HTMLInputElement;
     await expect(
       canvas.getByRole("button", { name: /upload file/i })
     ).toHaveStyle({
@@ -66,7 +71,9 @@ export const CustomButtonColour: StoryObj<typeof WraFileUpload> = {
 export const Error: StoryObj<typeof WraFileUpload> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const input = canvas.getByLabelText("File upload label");
+    const input = canvasElement.querySelector(
+      'input[type="file"]'
+    ) as HTMLInputElement;
     await expect(canvas.getByText("File is too large")).toBeVisible();
     await userEvent.upload(
       input,

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraValidationTooltip from "../components/ValidationTooltip.vue";
 import WraIcon from "../components/Icon.vue";
 import * as mdiIcons from "@mdi/js";
-import { expect, within } from "storybook/test";
+import { expect } from "storybook/test";
 
 const meta: Meta<typeof WraValidationTooltip> = {
   title: "Containment/ValidationTooltip",
@@ -19,9 +19,7 @@ Refer to [Icon component](/docs/images-icons-icon--icondocs) for more informatio
   tags: ["autodocs"],
   argTypes: {
     type: {
-      control: {
-        type: "radio"
-      },
+      control: { type: "radio" },
       options: [
         "wra-default",
         "wra-info",
@@ -39,11 +37,14 @@ type Story = StoryObj<typeof WraValidationTooltip>;
 
 export const Default: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    const tooltip = canvasElement.querySelector(".validation-tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveStyle({
+      backgroundColor: "rgb(241, 241, 241)",
+      borderLeft: "10px solid rgb(3, 96, 166)"
+    });
   },
-  args: {
-    type: "wra-default"
-  },
+  args: { type: "wra-default" },
   render: (args) => ({
     components: { WraValidationTooltip },
     setup() {
@@ -66,11 +67,14 @@ export const Default: Story = {
 
 export const Info: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    const tooltip = canvasElement.querySelector(".validation-tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveStyle({
+      backgroundColor: "rgb(194, 224, 252)",
+      borderLeft: "10px solid rgb(3, 96, 166)"
+    });
   },
-  args: {
-    type: "wra-info"
-  },
+  args: { type: "wra-info" },
   render: (args) => ({
     components: { WraValidationTooltip },
     setup() {
@@ -93,11 +97,14 @@ export const Info: Story = {
 
 export const Success: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    const tooltip = canvasElement.querySelector(".validation-tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveStyle({
+      backgroundColor: "rgb(205, 247, 212)",
+      borderLeft: "10px solid rgb(0, 112, 21)"
+    });
   },
-  args: {
-    type: "wra-success"
-  },
+  args: { type: "wra-success" },
   render: (args) => ({
     components: { WraValidationTooltip },
     setup() {
@@ -120,11 +127,14 @@ export const Success: Story = {
 
 export const Warning: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    const tooltip = canvasElement.querySelector(".validation-tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveStyle({
+      backgroundColor: "rgb(255, 245, 206)",
+      borderLeft: "10px solid rgb(255, 213, 48)"
+    });
   },
-  args: {
-    type: "wra-warning"
-  },
+  args: { type: "wra-warning" },
   render: (args) => ({
     components: { WraValidationTooltip },
     setup() {
@@ -147,11 +157,14 @@ export const Warning: Story = {
 
 export const Error: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    const tooltip = canvasElement.querySelector(".validation-tooltip");
+    await expect(tooltip).toBeVisible();
+    await expect(tooltip).toHaveStyle({
+      backgroundColor: "rgb(255, 228, 229)",
+      borderLeft: "10px solid rgb(170, 17, 17)"
+    });
   },
-  args: {
-    type: "wra-error"
-  },
+  args: { type: "wra-error" },
   render: (args) => ({
     components: { WraValidationTooltip },
     setup() {
@@ -174,12 +187,12 @@ export const Error: Story = {
 
 export const CustomIconInfo: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    await expect(
+      canvasElement.querySelector(".validation-tooltip")
+    ).toBeVisible();
     await expect(canvasElement.querySelector("svg")).toBeVisible();
   },
-  args: {
-    type: "wra-info"
-  },
+  args: { type: "wra-info" },
   render: (args) => {
     const icon = mdiIcons.mdiInformation;
     const fill = "var(--color-wra-blue)";
@@ -216,12 +229,12 @@ export const CustomIconInfo: Story = {
 
 export const CustomIconError: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByText(/tooltip/i)).toBeVisible();
+    await expect(
+      canvasElement.querySelector(".validation-tooltip")
+    ).toBeVisible();
     await expect(canvasElement.querySelector("svg")).toBeVisible();
   },
-  args: {
-    type: "wra-error"
-  },
+  args: { type: "wra-error" },
   render: (args) => {
     const icon = mdiIcons.mdiAlert;
     const fill = "var(--color-wra-red)";

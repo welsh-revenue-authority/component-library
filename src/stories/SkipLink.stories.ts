@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraSkipLink from "../components/SkipLink.vue";
 import WraCard from "../components/Card.vue";
 import WraButton from "../components/Button.vue";
-import { expect, within } from "storybook/test";
+import { expect, within, userEvent } from "storybook/test";
 
 const meta: Meta<typeof WraSkipLink> = {
   title: "Form Inputs & Controls/SkipLink",
@@ -15,39 +15,43 @@ type Story = StoryObj<typeof WraSkipLink>;
 
 export const Default: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+    await expect(
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip to main content");
   }
 };
 
 export const CustomText: Story = {
   play: async ({ canvasElement }) => {
     await expect(
-      within(canvasElement).getByRole("link", { name: /skip/i })
-    ).toBeVisible();
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip cookies");
   },
-  args: {
-    text: "Skip cookies"
-  }
+  args: { text: "Skip cookies" }
 };
 
 export const FullWidthSkiplink: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+    await expect(
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip cookies");
   },
-  args: {
-    text: "Skip cookies",
-    fullWidth: true
-  }
+  args: { text: "Skip cookies", fullWidth: true }
 };
 
 export const SkipId: Story = {
   play: async ({ canvasElement }) => {
-    await expect(within(canvasElement).getByRole("link")).toBeVisible();
+    const skipLink = within(canvasElement).getByRole("button", {
+      hidden: true,
+      name: "Skip to main content"
+    });
+    const container = canvasElement.querySelector("#container");
+    await expect(skipLink).toHaveTextContent("Skip to main content");
+    await expect(container).toBeVisible();
+    await userEvent.click(skipLink);
+    expect(document.activeElement).toBe(container);
   },
-  args: {
-    text: "Skip to main content",
-    skipId: "container"
-  },
+  args: { text: "Skip to main content", skipId: "container" },
   render: (args) => ({
     components: { WraSkipLink, WraCard, WraButton },
     setup() {

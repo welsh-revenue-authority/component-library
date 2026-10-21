@@ -7,9 +7,7 @@ const meta: Meta<typeof WraPriceInput> = {
   component: WraPriceInput,
   argTypes: {
     inputmode: {
-      control: {
-        type: "select"
-      },
+      control: { type: "select" },
       options: ["numeric", "decimal", "text"]
     }
   }
@@ -23,14 +21,36 @@ export const Default: Story = {
     const canvas = within(canvasElement);
     const input = canvas.getByRole("textbox");
     await userEvent.clear(input);
-    await userEvent.type(input, "1234");
-    await expect(input).toHaveValue("1,234.00");
+    await userEvent.type(input, "1234.55");
+    await expect(input).toHaveValue("1,234.55");
     await expect(canvas.getByText("£")).toBeVisible();
   },
   args: {
     label: "Price input label",
     modelValue: 1234.56,
     id: "priceInput",
+    placeholder: "0.00",
+    prefix: "£"
+  }
+};
+
+export const ForcesTwoDecimalPlaces: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("textbox");
+    await userEvent.clear(input);
+    await userEvent.type(input, "1234.5");
+    await expect(input).toHaveValue("1,234.5");
+
+    await userEvent.clear(input);
+
+    await userEvent.type(input, "1234.5555");
+    await expect(input).toHaveValue("1,234.55");
+  },
+  args: {
+    label: "Price input with two decimal places",
+    modelValue: 1234.5,
+    id: "priceInputTwoDecimals",
     placeholder: "0.00",
     prefix: "£"
   }

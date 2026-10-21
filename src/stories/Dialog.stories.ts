@@ -15,9 +15,13 @@ export const Default: StoryObj<typeof WraDialog> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const body = within(document.body);
-    await expect(body.queryByRole("dialog")).not.toBeVisible();
-    await userEvent.click(canvas.getByRole("button", { name: "Open Dialog" }));
-    const dialog = body.getByRole("dialog");
+    const dialog = body.getByRole("dialog", { hidden: true });
+    const openDialogButton = canvas.getByRole("button", {
+      name: "Open Dialog"
+    });
+    await expect(dialog).not.toBeVisible();
+    await expect(openDialogButton).toBeVisible();
+    await userEvent.click(openDialogButton);
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveTextContent("Dialog Title");
     await expect(dialog).toHaveTextContent("Dialog message goes here.");
@@ -86,11 +90,11 @@ export const IsDelete: StoryObj<typeof WraDialog> = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     const body = within(document.body);
-    await expect(body.queryByRole("dialog")).not.toBeVisible();
+    const dialog = body.getByRole("dialog", { hidden: true });
+    await expect(dialog).not.toBeVisible();
     await userEvent.click(
       canvas.getByRole("button", { name: "Open Delete Dialog" })
     );
-    const dialog = body.getByRole("dialog");
     await expect(dialog).toBeVisible();
     await expect(dialog).toHaveTextContent("Are you sure?");
     await expect(dialog).toHaveTextContent("This action cannot be undone.");

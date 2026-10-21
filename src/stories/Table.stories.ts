@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import { expect, within } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 import WraTable from "../components/Table.vue";
 
 const meta: Meta<typeof WraTable> = {
@@ -47,11 +47,12 @@ type Story = StoryObj<typeof WraTable>;
 
 export const Default: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByRole("table")).toBeVisible();
-    await expect(canvas.getByText("Table caption")).toBeVisible();
-    await expect(canvas.getByText("Up to 225,000")).toBeVisible();
-    await expect(canvas.getByText("10000")).toBeVisible();
+    const regularTable = canvasElement.querySelector("#regular") as HTMLElement;
+    const table = within(regularTable);
+    await expect(regularTable).toBeVisible();
+    await expect(table.getByText("Table caption")).toBeVisible();
+    await expect(table.getByText("Up to 225,000")).toBeVisible();
+    await expect(table.getByText("10000")).toBeVisible();
   },
   args: {
     caption: "Table caption",
@@ -102,11 +103,23 @@ export const Default: Story = {
   }
 };
 
+export const Mobile: Story = {
+  ...Default,
+  play: async ({ canvasElement }) => {
+    await waitFor(() =>
+      expect(canvasElement.querySelector("#pivoted")).toBeVisible()
+    );
+    await expect(canvasElement.querySelector("#regular")).not.toBeVisible();
+  },
+  globals: { viewport: { value: "mobile1", isRotated: false } }
+};
+
 export const InheritBackground: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByRole("table")).toBeVisible();
-    await expect(canvas.getByText("10000")).toBeVisible();
+    const regularTable = canvasElement.querySelector("#regular") as HTMLElement;
+    const table = within(regularTable);
+    await expect(regularTable).toBeVisible();
+    await expect(table.getByText("10000")).toBeVisible();
   },
   args: {
     caption: "Table caption",
@@ -161,9 +174,10 @@ export const InheritBackground: Story = {
 
 export const BoldRows: Story = {
   play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    await expect(canvas.getByRole("table")).toBeVisible();
-    await expect(canvas.getByText("Up to 225,000")).toBeVisible();
+    const regularTable = canvasElement.querySelector("#regular") as HTMLElement;
+    const table = within(regularTable);
+    await expect(regularTable).toBeVisible();
+    await expect(table.getByText("Up to 225,000")).toBeVisible();
   },
   args: {
     caption: "Table caption",

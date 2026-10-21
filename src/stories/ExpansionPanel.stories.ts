@@ -24,7 +24,7 @@ export const Default: StoryObj<typeof WraExpansionPanel> = {
       name: /Expansion panel title/i
     });
     await userEvent.click(control);
-    await expect(canvas.getByText(/placeholder/i)).toBeVisible();
+    await expect(canvasElement.querySelector(".panel-content")).toBeVisible();
   },
   args: {
     title: "Expansion panel title",
