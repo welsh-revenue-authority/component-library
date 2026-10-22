@@ -66,10 +66,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-separate-date-input",
+  name: "WraSeparateDateInput",
   props: {
     /**
      * The value of the date input (object with day, month, year properties).
@@ -229,9 +230,9 @@ export default defineComponent({
   emits: ["update:modelValue"],
   data() {
     return {
-      day: "" as string,
-      month: "" as string,
-      year: "" as string
+      day: "",
+      month: "",
+      year: ""
     };
   },
   watch: {

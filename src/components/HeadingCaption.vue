@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import WraHeader from "@/components/Header.vue";
 
-defineOptions({ name: "wra-heading-caption" });
+defineOptions({ name: "WraHeadingCaption" });
 
 defineProps<{
   /** The heading level to render (h1 - h6). */

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraBanner from "../components/Banner.vue";
 import WraButton from "../components/Button.vue";
 import WraStatusTag from "../components/WraStatusTag.vue";
@@ -14,6 +15,11 @@ type BannerProps = InstanceType<typeof WraBanner>["$props"];
 type Story = StoryObj<BannerProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(/Tell us what you think/i)).toBeVisible();
+    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+  },
   render: (args) => ({
     components: { WraBanner },
     setup() {
@@ -38,6 +44,11 @@ export const Default: Story = {
 };
 
 export const NewService: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(/This is a new service/i)).toBeVisible();
+    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+  },
   args: {
     newService: true
   },
@@ -66,6 +77,21 @@ export const NewService: Story = {
 };
 
 export const CookiesExample: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const accept = canvas.getByRole("button", { name: "Accept cookies" });
+    const settings = canvas.getByRole("button", {
+      name: "Change cookie settings"
+    });
+    await expect(accept).toBeVisible();
+    await expect(settings).toBeVisible();
+    await userEvent.click(accept);
+    await expect(accept).toHaveStyle({ backgroundColor: "rgb(255, 213, 48)" });
+    await userEvent.click(settings);
+    await expect(settings).toHaveStyle({
+      backgroundColor: "rgb(255, 213, 48)"
+    });
+  },
   render: () => ({
     components: { WraBanner, WraButton },
     template: `
@@ -98,6 +124,13 @@ export const CookiesExample: Story = {
 };
 
 export const Closable: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const banner = canvas.getByText(/You've accepted all cookies/i);
+    await expect(banner).toBeVisible();
+    await userEvent.click(canvas.getByRole("button", { name: /close/i }));
+    await expect(banner).not.toBeInTheDocument();
+  },
   args: {
     closable: true
   },
@@ -125,6 +158,12 @@ export const Closable: Story = {
 };
 
 export const WithBetaTag: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(/This is a new service/i)).toBeVisible();
+    await expect(canvas.getByText("Beta")).toBeVisible();
+    await expect(canvas.getByRole("link")).toHaveAttribute("href");
+  },
   args: {
     newService: true
   },
@@ -158,6 +197,11 @@ export const WithBetaTag: Story = {
 };
 
 export const WithAlphaTag: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByText(/This is not a real service/i)).toBeVisible();
+    await expect(canvas.getByText("Alpha")).toBeVisible();
+  },
   args: {
     newService: true
   },

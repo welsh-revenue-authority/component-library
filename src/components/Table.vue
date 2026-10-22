@@ -76,7 +76,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export interface TableHeader {
   key: string;
@@ -92,7 +93,7 @@ export interface TableItem {
 }
 
 export default defineComponent({
-  name: "wra-table",
+  name: "WraTable",
   props: {
     /**
      * If true, the table inherits its background from its parent and removes external padding.

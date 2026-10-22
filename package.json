@@ -2,25 +2,28 @@
   "name": "@wra-gov/vue-components",
   "version": "0.35.5",
   "private": false,
-  "type": "module",
+  "keywords": [
+    "component library",
+    "vue",
+    "vue3"
+  ],
   "homepage": "https://github.com/welsh-revenue-authority/component-library#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/welsh-revenue-authority/component-library.git"
-  },
   "bugs": {
     "url": "https://github.com/welsh-revenue-authority/component-library/issues"
   },
   "license": "OGL-UK-3.0",
   "author": "Welsh Revenue Authority",
-  "keywords": [
-    "vue",
-    "vue3",
-    "component library"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/welsh-revenue-authority/component-library.git"
+  },
+  "files": [
+    "dist"
   ],
-  "types": "dist/index.d.ts",
+  "type": "module",
   "main": "dist/vue-components.umd.cjs",
   "module": "dist/vue-components.js",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -29,53 +32,78 @@
     },
     "./tailwind.css": "./dist/tailwind.css"
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "dev": "vite",
+    "dev": "storybook dev -p 6006",
     "preview": "vite preview",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "build": "vite build",
+    "lint": "run-s \"lint:*\"",
+    "lint:eslint": "eslint . --fix --cache",
+    "lint:oxlint": "oxlint . --fix",
     "lint:check": "eslint",
-    "lint": "eslint --fix",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "test": "cypress open",
-    "test:Storybook": "npx cypress run"
+    "test": "vitest",
+    "test:storybook": "vitest --project=storybook",
+    "test:coverage": "vitest run --coverage",
+    "prepare": "husky"
   },
   "dependencies": {
     "maska": "^3.2.0",
     "tailwindcss": "^4.0.14"
   },
+  "devDependencies": {
+    "@microsoft/api-extractor": "^7.59.4",
+    "@storybook/addon-a11y": "^10.6.3",
+    "@storybook/addon-docs": "^10.6.2",
+    "@storybook/addon-links": "^10.6.2",
+    "@storybook/addon-vitest": "^10.6.3",
+    "@storybook/builder-vite": "^10.6.2",
+    "@storybook/vue3-vite": "^10.6.2",
+    "@tailwindcss/vite": "^4.1.11",
+    "@tsconfig/node24": "^24.0.5",
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^24.13.4",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vitest/browser-playwright": "4.1.12",
+    "@vitest/coverage-v8": "^4.1.12",
+    "@vitest/eslint-plugin": "^1.6.27",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.9.0",
+    "@vue/language-core": "^3.0.9",
+    "@vue/test-utils": "^2.5.0",
+    "@vue/tsconfig": "^0.9.1",
+    "eslint": "^9.34.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-oxlint": "~1.82.0",
+    "eslint-plugin-vue": "~10.11.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.7.0",
+    "jsdom": "^30.0.1",
+    "lint-staged": "^17.6.0",
+    "npm-run-all2": "^9.0.3",
+    "oxlint": "~1.82.0",
+    "playwright": "latest",
+    "prettier": "3.9.10",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "storybook": "^10.6.2",
+    "typescript": "~6.0.0",
+    "typescript-eslint": "8.72.0",
+    "unplugin-dts": "^1.1.2",
+    "vite": "^8.3.4",
+    "vite-plugin-css-injected-by-js": "^5.0.2",
+    "vite-plugin-static-copy": "4.1.1",
+    "vite-plugin-vue-devtools": "^8.2.1",
+    "vitest": "^4.1.11",
+    "vue": "^3.5.42",
+    "vue-eslint-parser": "^10.4.1",
+    "vue-tsc": "^3.3.11"
+  },
   "peerDependencies": {
     "@mdi/js": "^7.4.47",
     "vue": "^3.5.22"
   },
-  "devDependencies": {
-    "@microsoft/api-extractor": "^7.59.4",
-    "@storybook/addon-a11y": "^10.6.2",
-    "@storybook/addon-docs": "^10.6.2",
-    "@storybook/addon-links": "^10.6.2",
-    "@storybook/builder-vite": "^10.6.2",
-    "@storybook/vue3-vite": "^10.6.2",
-    "@tailwindcss/vite": "^4.1.11",
-    "@vitejs/plugin-vue": "^6.0.10",
-    "@vue/eslint-config-prettier": "^10.2.0",
-    "@vue/eslint-config-typescript": "^14.6.0",
-    "@vue/language-core": "^3.0.9",
-    "@vue/tsconfig": "^0.7.0",
-    "cypress": "^16.2.0",
-    "eslint": "^9.34.0",
-    "prettier": "3.9.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "storybook": "^10.6.2",
-    "typescript-eslint": "8.39.0",
-    "unplugin-dts": "^1.1.2",
-    "vite": "^8.3.4",
-    "vite-plugin-css-injected-by-js": "^5.0.2",
-    "vite-plugin-static-copy": "4.1.1"
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown --no-error-on-unmatched-pattern"
   }
 }

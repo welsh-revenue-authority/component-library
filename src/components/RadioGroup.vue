@@ -4,12 +4,12 @@
       <legend v-if="label" class="sr-only">{{ label }}</legend>
       <p v-if="hint" :id="hintId" class="sr-only">{{ hint }}</p>
       <wra-radio
-        :groupName="groupName"
+        :group-name="groupName"
         v-for="option in validOptions"
         :option="option"
         :key="option.value"
         class="radio"
-        :isChecked="checkInput(option.value)"
+        :is-checked="checkInput(option.value)"
         :id="option.id"
       />
     </fieldset>
@@ -17,11 +17,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
-import WraRadio, { RadioOption } from "./Radio.vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
+import type { RadioOption } from "./Radio.vue";
+import WraRadio from "./Radio.vue";
 
 export default defineComponent({
-  name: "wra-radio-group",
+  name: "WraRadioGroup",
   props: {
     /**
      * The name attribute for the radio group, used to group radio buttons together.

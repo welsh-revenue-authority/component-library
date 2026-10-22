@@ -13,12 +13,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export type TextAreaValidationRule = (value: string) => true | string;
 
 export default defineComponent({
-  name: "wra-text-area",
+  name: "WraTextArea",
   props: {
     /**
      * The unique id for the textarea input and label association.
@@ -60,8 +61,8 @@ export default defineComponent({
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      errorMessage: "" as string,
-      firstValidation: true as boolean
+      errorMessage: "",
+      firstValidation: true
     };
   },
   methods: {

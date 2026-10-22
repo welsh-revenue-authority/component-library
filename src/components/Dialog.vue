@@ -18,7 +18,7 @@
         <div class="dialog-buttons">
           <wra-button
             ref="confirmBtn"
-            :backgroundColor="isDelete ? 'wra-red' : 'wra-green'"
+            :background-color="isDelete ? 'wra-red' : 'wra-green'"
             @click="confirm"
           >
             {{ confirmText }}
@@ -33,12 +33,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, nextTick } from "vue";
-import WraHeader from "./Header.vue";
+import type { PropType } from "vue";
+import { defineComponent, nextTick } from "vue";
 import WraButton from "./Button.vue";
+import WraHeader from "./Header.vue";
 
 export default defineComponent({
-  name: "wra-dialog",
+  name: "WraDialog",
   components: {
     WraHeader,
     WraButton

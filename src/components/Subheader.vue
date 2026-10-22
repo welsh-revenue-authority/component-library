@@ -5,10 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-subheader",
+  name: "WraSubheader",
   props: {
     /**
      * The text colour of the subheader.
@@ -21,7 +22,7 @@ export default defineComponent({
   computed: {
     style(): { color: string } {
       return {
-        color: this.color as string
+        color: this.color
       };
     }
   }
