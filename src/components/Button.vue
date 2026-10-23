@@ -169,8 +169,8 @@ button.outlined-button:disabled {
 }
 
 .wra-green:hover:not(:focus) {
-  background-color: #008a19;
-  border-color: #008a19;
+  background-color: #006112;
+  border-color: #006112;
 }
 
 .wra-revenue {
