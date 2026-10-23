@@ -98,11 +98,11 @@ button {
   justify-content: center;
 }
 
-button:hover {
+button:hover:not(:disabled) {
   background-color: var(--color-wra-dark-grey);
 }
 
-button:focus {
+button:focus:not(:disabled) {
   color: var(--color-wra-black) !important;
   background-color: var(--color-wra-yellow) !important;
   border: 3px solid var(--color-wra-black);
@@ -110,17 +110,14 @@ button:focus {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.7;
-  background-color: var(--color-wra-charcoal);
-}
-
-button:disabled:hover {
-  opacity: 0.7;
-  background-color: var(--color-wra-charcoal);
+  background-color: var(--color-wra-dark-grey);
+  border-color: var(--color-wra-dark-grey);
+  color: #fff;
 }
 
 button.outlined-button:disabled {
-  color: #fff;
+  background-color: transparent;
+  color: var(--color-wra-dark-grey);
 }
 
 .icon {
@@ -141,7 +138,7 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-black);
 }
 
-.wra-black:hover:not(:focus) {
+.wra-black:hover:not(:focus):not(:disabled) {
   background-color: var(--color-wra-dark-grey);
   border-color: var(--color-wra-dark-grey);
 }
@@ -150,7 +147,7 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-blue);
 }
 
-.wra-blue:hover:not(:focus) {
+.wra-blue:hover:not(:focus):not(:disabled) {
   background-color: #3571b1;
   border-color: #3571b1;
 }
@@ -159,7 +156,7 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-red);
 }
 
-.wra-red:hover:not(:focus) {
+.wra-red:hover:not(:focus):not(:disabled) {
   background-color: #d81f1f;
   border-color: #d81f1f;
 }
@@ -168,7 +165,7 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-green);
 }
 
-.wra-green:hover:not(:focus) {
+.wra-green:hover:not(:focus):not(:disabled) {
   background-color: #006112;
   border-color: #006112;
 }
@@ -177,7 +174,7 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-revenue);
 }
 
-.wra-revenue:hover:not(:focus) {
+.wra-revenue:hover:not(:focus):not(:disabled) {
   background-color: #55507b;
   border-color: #55507b;
 }
@@ -201,7 +198,7 @@ button.outlined-button:disabled {
   color: var(--button-border-color);
 }
 
-button.outlined-button:hover:not(:focus) {
+button.outlined-button:hover:not(:focus):not(:disabled) {
   background-color: var(--button-border-color);
   border-color: var(--button-border-color);
   color: #fff;

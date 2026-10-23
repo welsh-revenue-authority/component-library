@@ -16,6 +16,7 @@ const meta: Meta<typeof WraButton> = {
       options: ["wra-revenue", "wra-blue", "wra-red", "wra-green", "wra-black"]
     },
     outlined: { control: "boolean" },
+    disabled: { control: "boolean" },
     prependIcon: { table: { disable: true } },
     appendIcon: { table: { disable: true } }
   }
