@@ -4,6 +4,9 @@
     type="button"
     :class="buttonClass"
     :disabled="disabled"
+    :style="{
+      '--button-border-color': `var(--color-${backgroundColor})`
+    }"
   >
     <span
       :class="{
@@ -77,8 +80,7 @@ export default defineComponent({
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
-        "wra-revenue": this.backgroundColor === "wra-revenue",
-        "wra-white": this.backgroundColor === "wra-white"
+        "wra-revenue": this.backgroundColor === "wra-revenue"
       };
     }
   }
@@ -88,8 +90,8 @@ export default defineComponent({
 <style scoped>
 button {
   color: #fff;
-  font-weight: bold;
-  border: none;
+  font-weight: 700;
+  border: 3px solid var(--button-border-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -98,15 +100,12 @@ button {
 
 button:hover {
   background-color: var(--color-wra-dark-grey);
-  transition: all 0.3s ease;
 }
 
 button:focus {
   color: var(--color-wra-black) !important;
   background-color: var(--color-wra-yellow) !important;
-  outline: 2px solid var(--color-wra-black);
-  outline-offset: 0px;
-  border-color: var(--color-wra-yellow);
+  border: 3px solid var(--color-wra-black);
 }
 
 button:disabled {
@@ -142,78 +141,69 @@ button.outlined-button:disabled {
   background-color: var(--color-wra-black);
 }
 
-.wra-black:hover {
+.wra-black:hover:not(:focus) {
   background-color: var(--color-wra-dark-grey);
+  border-color: var(--color-wra-dark-grey);
 }
 
 .wra-blue {
   background-color: var(--color-wra-blue);
 }
 
-.wra-blue:hover {
+.wra-blue:hover:not(:focus) {
   background-color: #3571b1;
+  border-color: #3571b1;
 }
 
 .wra-red {
   background-color: var(--color-wra-red);
 }
 
-.wra-red:hover {
+.wra-red:hover:not(:focus) {
   background-color: #d81f1f;
+  border-color: #d81f1f;
 }
 
 .wra-green {
   background-color: var(--color-wra-green);
 }
 
-.wra-green:hover {
+.wra-green:hover:not(:focus) {
   background-color: #008a19;
+  border-color: #008a19;
 }
 
 .wra-revenue {
   background-color: var(--color-wra-revenue);
 }
 
-.wra-revenue:hover {
+.wra-revenue:hover:not(:focus) {
   background-color: #55507b;
-}
-
-.wra-white {
-  background-color: #fff;
-  color: var(--color-wra-black);
-  outline: 2px solid var(--color-wra-black);
-}
-
-.wra-white:hover {
-  background-color: var(--color-wra-grey);
-}
-
-.wra-white:disabled {
-  color: #fff;
+  border-color: #55507b;
 }
 
 .default-button {
-  font-size: 16px;
+  font-size: 18px;
   padding: 10px 20px;
   line-height: 24px;
+  min-height: 45px;
 }
 
 .small-button {
-  font-size: 14px;
+  font-size: 16px;
   padding: 5px 15px;
   line-height: 24px;
+  min-height: 35px;
 }
 
 .outlined-button {
   background-color: transparent;
-  outline: 2px solid var(--color-prop, var(--color-wra-black));
   color: var(--color-prop, var(--color-wra-black));
 }
 
 .outlined-button:hover {
   background-color: var(--color-prop, var(--color-wra-black));
   color: #fff;
-  transition: all 0.3s ease;
 }
 </style>
 
