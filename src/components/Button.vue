@@ -188,6 +188,7 @@ button.outlined-button:disabled {
   padding: 10px 20px;
   line-height: 24px;
   min-height: 45px;
+  --button-icon-size: 25px;
 }
 
 .small-button {
@@ -195,6 +196,7 @@ button.outlined-button:disabled {
   padding: 5px 15px;
   line-height: 24px;
   min-height: 35px;
+  --button-icon-size: 20px;
 }
 
 .large-button {
@@ -202,6 +204,7 @@ button.outlined-button:disabled {
   padding: 15px 25px;
   line-height: 24px;
   min-height: 55px;
+  --button-icon-size: 30px;
 }
 
 .outlined-button {
@@ -219,5 +222,7 @@ button.outlined-button:hover:not(:focus):not(:disabled) {
 <style>
 .wra-button > .icon > svg {
   fill: currentColor;
+  width: var(--button-icon-size, 25px);
+  height: var(--button-icon-size, 25px);
 }
 </style>
