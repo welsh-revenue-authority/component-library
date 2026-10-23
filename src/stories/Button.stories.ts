@@ -215,7 +215,7 @@ export const AppendCustomIcon: Story = {
     },
     template: `
     <WraButton v-bind="args">
-      Upload File
+      Upload file
       <template #append-icon>
         <wra-icon :icon="icon" :fill="fill" />
       </template>
@@ -227,7 +227,7 @@ export const AppendCustomIcon: Story = {
       source: {
         code: `
 <wra-button appendIcon>
-  Upload File
+  Upload file
   <template #append-icon>
     <wra-icon :icon="mdiUpload" />
   </template>
