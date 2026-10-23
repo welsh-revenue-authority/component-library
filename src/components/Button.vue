@@ -197,6 +197,13 @@ button.outlined-button:disabled {
   min-height: 35px;
 }
 
+.large-button {
+  font-size: 20px;
+  padding: 15px 25px;
+  line-height: 24px;
+  min-height: 55px;
+}
+
 .outlined-button {
   background-color: transparent;
   color: var(--button-border-color);
