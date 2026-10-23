@@ -108,6 +108,10 @@ button:focus:not(:disabled) {
   border: 3px solid var(--color-wra-black);
 }
 
+button:focus-visible {
+  outline: none;
+}
+
 button:disabled {
   cursor: not-allowed;
   background-color: var(--color-wra-dark-grey);
@@ -127,11 +131,11 @@ button.outlined-button:disabled {
 }
 
 .prepend-icon-wrapper {
-  margin-right: 8px;
+  margin-right: 5px;
 }
 
 .append-icon-wrapper {
-  margin-left: 8px;
+  margin-left: 5px;
 }
 
 .wra-black {
@@ -206,7 +210,7 @@ button.outlined-button:hover:not(:focus):not(:disabled) {
 </style>
 
 <style>
-.wra-button:focus > .icon > svg {
-  fill: var(--color-wra-black);
+.wra-button > .icon > svg {
+  fill: currentColor;
 }
 </style>
