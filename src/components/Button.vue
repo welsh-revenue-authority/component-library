@@ -198,11 +198,12 @@ button.outlined-button:disabled {
 
 .outlined-button {
   background-color: transparent;
-  color: var(--color-prop, var(--color-wra-black));
+  color: var(--button-border-color);
 }
 
-.outlined-button:hover {
-  background-color: var(--color-prop, var(--color-wra-black));
+button.outlined-button:hover:not(:focus) {
+  background-color: var(--button-border-color);
+  border-color: var(--button-border-color);
   color: #fff;
 }
 </style>
