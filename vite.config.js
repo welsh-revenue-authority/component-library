@@ -7,6 +7,8 @@ import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 import dts from "unplugin-dts/vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
+const projectRoot = fileURLToPath(new URL(".", import.meta.url));
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,8 +18,9 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          src: "src/styles/tailwind.css", // Source file
-          dest: "." // Destination folder in dist
+          src: "src/styles/tailwind.css",
+          dest: ".",
+          rename: { stripBase: true }
         }
       ]
     }),
@@ -38,7 +41,7 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, "src/index.ts"),
+      entry: resolve(projectRoot, "src/index.ts"),
       name: "vueComponents",
       // the proper extensions will be added
       fileName: "vue-components"
