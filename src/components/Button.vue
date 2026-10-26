@@ -5,7 +5,10 @@
     :class="buttonClass"
     :disabled="disabled"
     :style="{
-      '--button-border-color': `var(--color-${backgroundColor})`
+      '--button-border-color':
+        backgroundColor === 'wra-white'
+          ? 'var(--color-wra-black)'
+          : `var(--color-${backgroundColor})`
     }"
   >
     <span
@@ -80,7 +83,8 @@ export default defineComponent({
         "wra-blue": this.backgroundColor === "wra-blue",
         "wra-red": this.backgroundColor === "wra-red",
         "wra-green": this.backgroundColor === "wra-green",
-        "wra-revenue": this.backgroundColor === "wra-revenue"
+        "wra-revenue": this.backgroundColor === "wra-revenue",
+        "wra-white": this.backgroundColor === "wra-white"
       };
     }
   }
@@ -181,6 +185,15 @@ button.outlined-button:disabled {
 .wra-revenue:hover:not(:focus):not(:disabled) {
   background-color: #55507b;
   border-color: #55507b;
+}
+
+.wra-white:not(.outlined-button):not(:disabled) {
+  background-color: #fff;
+  color: var(--color-wra-black);
+}
+
+.wra-white:hover:not(.outlined-button):not(:focus):not(:disabled) {
+  background-color: var(--color-wra-grey);
 }
 
 .default-button {

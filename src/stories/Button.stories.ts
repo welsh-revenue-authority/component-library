@@ -13,7 +13,14 @@ const meta: Meta<typeof WraButton> = {
     },
     backgroundColor: {
       control: { type: "radio" },
-      options: ["wra-revenue", "wra-blue", "wra-red", "wra-green", "wra-black"]
+      options: [
+        "wra-revenue",
+        "wra-blue",
+        "wra-red",
+        "wra-green",
+        "wra-black",
+        "wra-white"
+      ]
     },
     outlined: { control: "boolean" },
     disabled: { control: "boolean" },
