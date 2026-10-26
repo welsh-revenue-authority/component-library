@@ -166,7 +166,7 @@ button.outlined-button:disabled {
 }
 
 .wra-green {
-  background-color: var(--color-wra-green);
+  background-color: #008a19;
 }
 
 .wra-green:hover:not(:focus):not(:disabled) {
