@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import WraSnackBar from "../components/Snackbar.vue";
 
 const meta: Meta<typeof WraSnackBar> = {
@@ -32,6 +33,16 @@ export default meta;
 type Story = StoryObj<typeof WraSnackBar>;
 
 export const Info: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is an info snackbar");
+    const closeButton = canvasElement.querySelector(
+      ".close-icon-wrapper"
+    ) as HTMLElement;
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(closeButton);
+    await waitFor(() => expect(snackbar).not.toBeInTheDocument());
+  },
   args: {
     label: "This is an info snackbar",
     visible: true,
@@ -40,6 +51,16 @@ export const Info: Story = {
 };
 
 export const Success: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is a success snackbar");
+    const closeButton = canvasElement.querySelector(
+      ".close-icon-wrapper"
+    ) as HTMLElement;
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(closeButton);
+    await waitFor(() => expect(snackbar).not.toBeInTheDocument());
+  },
   args: {
     label: "This is a success snackbar",
     visible: true,
@@ -48,6 +69,16 @@ export const Success: Story = {
 };
 
 export const Warning: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is a warning snackbar");
+    const closeButton = canvasElement.querySelector(
+      ".close-icon-wrapper"
+    ) as HTMLElement;
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(closeButton);
+    await waitFor(() => expect(snackbar).not.toBeInTheDocument());
+  },
   args: {
     label: "This is a warning snackbar",
     visible: true,
@@ -56,6 +87,16 @@ export const Warning: Story = {
 };
 
 export const Error: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const snackbar = canvas.getByText("This is an error snackbar");
+    const closeButton = canvasElement.querySelector(
+      ".close-icon-wrapper"
+    ) as HTMLElement;
+    await expect(snackbar).toBeVisible();
+    await userEvent.click(closeButton);
+    await waitFor(() => expect(snackbar).not.toBeInTheDocument());
+  },
   args: {
     label: "This is an error snackbar",
     visible: true,
@@ -64,6 +105,15 @@ export const Error: Story = {
 };
 
 export const NoCloseButton: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(
+      canvas.getByText("Snackbar with no close button")
+    ).toBeVisible();
+    await expect(
+      canvasElement.querySelector(".close-icon-wrapper")
+    ).not.toBeInTheDocument();
+  },
   args: {
     label: "Snackbar with no close button",
     showClose: false,

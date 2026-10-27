@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 import WraSimpleTable from "../components/SimpleTable.vue";
 
 const meta: Meta<typeof WraSimpleTable> = {
@@ -17,6 +18,17 @@ export default meta;
 type Story = StoryObj<typeof WraSimpleTable>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("Table caption")).toBeVisible();
+    await expect(canvas.getByText("Date")).toBeVisible();
+    await expect(canvas.getByText("Amount")).toBeVisible();
+    await expect(canvas.getByText("First 6 weeks")).toBeVisible();
+    await expect(canvas.getByText("£109.80 per week")).toBeVisible();
+    await expect(canvas.getByText("Next 33 weeks")).toBeVisible();
+    await expect(canvas.getByText("£120.80 per week")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     leftAlignHeaders: true
@@ -41,7 +53,7 @@ export const Default: Story = {
         </tr>
         <tr>
           <td>Next 33 weeks</td>
-          <td>£109.80 per week</td>
+          <td>£120.80 per week</td>
         </tr>
         <tr>
           <td>Total estimated pay</td>
@@ -75,7 +87,7 @@ export const Default: Story = {
       <td>£4,282.20</td>
     </tr>
   </tbody>
-</wra-simple-table>
+</wra-simple-tabl e>
         `
       }
     }
@@ -83,6 +95,12 @@ export const Default: Story = {
 };
 
 export const InheritBackground: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("table")).toBeVisible();
+    await expect(canvas.getByText("Total estimated pay")).toBeVisible();
+    await expect(canvas.getByText("£4,282.20")).toBeVisible();
+  },
   args: {
     caption: "Table caption",
     inheritBackground: true

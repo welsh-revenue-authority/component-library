@@ -27,7 +27,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-breadcrumbs",
+  name: "WraBreadcrumbs",
   props: {
     /** Items to display in the breadcrumbs */
     items: {

@@ -1,6 +1,5 @@
 import "@/styles/global.css";
 import "@/styles/tailwind.css";
-
 // Alphabetical order
 import AppBar from "@/components/AppBar.vue";
 import Autocomplete from "@/components/Autocomplete.vue";
@@ -41,13 +40,12 @@ import Tabs from "@/components/Tabs.vue";
 import TextArea from "@/components/TextArea.vue";
 import TextInput from "@/components/TextInput.vue";
 import ValidationTooltip from "@/components/ValidationTooltip.vue";
-import WraTag from "@/components/WraTag.vue";
 import WraStatusTag from "@/components/WraStatusTag.vue";
+import WraTag from "@/components/WraTag.vue";
 import WraTaskList from "@/components/WraTaskList.vue";
-import WraTaskListItem from "@/components/WraTaskListItem.vue";
 import WraTaskListHint from "@/components/WraTaskListHint.vue";
+import WraTaskListItem from "@/components/WraTaskListItem.vue";
 
-export type { TextInputValidationRule } from "@/components/TextInput.vue";
 export type { AutocompleteOption } from "@/components/Autocomplete.vue";
 export type { CheckboxOption } from "@/components/CheckboxGroup.vue";
 export type {
@@ -56,11 +54,12 @@ export type {
 } from "@/components/DataTable.vue";
 export type { RuleFunction } from "@/components/NumberInput.vue";
 export type { RadioOption } from "@/components/Radio.vue";
+export type { NavigationLink } from "@/components/ServiceBar.vue";
 export type { TableHeader, TableItem } from "@/components/Table.vue";
 export type { TextAreaValidationRule } from "@/components/TextArea.vue";
-export type { WraTagAvailableColors } from "@/components/WraTag.vue";
+export type { TextInputValidationRule } from "@/components/TextInput.vue";
 export type { WraStatusTagVariant } from "@/components/WraStatusTag.vue";
-export type { NavigationLink } from "@/components/ServiceBar.vue";
+export type { WraTagAvailableColors } from "@/components/WraTag.vue";
 
 export {
   AppBar as WraAppBar,
@@ -74,11 +73,6 @@ export {
   ContentAccordion as WraContentAccordion,
   ContentSectionTitle as WraContentSectionTitle,
   CustomInput as WraCustomInput,
-  WraTag,
-  WraStatusTag,
-  WraTaskList,
-  WraTaskListItem,
-  WraTaskListHint,
   DataTable as WraDataTable,
   DateInput as WraDateInput,
   Dialog as WraDialog,
@@ -101,9 +95,14 @@ export {
   SimpleTable as WraSimpleTable,
   SkipLink as WraSkipLink,
   Snackbar as WraSnackbar,
+  WraStatusTag,
   Subheader as WraSubheader,
   Table as WraTable,
   Tabs as WraTabs,
+  WraTag,
+  WraTaskList,
+  WraTaskListHint,
+  WraTaskListItem,
   TextArea as WraTextArea,
   TextInput as WraTextInput,
   ValidationTooltip as WraValidationTooltip

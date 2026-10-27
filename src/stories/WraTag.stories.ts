@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite";
 import WraTag from "@/components/WraTag.vue";
+import type { Meta, StoryObj } from "@storybook/vue3-vite";
 
 const meta: Meta<typeof WraTag> = {
   title: "Containment/Tag",

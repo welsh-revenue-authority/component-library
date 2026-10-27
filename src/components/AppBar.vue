@@ -10,10 +10,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-app-bar",
+  name: "WraAppBar",
   props: {
     /**
      * If true, the app bar will be hidden when printing the page.

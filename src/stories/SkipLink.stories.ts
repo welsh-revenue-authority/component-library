@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSkipLink from "../components/SkipLink.vue";
-import WraCard from "../components/Card.vue";
+import { expect, userEvent, within } from "storybook/test";
 import WraButton from "../components/Button.vue";
+import WraCard from "../components/Card.vue";
+import WraSkipLink from "../components/SkipLink.vue";
 
 const meta: Meta<typeof WraSkipLink> = {
   title: "Form Inputs & Controls/SkipLink",
@@ -12,26 +13,45 @@ export default meta;
 
 type Story = StoryObj<typeof WraSkipLink>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip to main content");
+  }
+};
 
 export const CustomText: Story = {
-  args: {
-    text: "Skip cookies"
-  }
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip cookies");
+  },
+  args: { text: "Skip cookies" }
 };
 
 export const FullWidthSkiplink: Story = {
-  args: {
-    text: "Skip cookies",
-    fullWidth: true
-  }
+  play: async ({ canvasElement }) => {
+    await expect(
+      within(canvasElement).getByRole("button", { hidden: true })
+    ).toHaveTextContent("Skip cookies");
+  },
+  args: { text: "Skip cookies", fullWidth: true }
 };
 
 export const SkipId: Story = {
-  args: {
-    text: "Skip to main content",
-    skipId: "container"
+  play: async ({ canvasElement }) => {
+    const skipLink = within(canvasElement).getByRole("button", {
+      hidden: true,
+      name: "Skip to main content"
+    });
+    const container = canvasElement.querySelector("#container");
+    await expect(skipLink).toHaveTextContent("Skip to main content");
+    await expect(container).toBeVisible();
+    await userEvent.click(skipLink);
+    expect(document.activeElement).toBe(container);
   },
+  args: { text: "Skip to main content", skipId: "container" },
   render: (args) => ({
     components: { WraSkipLink, WraCard, WraButton },
     setup() {
