@@ -239,19 +239,26 @@ export const ErrorSummary: Story = {
   render: (args) => {
     const icon = mdiIcons.mdiAlert;
     const css = `
-.main-validation-link {
-  color: black;
-  font-weight: normal;
+.validation-title {
+  line-height: 24px;
+  padding-bottom: 16px;
 }
 
 .validation-list {
-  list-style: none;
-  padding: 0;
   margin: 0;
 }
 
 .validation-list li:not(:last-child) {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.validation-link {
+  color: var(--color-wra-black);
+  font-weight: normal;
+}
+
+.validation-link:hover {
+  color: var(--color-wra-black);
 }
 `;
     return {
@@ -270,13 +277,13 @@ export const ErrorSummary: Story = {
           type="wra-error"
         >
           <template #custom-icon>
-            <WraIcon :icon="icon" fill="var(--color-wra-red)" />
+            <WraIcon :icon="icon" fill="var(--color-wra-red)" width="25" height="25" />
           </template>
           <div>
-            <div class="pb-5 font-bold text-[20px]">There is a problem</div>
+            <div class="validation-title">There is a problem</div>
             <ul class="validation-list">
-              <li><a href="#" class="main-validation-link">Enter your first name</a></li>
-              <li><a href="#" class="main-validation-link">Enter your last name</a></li>
+              <li><a href="#" class="validation-link">Enter your first name</a></li>
+              <li><a href="#" class="validation-link">Enter your last name</a></li>
             </ul>
           </div>
         </WraValidationTooltip>
@@ -287,36 +294,43 @@ export const ErrorSummary: Story = {
     docs: {
       source: {
         code: `
-<WraValidationTooltip
+<wra-validation-tooltip
   role="alert"
   type="wra-error"
 >
   <template #custom-icon>
-    <WraIcon :icon="mdiAlert" fill="var(--color-wra-red)" />
+    <wra-icon :icon="mdiAlert" fill="var(--color-wra-red)" width="25" height="25" />
   </template>
   <div>
-    <div class="pb-5 font-bold text-[20px]">There is a problem</div>
+    <div class="validation-title">There is a problem</div>
     <ul class="validation-list">
-      <li><a href="#" class="main-validation-link">Enter your first name</a></li>
-      <li><a href="#" class="main-validation-link">Enter your last name</a></li>
+      <li><a href="#" class="validation-link">Enter your first name</a></li>
+      <li><a href="#" class="validation-link">Enter your last name</a></li>
     </ul>
   </div>
-</WraValidationTooltip>
+</wra-validation-tooltip>
 
 <style>
-.main-validation-link {
-  color: black;
-  font-weight: normal;
+.validation-title {
+  line-height: 24px;
+  padding-bottom: 16px;
 }
 
 .validation-list {
-  list-style: none;
-  padding: 0;
   margin: 0;
 }
 
 .validation-list li:not(:last-child) {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.validation-link {
+  color: var(--color-wra-black);
+  font-weight: normal;
+}
+
+.validation-link:hover {
+  color: var(--color-wra-black);
 }
 </style>
         `
