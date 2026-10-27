@@ -38,7 +38,7 @@ export default defineComponent({
   color: var(--color-wra-black);
   border-radius: 0px;
   font-size: 18px;
-  padding: 25px;
+  padding: 20px 25px 20px 15px;
 }
 
 .wra-error {
@@ -48,7 +48,7 @@ export default defineComponent({
 
 .wra-success {
   background-color: var(--color-wra-light-green);
-  border-left: 10px solid var(--color-wra-green);
+  border-left: 10px solid #008a19;
 }
 
 .wra-info {
@@ -62,7 +62,7 @@ export default defineComponent({
 }
 
 .wra-default {
-  background-color: var(--color-wra-light-grey);
+  background-color: #eeeeee;
   border-left: 10px solid var(--color-wra-blue);
 }
 
@@ -74,6 +74,6 @@ export default defineComponent({
 }
 
 .custom-icon-wrapper {
-  margin-right: 12px;
+  margin-right: 10px;
 }
 </style>

@@ -171,7 +171,7 @@ export const CustomIconInfo: Story = {
       template: `
         <WraValidationTooltip v-bind="args">
           <template #custom-icon>
-            <wra-icon :icon="icon" :fill="fill" />
+            <wra-icon :icon="icon" :fill="fill" width="25" height="25" />
           </template>
           This is an info message
         </WraValidationTooltip>
@@ -184,7 +184,7 @@ export const CustomIconInfo: Story = {
         code: `
 <wra-validation-tooltip type="wra-info">
   <template #custom-icon>
-    <wra-icon :icon="mdiInformation" fill="var(--color-wra-blue)" />
+    <wra-icon :icon="mdiInformation" fill="var(--color-wra-blue)" width="25" height="25" />
   </template>
   This is an info message
 </wra-validation-tooltip>
@@ -209,7 +209,7 @@ export const CustomIconError: Story = {
       template: `
         <WraValidationTooltip v-bind="args">
           <template #custom-icon>
-            <wra-icon :icon="icon" :fill="fill" />
+            <wra-icon :icon="icon" :fill="fill" width="25" height="25" />
           </template>
           This is an error message
         </WraValidationTooltip>
@@ -222,7 +222,7 @@ export const CustomIconError: Story = {
         code: `
 <wra-validation-tooltip type="wra-error">
   <template #custom-icon>
-    <wra-icon :icon="mdiAlert" fill="var(--color-wra-red)" />
+    <wra-icon :icon="mdiAlert" fill="var(--color-wra-red)" width="25" height="25" />
   </template>
   This is an error message
 </wra-validation-tooltip>
