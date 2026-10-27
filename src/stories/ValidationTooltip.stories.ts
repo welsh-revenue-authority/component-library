@@ -231,3 +231,96 @@ export const CustomIconError: Story = {
     }
   }
 };
+
+export const ErrorSummary: Story = {
+  args: {
+    type: "wra-error"
+  },
+  render: (args) => {
+    const icon = mdiIcons.mdiAlert;
+    const css = `
+.main-validation-link {
+  color: black;
+  font-weight: normal;
+}
+
+.validation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.validation-list li:not(:last-child) {
+  margin-bottom: 4px;
+}
+`;
+    return {
+      components: { WraValidationTooltip, WraIcon },
+      setup() {
+        return {
+          args,
+          icon,
+          css
+        };
+      },
+      template: `
+        <component :is="'style'">{{ css }}</component>
+        <WraValidationTooltip
+          role="alert"
+          type="wra-error"
+        >
+          <template #custom-icon>
+            <WraIcon :icon="icon" fill="var(--color-wra-red)" />
+          </template>
+          <div>
+            <div class="pb-5 font-bold text-[20px]">There is a problem</div>
+            <ul class="validation-list">
+              <li><a href="#" class="main-validation-link">Enter your first name</a></li>
+              <li><a href="#" class="main-validation-link">Enter your last name</a></li>
+            </ul>
+          </div>
+        </WraValidationTooltip>
+      `
+    };
+  },
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<WraValidationTooltip
+  role="alert"
+  type="wra-error"
+>
+  <template #custom-icon>
+    <WraIcon :icon="mdiAlert" fill="var(--color-wra-red)" />
+  </template>
+  <div>
+    <div class="pb-5 font-bold text-[20px]">There is a problem</div>
+    <ul class="validation-list">
+      <li><a href="#" class="main-validation-link">Enter your first name</a></li>
+      <li><a href="#" class="main-validation-link">Enter your last name</a></li>
+    </ul>
+  </div>
+</WraValidationTooltip>
+
+<style>
+.main-validation-link {
+  color: black;
+  font-weight: normal;
+}
+
+.validation-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.validation-list li:not(:last-child) {
+  margin-bottom: 4px;
+}
+</style>
+        `
+      }
+    }
+  }
+};
