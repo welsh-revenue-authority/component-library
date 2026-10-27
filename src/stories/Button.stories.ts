@@ -9,7 +9,7 @@ const meta: Meta<typeof WraButton> = {
   argTypes: {
     size: {
       control: { type: "radio" },
-      options: ["default", "small"]
+      options: ["small", "default", "large"]
     },
     backgroundColor: {
       control: { type: "radio" },
@@ -18,11 +18,12 @@ const meta: Meta<typeof WraButton> = {
         "wra-blue",
         "wra-red",
         "wra-green",
-        "wra-white",
-        "wra-black"
+        "wra-black",
+        "wra-white"
       ]
     },
     outlined: { control: "boolean" },
+    disabled: { control: "boolean" },
     prependIcon: { table: { disable: true } },
     appendIcon: { table: { disable: true } }
   }
@@ -39,14 +40,14 @@ export const Default: Story = {
     setup() {
       return { args };
     },
-    template: `<WraButton v-bind="args">Default Button</WraButton>`
+    template: `<WraButton v-bind="args">Default button</WraButton>`
   }),
   parameters: {
     docs: {
       source: {
         code: `
 <wra-button>
-  Default Button
+  Default button
 </wra-button>
         `
       }
@@ -61,14 +62,36 @@ export const Small: Story = {
     setup() {
       return { args };
     },
-    template: `<WraButton v-bind="args">Small Button</WraButton>`
+    template: `<WraButton v-bind="args">Small button</WraButton>`
   }),
   parameters: {
     docs: {
       source: {
         code: `
 <wra-button size="small">
-  Small Button
+  Small button
+</wra-button>
+        `
+      }
+    }
+  }
+};
+
+export const Large: Story = {
+  args: { size: "large" },
+  render: (args) => ({
+    components: { WraButton },
+    setup() {
+      return { args };
+    },
+    template: `<WraButton v-bind="args">Large button</WraButton>`
+  }),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+<wra-button size="large">
+  Large button
 </wra-button>
         `
       }
@@ -83,14 +106,14 @@ export const BackgroundColour: Story = {
     setup() {
       return { args };
     },
-    template: `<WraButton v-bind="args">Blue Button</WraButton>`
+    template: `<WraButton v-bind="args">Blue button</WraButton>`
   }),
   parameters: {
     docs: {
       source: {
         code: `
 <wra-button backgroundColor="wra-blue">
-  Blue Button
+  Blue button
 </wra-button>
         `
       }
@@ -105,14 +128,14 @@ export const Outlined: Story = {
     setup() {
       return { args };
     },
-    template: `<WraButton v-bind="args">Outlined Button</WraButton>`
+    template: `<WraButton v-bind="args">Outlined button</WraButton>`
   }),
   parameters: {
     docs: {
       source: {
         code: `
 <wra-button outlined>
-  Outlined Button
+  Outlined button
 </wra-button>
         `
       }
@@ -134,7 +157,7 @@ export const PrependIcon: Story = {
       <template #prepend-icon>
         <wra-icon :icon="icon" :fill="fill" />
       </template>
-      Back Button
+      Back button
     </WraButton>
     `
   }),
@@ -146,7 +169,7 @@ export const PrependIcon: Story = {
   <template #prepend-icon>
     <wra-icon :icon="mdiChevronLeft" />
   </template>
-  Back Button
+  Back button
 </wra-button>
         `
       }
@@ -165,7 +188,7 @@ export const AppendIcon: Story = {
     },
     template: `
     <WraButton v-bind="args">
-      Next Button
+      Next button
       <template #append-icon>
         <wra-icon :icon="icon" :fill="fill" />
       </template>
@@ -177,7 +200,7 @@ export const AppendIcon: Story = {
       source: {
         code: `
 <wra-button appendIcon>
-  Next Button
+  Next button
   <template #append-icon>
     <wra-icon :icon="mdiChevronRight" />
   </template>
@@ -199,7 +222,7 @@ export const AppendCustomIcon: Story = {
     },
     template: `
     <WraButton v-bind="args">
-      Upload File
+      Upload file
       <template #append-icon>
         <wra-icon :icon="icon" :fill="fill" />
       </template>
@@ -211,7 +234,7 @@ export const AppendCustomIcon: Story = {
       source: {
         code: `
 <wra-button appendIcon>
-  Upload File
+  Upload file
   <template #append-icon>
     <wra-icon :icon="mdiUpload" />
   </template>
@@ -229,14 +252,14 @@ export const Disabled: Story = {
     setup() {
       return { args };
     },
-    template: `<WraButton v-bind="args">Disabled Button</WraButton>`
+    template: `<WraButton v-bind="args">Disabled button</WraButton>`
   }),
   parameters: {
     docs: {
       source: {
         code: `
 <wra-button disabled>
-  Disabled Button
+  Disabled button
 </wra-button>
         `
       }
