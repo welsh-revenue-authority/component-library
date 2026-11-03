@@ -9,7 +9,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-export type WraTagAvailableColors = "wra-blue" | "wra-green" | "wra-grey" | "wra-yellow";
+export type WraTagAvailableColors =
+  "wra-blue" | "wra-green" | "wra-grey" | "wra-yellow";
 
 const props = withDefaults(
   defineProps<{

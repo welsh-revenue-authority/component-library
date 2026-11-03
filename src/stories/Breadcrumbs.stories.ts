@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 import Breadcrumbs from "../components/Breadcrumbs.vue";
 
 const meta: Meta<typeof Breadcrumbs> = {
@@ -13,6 +14,16 @@ type BreadcrumbsProps = InstanceType<typeof Breadcrumbs>["$props"];
 type Story = StoryObj<BreadcrumbsProps>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const allLinks = canvas.getAllByRole("link");
+    await expect(allLinks).toHaveLength(2);
+    await expect(canvas.getByText("Link 2")).toBeVisible();
+    allLinks.forEach((link) => expect(link).toBeVisible());
+    await expect(
+      canvasElement.querySelector(".wra-breadcrumbs-chevron")
+    ).toBeVisible();
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },
@@ -32,6 +43,17 @@ export const Default: Story = {
 };
 
 export const replaceDivider: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const allLinks = canvas.getAllByRole("link");
+    await expect(allLinks).toHaveLength(2);
+    await expect(canvas.getByText("Link 2")).toBeVisible();
+    allLinks.forEach((link) => expect(link).toBeVisible());
+    allLinks.forEach((link) => expect(link).toHaveAttribute("href"));
+    await expect(
+      canvasElement.querySelector(".wra-breadcrumbs-divider")
+    ).toBeVisible();
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },
@@ -64,6 +86,10 @@ export const replaceDivider: Story = {
 };
 
 export const replaceContent: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getAllByText("Link")).toHaveLength(3);
+  },
   args: {
     items: [
       { title: "Dashboard", disabled: false, href: "." },

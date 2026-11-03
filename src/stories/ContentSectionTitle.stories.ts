@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, within } from "storybook/test";
 import WraContentSectionTitle from "../components/ContentSectionTitle.vue";
 import WraHeader from "../components/Header.vue";
 
@@ -24,6 +25,15 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(
+      canvas.getByRole("heading", { name: "This is a H1 header" })
+    ).toBeVisible();
+    await expect(
+      canvasElement.querySelector(".content-section-title")
+    ).toBeVisible();
+  },
   args: {
     size: "h1",
     default: "This is a H1 header"

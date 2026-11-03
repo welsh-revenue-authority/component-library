@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraSelect from "../components/Select.vue";
 
 const meta: Meta<typeof WraSelect> = {
@@ -17,6 +18,13 @@ export default meta;
 type Story = StoryObj<typeof WraSelect>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const select = canvas.getByRole("combobox");
+    await expect(canvas.getByRole("option", { name: "Item 1" })).toBeVisible();
+    await userEvent.selectOptions(select, "1");
+    await expect(select).toHaveValue("1");
+  },
   args: {
     items: [
       { value: 1, label: "Item 1" },

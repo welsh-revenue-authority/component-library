@@ -17,11 +17,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 import Tab from "./Tab.vue";
 
 export default defineComponent({
-  name: "wra-tabs",
+  name: "WraTabs",
   emits: ["update:modelValue"],
   props: {
     /** The currently selected tab, starts from 0 */
@@ -40,8 +41,8 @@ export default defineComponent({
   },
   data() {
     return {
-      activeTab: 0 as number,
-      focusTab: 0 as number
+      activeTab: 0,
+      focusTab: 0
     };
   },
   methods: {

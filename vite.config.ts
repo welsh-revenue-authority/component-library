@@ -1,10 +1,10 @@
-import { fileURLToPath, URL } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import vue from "@vitejs/plugin-vue";
+import { fileURLToPath, URL } from "node:url";
 import { resolve } from "path";
+import dts from "unplugin-dts/vite";
 import { defineConfig } from "vite";
 import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
-import dts from "unplugin-dts/vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
@@ -27,8 +27,8 @@ export default defineConfig({
     dts({
       processor: "vue",
       bundleTypes: true,
+      tsconfigPath: "./tsconfig.app.json",
       exclude: ["src/stories", "src/docs"],
-      tsConfigPath: "./tsconfig.app.json",
       copyDtsFiles: true,
       insertTypesEntry: true
     })

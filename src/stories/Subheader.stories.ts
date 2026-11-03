@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
-import WraSubheader from "../components/Subheader.vue";
+import { expect, within } from "storybook/test";
 import WraHeader from "../components/Header.vue";
-
+import WraSubheader from "../components/Subheader.vue";
 import { Header1 } from "./Header.stories";
 
 const meta: Meta<typeof WraSubheader> = {
@@ -20,6 +20,11 @@ export default meta;
 type Story = StoryObj<typeof WraSubheader>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    await expect(canvas.getByRole("heading")).toBeVisible();
+    await expect(canvas.getByText(/subheader/i)).toBeVisible();
+  },
   args: {
     ...Header1.args
   },

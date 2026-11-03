@@ -25,7 +25,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export type CheckboxOption =
   | {
@@ -37,7 +38,7 @@ export type CheckboxOption =
   | string;
 
 export default defineComponent({
-  name: "wra-checkbox-group",
+  name: "WraCheckboxGroup",
   props: {
     /**
      * The v-model binding for the checkbox group. Should be an array of selected values or objects.
@@ -88,6 +89,8 @@ export default defineComponent({
   },
   data() {
     return {
+      // Fix if composition API used
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       checked: {} as Record<string, boolean>
     };
   },

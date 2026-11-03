@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraRadioGroup from "../components/RadioGroup.vue";
 
 const meta: Meta<typeof WraRadioGroup> = {
@@ -11,6 +12,15 @@ export default meta;
 type Story = StoryObj<typeof WraRadioGroup>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const radios = canvas.getAllByRole("radio");
+    await expect(radios[0]).not.toBeChecked();
+    await expect(radios[1]).not.toBeChecked();
+    await userEvent.click(radios[0]);
+    await expect(radios[0]).toBeChecked();
+    await expect(radios[1]).not.toBeChecked();
+  },
   args: {
     groupName: "groupName",
     options: [

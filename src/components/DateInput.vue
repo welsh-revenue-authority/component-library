@@ -18,13 +18,13 @@
 
 <script lang="ts">
 import { vMaska } from "maska/vue";
-import { defineComponent, Directive, PropType } from "vue";
+import { defineComponent, type Directive, type PropType } from "vue";
 
 const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
   directives: { maska: vMaskaDirective },
-  name: "wra-date-input",
+  name: "WraDateInput",
   props: {
     /**
      * The value of the input field.
@@ -118,9 +118,9 @@ export default defineComponent({
   emits: ["update:modelValue", "valid"],
   data() {
     return {
-      maskedValue: "" as string,
-      showError: false as boolean,
-      firstValidation: true as boolean,
+      maskedValue: "",
+      showError: false,
+      firstValidation: true,
       dateObjectValue: null as Date | null
     };
   },
@@ -248,13 +248,11 @@ export default defineComponent({
         //If parent has passed a Date object
         //Convert Date object into DD/MM/YYYY
         const formatted =
-          (this.modelValue as Date).getDate().toString().padStart(2, "0") +
+          this.modelValue.getDate().toString().padStart(2, "0") +
           "/" +
-          ((this.modelValue as Date).getMonth() + 1)
-            .toString()
-            .padStart(2, "0") +
+          (this.modelValue.getMonth() + 1).toString().padStart(2, "0") +
           "/" +
-          (this.modelValue as Date).getFullYear();
+          this.modelValue.getFullYear();
         this.convertToDate(formatted);
       } else if (
         typeof this.modelValue === "string" &&

@@ -1,5 +1,6 @@
-import WraExpansionPanel from "../components/ExpansionPanel.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
+import WraExpansionPanel from "../components/ExpansionPanel.vue";
 
 const meta: Meta<typeof WraExpansionPanel> = {
   title: "Containment/ExpansionPanel",
@@ -17,6 +18,14 @@ const meta: Meta<typeof WraExpansionPanel> = {
 export default meta;
 
 export const Default: StoryObj<typeof WraExpansionPanel> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const control = canvas.getByRole("button", {
+      name: /Expansion panel title/i
+    });
+    await userEvent.click(control);
+    await expect(canvasElement.querySelector(".panel-content")).toBeVisible();
+  },
   args: {
     title: "Expansion panel title",
     ariaTitle: "expansion-panel-title"
@@ -82,6 +91,13 @@ export const Default: StoryObj<typeof WraExpansionPanel> = {
 };
 
 export const TitleSlot: StoryObj<typeof WraExpansionPanel> = {
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const control = canvas.getByRole("button");
+    await userEvent.click(control);
+    await expect(canvas.getByText(/Custom slot/i)).toBeVisible();
+    await expect(canvas.getByText(/multi-line/i)).toBeVisible();
+  },
   args: {
     ariaTitle: "expansion-panel-title-slot"
   },

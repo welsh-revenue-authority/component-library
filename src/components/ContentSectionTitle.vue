@@ -8,7 +8,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-content-section-title"
+  name: "WraContentSectionTitle"
 });
 </script>
 

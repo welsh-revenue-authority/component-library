@@ -11,10 +11,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-icon",
+  name: "WraIcon",
   props: {
     /** Name of icon from material design icons by  pictogrammers */
     icon: {

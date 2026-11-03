@@ -1,5 +1,5 @@
-import WraHeadingCaption from "../components/HeadingCaption.vue";
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import WraHeadingCaption from "../components/HeadingCaption.vue";
 
 const meta: Meta<typeof WraHeadingCaption> = {
   title: "Miscellaneous/Heading Caption",

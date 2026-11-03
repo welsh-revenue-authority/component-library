@@ -80,9 +80,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import WraIcon from "@/components/Icon.vue";
-import { mdiMenu, mdiClose } from "@mdi/js";
+import { mdiClose, mdiMenu } from "@mdi/js";
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
 export interface NavigationLink {
   label: string;

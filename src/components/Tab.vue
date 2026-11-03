@@ -9,11 +9,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 /** Works with Tabs to form a tab component */
 export default defineComponent({
-  name: "wra-tab",
+  name: "WraTab",
   props: {
     label: {
       type: String as PropType<string>,
@@ -31,7 +32,7 @@ export default defineComponent({
   },
   data() {
     return {
-      activeTab: 0 as number
+      activeTab: 0
     };
   },
   watch: {

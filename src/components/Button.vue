@@ -35,7 +35,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-button",
+  name: "WraButton",
   props: {
     /**
      * The size of the button.
@@ -55,22 +55,22 @@ export default defineComponent({
      * If true, renders the button with an outlined style instead of a solid background.
      */
     outlined: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: false
     },
     prependIcon: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: false
     },
     appendIcon: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: false
     },
     /**
      * If true, disables the button and prevents user interaction.
      */
     disabled: {
-      type: Boolean as () => boolean,
+      type: Boolean,
       default: false
     }
   },

@@ -5,10 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-footer",
+  name: "WraFooter",
   props: {
     /**
      * If true, the footer will be hidden when printing the page.

@@ -55,7 +55,7 @@ const navigationLinks = [
   { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 2' },
   { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 3' }
 ];
-<\/script>
+</script>
 
 <template>
   <ServiceBar
@@ -96,7 +96,7 @@ const navigationLinks = [
   { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 3' },
   { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 4' }
 ];
-<\/script>
+</script>
 
 <template>
   <ServiceBar
@@ -137,7 +137,7 @@ export const WithSlot: Story = {
         code: `
 <script setup>
 import ServiceBar from '@/components/ServiceBar.vue';
-<\/script>
+</script>
 
 <template>
   <ServiceBar service-name="Service name">
@@ -184,7 +184,7 @@ import ServiceBar from '@/components/ServiceBar.vue';
 const navigationLinks = [
   { label: 'Navigation link', href: '#', ariaLabel: 'Navigation link 1' }
 ];
-<\/script>
+</script>
 
 <template>
   <ServiceBar
@@ -224,7 +224,7 @@ export const BurgerMenuDoesNotAppearGivenNoLinks: Story = {
         code: `
 <script setup>
 import ServiceBar from '@/components/ServiceBar.vue';
-<\/script>
+</script>
 
 <template>
   <ServiceBar
@@ -279,7 +279,7 @@ const navigationLinks = [
   { label: 'Placeholder 3', href: '#', ariaLabel: 'Placeholder 3' },
   { label: 'Placeholder 4', href: '#', ariaLabel: 'Placeholder 4' }
 ];
-<\/script>
+</script>
 
 <template>
   <ServiceBar service-name="Service name" :navigation-links="navigationLinks">
@@ -352,7 +352,7 @@ const navigationLinks = [
   { label: 'Placeholder 3', href: '#', ariaLabel: 'Placeholder 3', onClick: () => console.log('Clicked Placeholder 3') },
   { label: 'Placeholder 4', href: '#', ariaLabel: 'Placeholder 4', onClick: () => console.log('Clicked Placeholder 4') }
 ];
-<\/script>
+</script>
 
 <template>
   <ServiceBar

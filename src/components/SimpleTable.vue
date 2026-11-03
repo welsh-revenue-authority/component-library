@@ -28,10 +28,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-simple-table",
+  name: "WraSimpleTable",
   props: {
     /**
      * If true, the table inherits its background from its parent and removes external padding.

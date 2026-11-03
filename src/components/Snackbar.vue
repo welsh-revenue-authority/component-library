@@ -29,10 +29,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-snackbar",
+  name: "WraSnackbar",
   emits: ["update:visible"],
   props: {
     /** If snackbar is visible */
@@ -66,7 +67,7 @@ export default defineComponent({
   },
   data() {
     return {
-      showSnackbar: false as boolean
+      showSnackbar: false
     };
   },
   methods: {

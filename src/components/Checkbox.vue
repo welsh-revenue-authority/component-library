@@ -18,10 +18,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "wra-checkbox",
+  name: "WraCheckbox",
   props: {
     /**
      * The v-model binding for the checkbox state.
@@ -52,7 +53,7 @@ export default defineComponent({
   },
   data() {
     return {
-      isChecked: this.modelValue as boolean | undefined
+      isChecked: this.modelValue
     };
   },
   watch: {

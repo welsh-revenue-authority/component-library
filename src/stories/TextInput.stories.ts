@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import { expect, userEvent, within } from "storybook/test";
 import WraTextInput from "../components/TextInput.vue";
 
 const meta: Meta<typeof WraTextInput> = {
@@ -38,6 +39,12 @@ export default meta;
 type Story = StoryObj<typeof WraTextInput>;
 
 export const Default: Story = {
+  play: async ({ canvasElement }) => {
+    const input = within(canvasElement).getByRole("textbox");
+    await userEvent.clear(input);
+    await userEvent.type(input, "Text input content");
+    await expect(input).toHaveValue("Text input content");
+  },
   args: {
     label: "Text input label",
     modelValue: "Enter text here...",

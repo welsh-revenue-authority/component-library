@@ -22,8 +22,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Directive, InputHTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
+import type { Directive, InputHTMLAttributes, PropType } from "vue";
+import { defineComponent } from "vue";
 
 export type RuleFunction = (value: string | number) => true | string;
 
@@ -31,7 +32,7 @@ const vMaskaDirective = vMaska as unknown as Directive;
 
 export default defineComponent({
   directives: { maska: vMaskaDirective },
-  name: "wra-number-input",
+  name: "WraNumberInput",
   props: {
     /**
      * The value of the input field.
@@ -151,7 +152,7 @@ export default defineComponent({
           const element = this.rules[index];
           const result = element(value);
           if (result != true) {
-            this.errorMessage = result as string;
+            this.errorMessage = result;
             this.$emit("valid", { id: this.id, value: false });
             break;
           }
