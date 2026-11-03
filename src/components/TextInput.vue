@@ -8,6 +8,13 @@
     {{ description }}
   </div>
   <div :id="`${id}-hint`" class="text-input-hint" v-if="hint">{{ hint }}</div>
+  <div
+    v-if="error && $slots['validation-tooltip']"
+    :id="`${id}-error`"
+    class="text-input-validation"
+  >
+    <slot name="validation-tooltip"></slot>
+  </div>
   <input
     :id="id"
     :type="type"
@@ -16,6 +23,8 @@
     :value="modelValue"
     :inputmode="inputmode"
     :placeholder="placeholder"
+    :class="{ error }"
+    :aria-invalid="error"
   />
 </template>
 
@@ -136,6 +145,15 @@ export default defineComponent({
     placeholder: {
       type: String as PropType<string>,
       required: false
+    },
+    /**
+     * Whether the input is in an error state.
+     * @type {boolean}
+     * @default false
+     */
+    error: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ["update:modelValue", "valid"]
@@ -171,6 +189,11 @@ input:focus-visible {
   outline: none;
 }
 
+input.error,
+input.error:focus {
+  border-color: var(--color-wra-red);
+}
+
 .text-input-label {
   display: block;
   color: var(--color-wra-black);
@@ -195,5 +218,9 @@ input:focus-visible {
   font-weight: 400;
   line-height: 24px;
   padding-bottom: 15px;
+}
+
+.text-input-validation {
+  margin-bottom: 20px;
 }
 </style>
