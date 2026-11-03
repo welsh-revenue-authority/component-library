@@ -39,7 +39,16 @@ type Story = StoryObj<typeof WraTextInput>;
 
 export const Default: Story = {
   args: {
+    modelValue: "Enter text here...",
+    id: "textInput"
+  }
+};
+
+export const WithLabelDescriptionAndHint: Story = {
+  args: {
     label: "Text input label",
+    description: "This is a description for the input field.",
+    hint: "This is a hint for the input field.",
     modelValue: "Enter text here...",
     id: "textInput"
   }

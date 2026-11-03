@@ -1,5 +1,13 @@
 <template>
-  <label :for="id" v-if="label">{{ label }}</label>
+  <label :for="id" class="text-input-label" v-if="label">{{ label }}</label>
+  <div
+    :id="`${id}-description`"
+    class="text-input-description"
+    v-if="description"
+  >
+    {{ description }}
+  </div>
+  <div :id="`${id}-hint`" class="text-input-hint" v-if="hint">{{ hint }}</div>
   <input
     :id="id"
     :type="type"
@@ -38,6 +46,22 @@ export default defineComponent({
      * @type {string}
      */
     label: {
+      type: String as PropType<string>,
+      required: false
+    },
+    /**
+     * The description for the input field.
+     * @type {string}
+     */
+    description: {
+      type: String as PropType<string>,
+      required: false
+    },
+    /**
+     * The hint for the input field.
+     * @type {string}
+     */
+    hint: {
       type: String as PropType<string>,
       required: false
     },
@@ -147,10 +171,29 @@ input:focus-visible {
   outline: none;
 }
 
-label {
-  color: var(--color-wra-black);
-  font-size: 16px;
+.text-input-label {
   display: block;
-  margin-bottom: 4px;
+  color: var(--color-wra-black);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  padding-bottom: 20px;
+}
+.text-input-description {
+  display: block;
+  color: var(--color-wra-black);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-bottom: 15px;
+}
+
+.text-input-hint {
+  display: block;
+  color: var(--color-wra-dark-grey);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-bottom: 15px;
 }
 </style>
