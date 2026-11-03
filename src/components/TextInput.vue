@@ -1,25 +1,19 @@
 <template>
-  <div :class="{ error: errorMessage }">
-    <label :for="id" v-if="label">{{ label }}</label>
-    <input
-      :id="id"
-      :type="type"
-      v-maska="dataMaska"
-      :dataMaskaTokens="dataMaskaTokens"
-      :value="modelValue"
-      @input="validate(($event.target as HTMLInputElement)?.value ?? '')"
-      :inputmode="inputmode"
-      :placeholder="placeholder"
-    />
-    <p v-if="errorMessage">{{ errorMessage }}</p>
-  </div>
+  <label :for="id" v-if="label">{{ label }}</label>
+  <input
+    :id="id"
+    :type="type"
+    v-maska="dataMaska"
+    :dataMaskaTokens="dataMaskaTokens"
+    :value="modelValue"
+    :inputmode="inputmode"
+    :placeholder="placeholder"
+  />
 </template>
 
 <script lang="ts">
 import { defineComponent, Directive, HTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
-
-export type TextInputValidationRule = (value: string | number) => true | string;
 
 // Getting around vmaska incorrect typing
 const vMaskaDirective = vMaska as unknown as Directive;
@@ -96,13 +90,6 @@ export default defineComponent({
       }
     },
     /**
-     * An array of validation rule functions. Each function should return true or an error message string.
-     */
-    rules: {
-      type: Array as PropType<TextInputValidationRule[]>,
-      default: () => []
-    },
-    /**
      * The mask pattern for the input field.
      * @type {string}
      */
@@ -127,54 +114,6 @@ export default defineComponent({
       required: false
     }
   },
-  data() {
-    return {
-      errorMessage: "" as string,
-      firstValidation: true as boolean
-    };
-  },
-  methods: {
-    /**
-     * Validates the input value based on the provided rules.
-     * @param {string|number} value - The input value to validate.
-     */
-    validate(value: string | number) {
-      this.$emit("update:modelValue", value);
-      this.errorMessage = "";
-
-      if (this.rules != undefined) {
-        //Checks if rules exists
-        for (let index = 0; index < this.rules.length; index++) {
-          const element = this.rules[index];
-          const result = element(value);
-          if (result != true) {
-            this.errorMessage = result;
-            this.$emit("valid", { id: this.id, value: false });
-            break;
-          }
-        }
-      }
-
-      if (this.errorMessage == "") {
-        this.$emit("valid", { id: this.id, value: true });
-      }
-
-      //Gives user a chance to type something in instead of making whole form red immediately
-      if (this.firstValidation == true) {
-        this.firstValidation = false;
-        if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
-          this.errorMessage = "";
-          return;
-        }
-      }
-    }
-  },
-  mounted() {
-    // Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.validate(this.modelValue);
-    this.$emit("update:modelValue", this.modelValue);
-  },
   emits: ["update:modelValue", "valid"]
 });
 </script>
@@ -188,20 +127,24 @@ export default defineComponent({
 
 input {
   font-size: 16px;
+  font-weight: 400;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid var(--color-wra-black);
-  line-height: 1.15;
+  border: 2px solid var(--color-wra-black);
+  line-height: 20px;
   display: block;
   width: 100%;
 }
 
 input:focus {
   border-color: var(--color-wra-black);
-  outline: 1px solid var(--color-wra-black);
   -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   box-shadow: 0 0 0 3px var(--color-wra-yellow);
+}
+
+input:focus-visible {
+  outline: none;
 }
 
 label {
@@ -209,15 +152,5 @@ label {
   font-size: 16px;
   display: block;
   margin-bottom: 4px;
-}
-
-div.error > p {
-  margin-top: 8px;
-  margin-bottom: 0;
-  padding: 12px;
-  background: var(--color-wra-light-red);
-  color: var(--color-wra-black);
-  font-size: 16px;
-  border-left: 10px solid var(--color-wra-red);
 }
 </style>
