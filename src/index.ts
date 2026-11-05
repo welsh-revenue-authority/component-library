@@ -47,7 +47,6 @@ import WraTaskList from "@/components/WraTaskList.vue";
 import WraTaskListItem from "@/components/WraTaskListItem.vue";
 import WraTaskListHint from "@/components/WraTaskListHint.vue";
 
-export type { TextInputValidationRule } from "@/components/TextInput.vue";
 export type { AutocompleteOption } from "@/components/Autocomplete.vue";
 export type { CheckboxOption } from "@/components/CheckboxGroup.vue";
 export type {

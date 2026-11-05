@@ -1,25 +1,45 @@
 <template>
-  <div :class="{ error: errorMessage }">
-    <label :for="id" v-if="label">{{ label }}</label>
+  <div>
+    <label :for="id" class="text-input-label" v-if="label">{{ label }}</label>
+    <div
+      :id="`${id}-description`"
+      class="text-input-description"
+      v-if="description"
+    >
+      {{ description }}
+    </div>
+    <div :id="`${id}-hint`" class="text-input-hint" v-if="hint">{{ hint }}</div>
+    <div
+      v-if="error && $slots['validation-tooltip']"
+      :id="`${id}-error`"
+      class="text-input-validation"
+    >
+      <slot name="validation-tooltip"></slot>
+    </div>
     <input
+      class="text-input"
       :id="id"
       :type="type"
       v-maska="dataMaska"
       :dataMaskaTokens="dataMaskaTokens"
       :value="modelValue"
-      @input="validate(($event.target as HTMLInputElement)?.value ?? '')"
       :inputmode="inputmode"
       :placeholder="placeholder"
+      :class="{ error }"
+      :aria-invalid="error"
+      @input="
+        $emit(
+          'update:modelValue',
+          ($event.target as HTMLInputElement)?.value ?? ''
+        )
+      "
     />
-    <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, Directive, HTMLAttributes, PropType } from "vue";
 import { vMaska } from "maska/vue";
-
-export type TextInputValidationRule = (value: string | number) => true | string;
 
 // Getting around vmaska incorrect typing
 const vMaskaDirective = vMaska as unknown as Directive;
@@ -44,6 +64,22 @@ export default defineComponent({
      * @type {string}
      */
     label: {
+      type: String as PropType<string>,
+      required: false
+    },
+    /**
+     * The description for the input field.
+     * @type {string}
+     */
+    description: {
+      type: String as PropType<string>,
+      required: false
+    },
+    /**
+     * The hint for the input field.
+     * @type {string}
+     */
+    hint: {
       type: String as PropType<string>,
       required: false
     },
@@ -96,13 +132,6 @@ export default defineComponent({
       }
     },
     /**
-     * An array of validation rule functions. Each function should return true or an error message string.
-     */
-    rules: {
-      type: Array as PropType<TextInputValidationRule[]>,
-      default: () => []
-    },
-    /**
      * The mask pattern for the input field.
      * @type {string}
      */
@@ -125,55 +154,16 @@ export default defineComponent({
     placeholder: {
       type: String as PropType<string>,
       required: false
-    }
-  },
-  data() {
-    return {
-      errorMessage: "" as string,
-      firstValidation: true as boolean
-    };
-  },
-  methods: {
+    },
     /**
-     * Validates the input value based on the provided rules.
-     * @param {string|number} value - The input value to validate.
+     * Whether the input is in an error state.
+     * @type {boolean}
+     * @default false
      */
-    validate(value: string | number) {
-      this.$emit("update:modelValue", value);
-      this.errorMessage = "";
-
-      if (this.rules != undefined) {
-        //Checks if rules exists
-        for (let index = 0; index < this.rules.length; index++) {
-          const element = this.rules[index];
-          const result = element(value);
-          if (result != true) {
-            this.errorMessage = result;
-            this.$emit("valid", { id: this.id, value: false });
-            break;
-          }
-        }
-      }
-
-      if (this.errorMessage == "") {
-        this.$emit("valid", { id: this.id, value: true });
-      }
-
-      //Gives user a chance to type something in instead of making whole form red immediately
-      if (this.firstValidation == true) {
-        this.firstValidation = false;
-        if (this.errorMessage != "") {
-          //Ensures edge case bug doesn't happen where there's an error but no visual output
-          this.errorMessage = "";
-          return;
-        }
-      }
+    error: {
+      type: Boolean,
+      default: false
     }
-  },
-  mounted() {
-    // Run validation rules when component first is rendered as v-model data might be valid/invalid
-    this.validate(this.modelValue);
-    this.$emit("update:modelValue", this.modelValue);
   },
   emits: ["update:modelValue", "valid"]
 });
@@ -186,38 +176,60 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
-input {
+.text-input {
   font-size: 16px;
+  font-weight: 400;
   padding: 10px;
   background-color: #fff;
-  border: 1px solid var(--color-wra-black);
-  line-height: 1.15;
+  border: 2px solid var(--color-wra-black);
+  line-height: 20px;
   display: block;
   width: 100%;
 }
 
-input:focus {
+.text-input:focus {
   border-color: var(--color-wra-black);
-  outline: 1px solid var(--color-wra-black);
   -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
-label {
-  color: var(--color-wra-black);
-  font-size: 16px;
-  display: block;
-  margin-bottom: 4px;
+.text-input:focus-visible {
+  outline: none;
 }
 
-div.error > p {
-  margin-top: 8px;
-  margin-bottom: 0;
-  padding: 12px;
-  background: var(--color-wra-light-red);
+.text-input.error,
+.text-input.error:focus {
+  border-color: var(--color-wra-red);
+}
+
+.text-input-label {
+  display: block;
   color: var(--color-wra-black);
-  font-size: 16px;
-  border-left: 10px solid var(--color-wra-red);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 30px;
+  padding-bottom: 20px;
+}
+.text-input-description {
+  display: block;
+  color: var(--color-wra-black);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-bottom: 15px;
+}
+
+.text-input-hint {
+  display: block;
+  color: var(--color-wra-dark-grey);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  padding-bottom: 15px;
+}
+
+.text-input-validation {
+  margin-bottom: 20px;
 }
 </style>
