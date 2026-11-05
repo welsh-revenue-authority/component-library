@@ -17,6 +17,7 @@
       <slot name="validation-tooltip"></slot>
     </div>
     <input
+      class="text-input"
       :id="id"
       :type="type"
       v-maska="dataMaska"
@@ -175,7 +176,7 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
-input {
+.text-input {
   font-size: 16px;
   font-weight: 400;
   padding: 10px;
@@ -186,19 +187,19 @@ input {
   width: 100%;
 }
 
-input:focus {
+.text-input:focus {
   border-color: var(--color-wra-black);
   -webkit-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   -moz-box-shadow: 0 0 0 3px var(--color-wra-yellow);
   box-shadow: 0 0 0 3px var(--color-wra-yellow);
 }
 
-input:focus-visible {
+.text-input:focus-visible {
   outline: none;
 }
 
-input.error,
-input.error:focus {
+.text-input.error,
+.text-input.error:focus {
   border-color: var(--color-wra-red);
 }
 
