@@ -1,37 +1,39 @@
 <template>
-  <label :for="id" class="text-input-label" v-if="label">{{ label }}</label>
-  <div
-    :id="`${id}-description`"
-    class="text-input-description"
-    v-if="description"
-  >
-    {{ description }}
+  <div>
+    <label :for="id" class="text-input-label" v-if="label">{{ label }}</label>
+    <div
+      :id="`${id}-description`"
+      class="text-input-description"
+      v-if="description"
+    >
+      {{ description }}
+    </div>
+    <div :id="`${id}-hint`" class="text-input-hint" v-if="hint">{{ hint }}</div>
+    <div
+      v-if="error && $slots['validation-tooltip']"
+      :id="`${id}-error`"
+      class="text-input-validation"
+    >
+      <slot name="validation-tooltip"></slot>
+    </div>
+    <input
+      :id="id"
+      :type="type"
+      v-maska="dataMaska"
+      :dataMaskaTokens="dataMaskaTokens"
+      :value="modelValue"
+      :inputmode="inputmode"
+      :placeholder="placeholder"
+      :class="{ error }"
+      :aria-invalid="error"
+      @input="
+        $emit(
+          'update:modelValue',
+          ($event.target as HTMLInputElement)?.value ?? ''
+        )
+      "
+    />
   </div>
-  <div :id="`${id}-hint`" class="text-input-hint" v-if="hint">{{ hint }}</div>
-  <div
-    v-if="error && $slots['validation-tooltip']"
-    :id="`${id}-error`"
-    class="text-input-validation"
-  >
-    <slot name="validation-tooltip"></slot>
-  </div>
-  <input
-    :id="id"
-    :type="type"
-    v-maska="dataMaska"
-    :dataMaskaTokens="dataMaskaTokens"
-    :value="modelValue"
-    :inputmode="inputmode"
-    :placeholder="placeholder"
-    :class="{ error }"
-    :aria-invalid="error"
-    @input="
-      $emit(
-        'update:modelValue',
-        ($event.target as HTMLInputElement)?.value ?? ''
-      )
-    "
-  />
 </template>
 
 <script lang="ts">
